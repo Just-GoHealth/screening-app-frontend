@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '@mui/material';
 import { AiOutlineLeft } from 'react-icons/ai';
-import './HealthRecordsNavBar.style.css';
+import './HealthRecordsNavBar.styles.css';
 
 export const HealthRecordsNavBar = ({
 	onRightIconClick,
@@ -9,7 +9,7 @@ export const HealthRecordsNavBar = ({
 	leftIcon,
 }) => {
 	return (
-		<nav className="nav-container">
+		<nav className="health-records-nav-container">
 			<>
 				<IconButton
 					onClick={onRightIconClick}
@@ -20,7 +20,7 @@ export const HealthRecordsNavBar = ({
 				</IconButton>
 			</>
 
-			<h2 className="nav-heading ">{heading}</h2>
+			<h2 className="health-records-nav-heading ">{heading}</h2>
 
 			<>{leftIcon}</>
 		</nav>

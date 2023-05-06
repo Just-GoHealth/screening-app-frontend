@@ -1,0 +1,5 @@
+.nav-container {
+	@apply flex items-center justify-between
+	px-5 sm:px-10 lg:px-20
+	h-[10vh];
+}

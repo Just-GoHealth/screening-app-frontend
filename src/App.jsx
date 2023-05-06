@@ -1,26 +1,32 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './views/home/HomePage';
-import { HealthRecordsPage } from './views/health-records/HealthRecordsPage';
-import { SchoolHealthRecords } from './views/school-health-records/SchoolHealthRecords';
-import { SchoolHealthSummary } from './views/school-health-summary/SchoolHealthSummary';
-import { UserHealthSummary } from './views/user-health-summary';
+import { SchoolHealthRecordsPage } from './views/school-health-records/SchoolHealthRecordsPage';
+import { SchoolHealthSummaryPage } from './views/school-health-summary/SchoolHealthSummaryPage';
+import { UserHealthSummaryPage } from './views/user-health-summary';
+import { AllHealthRecordsPage } from './views/all-health-records';
+import { PageNotFoundPage } from './views/page-not-found';
 
 const App = () => {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
-				<Route path="/health-records" element={<HealthRecordsPage />} />
+				<Route path="/all-health-records" element={<AllHealthRecordsPage />} />
 				<Route
 					path="/school-health-records"
-					element={<SchoolHealthRecords />}
+					element={<SchoolHealthRecordsPage />}
 				/>
 				<Route
 					path="/school-health-summary"
-					element={<SchoolHealthSummary />}
+					element={<SchoolHealthSummaryPage />}
 				/>
-				<Route path="/user-health-summary" element={<UserHealthSummary />} />
+				<Route
+					path="/user-health-summary"
+					element={<UserHealthSummaryPage />}
+				/>
+
+				<Route path="*" element={<PageNotFoundPage />} />
 			</Routes>
 		</>
 	);

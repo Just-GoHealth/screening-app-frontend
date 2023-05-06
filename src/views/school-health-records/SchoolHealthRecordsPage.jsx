@@ -1,17 +1,17 @@
 import React from 'react';
-import { Button, TextField } from '@mui/material';
-import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
-import { BsCloudArrowDown } from 'react-icons/bs';
+import { IconButton, TextField } from '@mui/material';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { BsCloudArrowDown, BsFillCloudArrowDownFill } from 'react-icons/bs';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
-import { HealthRecordsTable } from '../../shared/components/health-records-table';
-import './HealthRecordsPage.style.css';
+import { SchoolHealthRecordsTable } from '../../shared/components/health-records-table';
+import './SchoolHealthRecords.styles.css';
 
-const tableHeadData = ['#', 'School', 'Students', 'Date', 'Download'];
+const tableHeadData = ['#', 'Name', 'Recommendation', 'Date', 'Download'];
 const tableBodyData = [
 	{
 		id: 1,
-		school: 'Noble Prep Academy',
-		students: '5000',
+		name: 'Jacob Davis',
+		recommendation: 'Workshop',
 		date: 'Month Day',
 		download: (
 			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
@@ -19,8 +19,8 @@ const tableBodyData = [
 	},
 	{
 		id: 2,
-		school: 'Noble Prep Academy',
-		students: '5000',
+		name: 'Jacob Davis',
+		recommendation: 'Workshop',
 		date: 'Month Day',
 		download: (
 			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
@@ -28,8 +28,8 @@ const tableBodyData = [
 	},
 	{
 		id: 3,
-		school: 'Noble Prep Academy',
-		students: '5000',
+		name: 'Jacob Davis',
+		recommendation: 'Workshop',
 		date: 'Month Day',
 		download: (
 			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
@@ -37,8 +37,8 @@ const tableBodyData = [
 	},
 	{
 		id: 4,
-		school: 'Noble Prep Academy',
-		students: '5000',
+		name: 'Jacob Davis',
+		recommendation: 'Workshop',
 		date: 'Month Day',
 		download: (
 			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
@@ -46,8 +46,8 @@ const tableBodyData = [
 	},
 	{
 		id: 5,
-		school: 'Noble Prep Academy',
-		students: '5000',
+		name: 'Jacob Davis',
+		recommendation: 'Workshop',
 		date: 'Month Day',
 		download: (
 			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
@@ -55,28 +55,28 @@ const tableBodyData = [
 	},
 ];
 
-export const HealthRecordsPage = () => {
+export const SchoolHealthRecordsPage = () => {
 	return (
-		<div className="container">
+		<div className="health-records-container ">
 			<HealthRecordsNavBar
-				heading={'JustGo Health Records'}
+				heading={'Noble Preparatory Academy'}
 				leftIcon={
-					<Button
-						variant="contained"
-						disableElevation
-						color="secondary"
-						startIcon={<AiOutlinePlus />}
-						size="small"
-					>
-						<p className="header-left-button">New School</p>
-					</Button>
+					<IconButton style={{ background: '#BCBEC0' }}>
+						<BsFillCloudArrowDownFill color="white" />
+					</IconButton>
 				}
 			/>
 
-			<div className="search-input">
+			<div className="health-records-sub-heading">
+				<h4>Junior High School</h4>
+				<div>|</div>
+				<h4>150 Students</h4>
+			</div>
+
+			<div className="health-records-search-input">
 				<TextField
 					label={
-						<div className="search-input-placeholder">
+						<div className="health-records-search-input-placeholder">
 							<AiOutlineSearch style={{ width: '2rem', height: '2rem' }} />
 							<p>Search for Student or School</p>
 						</div>
@@ -93,7 +93,7 @@ export const HealthRecordsPage = () => {
 				/>
 			</div>
 
-			<HealthRecordsTable
+			<SchoolHealthRecordsTable
 				tableBodyData={tableBodyData}
 				tableHeadData={tableHeadData}
 			/>

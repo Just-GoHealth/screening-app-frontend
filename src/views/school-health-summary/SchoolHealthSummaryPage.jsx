@@ -1,5 +1,6 @@
 import React from 'react';
 import { HealthSummary } from '../../shared/components/health-summary';
+import { Navbar } from '../../shared/components/navbar/Navbar';
 
 const screeningReport = [
 	'High Risk mental health concerns',
@@ -7,9 +8,11 @@ const screeningReport = [
 	'Very low risk environmental factors',
 ];
 
-export const SchoolHealthSummary = () => {
+export const SchoolHealthSummaryPage = () => {
 	return (
-		<div>
+		<div className="bg-[#DFE7F4]">
+			<Navbar showBackButton showLogo />
+
 			<HealthSummary
 				title={'Noble Preparatory Academy'}
 				subTitle={'Junior High School | 150 Students'}

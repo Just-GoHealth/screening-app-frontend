@@ -1,0 +1,3 @@
+.health-records-header-left-button {
+	@apply capitalize font-bold text-xs sm:text-[0.9rem] lg:text-lg;
+}

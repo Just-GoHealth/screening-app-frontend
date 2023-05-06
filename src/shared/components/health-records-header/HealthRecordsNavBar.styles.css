@@ -1,10 +1,10 @@
-.nav-container {
+.health-records-nav-container {
 	@apply flex items-center justify-between 
     min-h-[15vh] 
     px-3 sm:px-8 lg:px-10;
 }
 
-.nav-heading {
+.health-records-nav-heading {
 	@apply text-[#1D509E] 
     w-[10rem] sm:w-fit 
     py-4 sm:py-0

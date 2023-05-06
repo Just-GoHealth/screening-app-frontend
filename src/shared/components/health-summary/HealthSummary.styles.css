@@ -1,28 +1,28 @@
-.container {
+.health-summary-container {
 	@apply bg-[#DFE7F4]
 		min-h-screen min-w-full
 		px-5 md:px-10 lg:px-20;
 }
 
-.heading-group {
+.health-summary-heading-group {
 	@apply flex 
 		flex-col items-center justify-center
 		space-y-1 lg:space-y-2
 		mb-10 pt-5;
 }
 
-.main-heading {
-	@apply sm:text-4xl lg:text-5xl
+.health-summary-main-heading {
+	@apply text-2xl sm:text-4xl lg:text-5xl
 		font-bold
 		text-[#965AA4];
 }
 
-.sub-heading {
+.health-summary-sub-heading {
 	@apply sm:text-lg lg:text-xl;
 }
 
-.section-heading {
+.health-summary-section-heading {
 	@apply text-[#965AA4]
 	font-bold
-	sm:text-lg lg:text-xl;
+	text-lg lg:text-xl;
 }
