@@ -1,3 +1,3 @@
-import { UserHealthSummary } from "./UserHealthSummary";
+import { UserHealthSummaryPage } from "./UserHealthSummaryPage";
 
-export { UserHealthSummary }
+export { UserHealthSummaryPage }

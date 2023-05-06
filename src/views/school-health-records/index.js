@@ -1,3 +1,3 @@
-import { SchoolHealthRecords } from "./SchoolHealthRecords";
+import { SchoolHealthRecordsPage } from "./SchoolHealthRecordsPage";
 
-export { SchoolHealthRecords }
+export { SchoolHealthRecordsPage }
