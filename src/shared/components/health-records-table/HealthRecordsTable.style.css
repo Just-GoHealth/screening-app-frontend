@@ -1,0 +1,12 @@
+.table-head {
+	@apply text-white uppercase text-xl lg:text-2xl border-b-2 border-gray-400 pb-3;
+}
+
+.table-row {
+	@apply text-center 
+    border-b-2 border-gray-400;
+}
+
+.table-data {
+	@apply py-3 px-2;
+}
