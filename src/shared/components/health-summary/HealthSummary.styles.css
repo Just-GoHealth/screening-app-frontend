@@ -1,0 +1,28 @@
+.container {
+	@apply bg-[#DFE7F4]
+		min-h-screen min-w-full
+		px-5 md:px-10 lg:px-20;
+}
+
+.heading-group {
+	@apply flex 
+		flex-col items-center justify-center
+		space-y-1 lg:space-y-2
+		mb-10 pt-5;
+}
+
+.main-heading {
+	@apply sm:text-4xl lg:text-5xl
+		font-bold
+		text-[#965AA4];
+}
+
+.sub-heading {
+	@apply sm:text-lg lg:text-xl;
+}
+
+.section-heading {
+	@apply text-[#965AA4]
+	font-bold
+	sm:text-lg lg:text-xl;
+}

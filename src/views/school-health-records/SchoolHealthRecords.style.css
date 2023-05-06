@@ -1,0 +1,15 @@
+.container {
+	@apply bg-[#E5E5E4] min-h-screen;
+}
+
+.search-input {
+	@apply flex justify-center py-10;
+}
+
+.search-input-placeholder {
+	@apply flex items-center space-x-2 pl-5;
+}
+
+.sub-heading {
+	@apply flex items-center justify-center space-x-3 sm:text-lg lg:text-xl;
+}

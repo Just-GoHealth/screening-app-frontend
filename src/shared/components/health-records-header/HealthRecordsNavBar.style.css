@@ -1,11 +1,14 @@
 .nav-container {
 	@apply flex items-center justify-between 
-    h-[15vh] 
+    min-h-[15vh] 
     px-3 sm:px-8 lg:px-10;
 }
 
 .nav-heading {
 	@apply text-[#1D509E] 
-    text-2xl sm:text-3xl md:text-4xl lg:text-4xl 
+    w-[10rem] sm:w-fit 
+    py-4 sm:py-0
+    text-center 
+    text-2xl sm:text-3xl lg:text-4xl 
     font-bold;
 }
