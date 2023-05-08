@@ -6,12 +6,14 @@ import { SchoolHealthSummaryPage } from './views/school-health-summary/SchoolHea
 import { UserHealthSummaryPage } from './views/user-health-summary';
 import { AllHealthRecordsPage } from './views/all-health-records';
 import { PageNotFoundPage } from './views/page-not-found';
+import { AccessHealthRecords } from './views/access-health-records/AccessHealthRecords';
 
 const App = () => {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+				<Route path='/access-health-records' element={<AccessHealthRecords />}></Route>
 				<Route path="/all-health-records" element={<AllHealthRecordsPage />} />
 				<Route
 					path="/school-health-records"
