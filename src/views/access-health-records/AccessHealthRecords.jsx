@@ -72,13 +72,13 @@ export const AccessHealthRecords = ({ onRightIconClick }) => {
                 />
               </FormControl>
               <div>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2, px: 10, bgcolor: "#993399"}}
-                  >
-                    Continue
-                  </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2, px: 10, bgcolor: "#993399" }}
+                >
+                  Continue
+                </Button>
               </div>
             </Box>
           </div>
