@@ -57,7 +57,7 @@ const tableBodyData = [
 
 export const SchoolHealthRecordsPage = () => {
 	return (
-		<div className="health-records-container ">
+		<div className="health-records-container">
 			<HealthRecordsNavBar
 				heading={'Noble Preparatory Academy'}
 				leftIcon={

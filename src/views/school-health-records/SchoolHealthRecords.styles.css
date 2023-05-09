@@ -1,5 +1,5 @@
 .health-records-container {
-	@apply bg-[#E5E5E4] min-h-screen;
+	@apply bg-[#E5E5E4] min-h-screen max-w-7xl mx-auto;
 }
 
 .health-records-search-input {
