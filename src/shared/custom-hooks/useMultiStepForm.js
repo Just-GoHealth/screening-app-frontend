@@ -5,7 +5,7 @@ const useMultiStepHook = (steps) => {
 
   function nextStep() {
     setCurrentStepIndex(i => {
-      if (i >= steps.lenght - 1) return i
+      if (i >= steps.length - 1) return i
 
       return i + 1
     })

@@ -1,0 +1,263 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "name": "Medical Profile",
+            "subSections": [
+                {
+                    "id": 1,
+                    "name": "Profile",
+                    "questions": [
+                        {
+                            "id": 1,
+                            "title": "Full Name",
+                            "subTitle": "What is your full name?",
+                            "name": "firstName",
+                            "type": "input",
+                            "info": "Watch our medical experts ..."
+                        },
+                        {
+                            "id": 2,
+                            "title": "Age",
+                            "subTitle": "How old are you?",
+                            "name": "age",
+                            "type": "circularRadio",
+                            "options": ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "19+"],
+                            "info": "Watch our medical experts ..."
+                        },
+                        {
+                            "id": 3,
+                            "title": "Gender",
+                            "subTitle": "Your biological gender?",
+                            "name": "gender",
+                            "type": "squareRadio",
+                            "options": ["M", "F"],
+                            "info":"Watch our medical experts ..."
+                        },
+                        {
+                            "id": 4,
+                            "title": "Location",
+                            "subTitle": "Where do you stay?",
+                            "name": "location",
+                            "type": "input",
+                            "info": "Watch our medical experts ..."
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Biography",
+                    "questions": [
+                        {
+                            "id": 1,
+                            "title": "School.",
+                            "subTitle": "What is the name of your school?",
+                            "type": "dropdown",
+                            "info": "Watch our medical experts ...",
+                            "options": ["Achimota School", "St. Peters", "Presec"]
+                        },
+                        {
+                            "id":2,
+                            "title": "Grade",
+                            "subTitle": "What is your grade?",
+                            "type": "circularRadio",
+                            "options": ["4", "5", "6", "7", "8", "9", "10","11", "12"],
+                            "info": "Watch our medical experts ..."
+                        },
+                        {
+                            "id": 3,
+                            "title": "Screened by.", 
+                            "subTitle": "The JustGo Health Worker",
+                            "type": "input",
+                            "info": "Watch our medical experts ..."
+                        },
+                        {
+                            "id": 4,
+                            "title": "Parent.", 
+                            "subTitle": "What is the name of your guardian?",
+                            "type": "input",
+                            "info": "Watch our medical experts ..."
+                        },
+                        {
+                            "id": 5,
+                            "title": "Parent's Contact.", 
+                            "subTitle": "Their Phone Number",
+                            "type": "input",
+                            "info": "Watch our medical experts ..."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Symptoms",
+            "subSections": [
+                {
+                    "id": 1,
+                    "name": "Emotional Disorder",
+                    "questions": [
+                        {
+                            "id": 1,
+                            "title": "Feeling Sad or Low.",
+                            "subTitle": "How often have you felt sad or low in the past two weeks?",
+                            "type": "squircicleRadio",
+                            "info": "Feeling down, hopeless, empty and tearful",
+                            "options": [
+                                {
+                                    "id": 1,
+                                    "name": "No, not at all",
+                                    "value": 0
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Sometimes",
+                                    "value": 1
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Frequently",
+                                    "value": 2
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "Most of the time",
+                                    "value": 3
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "title": "Feeling Inadequate or Useless.",
+                            "subTitle": "How often have you felt inadequate or worthless in the past two weeks?",
+                            "type": "squircicleRadio",
+                            "info": "Feeling like a failure, feeling guilty, feeling ashamed",
+                            "options": [
+                                {
+                                    "id": 1,
+                                    "name": "No, not at all",
+                                    "value": 0
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Sometimes",
+                                    "value": 1
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Frequently",
+                                    "value": 2
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "Most of the time",
+                                    "value": 3
+                                }
+                            ]
+                        },
+                        {
+                            "id": 3,
+                            "title": "Excessive Worry.",
+                            "subTitle": "How often have you felt excessively worried in the past two weeks?",
+                            "type": "squircicleRadio",
+                            "info": "Constantly worrying about things, feeling on edge, difficulty controlling worries",
+                            "options": [
+                                {
+                                    "id": 1,
+                                    "name": "No, not at all",
+                                    "value": 0
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Sometimes",
+                                    "value": 1
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Frequently",
+                                    "value": 2
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "Most of the time",
+                                    "value": 3
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "Behavioral Disorder",
+                    "questions": [
+                        {
+                            "id": 1,
+                            "title": "",
+                            "subTitle": "Do you find yourself being more aggressive or agitated than usual?",
+                            "type": "squircicleRadio",
+                            "info": "Picking fights with peers or authority figures, being easily angered or irritated, throwing tantrums or objects.",
+                            "options": [
+                                {
+                                    "id": 1,
+                                    "name": "No, not at all",
+                                    "value": 0
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Sometimes",
+                                    "value": 1
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Frequently",
+                                    "value": 2
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "Most of the time",
+                                    "value": 3
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "title": "",
+                            "subTitle": "Have you had any suspensions or punishments for behavioral issues at school or home?",
+                            "type": "squircicleRadio",
+                            "info": " Fighting with others, damaging property, skipping school, substance use.                            ",
+                            "options": [
+                                {
+                                    "id": 1,
+                                    "name": "No, not at all",
+                                    "value": 0
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Sometimes",
+                                    "value": 1
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Frequently",
+                                    "value": 2
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "Most of the time",
+                                    "value": 3
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Triggers",
+            "subSections": [
+
+            ]
+        }
+    ]
+}
