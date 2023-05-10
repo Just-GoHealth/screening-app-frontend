@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './views/home/HomePage';
-import { SchoolHealthRecordsPage } from './views/school-health-records/SchoolHealthRecordsPage';
-import { SchoolHealthSummaryPage } from './views/school-health-summary/SchoolHealthSummaryPage';
 import { UserHealthSummaryPage } from './views/user-health-summary';
 import { AllHealthRecordsPage } from './views/all-health-records';
 import { PageNotFoundPage } from './views/page-not-found';
+import { ScreeningPage } from './views/screening';
+import { SchoolHealthRecordsPage } from './views/school-health-records';
+import { SchoolHealthSummaryPage } from './views/school-health-summary';
 import { AccessHealthRecords } from './views/access-health-records/AccessHealthRecords';
-import ScreeningPage from './views/screening/ScreeningPage';
 
 const App = () => {
 	return (
