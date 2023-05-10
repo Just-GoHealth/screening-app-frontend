@@ -3,8 +3,8 @@ import './HealthRecordsTable.styles.css';
 
 export const SchoolHealthRecordsTable = ({ tableHeadData, tableBodyData }) => {
 	return (
-		<div className="px-5">
-			<table className="w-full">
+		<div className="health-records-table-container">
+			<table className="min-w-full">
 				<thead>
 					<tr>
 						{tableHeadData.map((head, i) => (
