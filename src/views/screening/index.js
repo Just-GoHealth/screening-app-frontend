@@ -1,3 +1,3 @@
-import ScreeningPage from "./ScreeningPage";
+import { ScreeningPage } from "./ScreeningPage";
 
 export { ScreeningPage }

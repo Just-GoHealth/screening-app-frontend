@@ -4,7 +4,7 @@ import { Navbar } from '../../shared/components/navbar/Navbar';
 import Profile from './medical-profile/Profile';
 import './Screening.styles.css';
 
-const ScreeningPage = () => {
+export const ScreeningPage = () => {
 	return (
 		<>
 			<>
@@ -59,5 +59,3 @@ const ScreeningPage = () => {
 		</>
 	);
 };
-
-export default ScreeningPage;

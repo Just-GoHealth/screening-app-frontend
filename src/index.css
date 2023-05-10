@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: 'BR Hendrix';
+	src: url('./assets/font/BRHendrix-Bold.ttf') format('truetype');
+}
+
+body {
+	font-family: 'BR Hendrix', sans-serif;
+}
