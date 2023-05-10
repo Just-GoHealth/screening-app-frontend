@@ -2,8 +2,13 @@ import React from "react";
 import Logo from "../../assets/images/logo.png";
 import HeroImage from "../../assets/images/hero-img.jpg";
 import { BiChevronRight } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 function HeroSection() {
+  const navigate = useNavigate()
+  const startScreening = () => {
+    navigate('screening')
+  }
   return (
     <>
       <div className="min-h-screen flex justify-center items-center">
@@ -29,7 +34,7 @@ function HeroSection() {
                 to maintain good mental health.
               </p>
               <div className="grid grid-cols-2 mt-8">
-                <button className="py-2 bg-[#993399] rounded-md text-white">
+                <button className="py-2 bg-[#993399] rounded-md text-white" onClick={startScreening}>
                   Start Screening
                 </button>
                 <button className=" text-[#003399] font-semibold">
