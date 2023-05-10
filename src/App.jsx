@@ -7,6 +7,7 @@ import { UserHealthSummaryPage } from './views/user-health-summary';
 import { AllHealthRecordsPage } from './views/all-health-records';
 import { PageNotFoundPage } from './views/page-not-found';
 import { AccessHealthRecords } from './views/access-health-records/AccessHealthRecords';
+import ScreeningPage from './views/screening/ScreeningPage';
 
 const App = () => {
 	return (
@@ -30,6 +31,8 @@ const App = () => {
 					path="/user-health-summary"
 					element={<UserHealthSummaryPage />}
 				/>
+
+				<Route path="/screening" element={<ScreeningPage />} />
 
 				<Route path="*" element={<PageNotFoundPage />} />
 			</Routes>
