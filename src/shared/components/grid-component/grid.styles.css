@@ -1,0 +1,53 @@
+.ag-theme-alpine {
+	width: 100%;
+	height: 400px;
+	--ag-row-hover-color: #f3f4f6;
+	--ag-border-color: inherit;
+	--ag-header-background-color: inherit;
+	--ag-range-selection-border-color: transparent;
+}
+
+.ag-root-wrapper {
+	border: none;
+	background-color: inherit;
+}
+
+.ag-root {
+	font-family: 'BR Hendrix', sans-serif;
+}
+
+.ag-header-cell-text {
+	@apply text-white 
+		uppercase text-center
+		text-xl lg:text-2xl;
+}
+
+.ag-header-cell-label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.ag-cell {
+	overflow: visible;
+	font-size: 1rem;
+}
+
+.ag-popup {
+	height: 0;
+	min-height: 0;
+}
+
+.ag-row {
+	background-color: inherit;
+	@apply border-b-2 border-gray-400;
+}
+
+.ag-header-row {
+	@apply border-b-2 border-gray-400;
+}
+
+.ag-header-cell-resize::after {
+	@apply bg-gray-300;
+}
