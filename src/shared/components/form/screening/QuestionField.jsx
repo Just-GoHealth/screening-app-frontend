@@ -1,10 +1,21 @@
-import React from "react";
-import { AiOutlinePlusCircle } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
-export const QuestionField = ({ title, subtitle, control }) => {
+export const QuestionField = ({ title, subtitle, control, style, info }) => {
+  const string =
+    "Watch our medical experts to help decide your rosdkfasdjksjflskdjfsalkfjsldfkssfdskjdfskldjskfljsdlfkslhsfhskjdfhsfkjdshdksjfsfjshfkfjsf";
+  const [expandContent, setExpandContent] = useState(false);
+
+  const expandContentBox = () => {
+    setExpandContent(!expandContent);
+  };
+
   return (
     <>
-      <div className="pb-4 border-b border-[#D9DADC] flex space-x-10 items-center">
+      <div
+        className="pb-4 border-b border-[#D9DADC] flex space-x-10 mt-3 items-center"
+        style={style}
+      >
         <div className="w-3/4 space-y-2">
           <div className="flex space-x-2">
             <h2 className="font-bold text-2xl text-[#231F20]">
@@ -18,15 +29,37 @@ export const QuestionField = ({ title, subtitle, control }) => {
           <>{control}</>
         </div>
 
-        <div className="bg-[#E6E7E8] relative text-[#86888B] p-3 flex items-center space-x-5 max-w-[15rem]">
-          <AiOutlinePlusCircle className="w-5 h-5 absolute top-2 right-2" />
+        {info && (
+          <div
+            className={
+              "bg-[#E6E7E8] relative text-[#86888B] p-3 flex items-center max-w-[15rem]  my-3  " +
+              (expandContent ? " h-auto " : " max-h-[5rem]")
+            }
+          >
+            {info.length > 65 &&
+              (expandContent ? (
+                <AiOutlineMinusCircle
+                  className="w-5 h-5 absolute top-1 right-3 "
+                  onClick={expandContentBox}
+                />
+              ) : (
+                <AiOutlinePlusCircle
+                  className="w-5 h-5 absolute top-1 right-3 "
+                  onClick={expandContentBox}
+                />
+              ))}
 
-          <div className="bg-gray-800 max-h-[80%] w-2/5"></div>
-
-          <h4 className="text-sm">
-            Watch our medical experts to help decide your routine
-          </h4>
-        </div>
+            <div className="">
+              <p className="text-sm break-word py-2">
+                {expandContent
+                  ? info
+                  : info.length > 65
+                  ? info?.slice(0, 65) + "..."
+                  : info}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

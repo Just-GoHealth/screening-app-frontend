@@ -12,7 +12,7 @@ import {
   FormNavigation,
   QuestionField,
 } from "../../../shared/components/form/screening";
-
+import { useNavigate } from "react-router-dom";
 
 const MultiStepForm = ({
   selectedSection,
@@ -36,7 +36,7 @@ const MultiStepForm = ({
     isLastStep,
   } = useMultiStepHook(subSections);
 
-  
+  const navigate = useNavigate()
 
   useEffect(() => {
     setCurrentStepIndex(0);
@@ -46,8 +46,8 @@ const MultiStepForm = ({
 
   useEffect(() => {
     setCurrentSection(data.data.find((data) => data.id === selectedSection));
-    const currentStep = steps.find((step) => step.id === selectedSubSection)
-    setCurrentStepIndex(steps.indexOf(currentStep))
+    const currentStep = steps.find((step) => step.id === selectedSubSection);
+    setCurrentStepIndex(steps.indexOf(currentStep));
   }, [selectedSection, selectedSubSection]);
 
   const handleFormInputChange = (name, value) => {
@@ -57,8 +57,17 @@ const MultiStepForm = ({
     }));
   };
 
-  const handleFormSubmit = () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
     console.log("Form submitted:", formData);
+    const index = data.data.indexOf(currentSection);
+    if (index < data.data.length) {
+      const nextSection = data.data[index + 1];
+      handleSelectedSection(nextSection.id);
+    }
+    else{
+      navigate('/')
+    }
   };
 
   const styles = {
@@ -90,7 +99,23 @@ const MultiStepForm = ({
     },
   };
 
-  const renderQuestion = (question) => {
+  const renderQuestion = (question, index) => {
+    if (!question) {
+      return null;
+    }
+
+    const isQuestionUnanswered =typeof formData[question.name] === 'undefined';
+
+    const isPreviousQuestionUnanswered =
+      steps[currentStepIndex].questions.length > 1
+        ? index > 0 &&
+        typeof formData[steps[currentStepIndex].questions[index - 1].name] === 'undefined'
+        : false;
+    const opacityStyle =
+      isQuestionUnanswered && isPreviousQuestionUnanswered
+        ? { opacity: 0.32, pointerEvents: "none" }
+        : {};
+
     switch (question.type) {
       case "input":
         return (
@@ -102,6 +127,7 @@ const MultiStepForm = ({
                 <TextField
                   size="small"
                   fullWidth
+                  value={formData[question.name] || ""}
                   onChange={(e) =>
                     handleFormInputChange(question.name, e.target.value)
                   }
@@ -110,6 +136,7 @@ const MultiStepForm = ({
             }
             info={question.info}
             key={question.id}
+            style={opacityStyle}
           />
         );
       case "dropdown":
@@ -119,19 +146,26 @@ const MultiStepForm = ({
             subtitle={question.subTitle}
             control={
               <Select
-                value={""}
+                value={formData[question.name] || ""}
+                defaultValue={"Select your school"}
                 fullWidth
                 onChange={(e) =>
                   handleFormInputChange(question.name, e.target.value)
                 }
+                sx={{
+                  height: 40,
+                }}
               >
                 {question.options.map((option, index) => (
-                  <MenuItem value={option} key={index}>{option}</MenuItem>
+                  <MenuItem value={option} key={index}>
+                    {option}
+                  </MenuItem>
                 ))}
               </Select>
             }
             key={question.id}
-
+            style={opacityStyle}
+            info={question.info}
           />
         );
       case "circularRadio":
@@ -144,6 +178,7 @@ const MultiStepForm = ({
                 <ToggleButtonGroup
                   exclusive
                   aria-label="age"
+                  value={formData[question.name] || ""}
                   onChange={(e, value) =>
                     handleFormInputChange(question.name, value)
                   }
@@ -154,6 +189,12 @@ const MultiStepForm = ({
                       style={{
                         ...styles.circularRadioButton,
                         marginRight: "0.5rem",
+                        backgroundColor:
+                          formData[question.name] === age
+                            ? "#ACAEB0"
+                            : undefined,
+                        color:
+                          formData[question.name] === age ? "white" : "#ACAEB0",
                       }}
                       key={index}
                     >
@@ -165,7 +206,7 @@ const MultiStepForm = ({
             }
             info={question.info}
             key={question.id}
-
+            style={opacityStyle}
           />
         );
       case "squareRadio":
@@ -178,14 +219,26 @@ const MultiStepForm = ({
                 <ToggleButtonGroup
                   exclusive
                   aria-label="gender"
-                  onChange={(e, value) =>
-                    handleFormInputChange(question.name, value)
-                  }
+                  value={formData[question.name] || ""}
+                  onChange={(e, value) => {
+                    handleFormInputChange(question.name, value);
+                    setGender(value);
+                  }}
                 >
                   {question.options.map((option, index) => (
                     <ToggleButton
                       value={option}
-                      style={{ ...styles.squareRadioButton }}
+                      style={{
+                        ...styles.squareRadioButton,
+                        backgroundColor:
+                          formData[question.name] === option
+                            ? "#ACAEB0"
+                            : undefined,
+                        color:
+                          formData[question.name] === option
+                            ? "white"
+                            : "#ACAEB0",
+                      }}
                       key={index}
                     >
                       {option}
@@ -196,6 +249,7 @@ const MultiStepForm = ({
             }
             info={question.info}
             key={question.id}
+            style={opacityStyle}
           />
         );
       case "squircicleRadio":
@@ -206,14 +260,27 @@ const MultiStepForm = ({
             control={
               <>
                 <ToggleButtonGroup
+                  exclusive
+                  value={formData[question.name] || ""}
                   onChange={(e, value) =>
                     handleFormInputChange(question.name, value)
                   }
+                  sx={{ flexWrap: "wrap", gap: ".5rem" }}
                 >
                   {question.options.map((option, index) => (
                     <ToggleButton
                       value={option.value}
-                      style={{ ...styles.squircleRadioButton }}
+                      style={{
+                        ...styles.squircleRadioButton,
+                        backgroundColor:
+                          formData[question.name] === option.value
+                            ? "#ACAEB0"
+                            : undefined,
+                        color:
+                          formData[question.name] === option.value
+                            ? "white"
+                            : "#ACAEB0",
+                      }}
                       key={index}
                     >
                       {option.name}
@@ -224,13 +291,46 @@ const MultiStepForm = ({
             }
             info={question.info}
             key={question.id}
+            style={opacityStyle}
           />
+        );
+      case "yesOrNo":
+        return (
+          <>
+            <QuestionField
+              title={question.title}
+              subtitle={question.subTitle}
+              control={
+                <>
+                  <ToggleButtonGroup
+                    value={formData[question.name] || ""}
+                    onChange={(e, value) =>
+                      handleFormInputChange(question.name, value)
+                    }
+                  >
+                    {question.options.map((option, index) => (
+                      <ToggleButton
+                        value={option.value}
+                        style={{ ...styles.squircleRadioButton }}
+                        key={index}
+                      >
+                        {option.name}
+                      </ToggleButton>
+                    ))}
+                  </ToggleButtonGroup>
+                </>
+              }
+              info={question.info}
+              key={question.id}
+              style={opacityStyle}
+            />
+          </>
         );
     }
   };
   return (
     <div className="px-5 pb-5 h-full">
-      <h1 className="screening_heading">Medical Profile</h1>
+      <h1 className="screening_heading">{currentSection.name}</h1>
 
       <form className="space-y-7">
         {steps.map((step, index) => (
@@ -238,7 +338,9 @@ const MultiStepForm = ({
             key={index}
             style={{ display: currentStepIndex === index ? "block" : "none" }}
           >
-            {step.questions.map((question) => renderQuestion(question))}
+            {step.questions.map((question, index) =>
+              renderQuestion(question, index)
+            )}
           </div>
         ))}
 

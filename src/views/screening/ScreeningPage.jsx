@@ -11,7 +11,7 @@ export const ScreeningPage = () => {
   const [selectedSubSection, setSelectedSubSection] = useState(1);
   const handleSelectedSection = (id) => {
     setSelectedSection(id);
-	setSelectedSubSection(1)
+    setSelectedSubSection(1);
   };
   const handleSelectedSubSection = (id) => {
     setSelectedSubSection(id);
@@ -23,8 +23,8 @@ export const ScreeningPage = () => {
       </>
 
       <div className="grid grid-cols-5 max-w-7xl mx-auto">
-        <nav className="col-span-1 flex justify-center lg:py-10 h-[90vh]">
-          <div className="flex flex-col justify-between items-center min-w-[200px] px-2">
+        <nav className="col-span-1 flex justify-center lg:py-10 h-[90vh] ">
+          <div className="flex flex-col justify-between items-center w-[200px] px-2">
             <div className="space-y-5 text-[#F1ADB0] text-lg w-full">
               <h2 className="text-black font-bold text-xl px-3">GUIDE:</h2>
               {data.data.map((item) => (
@@ -36,7 +36,6 @@ export const ScreeningPage = () => {
                         " px-3 py-1 rounded-[25px] bg-primary text-white font-bold")
                     }
                     onClick={() => handleSelectedSection(item.id)}
-                    
                   >
                     {item.name}
                   </h3>
@@ -52,7 +51,7 @@ export const ScreeningPage = () => {
                           onClick={() =>
                             handleSelectedSubSection(subsection.id)
                           }
-						  key={index}
+                          key={index}
                         >
                           {subsection.name}
                         </li>

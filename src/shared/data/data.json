@@ -242,7 +242,7 @@
             },
             {
               "id": 2,
-              "title": "suspensions/Punishments",
+              "title": "Suspensions/Punishments.",
               "subTitle": "Have you had any suspensions or punishments for behavioral issues at school or home?",
               "name": "suspensions",
               "type": "squircicleRadio",
@@ -533,7 +533,7 @@
                 },
                 {
                   "id": 2,
-                  "name": "ncreased appetite or weight gain                          ",
+                  "name": "Increased appetite or weight gain                          ",
                   "value": 1
                 },
                 {
