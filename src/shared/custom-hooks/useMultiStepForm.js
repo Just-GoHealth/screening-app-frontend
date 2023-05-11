@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const useMultiStepHook = (steps) => {
-  const [currentStepIndex, setCurrentStepIndex] = useState[0]
+  const [currentStepIndex, setCurrentStepIndex] = useState(0)
 
   function nextStep() {
     setCurrentStepIndex(i => {

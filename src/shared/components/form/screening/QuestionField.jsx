@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-export const QuestionField = ({ title, subtitle, control, info }) => {
+export const QuestionField = ({ title, subtitle, control }) => {
   return (
     <>
       <div className="pb-4 border-b border-[#D9DADC] flex space-x-10 items-center">
