@@ -1,59 +1,9 @@
 import React from 'react';
 import { Button, TextField } from '@mui/material';
 import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
-import { BsCloudArrowDown } from 'react-icons/bs';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
-import { HealthRecordsTable } from '../../shared/components/health-records-table';
 import './AllHealthRecordsPage.styles.css';
-
-const tableHeadData = ['#', 'School', 'Students', 'Date', 'Download'];
-const tableBodyData = [
-	{
-		id: 1,
-		school: 'Noble Prep Academy',
-		students: '5000',
-		date: 'Month Day',
-		download: (
-			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
-		),
-	},
-	{
-		id: 2,
-		school: 'Noble Prep Academy',
-		students: '5000',
-		date: 'Month Day',
-		download: (
-			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
-		),
-	},
-	{
-		id: 3,
-		school: 'Noble Prep Academy',
-		students: '5000',
-		date: 'Month Day',
-		download: (
-			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
-		),
-	},
-	{
-		id: 4,
-		school: 'Noble Prep Academy',
-		students: '5000',
-		date: 'Month Day',
-		download: (
-			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
-		),
-	},
-	{
-		id: 5,
-		school: 'Noble Prep Academy',
-		students: '5000',
-		date: 'Month Day',
-		download: (
-			<BsCloudArrowDown style={{ width: '1.5rem', height: '1.5rem' }} />
-		),
-	},
-];
+import { GridComponent } from '../../shared/components/grid-component';
 
 export const AllHealthRecordsPage = () => {
 	return (
@@ -93,9 +43,13 @@ export const AllHealthRecordsPage = () => {
 				/>
 			</div>
 
-			<HealthRecordsTable
-				tableBodyData={tableBodyData}
-				tableHeadData={tableHeadData}
+			<GridComponent
+				columnDefs={[
+					{ field: '#', flex: 1 },
+					{ field: 'school' },
+					{ field: 'students' },
+					{ field: 'date' },
+				]}
 			/>
 		</div>
 	);
