@@ -1,263 +1,556 @@
 {
-    "data": [
+  "data": [
+    {
+      "id": 1,
+      "name": "Medical Profile",
+      "subSections": [
         {
-            "id": 1,
-            "name": "Medical Profile",
-            "subSections": [
-                {
-                    "id": 1,
-                    "name": "Profile",
-                    "questions": [
-                        {
-                            "id": 1,
-                            "title": "Full Name",
-                            "subTitle": "What is your full name?",
-                            "name": "firstName",
-                            "type": "input",
-                            "info": "Watch our medical experts ..."
-                        },
-                        {
-                            "id": 2,
-                            "title": "Age",
-                            "subTitle": "How old are you?",
-                            "name": "age",
-                            "type": "circularRadio",
-                            "options": ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "19+"],
-                            "info": "Watch our medical experts ..."
-                        },
-                        {
-                            "id": 3,
-                            "title": "Gender",
-                            "subTitle": "Your biological gender?",
-                            "name": "gender",
-                            "type": "squareRadio",
-                            "options": ["M", "F"],
-                            "info":"Watch our medical experts ..."
-                        },
-                        {
-                            "id": 4,
-                            "title": "Location",
-                            "subTitle": "Where do you stay?",
-                            "name": "location",
-                            "type": "input",
-                            "info": "Watch our medical experts ..."
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "name": "Biography",
-                    "questions": [
-                        {
-                            "id": 1,
-                            "title": "School.",
-                            "subTitle": "What is the name of your school?",
-                            "type": "dropdown",
-                            "info": "Watch our medical experts ...",
-                            "options": ["Achimota School", "St. Peters", "Presec"]
-                        },
-                        {
-                            "id":2,
-                            "title": "Grade",
-                            "subTitle": "What is your grade?",
-                            "type": "circularRadio",
-                            "options": ["4", "5", "6", "7", "8", "9", "10","11", "12"],
-                            "info": "Watch our medical experts ..."
-                        },
-                        {
-                            "id": 3,
-                            "title": "Screened by.", 
-                            "subTitle": "The JustGo Health Worker",
-                            "type": "input",
-                            "info": "Watch our medical experts ..."
-                        },
-                        {
-                            "id": 4,
-                            "title": "Parent.", 
-                            "subTitle": "What is the name of your guardian?",
-                            "type": "input",
-                            "info": "Watch our medical experts ..."
-                        },
-                        {
-                            "id": 5,
-                            "title": "Parent's Contact.", 
-                            "subTitle": "Their Phone Number",
-                            "type": "input",
-                            "info": "Watch our medical experts ..."
-                        }
-                    ]
-                }
-            ]
+          "id": 1,
+          "name": "Profile",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Full Name",
+              "subTitle": "What is your full name?",
+              "name": "firstName",
+              "type": "input",
+              "info": "Watch our medical experts ..."
+            },
+            {
+              "id": 2,
+              "title": "Age",
+              "subTitle": "How old are you?",
+              "name": "age",
+              "type": "circularRadio",
+              "options": [
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "19+"
+              ],
+              "info": "Watch our medical experts ..."
+            },
+            {
+              "id": 3,
+              "title": "Gender",
+              "subTitle": "Your biological gender?",
+              "name": "gender",
+              "type": "squareRadio",
+              "options": ["M", "F"],
+              "info": "Watch our medical experts ..."
+            },
+            {
+              "id": 4,
+              "title": "Location",
+              "subTitle": "Where do you stay?",
+              "name": "location",
+              "type": "input",
+              "info": "Watch our medical experts ..."
+            }
+          ]
         },
         {
-            "id": 2,
-            "name": "Symptoms",
-            "subSections": [
-                {
-                    "id": 1,
-                    "name": "Emotional Disorder",
-                    "questions": [
-                        {
-                            "id": 1,
-                            "title": "Feeling Sad or Low.",
-                            "subTitle": "How often have you felt sad or low in the past two weeks?",
-                            "type": "squircicleRadio",
-                            "info": "Feeling down, hopeless, empty and tearful",
-                            "options": [
-                                {
-                                    "id": 1,
-                                    "name": "No, not at all",
-                                    "value": 0
-                                },
-                                {
-                                    "id": 2,
-                                    "name": "Sometimes",
-                                    "value": 1
-                                },
-                                {
-                                    "id": 3,
-                                    "name": "Frequently",
-                                    "value": 2
-                                },
-                                {
-                                    "id": 4,
-                                    "name": "Most of the time",
-                                    "value": 3
-                                }
-                            ]
-                        },
-                        {
-                            "id": 2,
-                            "title": "Feeling Inadequate or Useless.",
-                            "subTitle": "How often have you felt inadequate or worthless in the past two weeks?",
-                            "type": "squircicleRadio",
-                            "info": "Feeling like a failure, feeling guilty, feeling ashamed",
-                            "options": [
-                                {
-                                    "id": 1,
-                                    "name": "No, not at all",
-                                    "value": 0
-                                },
-                                {
-                                    "id": 2,
-                                    "name": "Sometimes",
-                                    "value": 1
-                                },
-                                {
-                                    "id": 3,
-                                    "name": "Frequently",
-                                    "value": 2
-                                },
-                                {
-                                    "id": 4,
-                                    "name": "Most of the time",
-                                    "value": 3
-                                }
-                            ]
-                        },
-                        {
-                            "id": 3,
-                            "title": "Excessive Worry.",
-                            "subTitle": "How often have you felt excessively worried in the past two weeks?",
-                            "type": "squircicleRadio",
-                            "info": "Constantly worrying about things, feeling on edge, difficulty controlling worries",
-                            "options": [
-                                {
-                                    "id": 1,
-                                    "name": "No, not at all",
-                                    "value": 0
-                                },
-                                {
-                                    "id": 2,
-                                    "name": "Sometimes",
-                                    "value": 1
-                                },
-                                {
-                                    "id": 3,
-                                    "name": "Frequently",
-                                    "value": 2
-                                },
-                                {
-                                    "id": 4,
-                                    "name": "Most of the time",
-                                    "value": 3
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "name": "Behavioral Disorder",
-                    "questions": [
-                        {
-                            "id": 1,
-                            "title": "",
-                            "subTitle": "Do you find yourself being more aggressive or agitated than usual?",
-                            "type": "squircicleRadio",
-                            "info": "Picking fights with peers or authority figures, being easily angered or irritated, throwing tantrums or objects.",
-                            "options": [
-                                {
-                                    "id": 1,
-                                    "name": "No, not at all",
-                                    "value": 0
-                                },
-                                {
-                                    "id": 2,
-                                    "name": "Sometimes",
-                                    "value": 1
-                                },
-                                {
-                                    "id": 3,
-                                    "name": "Frequently",
-                                    "value": 2
-                                },
-                                {
-                                    "id": 4,
-                                    "name": "Most of the time",
-                                    "value": 3
-                                }
-                            ]
-                        },
-                        {
-                            "id": 2,
-                            "title": "",
-                            "subTitle": "Have you had any suspensions or punishments for behavioral issues at school or home?",
-                            "type": "squircicleRadio",
-                            "info": " Fighting with others, damaging property, skipping school, substance use.                            ",
-                            "options": [
-                                {
-                                    "id": 1,
-                                    "name": "No, not at all",
-                                    "value": 0
-                                },
-                                {
-                                    "id": 2,
-                                    "name": "Sometimes",
-                                    "value": 1
-                                },
-                                {
-                                    "id": 3,
-                                    "name": "Frequently",
-                                    "value": 2
-                                },
-                                {
-                                    "id": 4,
-                                    "name": "Most of the time",
-                                    "value": 3
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "name": "Triggers",
-            "subSections": [
-
-            ]
+          "id": 2,
+          "name": "Biography",
+          "questions": [
+            {
+              "id": 1,
+              "title": "School.",
+              "subTitle": "What is the name of your school?",
+              "name": "school",
+              "type": "dropdown",
+              "info": "Watch our medical experts ...",
+              "options": ["Achimota School", "St. Peters", "Presec"]
+            },
+            {
+              "id": 2,
+              "title": "Grade",
+              "subTitle": "What is your grade?",
+              "name": "grade",
+              "type": "circularRadio",
+              "options": ["4", "5", "6", "7", "8", "9", "10", "11", "12"],
+              "info": "Watch our medical experts ..."
+            },
+            {
+              "id": 3,
+              "title": "Screened by.",
+              "subTitle": "The JustGo Health Worker",
+              "name": "screenedBy",
+              "type": "input",
+              "info": "Watch our medical experts ..."
+            },
+            {
+              "id": 4,
+              "title": "Parent.",
+              "subTitle": "What is the name of your guardian?",
+              "name": "parentName",
+              "type": "input",
+              "info": "Watch our medical experts ..."
+            },
+            {
+              "id": 5,
+              "title": "Parent's Contact.",
+              "subTitle": "Their Phone Number",
+              "name": "parentContact",
+              "type": "input",
+              "info": "Watch our medical experts ..."
+            }
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Symptoms",
+      "subSections": [
+        {
+          "id": 1,
+          "name": "Emotional Disorder",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Feeling Sad or Low.",
+              "subTitle": "How often have you felt sad or low in the past two weeks?",
+              "name": "feelingSadOrLow",
+              "type": "squircicleRadio",
+              "info": "Feeling down, hopeless, empty and tearful",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Feeling Inadequate or Useless.",
+              "subTitle": "How often have you felt inadequate or worthless in the past two weeks?",
+              "type": "squircicleRadio",
+              "name": "feelingInadequateOrUseless",
+              "info": "Feeling like a failure, feeling guilty, feeling ashamed",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "title": "Low Self Esteem.",
+              "subTitle": "How often have you felt that you have low self-esteem in the past two weeks?                            ",
+              "type": "squircicleRadio",
+              "name": "lowSelfEsteem",
+              "info": "Feeling worthless, feeling like you are not good enough, and being overly self-critical",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Behavioral Disorder",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Aggressive Behavior",
+              "subTitle": "Do you find yourself being more aggressive or agitated than usual?",
+              "name": "aggressiveBehavior",
+              "type": "squircicleRadio",
+              "info": "Picking fights with peers or authority figures, being easily angered or irritated, throwing tantrums or objects.",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "suspensions/Punishments",
+              "subTitle": "Have you had any suspensions or punishments for behavioral issues at school or home?",
+              "name": "suspensions",
+              "type": "squircicleRadio",
+              "info": " Fighting with others, damaging property, skipping school, substance use.                            ",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Suicidal Thoughts",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Suicidal Thoughts",
+              "subTitle": " Have you had any thoughts of harming yourself or ending your life in the past 2 weeks?",
+              "name": "suicidalThoughts",
+              "type": "squircicleRadio",
+              "info": "Feeling hopeless or like there's no way out, Talking about wanting to die or hurt oneself, Making plans or preparations for suicide Experiencing unbearable emotional or psychological pain, Feeling like a burden to others",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Yes, but with no plan",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Yes, with a plan",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Withdrawal",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Social Withdrawal",
+              "subTitle": " Have you recently withdrawn from social situations or activities that you used to participate in?",
+              "name": "socialWithdrawal",
+              "type": "squircicleRadio",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Motivation loss",
+              "subTitle": " Do you feel like you have a lack of motivation or energy to engage in activities?",
+              "name": "motivationLoss",
+              "type": "squircicleRadio",
+              "info": "Not feeling like going out with friends or participating in extracurricular activities, Losing interest in hobbies or things that were once enjoyable, Feeling unmotivated to do anything and wanting to stay in bed all day",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Difficulties in School",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Concentration Issues.",
+              "subTitle": "Do you have difficulties concentrating during classes or while studying?",
+              "name": "concentrationIssues",
+              "type": "squircicleRadio",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Decline in Grades",
+              "subTitle": "Have you experienced a decline in your academic performance compared to your previous performance?",
+              "name": "declineInGrades",
+              "type": "yesOrNo",
+              "info": "Difficulty in keeping up with classwork, Inability to understand or comprehend the subject matter,Difficulty completing assignments or homework,                    Lack of motivation to attend classes or study,Poor grades or academic performance",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Sleep difficulties",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Sleep Troubles",
+              "subTitle": "Do you have trouble falling asleep or staying asleep?",
+              "name": "sleepTroubles",
+              "type": "squircicleRadio",
+              "info": "Nightmares (night terrors) Insomnia Sleepwalking",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Restful Sleep",
+              "subTitle": " Do you feel rested and refreshed when you wake up in the morning?",
+              "name": "restfulSleep",
+              "type": "squircicleRadio",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Always",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Usually",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Sometimes",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Rarely",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Unexplained Physical Symptoms",
+          "questions": [
+            {
+              "id": 1,
+              "title": "New Physical Symptoms.",
+              "subtitle": "Have you been experiencing any new physical symptoms lately?",
+              "name": "newPhysicalSymptoms",
+              "type": "yesOrNo",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Yes",
+                  "value": 1,
+                  "followUp": {
+                    "name": "physicalSymptoms",
+                    "type": "input",
+                    "info": "Headache Stomachaches Fatigue Nausea Dizziness Palpitations Sweating                                "
+                  }
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Appetite Changes.",
+              "subtitle": "Have you noticed any changes in your appetite or weight recently?",
+              "name": "appetiteChanges",
+              "type": "squircicleRadio",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No changes",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "ncreased appetite or weight gain                          ",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Decreased appetite or weight loss",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Triggers",
+      "subSections": []
+    }
+  ]
 }

@@ -28,7 +28,7 @@ export const ScreeningPage = () => {
             <div className="space-y-5 text-[#F1ADB0] text-lg w-full">
               <h2 className="text-black font-bold text-xl px-3">GUIDE:</h2>
               {data.data.map((item) => (
-                <div>
+                <div key={item.id}>
                   <h3
                     className={
                       "cursor-pointer px-3 " +
@@ -36,13 +36,13 @@ export const ScreeningPage = () => {
                         " px-3 py-1 rounded-[25px] bg-primary text-white font-bold")
                     }
                     onClick={() => handleSelectedSection(item.id)}
-                    key={item.id}
+                    
                   >
                     {item.name}
                   </h3>
                   {selectedSection === item.id && (
                     <ul className="text-black font-bold px-3 mt-1">
-                      {item.subSections.map((subsection) => (
+                      {item.subSections.map((subsection, index) => (
                         <li
                           className={
                             "pb-1 cursor-pointer " +
@@ -52,6 +52,7 @@ export const ScreeningPage = () => {
                           onClick={() =>
                             handleSelectedSubSection(subsection.id)
                           }
+						  key={index}
                         >
                           {subsection.name}
                         </li>
