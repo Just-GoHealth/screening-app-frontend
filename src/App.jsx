@@ -8,6 +8,7 @@ import { ScreeningPage } from './views/screening';
 import { SchoolHealthRecordsPage } from './views/school-health-records';
 import { SchoolHealthSummaryPage } from './views/school-health-summary';
 import { AccessHealthRecords } from './views/access-health-records/AccessHealthRecords';
+import { AddNewSchool } from './views/add-new-school/AddNewSchool';
 
 const App = () => {
 	return (
@@ -17,7 +18,8 @@ const App = () => {
 				<Route
 					path="/access-health-records"
 					element={<AccessHealthRecords />}
-				></Route>
+				/>
+        <Route path="/add-new-school" element={<AddNewSchool/>} />
 				<Route path="/all-health-records" element={<AllHealthRecordsPage />} />
 				<Route
 					path="/school-health-records"

@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../assets/images/logo.png";
-import HeroImage from "../../assets/images/hero-img.jpg";
+import HeroImage from "../../assets/images/hero-image.jpg";
 import { BiChevronRight } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
@@ -12,20 +12,21 @@ function HeroSection() {
   return (
     <>
       <div className="min-h-screen flex justify-center items-center">
-        <div className="max-w-5xl mx-auto">
-          <div className=" grid lg:grid-cols-2">
-            <div className=" w-full">
-              <div className=" overflow-hidden">
+        <div className="max-w-5xl mx-auto lg:px-8">
+          <div className=" overflow-hidden px-4">
                 <img
                   src={Logo}
                   alt="JustGo Logo"
                   className=" w-60 -translate-x-2"
                 />
-              </div>
-              <h1 className=" text-7xl font-bold text-[#993399] mt-4">
+          </div>
+          <h1 className=" lg:hidden text-3xl md:text-5xl text-center font-bold text-[#993399] my-4">Every Mind Matters Tool</h1>
+          <div className=" grid lg:grid-cols-2">
+            <div className="">
+              <h1 className=" hidden lg:block px-4 text-7xl font-bold text-[#993399] mt-4">
                 Every Mind Matters Tool
               </h1>
-              <p className="my-4 text-justify leading-7 tracking-wide">
+              <p className="my-4 px-4 text-justify leading-7 tracking-wide text-sm lg:text-base">
                 Taking care of your mental health is vital to your overall
                 wellbeing. This is why JustGo Health has developed this mental
                 health guide to help you identify any concerns you may have and
@@ -34,7 +35,7 @@ function HeroSection() {
                 to maintain good mental health.
               </p>
               <div className="grid grid-cols-2 mt-8">
-                <button className="py-2 bg-[#993399] rounded-md text-white" onClick={startScreening}>
+                <button className="py-2 bg-[#993399] rounded-md text-white">
                   Start Screening
                 </button>
                 <button className=" text-[#003399] font-semibold">
@@ -46,17 +47,17 @@ function HeroSection() {
                 </button>
               </div>
             </div>
-            <div className="w-96 lg:ml-auto lg:mr-0 mx-auto h-[28rem] rounded-2xl overflow-hidden">
+            <div className=" h-80 w-80 md:w-96 lg:ml-auto lg:mr-0 mx-auto lg:h-[28rem] rounded-2xl overflow-hidden -order-1 lg:order-2">
               <img
                 src={HeroImage}
                 alt=""
-                className=" w-full h-full object-cover"
+                className=" w-full h-full object-cover object-top"
               />
             </div>
           </div>
-          <div className=" mt-16">
-            <p className="text-xl font-bold">Privacy Policy</p>
-            <p className="tracking-wide">
+          <div className="mt-8 lg:mt-16 px-4">
+            <p className=" text-sm lg:text-base font-bold">Privacy Policy</p>
+            <p className="tracking-wide text-xs lg:text-sm">
               The guide is tailored to individuals between the ages of 8 and 18.
               The responses provided during the screening process will be
               utilized to recommend our psychotherapy workshop or any other

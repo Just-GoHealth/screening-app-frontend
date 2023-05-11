@@ -1,13 +1,13 @@
 import React from "react";
-import Logo from "../../assets/images/logo.png";
 import { IconButton, Button, Box } from "@mui/material";
-import { AiOutlineLeft } from "react-icons/ai";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
+import { AccessAndAdd } from "../../shared/components/access-add/AccessAndAdd";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
-export const AccessHealthRecords = ({ onRightIconClick }) => {
+export const AccessHealthRecords = () => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -27,21 +27,8 @@ export const AccessHealthRecords = ({ onRightIconClick }) => {
     <>
       <div className="flex justify-center items-center min-h-screen">
         <div className="border-8 rounded-xl border-[#993399] p-4">
-          <div className="flex justify-between">
-            <IconButton
-              onClick={onRightIconClick}
-              size="small"
-              style={{ background: "#BCBEC0" }}
-              className="self-center"
-            >
-              <AiOutlineLeft color="white" />
-            </IconButton>
-            <img src={Logo} alt="JustGo Logo" className=" w-48" />
-          </div>
-          <div className="text-center font-bold mt-14 px-4">
-            <h1 className="text-[#003399] lg:text-4xl">
-              Access Health Records
-            </h1>
+          <AccessAndAdd heading="Access Health Records" />
+          <div className="text-center">
             <p className=" text-[#989898] mt-5">
               Enter password to access Health Records
             </p>
@@ -65,7 +52,9 @@ export const AccessHealthRecords = ({ onRightIconClick }) => {
                         onClick={handleClickShowPassword}
                         onMouseDown={handleMouseDownPassword}
                         edge="end"
-                      ></IconButton>
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
                     </InputAdornment>
                   }
                   label="Password"
