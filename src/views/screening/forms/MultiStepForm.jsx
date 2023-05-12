@@ -37,18 +37,18 @@ const MultiStepForm = ({
     isLastStep,
   } = useMultiStepHook(subSections);
 
-  console.log('steps')
-  console.log(steps)
-  steps.forEach(element => {
-    console.log(element.questions)
+  console.log("steps");
+  console.log(steps);
+  steps.forEach((element) => {
+    console.log(element.questions);
   });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCurrentStepIndex(0);
-    console.log(currentSection)
-    console.log('current section')
+    console.log(currentSection);
+    console.log("current section");
   }, [selectedSection]);
 
   useEffect(() => handleSelectedSubSection(step.id), [step]);
@@ -66,19 +66,19 @@ const MultiStepForm = ({
     }));
 
     const currentStep = steps[currentStepIndex];
-    console.log(currentStep.questions.map((question) => formData[question.name]))
-
-    const isCurrentStepComplete = currentStep.questions.every(
-      (question) => {
-        typeof formData[question.name] !== "undefined"
-      }
+    console.log(
+      currentStep.questions.map((question) => formData[question.name])
     );
-    console.log('current step')
-    console.log(isCurrentStepComplete)
+
+    const isCurrentStepComplete = currentStep.questions.every((question) => {
+      typeof formData[question.name] !== "undefined";
+    });
+    console.log("current step");
+    console.log(isCurrentStepComplete);
     setIsStepComplete(isCurrentStepComplete);
   };
 
-  useEffect(() => console.log('step complete changed'), [isStepComplete])
+  useEffect(() => console.log("step complete changed"), [isStepComplete]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -87,15 +87,14 @@ const MultiStepForm = ({
     if (index < data.data.length) {
       const nextSection = data.data[index + 1];
       handleSelectedSection(nextSection.id);
-    }
-    else{
-      navigate('/')
+    } else {
+      navigate("/");
     }
   };
 
   const handleNextStep = () => {
     nextStep();
-  }
+  };
 
   const handleFormInputBlur = () => {
     const currentStep = steps[currentStepIndex];
@@ -139,12 +138,13 @@ const MultiStepForm = ({
       return null;
     }
 
-    const isQuestionUnanswered =typeof formData[question.name] === 'undefined';
+    const isQuestionUnanswered = typeof formData[question.name] === "undefined";
 
     const isPreviousQuestionUnanswered =
       steps[currentStepIndex].questions.length > 1
         ? index > 0 &&
-        typeof formData[steps[currentStepIndex].questions[index - 1].name] === 'undefined'
+          typeof formData[steps[currentStepIndex].questions[index - 1].name] ===
+            "undefined"
         : false;
     const opacityStyle =
       isQuestionUnanswered && isPreviousQuestionUnanswered
@@ -166,7 +166,6 @@ const MultiStepForm = ({
                   onChange={(e) =>
                     handleFormInputChange(question.name, e.target.value)
                   }
-                  
                 />
               </>
             }
@@ -330,6 +329,11 @@ const MultiStepForm = ({
           />
         );
       case "yesOrNo":
+        const selectedOption = formData[question.name] || "";
+        const followUpQuestion = question.options.find(
+          (option) => option.value === selectedOption
+        )?.followUp;
+        console.log(followUpQuestion);
         return (
           <>
             <QuestionField
@@ -338,7 +342,8 @@ const MultiStepForm = ({
               control={
                 <>
                   <ToggleButtonGroup
-                    value={formData[question.name] || ""}
+                    value={selectedOption}
+                    exclusive
                     onChange={(e, value) =>
                       handleFormInputChange(question.name, value)
                     }
@@ -346,7 +351,17 @@ const MultiStepForm = ({
                     {question.options.map((option, index) => (
                       <ToggleButton
                         value={option.value}
-                        style={{ ...styles.squircleRadioButton }}
+                        style={{
+                          ...styles.squircleRadioButton,
+                          backgroundColor:
+                            formData[question.name] === option.value
+                              ? "#ACAEB0"
+                              : undefined,
+                          color:
+                            formData[question.name] === option.value
+                              ? "white"
+                              : "#ACAEB0",
+                        }}
                         key={index}
                       >
                         {option.name}
@@ -359,6 +374,64 @@ const MultiStepForm = ({
               key={question.id}
               style={opacityStyle}
             />
+
+            {followUpQuestion && (
+              <QuestionField
+                title={followUpQuestion.title}
+                subtitle={followUpQuestion.subTitle}
+                control={
+                  <>
+                    {followUpQuestion.type === "input" && (
+                      <TextField
+                        size="small"
+                        fullWidth
+                        value={formData[followUpQuestion.name] || ""}
+                        onChange={(e) =>
+                          handleFormInputChange(
+                            followUpQuestion.name,
+                            e.target.value
+                          )
+                        }
+                      />
+                    )}
+
+                    {followUpQuestion.type === "squircicleRadio" && (
+                      <ToggleButtonGroup
+                        exclusive
+                        value={formData[followUpQuestion.name] || ""}
+                        onChange={(e, value) =>
+                          handleFormInputChange(followUpQuestion.name, value)
+                        }
+                        sx={{ flexWrap: "wrap", gap: ".5rem" }}
+                      >
+                        {followUpQuestion.options.map((option, index) => (
+                          <ToggleButton
+                            value={option.value}
+                            style={{
+                              ...styles.squircleRadioButton,
+                              backgroundColor:
+                                formData[followUpQuestion.name] === option.value
+                                  ? "#ACAEB0"
+                                  : undefined,
+                              color:
+                                formData[followUpQuestion.name] === option.value
+                                  ? "white"
+                                  : "#ACAEB0",
+                            }}
+                            key={index}
+                          >
+                            {option.name}
+                          </ToggleButton>
+                        ))}
+                      </ToggleButtonGroup>
+                    )}
+                  </>
+                }
+                info={followUpQuestion.info}
+                key={followUpQuestion.id}
+                style={opacityStyle}
+              />
+            )}
           </>
         );
     }
