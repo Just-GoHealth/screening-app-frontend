@@ -37,10 +37,18 @@ const MultiStepForm = ({
     isLastStep,
   } = useMultiStepHook(subSections);
 
+  console.log('steps')
+  console.log(steps)
+  steps.forEach(element => {
+    console.log(element.questions)
+  });
+
   const navigate = useNavigate()
 
   useEffect(() => {
     setCurrentStepIndex(0);
+    console.log(currentSection)
+    console.log('current section')
   }, [selectedSection]);
 
   useEffect(() => handleSelectedSubSection(step.id), [step]);
@@ -70,9 +78,10 @@ const MultiStepForm = ({
     setIsStepComplete(isCurrentStepComplete);
   };
 
+  useEffect(() => console.log('step complete changed'), [isStepComplete])
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if(!isStepComplete) return;
     console.log("Form submitted:", formData);
     const index = data.data.indexOf(currentSection);
     if (index < data.data.length) {
@@ -85,7 +94,6 @@ const MultiStepForm = ({
   };
 
   const handleNextStep = () => {
-    if (!isStepComplete) return;
     nextStep();
   }
 
@@ -378,7 +386,7 @@ const MultiStepForm = ({
           isFirstStep={isFirstStep}
           isLastStep={isLastStep}
           handleFormSubmit={handleFormSubmit}
-          isStepComplete={isStepComplete}
+          // isStepComplete={isStepComplete}
         />
       </form>
     </div>

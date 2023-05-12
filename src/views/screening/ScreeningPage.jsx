@@ -12,6 +12,7 @@ export const ScreeningPage = () => {
   const handleSelectedSection = (id) => {
     setSelectedSection(id);
     setSelectedSubSection(1);
+    console.log('changed section to ', id)
   };
   const handleSelectedSubSection = (id) => {
     setSelectedSubSection(id);

@@ -549,8 +549,560 @@
     },
     {
       "id": 3,
-      "name": "Triggers",
-      "subSections": []
+      "name": "Stressors/Triggers",
+      "subSections": [
+        {
+          "id": 1,
+          "name": "Exposure To Trauma",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Traumatic events.",
+              "subTitle": " Have you experienced or witnessed any traumatic events, such as physical or sexual abuse, accidents, natural disasters, or violence?",
+              "name": "traumaticEvents",
+              "type": "yesOrNo",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Trauma-related thoughts.",
+              "subTitle": " How often do you experience flashbacks, nightmares, or intrusive thoughts related to the traumatic event(s)?",
+              "name": "traumaThoughts",
+              "type": "squircicleRadio",
+              "info": "car accidents, physical abuse, domestic violence, natural disasters, etc.",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Academic Pressure",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Academic stress",
+              "subTitle": "How often do you feel overwhelmed by academic workload and expectations?",
+              "name": "academicStress",
+              "type": "squircicleRadio",
+              "info": "excessive homework, high expectations from parents or teachers, pressure to perform well academically, etc.",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Dysfunctional Family",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Family Conflict.",
+              "subTitle": " How often do you experience conflict or tension with family members?",
+              "name": "familyConflict",
+              "type": "squircicleRadio",
+              "info": "divorce or separation, substance abuse, physical or emotional abuse, neglect, etc.",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Family Situation.",
+              "subTitle": " Have you experienced a significant change in your family situation in the past year, such as divorce, separation, or the death of a family member?",
+              "name": "familySituation",
+              "type": "squircicleRadio",
+              "info": " Divorce of parents, death of a family member, serious illness of a family member, family conflict or violence",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 3,
+              "title": "Living situation change.",
+              "subTitle": "",
+              "name": "situationChange",
+              "type": "squircicleRadio",
+              "info": " Have you experienced a major change in your living situation in the past year, such as moving to a new home or school?",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Peer Pressure",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Bullying and harassment.",
+              "subTitle": " How often have you experienced bullying, harassment, or discrimination from peers in the past month?",
+              "name": "bullyingAndHarassment",
+              "type": "squircicleRadio",
+              "info": "teasing, body shaming, cyberbullying, discrimination based on race, gender, sexuality, etc.",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Relationship Problems",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Coping with Heartbreak.",
+              "subTitle": " Have you experienced any recent changes or difficulties in your relationships?",
+              "name": "copingWithHeartbreak",
+              "type": "yesOrNo",
+              "info": " breakups, conflicts, or betrayal?",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Feeling disconnected.",
+              "subTitle": " How often do you feel lonely or isolated from others? ",
+              "name": "feelingDisconnected",
+              "type": "squircicleRadio",
+              "info": " romantic relationships, friendships, family relationships, etc",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Risk Factors",
+      "subSections": [
+        {
+          "id": 1,
+          "name": "Health Problems",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Chronic illness.",
+              "subTitle": " Have you been diagnosed with a chronic illness or health problem?",
+              "name": "chronicIllness",
+              "type": "yesOrNo",
+              "info": " breakups, conflicts, or betrayal?",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Family mental health",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Family member's disorder.",
+              "subTitle": " Do you have a family member who has been diagnosed with a mental health disorder?",
+              "name": "familyMemberDisorder",
+              "type": "yesOrNo",
+              "info": "  depression, anxiety, bipolar disorder, schizophrenia, or any other mental health conditions",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Socioeconomic disadvantage",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Financial difficulties.",
+              "subTitle": " Do you come from a low-income household?",
+              "name": "financialDifficulties",
+              "type": "yesOrNo",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Opportunity limitations.",
+              "subTitle": " Do you feel that your socioeconomic status limits your opportunities?",
+              "name": "opportunityLimitations",
+              "type": "yesOrNo",
+              "info": "poverty, lack of access to education or healthcare, or living in a disadvantaged community.",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Substance Abuse",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Substance Use.",
+              "subTitle": "Have you used any illegal substances in the past year?",
+              "name": "substanceUse",
+              "type": "yesOrNo",
+              "info": " breakups, conflicts, or betrayal?",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2,
+                  "followUp": {
+                    "name": "substanceUseFrequency",
+                    "type": "squircicleRadio",
+                    "info": " being exposed to drugs or alcohol in your environment, or using drugs or alcohol as a coping mechanism for stress or emotional issues."
+                  }
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Exposure to substance abuse.",
+              "subTitle": " Have you ever been exposed to substance abuse, such as seeing family members or friends using drugs or alcohol?",
+              "name": "substanceAbuseExposure",
+              "type": "squircicleRadio",
+              "info": "Seeing family members or friends using drugs or alcohol at home, parties, or social events. Using drugs or alcohol to cope with stress or negative emotions.Trying drugs or alcohol out of curiosity or peer pressure.",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Yes, but it doesn't bother me",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Yes, and it bothers me",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Support System",
+      "subSections": [
+        {
+          "id": 1,
+          "name": "Support Family Relationship",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Family Communication.",
+              "subTitle": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Mental Health Awareness",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Mental health Education.",
+              "subTitle": "Have you received any education or training about mental health issues?",
+              "name": "mentalHealthEducation",
+              "type": "squircicleRadio",
+              "info": "Have you been educated on mental health? Do you know where to go for help if you need it?",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "A little",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Moderately",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Very much",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Leisure Activities",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Enjoyable Activities.",
+              "subTitle": "How often do you engage in recreational or leisure activities that you enjoy?",
+              "name": "enjoyableActivites",
+              "type": "squircicleRadio",
+              "info": " Reading books, Playing sports, Watching movies, Playing video games, Listening to music",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
