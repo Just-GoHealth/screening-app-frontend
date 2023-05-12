@@ -22,7 +22,7 @@ export const FormNavigation = ({
   isStepComplete
 }) => {
   return (
-    <nav className="flex items-center justify-between">
+    <nav className="flex items-center justify-between mt-5 ">
       <>
         {!isFirstStep && (
           <IconButton

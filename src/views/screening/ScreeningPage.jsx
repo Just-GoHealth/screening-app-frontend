@@ -12,7 +12,7 @@ export const ScreeningPage = () => {
   const handleSelectedSection = (id) => {
     setSelectedSection(id);
     setSelectedSubSection(1);
-    console.log('changed section to ', id)
+    console.log("changed section to ", id);
   };
   const handleSelectedSubSection = (id) => {
     setSelectedSubSection(id);
@@ -23,8 +23,8 @@ export const ScreeningPage = () => {
         <Navbar showLogo />
       </>
 
-      <div className="grid grid-cols-5 max-w-7xl mx-auto">
-        <nav className="col-span-1 flex justify-center lg:py-10 h-[90vh] ">
+      <div className=" flex mx-auto gap-x-10 px-20">
+        <nav className="col-span-1 flex justify-center lg:py-10 h-[90vh] basis-[15rem] flex-grow-0 overflow-auto">
           <div className="flex flex-col justify-between items-center w-[200px] px-2">
             <div className="space-y-5 text-[#F1ADB0] text-lg w-full">
               <h2 className="text-black font-bold text-xl px-3">GUIDE:</h2>
@@ -93,7 +93,7 @@ export const ScreeningPage = () => {
           </div>
         </nav>
 
-        <main className="col-span-4 min-h-[90vh]">
+        <main className="col-span-4 min-h-[90vh] flex-grow-2 basis-[80%] ">
           <MultiStepForm
             selectedSection={selectedSection}
             selectedSubSection={selectedSubSection}
