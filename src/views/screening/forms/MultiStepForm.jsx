@@ -99,7 +99,7 @@ const MultiStepForm = ({
     <div className="px-5 pb-5 h-full">
       <h1 className="screening_heading">{currentSection.name}</h1>
 
-      <form className="space-y-7">
+      <form className="space-y-7 h-[500px] overflow-auto px-5">
         {steps.map((step, index) => (
           <div
             key={index}
@@ -117,6 +117,7 @@ const MultiStepForm = ({
             )}
           </div>
         ))}
+      </form>
 
         <FormNavigation
           user={"Lucas Hernandez"}
@@ -127,7 +128,6 @@ const MultiStepForm = ({
           handleFormSubmit={handleFormSubmit}
           isStepComplete={isStepComplete}
         />
-      </form>
     </div>
   );
 };
