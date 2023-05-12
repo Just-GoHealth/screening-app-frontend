@@ -46,9 +46,9 @@ export const AllHealthRecordsPage = () => {
 			<GridComponent
 				columnDefs={[
 					{ field: '#', flex: 1 },
-					{ field: 'school' },
+					{ field: 'school_name', headerName: 'School' },
 					{ field: 'students' },
-					{ field: 'date' },
+					{ field: 'createdDate', headerName: 'Date' },
 				]}
 			/>
 		</div>
