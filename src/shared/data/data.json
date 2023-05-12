@@ -14,7 +14,7 @@
               "subTitle": "What is your full name?",
               "name": "firstName",
               "type": "input",
-              "info": "Watch our medical experts ..."
+              "info": "Watch our medical experts to help decide the routine"
             },
             {
               "id": 2,
@@ -35,7 +35,7 @@
                 "19",
                 "19+"
               ],
-              "info": "Watch our medical experts ..."
+              "info": "Watch our medical experts to help decide the routine"
             },
             {
               "id": 3,
@@ -44,7 +44,7 @@
               "name": "gender",
               "type": "squareRadio",
               "options": ["M", "F"],
-              "info": "Watch our medical experts ..."
+              "info": "Watch our medical experts to help decide the routine"
             },
             {
               "id": 4,
@@ -52,7 +52,7 @@
               "subTitle": "Where do you stay?",
               "name": "location",
               "type": "input",
-              "info": "Watch our medical experts ..."
+              "info": "Watch our medical experts to help decide the routine"
             }
           ]
         },
@@ -66,7 +66,7 @@
               "subTitle": "What is the name of your school?",
               "name": "school",
               "type": "dropdown",
-              "info": "Watch our medical experts ...",
+              "info": "Watch our medical experts to help decide the routine",
               "options": ["Achimota School", "St. Peters", "Presec"]
             },
             {
@@ -76,7 +76,7 @@
               "name": "grade",
               "type": "circularRadio",
               "options": ["4", "5", "6", "7", "8", "9", "10", "11", "12"],
-              "info": "Watch our medical experts ..."
+              "info": "Watch our medical experts to help decide the routine"
             },
             {
               "id": 3,
@@ -84,7 +84,7 @@
               "subTitle": "The JustGo Health Worker",
               "name": "screenedBy",
               "type": "input",
-              "info": "Watch our medical experts ..."
+              "info": "Watch our medical experts to help decide the routine"
             },
             {
               "id": 4,
@@ -92,7 +92,7 @@
               "subTitle": "What is the name of your guardian?",
               "name": "parentName",
               "type": "input",
-              "info": "Watch our medical experts ..."
+              "info": "Watch our medical experts to help decide the routine"
             },
             {
               "id": 5,
@@ -100,7 +100,7 @@
               "subTitle": "Their Phone Number",
               "name": "parentContact",
               "type": "input",
-              "info": "Watch our medical experts ..."
+              "info": "Watch our medical experts to help decide the routine"
             }
           ]
         }

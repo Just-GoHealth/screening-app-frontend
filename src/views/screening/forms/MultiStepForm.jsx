@@ -47,7 +47,7 @@ const MultiStepForm = ({
 
     const isCurrentStepComplete = currentStep.questions.every((question) => {
       const fieldValue = formData[question.name]; 
-      return (typeof fieldValue !== "undefined") && (typeof fieldValue === 'string' ? fieldValue !== '' : true);
+      return (typeof fieldValue !== ("undefined" )) && (typeof fieldValue === 'string' ? fieldValue !== '' : true) && (fieldValue !== null);
     });
     setIsStepComplete(isCurrentStepComplete);
   }, [formData, selectedSection, selectedSubSection])
