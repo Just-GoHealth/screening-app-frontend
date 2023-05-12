@@ -19,6 +19,7 @@ export const FormNavigation = ({
   handleFormSubmit,
   isLastStep,
   isFirstStep,
+  isStepComplete=true
 }) => {
   return (
     <nav className="flex items-center justify-between">
@@ -38,7 +39,7 @@ export const FormNavigation = ({
 
       <>
         <Button
-          sx={styles.nextButton}
+          sx={{...styles.nextButton, opacity: isStepComplete ? 1: 0.3, pointerEvents: isStepComplete? '': 'none'}}
           disableElevation
           onClick={isLastStep ? handleFormSubmit : onNextPageClick}
         >
