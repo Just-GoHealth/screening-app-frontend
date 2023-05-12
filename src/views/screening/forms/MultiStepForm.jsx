@@ -11,7 +11,6 @@ const MultiStepForm = ({
   handleSelectedSection,
   handleSelectedSubSection,
 }) => {
-
   //defining states for component
   const [formData, setFormData] = useState({});
   const [isStepComplete, setIsStepComplete] = useState(false);
@@ -28,7 +27,7 @@ const MultiStepForm = ({
     step,
     currentStepIndex,
     setCurrentStepIndex,
-    nextStep, 
+    nextStep,
     previousStep,
     isFirstStep,
     isLastStep,
@@ -46,12 +45,15 @@ const MultiStepForm = ({
     const currentStep = steps[currentStepIndex]; //get the current step
 
     const isCurrentStepComplete = currentStep.questions.every((question) => {
-      const fieldValue = formData[question.name]; 
-      return (typeof fieldValue !== ("undefined" )) && (typeof fieldValue === 'string' ? fieldValue !== '' : true) && (fieldValue !== null);
+      const fieldValue = formData[question.name];
+      return (
+        typeof fieldValue !== "undefined" &&
+        (typeof fieldValue === "string" ? fieldValue !== "" : true) &&
+        fieldValue !== null
+      );
     });
     setIsStepComplete(isCurrentStepComplete);
-  }, [formData, selectedSection, selectedSubSection])
-
+  }, [formData, selectedSection, selectedSubSection]);
 
   //change the selectedsubsection or step accordingly once the step changes
   useEffect(() => handleSelectedSubSection(step.id), [step]);
@@ -74,9 +76,13 @@ const MultiStepForm = ({
   //handle submit of form
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if (!isStepComplete) {
+      return;
+    }
     console.log("Form submitted:", formData);
     const index = data.data.indexOf(currentSection); //find the index of the currentSection
-    if (index < data.data.length) {//if the index is less than the length of the data i.e if it is not the last index
+    if (index < data.data.length) {
+      //if the index is less than the length of the data i.e if it is not the last index
       const nextSection = data.data[index + 1]; //get the next section i.e the next index
       handleSelectedSection(nextSection.id); //pass the next section's id into the handleselected section function
     } else {
@@ -85,10 +91,9 @@ const MultiStepForm = ({
   };
 
   const handleNextStep = () => {
-    if(!isStepComplete) return; //cross check to very the step is complete
+    if (!isStepComplete) return; //cross check to very the step is complete
     nextStep(); //move to the next step
   };
-
 
   return (
     <div className="px-5 pb-5 h-full">
