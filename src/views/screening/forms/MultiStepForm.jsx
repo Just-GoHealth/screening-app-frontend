@@ -21,6 +21,7 @@ const MultiStepForm = ({
   handleSelectedSubSection,
 }) => {
   const [formData, setFormData] = useState({});
+  const [isStepComplete, setIsStepComplete] = useState(false);
   const [currentSection, setCurrentSection] = useState(
     data.data.find((data) => data.id === selectedSection)
   );
@@ -55,10 +56,23 @@ const MultiStepForm = ({
       ...prevFormData,
       [name]: value,
     }));
+
+    const currentStep = steps[currentStepIndex];
+    console.log(currentStep.questions.map((question) => formData[question.name]))
+
+    const isCurrentStepComplete = currentStep.questions.every(
+      (question) => {
+        typeof formData[question.name] !== "undefined"
+      }
+    );
+    console.log('current step')
+    console.log(isCurrentStepComplete)
+    setIsStepComplete(isCurrentStepComplete);
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if(!isStepComplete) return;
     console.log("Form submitted:", formData);
     const index = data.data.indexOf(currentSection);
     if (index < data.data.length) {
@@ -68,6 +82,19 @@ const MultiStepForm = ({
     else{
       navigate('/')
     }
+  };
+
+  const handleNextStep = () => {
+    if (!isStepComplete) return;
+    nextStep();
+  }
+
+  const handleFormInputBlur = () => {
+    const currentStep = steps[currentStepIndex];
+    const isCurrentStepComplete = currentStep.questions.every(
+      (question) => typeof formData[question.name] !== "undefined"
+    );
+    setIsStepComplete(isCurrentStepComplete);
   };
 
   const styles = {
@@ -131,6 +158,7 @@ const MultiStepForm = ({
                   onChange={(e) =>
                     handleFormInputChange(question.name, e.target.value)
                   }
+                  
                 />
               </>
             }
@@ -222,7 +250,6 @@ const MultiStepForm = ({
                   value={formData[question.name] || ""}
                   onChange={(e, value) => {
                     handleFormInputChange(question.name, value);
-                    setGender(value);
                   }}
                 >
                   {question.options.map((option, index) => (
@@ -347,10 +374,11 @@ const MultiStepForm = ({
         <FormNavigation
           user={"Lucas Hernandez"}
           onPreviousPageClick={previousStep}
-          onNextPageClick={nextStep}
+          onNextPageClick={handleNextStep}
           isFirstStep={isFirstStep}
           isLastStep={isLastStep}
           handleFormSubmit={handleFormSubmit}
+          isStepComplete={isStepComplete}
         />
       </form>
     </div>
