@@ -498,7 +498,7 @@
             {
               "id": 1,
               "title": "New Physical Symptoms.",
-              "subtitle": "Have you been experiencing any new physical symptoms lately?",
+              "subTitle": "Have you been experiencing any new physical symptoms lately?",
               "name": "newPhysicalSymptoms",
               "type": "yesOrNo",
               "options": [
@@ -513,6 +513,8 @@
                   "value": 1,
                   "followUp": {
                     "name": "physicalSymptoms",
+                    "title": "If yes,",
+                    "subTitle": "Please specify",
                     "type": "input",
                     "info": "Headache Stomachaches Fatigue Nausea Dizziness Palpitations Sweating                                "
                   }
@@ -522,7 +524,7 @@
             {
               "id": 2,
               "title": "Appetite Changes.",
-              "subtitle": "Have you noticed any changes in your appetite or weight recently?",
+              "subTitle": "Have you noticed any changes in your appetite or weight recently?",
               "name": "appetiteChanges",
               "type": "squircicleRadio",
               "options": [
@@ -952,9 +954,33 @@
                   "name": "Yes",
                   "value": 2,
                   "followUp": {
+                    "title": "Substance use Frequency.",
+                    "subTitle": "How frequently do you use these substances? ",
                     "name": "substanceUseFrequency",
                     "type": "squircicleRadio",
-                    "info": " being exposed to drugs or alcohol in your environment, or using drugs or alcohol as a coping mechanism for stress or emotional issues."
+                    "info": " being exposed to drugs or alcohol in your environment, or using drugs or alcohol as a coping mechanism for stress or emotional issues.",
+                    "options": [
+                      {
+                        "id": 1,
+                        "name": "Never",
+                        "value": 0
+                      },
+                      {
+                        "id": 2,
+                        "name": "Monthly",
+                        "value": 1
+                      },
+                      {
+                        "id": 3,
+                        "name": "Weekly",
+                        "value": 2
+                      },
+                      {
+                        "id": 4,
+                        "name": "Daily",
+                        "value": 3
+                      }
+                    ]
                   }
                 },
                 {
@@ -1004,7 +1030,9 @@
             {
               "id": 1,
               "title": "Family Communication.",
-              "subTitle": "",
+              "subTitle": "How often do you communicate with your family members about your emotions and feelings?",
+              "name": "familyCommunication",
+              "type": "squircicleRadio",
               "options": [
                 {
                   "id": 1,

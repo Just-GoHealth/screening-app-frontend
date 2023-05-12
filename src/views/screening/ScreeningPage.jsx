@@ -73,6 +73,7 @@ export const ScreeningPage = () => {
                   textTransform: "none",
                   fontSize: "0.9rem",
                   minWidth: "100%",
+                  marginTop: 5,
                 }}
                 disableElevation
               >
