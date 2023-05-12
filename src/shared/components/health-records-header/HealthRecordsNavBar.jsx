@@ -4,15 +4,15 @@ import { AiOutlineLeft } from 'react-icons/ai';
 import './HealthRecordsNavBar.styles.css';
 
 export const HealthRecordsNavBar = ({
-	onRightIconClick,
+	onLeftIconClick,
 	heading,
-	leftIcon,
+	rightIcon,
 }) => {
 	return (
 		<nav className="health-records-nav-container">
 			<>
 				<IconButton
-					onClick={onRightIconClick}
+					onClick={onLeftIconClick}
 					size="small"
 					style={{ background: '#BCBEC0' }}
 				>
@@ -22,7 +22,7 @@ export const HealthRecordsNavBar = ({
 
 			<h2 className="health-records-nav-heading ">{heading}</h2>
 
-			<>{leftIcon}</>
+			<>{rightIcon}</>
 		</nav>
 	);
 };

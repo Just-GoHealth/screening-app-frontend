@@ -1,18 +1,25 @@
 import React from 'react';
 import { IconButton, TextField } from '@mui/material';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { BsCloudArrowDown, BsFillCloudArrowDownFill } from 'react-icons/bs';
+import { BsFillCloudArrowDownFill } from 'react-icons/bs';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import './SchoolHealthRecords.styles.css';
 import { GridComponent } from '../../shared/components/grid-component';
+import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
 
 export const SchoolHealthRecordsPage = () => {
+	const { handleGoBack, handleAddSchool } = useInAppNavigation();
+
 	return (
 		<div className="health-records-container">
 			<HealthRecordsNavBar
 				heading={'Noble Preparatory Academy'}
-				leftIcon={
-					<IconButton style={{ background: '#BCBEC0' }}>
+				onLeftIconClick={handleGoBack}
+				rightIcon={
+					<IconButton
+						onClick={handleAddSchool}
+						style={{ background: '#BCBEC0' }}
+					>
 						<BsFillCloudArrowDownFill color="white" />
 					</IconButton>
 				}
