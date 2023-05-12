@@ -4,19 +4,24 @@ import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import './AllHealthRecordsPage.styles.css';
 import { GridComponent } from '../../shared/components/grid-component';
+import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
 
 export const AllHealthRecordsPage = () => {
+	const { handleGoBack, handleAddSchool } = useInAppNavigation();
+
 	return (
 		<div className="health-records-container">
 			<HealthRecordsNavBar
 				heading={'JustGo Health Records'}
-				leftIcon={
+				onLeftIconClick={handleGoBack}
+				rightIcon={
 					<Button
 						variant="contained"
 						disableElevation
 						color="secondary"
 						startIcon={<AiOutlinePlus />}
 						size="small"
+						onClick={handleAddSchool}
 					>
 						<p className="health-records-header-left-button">New School</p>
 					</Button>
@@ -46,9 +51,9 @@ export const AllHealthRecordsPage = () => {
 			<GridComponent
 				columnDefs={[
 					{ field: '#', flex: 1 },
-					{ field: 'school' },
+					{ field: 'school_name', headerName: 'School' },
 					{ field: 'students' },
-					{ field: 'date' },
+					{ field: 'createdDate', headerName: 'Date' },
 				]}
 			/>
 		</div>
