@@ -19,7 +19,7 @@ export const FormNavigation = ({
   handleFormSubmit,
   isLastStep,
   isFirstStep,
-  isStepComplete=true
+  isStepComplete
 }) => {
   return (
     <nav className="flex items-center justify-between">
