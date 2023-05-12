@@ -52,11 +52,32 @@ export const SchoolHealthRecordsPage = () => {
 			</div>
 
 			<GridComponent
+				fetchUrl="http://localhost:8900/students"
 				columnDefs={[
-					{ field: '#', flex: 1 },
-					{ field: 'name' },
+					{ field: 'number', headerName: '#', flex: 1 },
+					{
+						field: 'name',
+						headerName: 'Name',
+						valueGetter: function (params) {
+							const firstName = params.data.first_name;
+							const lastName = params.data.last_name;
+
+							// Concatenate the fields with a space in between
+							return firstName + ' ' + lastName;
+						},
+					},
 					{ field: 'recommendation' },
-					{ field: 'date' },
+					{
+						field: 'createdAt',
+						headerName: 'Date',
+						valueFormatter: function (params) {
+							const date = new Date(params.value);
+							const month = date.toLocaleString('en-US', { month: 'short' });
+							const day = date.getDate();
+
+							return month + ' ' + day;
+						},
+					},
 				]}
 			/>
 		</div>

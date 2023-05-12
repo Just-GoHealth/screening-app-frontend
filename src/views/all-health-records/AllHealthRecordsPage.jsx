@@ -49,11 +49,22 @@ export const AllHealthRecordsPage = () => {
 			</div>
 
 			<GridComponent
+				fetchUrl="http://localhost:8900/schools"
 				columnDefs={[
-					{ field: '#', flex: 1 },
+					{ field: 'number', headerName: '#', flex: 1 },
 					{ field: 'school_name', headerName: 'School' },
 					{ field: 'students' },
-					{ field: 'createdDate', headerName: 'Date' },
+					{
+						field: 'createdAt',
+						headerName: 'Date',
+						valueFormatter: function (params) {
+							const date = new Date(params.value);
+							const month = date.toLocaleString('en-US', { month: 'short' });
+							const day = date.getDate();
+
+							return month + ' ' + day;
+						},
+					},
 				]}
 			/>
 		</div>
