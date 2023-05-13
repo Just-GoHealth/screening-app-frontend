@@ -1,16 +1,19 @@
-import React, { useCallback, useState } from 'react';
+import React, { createContext, useCallback, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { GridDownloadAction } from './GridDownloadAction';
 import './grid.styles.css';
+import { GridSearch } from './GridSearch';
 
-export const GridComponent = ({ columnDefs, onDownloadActionClick }) => {
-	const [rowData] = useState([
-		{ make: 'Toyota', model: 'Celica', price: 35000 },
-		{ make: 'Ford', model: 'Mondeo', price: 32000 },
-		{ make: 'Porsche', model: 'Boxster', price: 72000 },
-	]);
+export const GridContext = createContext();
+
+export const GridComponent = ({
+	columnDefs,
+	onDownloadActionClick,
+	fetchUrl,
+	searchplaceholder,
+}) => {
 	const [gridApi, setGridApi] = useState(null);
 	const [gridColumnApi, setGridColumnApi] = useState(null);
 
@@ -46,16 +49,14 @@ export const GridComponent = ({ columnDefs, onDownloadActionClick }) => {
 	const onGridReady = useCallback((params) => {
 		setGridApi(params.api);
 		setGridColumnApi(params.columnApi);
-		fetch('http://localhost:8900/schools', {
-			method: 'GET',
-			mode: 'cors',
-			headers: {
-				'Access-Control-Allow-Origin': '*',
-			},
-		})
+		fetch(`${fetchUrl}`)
 			.then((res) => res.json())
 			.then((res) => {
-				console.log({ res });
+				res.forEach((data, i) => {
+					data.number = i + 1;
+				});
+
+				return res;
 			})
 			.then((res) => {
 				params.api.applyTransaction({ add: res });
@@ -64,12 +65,15 @@ export const GridComponent = ({ columnDefs, onDownloadActionClick }) => {
 	}, []);
 
 	return (
-		<div className="my-grid-container ag-theme-alpine">
-			<AgGridReact
-				gridOptions={gridOptions}
-				rowData={rowData}
-				onGridReady={onGridReady}
-			></AgGridReact>
-		</div>
+		<GridContext.Provider value={{ gridApi, gridColumnApi }}>
+			<GridSearch placeholder={searchplaceholder} />
+
+			<div className="my-grid-container ag-theme-alpine">
+				<AgGridReact
+					gridOptions={gridOptions}
+					onGridReady={onGridReady}
+				></AgGridReact>
+			</div>
+		</GridContext.Provider>
 	);
 };

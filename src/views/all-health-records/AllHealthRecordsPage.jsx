@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, TextField } from '@mui/material';
-import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai';
+import { Button } from '@mui/material';
+import { AiOutlinePlus } from 'react-icons/ai';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import './AllHealthRecordsPage.styles.css';
 import { GridComponent } from '../../shared/components/grid-component';
@@ -28,32 +28,24 @@ export const AllHealthRecordsPage = () => {
 				}
 			/>
 
-			<div className="health-records-search-input">
-				<TextField
-					label={
-						<div className="health-records-search-input-placeholder">
-							<AiOutlineSearch style={{ width: '2rem', height: '2rem' }} />
-							<p>Search for Student or School</p>
-						</div>
-					}
-					InputProps={{
-						sx: {
-							'& fieldset': {
-								borderRadius: '50px',
-								borderColor: 'black',
-							},
-						},
-					}}
-					className="w-3/4 lg:w-2/4"
-				/>
-			</div>
-
 			<GridComponent
+				searchplaceholder="Search for School"
+				fetchUrl="http://localhost:8900/schools"
 				columnDefs={[
-					{ field: '#', flex: 1 },
+					{ field: 'number', headerName: '#', flex: 1 },
 					{ field: 'school_name', headerName: 'School' },
 					{ field: 'students' },
-					{ field: 'createdDate', headerName: 'Date' },
+					{
+						field: 'createdAt',
+						headerName: 'Date',
+						valueFormatter: function (params) {
+							const date = new Date(params.value);
+							const month = date.toLocaleString('en-US', { month: 'short' });
+							const day = date.getDate();
+
+							return month + ' ' + day;
+						},
+					},
 				]}
 			/>
 		</div>
