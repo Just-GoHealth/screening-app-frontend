@@ -1,14 +1,18 @@
-import React, { useCallback, useState } from 'react';
+import React, { createContext, useCallback, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { GridDownloadAction } from './GridDownloadAction';
 import './grid.styles.css';
+import { GridSearch } from './GridSearch';
+
+export const GridContext = createContext();
 
 export const GridComponent = ({
 	columnDefs,
 	onDownloadActionClick,
 	fetchUrl,
+	searchplaceholder,
 }) => {
 	const [gridApi, setGridApi] = useState(null);
 	const [gridColumnApi, setGridColumnApi] = useState(null);
@@ -61,11 +65,15 @@ export const GridComponent = ({
 	}, []);
 
 	return (
-		<div className="my-grid-container ag-theme-alpine">
-			<AgGridReact
-				gridOptions={gridOptions}
-				onGridReady={onGridReady}
-			></AgGridReact>
-		</div>
+		<GridContext.Provider value={{ gridApi, gridColumnApi }}>
+			<GridSearch placeholder={searchplaceholder} />
+
+			<div className="my-grid-container ag-theme-alpine">
+				<AgGridReact
+					gridOptions={gridOptions}
+					onGridReady={onGridReady}
+				></AgGridReact>
+			</div>
+		</GridContext.Provider>
 	);
 };
