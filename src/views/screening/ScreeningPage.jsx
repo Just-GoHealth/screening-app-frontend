@@ -10,15 +10,20 @@ import { useInAppNavigation } from "../../shared/custom-hooks/useInAppNavigation
 export const ScreeningPage = () => {
   const [selectedSection, setSelectedSection] = useState(1);
   const [selectedSubSection, setSelectedSubSection] = useState(1);
-  const { viewHealthRecords, startScreening } = useInAppNavigation();
+  const { viewHealthRecords } = useInAppNavigation();
+  const [formData, setFormData] = useState({});
 
   const handleSelectedSection = (id, subSectionId) => {
     setSelectedSection(id);
-    setSelectedSubSection(subSectionId)
-    console.log("changed section to ", id);
+    setSelectedSubSection(subSectionId);
   };
   const handleSelectedSubSection = (id) => {
     setSelectedSubSection(id);
+  };
+
+  const startScreening = () => {
+    setFormData({})
+    handleSelectedSection(data.data[0].id, data.data[0].subSections[0].id);
   };
   return (
     <>
@@ -39,7 +44,9 @@ export const ScreeningPage = () => {
                       (selectedSection === item.id &&
                         " px-3 py-1 rounded-[25px] bg-primary text-white font-bold")
                     }
-                    onClick={() => handleSelectedSection(item.id, item.subSections[0].id)}
+                    onClick={() =>
+                      handleSelectedSection(item.id, item.subSections[0].id)
+                    }
                   >
                     {item.name}
                   </h3>
@@ -103,7 +110,8 @@ export const ScreeningPage = () => {
             selectedSection={selectedSection}
             selectedSubSection={selectedSubSection}
             handleSelectedSection={handleSelectedSection}
-            handleSelectedSubSection={handleSelectedSubSection}
+            formData={formData}
+            setFormData={setFormData}
           />
         </main>
       </div>

@@ -9,10 +9,10 @@ const MultiStepForm = ({
   selectedSection,
   selectedSubSection,
   handleSelectedSection,
-  handleSelectedSubSection,
+  formData, 
+  setFormData
 }) => {
   //defining states for component
-  const [formData, setFormData] = useState({});
   const [isStepComplete, setIsStepComplete] = useState(false);
   const [currentSection, setCurrentSection] = useState(
     data.data.find((data) => data.id === selectedSection)
@@ -128,7 +128,8 @@ const MultiStepForm = ({
                 steps,
                 formData,
                 currentStepIndex,
-                handleFormInputChange
+                handleFormInputChange,
+                step
               )
             )}
           </div>
@@ -136,7 +137,7 @@ const MultiStepForm = ({
       </form>
 
         <FormNavigation
-          user={"Lucas Hernandez"}
+          user={formData?.fullName ?? ""}
           onPreviousPageClick={previousStep}
           onNextPageClick={handleNextStep}
           isFirstStep={isFirstStep}

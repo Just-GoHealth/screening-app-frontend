@@ -12,7 +12,7 @@
               "id": 1,
               "title": "Full Name",
               "subTitle": "What is your full name?",
-              "name": "firstName",
+              "name": "fullName",
               "type": "input",
               "info": "Watch our medical experts to help decide the routine"
             },
