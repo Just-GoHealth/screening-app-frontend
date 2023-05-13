@@ -7,7 +7,7 @@ import { GridComponent } from '../../shared/components/grid-component';
 import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
 
 export const SchoolHealthRecordsPage = () => {
-	const { handleGoBack, handleAddSchool } = useInAppNavigation();
+	const { handleGoBack } = useInAppNavigation();
 
 	return (
 		<div className="health-records-container">
@@ -15,10 +15,7 @@ export const SchoolHealthRecordsPage = () => {
 				heading={'Noble Preparatory Academy'}
 				onLeftIconClick={handleGoBack}
 				rightIcon={
-					<IconButton
-						onClick={handleAddSchool}
-						style={{ background: '#BCBEC0' }}
-					>
+					<IconButton style={{ background: '#BCBEC0' }}>
 						<BsFillCloudArrowDownFill color="white" />
 					</IconButton>
 				}
