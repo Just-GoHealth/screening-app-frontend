@@ -12,9 +12,9 @@ export const ScreeningPage = () => {
   const [selectedSubSection, setSelectedSubSection] = useState(1);
   const { viewHealthRecords, startScreening } = useInAppNavigation();
 
-  const handleSelectedSection = (id) => {
+  const handleSelectedSection = (id, subSectionId) => {
     setSelectedSection(id);
-    setSelectedSubSection(1);
+    setSelectedSubSection(subSectionId)
     console.log("changed section to ", id);
   };
   const handleSelectedSubSection = (id) => {
@@ -39,7 +39,7 @@ export const ScreeningPage = () => {
                       (selectedSection === item.id &&
                         " px-3 py-1 rounded-[25px] bg-primary text-white font-bold")
                     }
-                    onClick={() => handleSelectedSection(item.id)}
+                    onClick={() => handleSelectedSection(item.id, item.subSections[0].id)}
                   >
                     {item.name}
                   </h3>

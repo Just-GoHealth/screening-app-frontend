@@ -41,18 +41,19 @@ const styles = {
       return null;
     }
 
-    const isQuestionUnanswered = typeof formData[question.name] === "undefined";
+    // const isQuestionUnanswered = typeof formData[question.name] === "undefined";
 
-    const isPreviousQuestionUnanswered =
-      steps[currentStepIndex].questions.length > 1
-        ? index > 0 &&
-          typeof formData[steps[currentStepIndex].questions[index - 1].name] ===
-            "undefined"
-        : false;
+    // const isPreviousQuestionUnanswered =
+    //   steps[currentStepIndex].questions.length > 1
+    //     ? index > 0 &&
+    //       typeof formData[steps[currentStepIndex].questions[index - 1].name] ===
+    //         "undefined"
+    //     : false;
     const opacityStyle =
-      isQuestionUnanswered && isPreviousQuestionUnanswered
-        ? { opacity: 0.32, pointerEvents: "none" }
-        : {};
+      // isQuestionUnanswered && isPreviousQuestionUnanswered
+      //   ? { opacity: 0.32, pointerEvents: "none" }
+      //   : 
+        {};
 
     switch (question.type) {
       case "input":

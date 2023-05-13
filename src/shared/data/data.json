@@ -111,7 +111,7 @@
       "name": "Symptoms",
       "subSections": [
         {
-          "id": 1,
+          "id": 3,
           "name": "Emotional Disorder",
           "questions": [
             {
@@ -207,7 +207,7 @@
           ]
         },
         {
-          "id": 2,
+          "id": 4,
           "name": "Behavioral Disorder",
           "questions": [
             {
@@ -273,7 +273,7 @@
           ]
         },
         {
-          "id": 3,
+          "id": 5,
           "name": "Suicidal Thoughts",
           "questions": [
             {
@@ -304,7 +304,7 @@
           ]
         },
         {
-          "id": 4,
+          "id": 6,
           "name": "Withdrawal",
           "questions": [
             {
@@ -370,7 +370,7 @@
           ]
         },
         {
-          "id": 5,
+          "id": 7,
           "name": "Difficulties in School",
           "questions": [
             {
@@ -426,7 +426,7 @@
           ]
         },
         {
-          "id": 6,
+          "id": 8,
           "name": "Sleep difficulties",
           "questions": [
             {
@@ -492,7 +492,7 @@
           ]
         },
         {
-          "id": 7,
+          "id": 9,
           "name": "Unexplained Physical Symptoms",
           "questions": [
             {
@@ -554,7 +554,7 @@
       "name": "Stressors/Triggers",
       "subSections": [
         {
-          "id": 1,
+          "id": 10,
           "name": "Exposure To Trauma",
           "questions": [
             {
@@ -610,7 +610,7 @@
           ]
         },
         {
-          "id": 2,
+          "id": 11,
           "name": "Academic Pressure",
           "questions": [
             {
@@ -646,7 +646,7 @@
           ]
         },
         {
-          "id": 3,
+          "id": 12,
           "name": "Dysfunctional Family",
           "questions": [
             {
@@ -742,7 +742,7 @@
           ]
         },
         {
-          "id": 4,
+          "id": 13,
           "name": "Peer Pressure",
           "questions": [
             {
@@ -778,7 +778,7 @@
           ]
         },
         {
-          "id": 5,
+          "id": 14,
           "name": "Relationship Problems",
           "questions": [
             {
@@ -840,7 +840,7 @@
       "name": "Risk Factors",
       "subSections": [
         {
-          "id": 1,
+          "id": 15,
           "name": "Health Problems",
           "questions": [
             {
@@ -866,7 +866,7 @@
           ]
         },
         {
-          "id": 2,
+          "id": 16,
           "name": "Family mental health",
           "questions": [
             {
@@ -892,7 +892,7 @@
           ]
         },
         {
-          "id": 3,
+          "id": 17,
           "name": "Socioeconomic disadvantage",
           "questions": [
             {
@@ -938,7 +938,7 @@
           ]
         },
         {
-          "id": 4,
+          "id": 18,
           "name": "Substance Abuse",
           "questions": [
             {
@@ -1024,7 +1024,7 @@
       "name": "Support System",
       "subSections": [
         {
-          "id": 1,
+          "id": 19,
           "name": "Support Family Relationship",
           "questions": [
             {
@@ -1059,7 +1059,7 @@
           ]
         },
         {
-          "id": 2,
+          "id": 20,
           "name": "Mental Health Awareness",
           "questions": [
             {
@@ -1095,7 +1095,7 @@
           ]
         },
         {
-          "id": 3,
+          "id": 21,
           "name": "Leisure Activities",
           "questions": [
             {

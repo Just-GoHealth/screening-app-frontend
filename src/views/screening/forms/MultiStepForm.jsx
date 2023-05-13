@@ -17,9 +17,14 @@ const MultiStepForm = ({
   const [currentSection, setCurrentSection] = useState(
     data.data.find((data) => data.id === selectedSection)
   );
+  const [stepsArray, setStepsArray] = useState([])
 
   //get the subsections of the current section
   const subSections = currentSection ? currentSection.subSections : [];
+  console.log(subSections, " subsections")
+  let subSectionsArr = [] ;
+  data.data.map((item) => subSectionsArr.push(...item.subSections))
+  console.log(subSectionsArr)
 
   //Pass subsections as steps
   const {
@@ -31,9 +36,17 @@ const MultiStepForm = ({
     previousStep,
     isFirstStep,
     isLastStep,
-  } = useMultiStepHook(subSections);
+  } = useMultiStepHook(subSectionsArr);
 
   const navigate = useNavigate();
+
+
+  useEffect(() => {
+    // for(let i = 0; i < data.data.length; i++){
+    //   subSectionsArr.push(data.data[i].subSections)
+    // }
+    // console.log(subSectionsArr, "subsections arr ")
+  }, [])
 
   //set the step to the first step whenever the selected section changes
   useEffect(() => {
@@ -56,7 +69,10 @@ const MultiStepForm = ({
   }, [formData, selectedSection, selectedSubSection]);
 
   //change the selectedsubsection or step accordingly once the step changes
-  useEffect(() => handleSelectedSubSection(step.id), [step]);
+  useEffect(() => {
+    const newSection = data.data.find((section) => section.subSections.some((subSection) => subSection.id === step.id))
+    handleSelectedSection(newSection.id, step.id)
+  }, [step]);
 
   //change the currentstepindex whenver the selected section and selected subsection changes
   useEffect(() => {
