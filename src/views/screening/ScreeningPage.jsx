@@ -11,9 +11,6 @@ export const ScreeningPage = () => {
   const [selectedSubSection, setSelectedSubSection] = useState(1);
   const { viewHealthRecords } = useInAppNavigation();
   const [formData, setFormData] = useState({});
-	const [selectedSection, setSelectedSection] = useState(1);
-	const [selectedSubSection, setSelectedSubSection] = useState(1);
-	const { viewHealthRecords, startScreening } = useInAppNavigation();
 
   const handleSelectedSection = (id, subSectionId) => {
     setSelectedSection(id);
@@ -32,19 +29,6 @@ export const ScreeningPage = () => {
       <>
         <Navbar showLogo />
       </>
-	const handleSelectedSection = (id) => {
-		setSelectedSection(id);
-		setSelectedSubSection(1);
-		console.log('changed section to ', id);
-	};
-	const handleSelectedSubSection = (id) => {
-		setSelectedSubSection(id);
-	};
-	return (
-		<>
-			<>
-				<Navbar showLogo />
-			</>
 
       <div className=" flex mx-auto gap-x-10 px-20">
         <nav className="flex justify-center lg:py-10 h-[90vh] basis-[15rem] flex-grow-0 overflow-auto">
@@ -87,45 +71,6 @@ export const ScreeningPage = () => {
                 </div>
               ))}
             </div>
-			<div className=" flex mx-auto gap-x-10 px-20">
-				<nav className="flex justify-center lg:py-10 h-[90vh] basis-[15rem] flex-grow-0 overflow-auto">
-					<div className="flex flex-col justify-between items-center w-[200px] px-2">
-						<div className="space-y-5 text-[#F1ADB0] text-lg w-full">
-							<h2 className="text-black font-bold text-xl px-3">GUIDE:</h2>
-							{data.data.map((item) => (
-								<div key={item.id}>
-									<h3
-										className={
-											'cursor-pointer px-3 ' +
-											(selectedSection === item.id &&
-												' px-3 py-1 rounded-[25px] bg-primary text-white font-bold')
-										}
-										onClick={() => handleSelectedSection(item.id)}
-									>
-										{item.name}
-									</h3>
-									{selectedSection === item.id && (
-										<ul className="text-black font-bold px-3 mt-1">
-											{item.subSections.map((subsection, index) => (
-												<li
-													className={
-														'pb-1 cursor-pointer ' +
-														(selectedSubSection === subsection.id &&
-															' text-primary')
-													}
-													onClick={() =>
-														handleSelectedSubSection(subsection.id)
-													}
-													key={index}
-												>
-													{subsection.name}
-												</li>
-											))}
-										</ul>
-									)}
-								</div>
-							))}
-						</div>
 
 						<div className="text-[#99B3DD] space-y-3 w-full flex flex-col items-center px-3 ">
 							<Button
