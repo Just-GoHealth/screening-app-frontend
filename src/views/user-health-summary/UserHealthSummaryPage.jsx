@@ -18,7 +18,7 @@ export const UserHealthSummaryPage = () => {
 		`http://localhost:8900/student/${userId}`
 	);
 
-	console.log({ studentData });
+	// console.log({ studentData });
 
 	return (
 		<div className="bg-[#DFE7F4]">
