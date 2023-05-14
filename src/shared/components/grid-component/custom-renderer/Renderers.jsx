@@ -18,6 +18,27 @@ export const GridSchoolNameRenderer = ({ value, data }) => {
 	);
 };
 
+export const GridUserNameRenderer = ({ data }) => {
+	const { navigate } = useInAppNavigation();
+
+	const firstName = data.first_name;
+	const lastName = data.last_name;
+	const value = firstName + ' ' + lastName;
+
+	const handleClick = () => {
+		navigate(`/user-health-summary/${data._id}`);
+	};
+
+	return (
+		<div
+			onClick={handleClick}
+			className="hover:underline hover:text-[#1D509E] cursor-pointer transition-all duration-300 ease-out"
+		>
+			{value}
+		</div>
+	);
+};
+
 export const GridSchoolDownloadAction = ({ data }) => {
 	const { navigate } = useInAppNavigation();
 
