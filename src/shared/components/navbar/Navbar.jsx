@@ -6,11 +6,15 @@ import { logo } from '../../../assets/images';
 import { useInAppNavigation } from '../../custom-hooks/useInAppNavigation';
 
 export const Navbar = ({ showBackButton, showLogo, showRecommendations }) => {
-	const { handleGoBack } = useInAppNavigation();
+	const { handleGoBack, handleGoHome } = useInAppNavigation();
 
 	return (
-		<div className={showRecommendations ? "flex gap-x-10 h-[10vh] " :"nav-container"}>
-			<div className={showRecommendations ? 'basis-[20%] pl-20 ': ''}>
+		<div
+			className={
+				showRecommendations ? 'flex gap-x-10 h-[10vh] ' : 'nav-container'
+			}
+		>
+			<div className={showRecommendations ? 'basis-[20%] pl-20 ' : ''}>
 				{showBackButton && (
 					<IconButton
 						onClick={handleGoBack}
@@ -22,9 +26,20 @@ export const Navbar = ({ showBackButton, showLogo, showRecommendations }) => {
 				)}
 			</div>
 
-			<div className={showRecommendations ? 'flex-grow-2 basis-[80%] bg-[#DAE7F6] pr-20 py-[2.4vh]' : ''}>
+			<div
+				className={
+					showRecommendations
+						? 'flex-grow-2 basis-[80%] bg-[#DAE7F6] pr-20 py-[2.4vh]'
+						: ''
+				}
+			>
 				{showLogo && (
-					<img src={logo} alt="Just Go Health Logo" className="h-8 sm:h-10 float-right" />
+					<img
+						src={logo}
+						alt="Just Go Health Logo"
+						onClick={handleGoHome}
+						className="h-8 sm:h-10 float-right hover:cursor-pointer"
+					/>
 				)}
 			</div>
 		</div>

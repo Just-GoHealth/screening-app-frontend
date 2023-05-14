@@ -9,6 +9,10 @@ export const useInAppNavigation = () => {
     navigate(-1);
   };
 
+  const handleGoHome = () => {
+    navigate('/');
+  };
+
   const handleAddSchool = () => {
     navigate('/add-new-school');
   };
@@ -21,5 +25,5 @@ export const useInAppNavigation = () => {
     navigate('/all-health-records');
   };
 
-  return { navigate, handleGoBack, handleAddSchool, startScreening, viewHealthRecords, params }
+  return { navigate, handleGoHome, handleGoBack, handleAddSchool, startScreening, viewHealthRecords, params }
 }

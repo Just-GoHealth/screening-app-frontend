@@ -18,7 +18,7 @@ export const SchoolHealthSummaryPage = () => {
 		`http://localhost:8900/schools/${schoolId}`
 	);
 
-	console.log({ schoolData });
+	// console.log({ schoolData });
 
 	const schoolName = schoolData?.school.school_name;
 	const numberOfStudents = schoolData?.students.length
