@@ -15,7 +15,7 @@ export const UserHealthSummaryPage = () => {
 
 			<HealthSummary
 				title={'Jacob Davis'}
-				subTitle={'Junior High School | 150 Students | Male'}
+				subTitle={'School Name | 15 yrs | Male'}
 				date={'April 1, 2023'}
 				screeningReport={screeningReport}
 				recommendations={
