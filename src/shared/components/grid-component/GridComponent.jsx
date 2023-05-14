@@ -31,19 +31,39 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 	const onGridReady = useCallback((params) => {
 		setGridApi(params.api);
 		setGridColumnApi(params.columnApi);
-		fetch(`${fetchUrl}`)
-			.then((res) => res.json())
-			.then((res) => {
-				res.forEach((data, i) => {
-					data.number = i + 1;
-				});
+		{
+			fetchUrl === 'http://localhost:8900/schools' &&
+				fetch(`${fetchUrl}`)
+					.then((res) => res.json())
+					.then((res) => {
+						res.forEach((data, i) => {
+							data.number = i + 1;
+						});
 
-				return res;
-			})
-			.then((res) => {
-				params.api.applyTransaction({ add: res });
-			})
-			.catch((err) => console.log('Error fetching data:', err));
+						return res;
+					})
+					.then((res) => {
+						params.api.applyTransaction({ add: res });
+					})
+					.catch((err) => console.log('Error fetching data:', err));
+		}
+		{
+			fetchUrl !== 'http://localhost:8900/schools' &&
+				fetch(`${fetchUrl}`)
+					.then((res) => res.json())
+					.then((res) => res.students)
+					.then((res) => {
+						res.forEach((data, i) => {
+							data.number = i + 1;
+						});
+
+						return res;
+					})
+					.then((res) => {
+						params.api.applyTransaction({ add: res });
+					})
+					.catch((err) => console.log('Error fetching data:', err));
+		}
 	}, []);
 
 	return (

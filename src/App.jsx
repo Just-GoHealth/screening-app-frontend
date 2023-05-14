@@ -22,7 +22,7 @@ const App = () => {
 				<Route path="/add-new-school" element={<AddNewSchool />} />
 				<Route path="/all-health-records" element={<AllHealthRecordsPage />} />
 				<Route
-					path="/school-health-records/:id"
+					path="/school-health-records/:schoolId"
 					element={<SchoolHealthRecordsPage />}
 				/>
 				<Route
