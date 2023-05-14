@@ -5,3 +5,11 @@
 body {
 	font-family: 'BR Hendrix', sans-serif;
 }
+
+.hover-transition {
+	@apply cursor-pointer transition-all duration-500 ease-out;
+}
+
+.grid-download-button {
+	@apply hover-transition text-gray-400 hover:text-[#1D509E];
+}

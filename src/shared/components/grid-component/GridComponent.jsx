@@ -2,35 +2,17 @@ import React, { createContext, useCallback, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { GridDownloadAction } from './GridDownloadAction';
 import './grid.styles.css';
 import { GridSearch } from './GridSearch';
 
 export const GridContext = createContext();
 
-export const GridComponent = ({
-	columnDefs,
-	onDownloadActionClick,
-	fetchUrl,
-	searchplaceholder,
-}) => {
+export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 	const [gridApi, setGridApi] = useState(null);
 	const [gridColumnApi, setGridColumnApi] = useState(null);
 
-	const customActionCellRenderer = (params) => {
-		return <GridDownloadAction onActionClick={onDownloadActionClick} />;
-	};
-
-	const downloadActionColumn = {
-		headerName: 'Download',
-		cellRenderer: customActionCellRenderer,
-		flex: 2,
-		resizable: false,
-		cellStyle: { textAlign: 'center' },
-	};
-
 	const gridOptions = {
-		columnDefs: [...columnDefs, downloadActionColumn],
+		columnDefs,
 		defaultColDef: {
 			sortable: true,
 			resizable: true,
