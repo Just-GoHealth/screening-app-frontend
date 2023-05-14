@@ -1,6 +1,7 @@
 import React from 'react';
 import { HealthSummary } from '../../shared/components/health-summary';
 import { Navbar } from '../../shared/components/navbar/Navbar';
+import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
 
 const screeningReport = [
 	'High Risk mental health concerns',
@@ -9,6 +10,16 @@ const screeningReport = [
 ];
 
 export const UserHealthSummaryPage = () => {
+	const { params } = useInAppNavigation();
+	const userId = params.userId;
+
+	const { data: studentData } = useFetchDetials(
+		['user-details', userId],
+		`http://localhost:8900/student/${userId}`
+	);
+
+	console.log({ studentData });
+
 	return (
 		<div className="bg-[#DFE7F4]">
 			<Navbar showBackButton showLogo />

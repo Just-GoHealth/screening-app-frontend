@@ -26,11 +26,11 @@ const App = () => {
 					element={<SchoolHealthRecordsPage />}
 				/>
 				<Route
-					path="/school-health-summary/:id"
+					path="/school-health-summary/:schoolId"
 					element={<SchoolHealthSummaryPage />}
 				/>
 				<Route
-					path="/user-health-summary/:id"
+					path="/user-health-summary/:userId"
 					element={<UserHealthSummaryPage />}
 				/>
 
