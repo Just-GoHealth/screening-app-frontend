@@ -3,16 +3,31 @@ import { IconButton } from '@mui/material';
 import { BsFillCloudArrowDownFill } from 'react-icons/bs';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import './SchoolHealthRecords.styles.css';
-import { GridComponent } from '../../shared/components/grid-component';
-import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
+import {
+	GridComponent,
+	GridUserDownloadAction,
+	GridUserNameRenderer,
+} from '../../shared/components/grid-component';
+import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
 
 export const SchoolHealthRecordsPage = () => {
-	const { handleGoBack } = useInAppNavigation();
+	const { handleGoBack, params } = useInAppNavigation();
+	const schoolId = params.schoolId;
+
+	const { data: schoolData } = useFetchDetials(
+		['school-details', schoolId],
+		`http://localhost:8900/schools/${schoolId}`
+	);
+	const schoolName = schoolData?.school.school_name;
+	const numberOfStudents = schoolData?.students.length
+		? schoolData.students.length +
+		  `${schoolData.students.length > 1 ? ' Students' : ' Student'}`
+		: '0 Students';
 
 	return (
 		<div className="health-records-container">
 			<HealthRecordsNavBar
-				heading={'Noble Preparatory Academy'}
+				heading={schoolName}
 				onLeftIconClick={handleGoBack}
 				rightIcon={
 					<IconButton style={{ background: '#BCBEC0' }}>
@@ -22,26 +37,20 @@ export const SchoolHealthRecordsPage = () => {
 			/>
 
 			<div className="health-records-sub-heading">
-				<h4>Junior High School</h4>
+				<h4>Junior High Schoolxx</h4>
 				<div>|</div>
-				<h4>150 Students</h4>
+				<h4>{numberOfStudents}</h4>
 			</div>
 
 			<GridComponent
 				searchplaceholder="Search for Student"
-				fetchUrl="http://localhost:8900/students"
+				fetchUrl={`http://localhost:8900/schools/${schoolId}`}
 				columnDefs={[
 					{ field: 'number', headerName: '#', flex: 1 },
 					{
 						field: 'name',
 						headerName: 'Name',
-						valueGetter: function (params) {
-							const firstName = params.data.first_name;
-							const lastName = params.data.last_name;
-
-							// Concatenate the fields with a space in between
-							return firstName + ' ' + lastName;
-						},
+						cellRenderer: GridUserNameRenderer,
 					},
 					{ field: 'recommendation' },
 					{
@@ -54,6 +63,11 @@ export const SchoolHealthRecordsPage = () => {
 
 							return month + ' ' + day;
 						},
+					},
+					{
+						field: 'download_school',
+						headerName: 'Download',
+						cellRenderer: GridUserDownloadAction,
 					},
 				]}
 			/>

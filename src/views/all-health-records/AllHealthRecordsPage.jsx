@@ -3,7 +3,11 @@ import { Button } from '@mui/material';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import './AllHealthRecordsPage.styles.css';
-import { GridComponent } from '../../shared/components/grid-component';
+import {
+	GridComponent,
+	GridSchoolDownloadAction,
+	GridSchoolNameRenderer,
+} from '../../shared/components/grid-component';
 import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
 
 export const AllHealthRecordsPage = () => {
@@ -33,7 +37,11 @@ export const AllHealthRecordsPage = () => {
 				fetchUrl="http://localhost:8900/schools"
 				columnDefs={[
 					{ field: 'number', headerName: '#', flex: 1 },
-					{ field: 'school_name', headerName: 'School' },
+					{
+						field: 'school_name',
+						headerName: 'School',
+						cellRenderer: GridSchoolNameRenderer,
+					},
 					{ field: 'students' },
 					{
 						field: 'createdAt',
@@ -45,6 +53,11 @@ export const AllHealthRecordsPage = () => {
 
 							return month + ' ' + day;
 						},
+					},
+					{
+						field: 'download_school',
+						headerName: 'Download',
+						cellRenderer: GridSchoolDownloadAction,
 					},
 				]}
 			/>

@@ -1,8 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export const useInAppNavigation = () => {
   const navigate = useNavigate()
+  const params = useParams()
 
   const handleGoBack = () => {
     navigate(-1);
@@ -20,5 +21,5 @@ export const useInAppNavigation = () => {
     navigate('/all-health-records');
   };
 
-  return { handleGoBack, handleAddSchool, startScreening, viewHealthRecords }
+  return { navigate, handleGoBack, handleAddSchool, startScreening, viewHealthRecords, params }
 }
