@@ -20,5 +20,5 @@ export const useInAppNavigation = () => {
     navigate('/all-health-records');
   };
 
-  return { handleGoBack, handleAddSchool, startScreening, viewHealthRecords }
+  return { navigate, handleGoBack, handleAddSchool, startScreening, viewHealthRecords }
 }

@@ -3,7 +3,10 @@ import { IconButton } from '@mui/material';
 import { BsFillCloudArrowDownFill } from 'react-icons/bs';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import './SchoolHealthRecords.styles.css';
-import { GridComponent } from '../../shared/components/grid-component';
+import {
+	GridComponent,
+	GridUserDownloadAction,
+} from '../../shared/components/grid-component';
 import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
 
 export const SchoolHealthRecordsPage = () => {
@@ -39,7 +42,6 @@ export const SchoolHealthRecordsPage = () => {
 							const firstName = params.data.first_name;
 							const lastName = params.data.last_name;
 
-							// Concatenate the fields with a space in between
 							return firstName + ' ' + lastName;
 						},
 					},
@@ -54,6 +56,11 @@ export const SchoolHealthRecordsPage = () => {
 
 							return month + ' ' + day;
 						},
+					},
+					{
+						field: 'download_school',
+						headerName: 'Download',
+						cellRenderer: GridUserDownloadAction,
 					},
 				]}
 			/>
