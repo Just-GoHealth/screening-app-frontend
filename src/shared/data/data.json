@@ -300,15 +300,9 @@
                   "value": 2
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 6,
-          "name": "Withdrawal",
-          "questions": [
+            },
             {
-              "id": 1,
+              "id": 2,
               "title": "Social Withdrawal",
               "subTitle": " Have you recently withdrawn from social situations or activities that you used to participate in?",
               "name": "socialWithdrawal",
@@ -338,7 +332,7 @@
               ]
             },
             {
-              "id": 2,
+              "id": 3,
               "title": "Motivation loss",
               "subTitle": " Do you feel like you have a lack of motivation or energy to engage in activities?",
               "name": "motivationLoss",
@@ -370,7 +364,7 @@
           ]
         },
         {
-          "id": 7,
+          "id": 6,
           "name": "Difficulties in School",
           "questions": [
             {
@@ -422,15 +416,9 @@
                   "value": 0
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 8,
-          "name": "Sleep difficulties",
-          "questions": [
+            },
             {
-              "id": 1,
+              "id": 3,
               "title": "Sleep Troubles",
               "subTitle": "Do you have trouble falling asleep or staying asleep?",
               "name": "sleepTroubles",
@@ -460,7 +448,7 @@
               ]
             },
             {
-              "id": 2,
+              "id": 4,
               "title": "Restful Sleep",
               "subTitle": " Do you feel rested and refreshed when you wake up in the morning?",
               "name": "restfulSleep",
@@ -492,7 +480,7 @@
           ]
         },
         {
-          "id": 9,
+          "id": 7,
           "name": "Unexplained Physical Symptoms",
           "questions": [
             {
@@ -554,7 +542,7 @@
       "name": "Stressors/Triggers",
       "subSections": [
         {
-          "id": 10,
+          "id": 8,
           "name": "Exposure To Trauma",
           "questions": [
             {
@@ -606,15 +594,9 @@
                   "value": 3
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 11,
-          "name": "Academic Pressure",
-          "questions": [
+            },
             {
-              "id": 1,
+              "id": 3,
               "title": "Academic stress",
               "subTitle": "How often do you feel overwhelmed by academic workload and expectations?",
               "name": "academicStress",
@@ -646,7 +628,7 @@
           ]
         },
         {
-          "id": 12,
+          "id": 9,
           "name": "Dysfunctional Family",
           "questions": [
             {
@@ -742,7 +724,7 @@
           ]
         },
         {
-          "id": 13,
+          "id": 10,
           "name": "Peer Pressure",
           "questions": [
             {
@@ -774,15 +756,9 @@
                   "value": 3
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 14,
-          "name": "Relationship Problems",
-          "questions": [
+            },
             {
-              "id": 1,
+              "id": 2,
               "title": "Coping with Heartbreak.",
               "subTitle": " Have you experienced any recent changes or difficulties in your relationships?",
               "name": "copingWithHeartbreak",
@@ -802,7 +778,7 @@
               ]
             },
             {
-              "id": 2,
+              "id": 3,
               "title": "Feeling disconnected.",
               "subTitle": " How often do you feel lonely or isolated from others? ",
               "name": "feelingDisconnected",
@@ -840,7 +816,7 @@
       "name": "Risk Factors",
       "subSections": [
         {
-          "id": 15,
+          "id":11,
           "name": "Health Problems",
           "questions": [
             {
@@ -862,15 +838,9 @@
                   "value": 0
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 16,
-          "name": "Family mental health",
-          "questions": [
+            },
             {
-              "id": 1,
+              "id": 2,
               "title": "Family member's disorder.",
               "subTitle": " Do you have a family member who has been diagnosed with a mental health disorder?",
               "name": "familyMemberDisorder",
@@ -892,7 +862,7 @@
           ]
         },
         {
-          "id": 17,
+          "id": 12,
           "name": "Socioeconomic disadvantage",
           "questions": [
             {
@@ -934,15 +904,9 @@
                   "value": 0
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 18,
-          "name": "Substance Abuse",
-          "questions": [
+            },
             {
-              "id": 1,
+              "id": 3,
               "title": "Substance Use.",
               "subTitle": "Have you used any illegal substances in the past year?",
               "name": "substanceUse",
@@ -991,7 +955,7 @@
               ]
             },
             {
-              "id": 2,
+              "id": 4,
               "title": "Exposure to substance abuse.",
               "subTitle": " Have you ever been exposed to substance abuse, such as seeing family members or friends using drugs or alcohol?",
               "name": "substanceAbuseExposure",
@@ -1024,7 +988,7 @@
       "name": "Support System",
       "subSections": [
         {
-          "id": 19,
+          "id": 13,
           "name": "Support Family Relationship",
           "questions": [
             {
@@ -1055,15 +1019,9 @@
                   "value": 3
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 20,
-          "name": "Mental Health Awareness",
-          "questions": [
+            },
             {
-              "id": 1,
+              "id": 2,
               "title": "Mental health Education.",
               "subTitle": "Have you received any education or training about mental health issues?",
               "name": "mentalHealthEducation",
@@ -1091,15 +1049,9 @@
                   "value": 3
                 }
               ]
-            }
-          ]
-        },
-        {
-          "id": 21,
-          "name": "Leisure Activities",
-          "questions": [
+            },
             {
-              "id": 1,
+              "id": 3,
               "title": "Enjoyable Activities.",
               "subTitle": "How often do you engage in recreational or leisure activities that you enjoy?",
               "name": "enjoyableActivites",

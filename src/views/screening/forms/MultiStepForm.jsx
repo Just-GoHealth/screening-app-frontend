@@ -9,22 +9,20 @@ const MultiStepForm = ({
   selectedSection,
   selectedSubSection,
   handleSelectedSection,
-  formData, 
-  setFormData
+  formData,
+  setFormData,
+  handleGetRecommendations
 }) => {
   //defining states for component
   const [isStepComplete, setIsStepComplete] = useState(false);
   const [currentSection, setCurrentSection] = useState(
     data.data.find((data) => data.id === selectedSection)
   );
-  const [stepsArray, setStepsArray] = useState([])
+  const [canSubmit, setCanSubmit] = useState(false);
 
   //get the subsections of the current section
-  const subSections = currentSection ? currentSection.subSections : [];
-  console.log(subSections, " subsections")
-  let subSectionsArr = [] ;
-  data.data.map((item) => subSectionsArr.push(...item.subSections))
-  console.log(subSectionsArr)
+  let subSectionsArr = [];
+  data.data.map((item) => subSectionsArr.push(...item.subSections));
 
   //Pass subsections as steps
   const {
@@ -40,14 +38,6 @@ const MultiStepForm = ({
 
   const navigate = useNavigate();
 
-
-  useEffect(() => {
-    // for(let i = 0; i < data.data.length; i++){
-    //   subSectionsArr.push(data.data[i].subSections)
-    // }
-    // console.log(subSectionsArr, "subsections arr ")
-  }, [])
-
   //set the step to the first step whenever the selected section changes
   useEffect(() => {
     setCurrentStepIndex(0);
@@ -59,19 +49,28 @@ const MultiStepForm = ({
 
     const isCurrentStepComplete = currentStep.questions.every((question) => {
       const fieldValue = formData[question.name];
-      return (
-        typeof fieldValue !== "undefined" &&
-        (typeof fieldValue === "string" ? fieldValue !== "" : true) &&
-        fieldValue !== null
-      );
-    });
+      if (typeof fieldValue === "undefined") {
+        return false;
+      } else if (typeof fieldValue == "string") {
+        if (fieldValue === "") {
+          return false;
+        }
+        return true;
+      } else if (fieldValue === null) {
+        return false;
+      } else {
+        return true;
+      }
+    }); // logic to check if the current step is complete
     setIsStepComplete(isCurrentStepComplete);
-  }, [formData, selectedSection, selectedSubSection]);
+  }, [formData, selectedSection, selectedSubSection, step]);
 
   //change the selectedsubsection or step accordingly once the step changes
   useEffect(() => {
-    const newSection = data.data.find((section) => section.subSections.some((subSection) => subSection.id === step.id))
-    handleSelectedSection(newSection.id, step.id)
+    const newSection = data.data.find((section) =>
+      section.subSections.some((subSection) => subSection.id === step.id)
+    );
+    handleSelectedSection(newSection.id, step.id);
   }, [step]);
 
   //change the currentstepindex whenver the selected section and selected subsection changes
@@ -96,13 +95,18 @@ const MultiStepForm = ({
       return;
     }
     console.log("Form submitted:", formData);
+    console.log("greater");
+
     const index = data.data.indexOf(currentSection); //find the index of the currentSection
-    if (index < data.data.length) {
+    console.log(index);
+    console.log(data.data.length);
+
+    if (index + 1 < data.data.length) {
       //if the index is less than the length of the data i.e if it is not the last index
       const nextSection = data.data[index + 1]; //get the next section i.e the next index
       handleSelectedSection(nextSection.id); //pass the next section's id into the handleselected section function
     } else {
-      navigate("/"); //navigate to home screen
+      handleGetRecommendations()
     }
   };
 
@@ -112,7 +116,7 @@ const MultiStepForm = ({
   };
 
   return (
-    <div className="px-5 pb-5 h-full">
+    <div className="px-5 pb-5 h-full pr-20">
       <h1 className="screening_heading">{currentSection.name}</h1>
 
       <form className="space-y-7 h-[500px] overflow-auto px-5">
@@ -136,15 +140,15 @@ const MultiStepForm = ({
         ))}
       </form>
 
-        <FormNavigation
-          user={formData?.fullName ?? ""}
-          onPreviousPageClick={previousStep}
-          onNextPageClick={handleNextStep}
-          isFirstStep={isFirstStep}
-          isLastStep={isLastStep}
-          handleFormSubmit={handleFormSubmit}
-          isStepComplete={isStepComplete}
-        />
+      <FormNavigation
+        user={formData?.fullName ?? ""}
+        onPreviousPageClick={previousStep}
+        onNextPageClick={handleNextStep}
+        isFirstStep={isFirstStep}
+        isLastStep={isLastStep}
+        handleFormSubmit={handleFormSubmit}
+        isStepComplete={isStepComplete}
+      />
     </div>
   );
 };
