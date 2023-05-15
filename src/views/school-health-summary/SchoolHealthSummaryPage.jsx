@@ -26,9 +26,9 @@ export const SchoolHealthSummaryPage = () => {
 		  `${schoolData.students.length > 1 ? ' Students' : ' Student'}`
 		: '0 Students';
 	const date = new Date(schoolData?.school.createdAt);
-	const month = date.toLocaleString('en-US', { month: 'short' });
-	const day = date.getDate();
-	const year = date.getFullYear();
+	const month = date?.toLocaleString('en-US', { month: 'short' });
+	const day = date?.getDate();
+	const year = date?.getFullYear();
 	const fullDate = month + ' ' + day + ', ' + year;
 
 	return (
@@ -38,7 +38,7 @@ export const SchoolHealthSummaryPage = () => {
 			<HealthSummary
 				title={schoolName}
 				subTitle={`Junior High Schoolxx | ${numberOfStudents}`}
-				date={fullDate}
+				date={fullDate ? fullDate : ''}
 				screeningReport={screeningReport}
 				recommendations={
 					'JustGo Health WorkShop. Focused on psychotherapy and mindfulness techniques (GHC 50)'
