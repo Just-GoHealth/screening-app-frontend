@@ -26,6 +26,8 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 			},
 		},
 		animateRows: true,
+		pagination: true,
+		paginationPageSize: 8,
 	};
 
 	const onGridReady = useCallback((params) => {
