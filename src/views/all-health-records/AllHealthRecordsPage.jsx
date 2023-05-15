@@ -42,7 +42,7 @@ export const AllHealthRecordsPage = () => {
 						headerName: 'School',
 						cellRenderer: GridSchoolNameRenderer,
 					},
-					{ field: 'students' },
+					{ field: 'studentPopulation', headerName: 'Students' },
 					{
 						field: 'createdAt',
 						headerName: 'Date',

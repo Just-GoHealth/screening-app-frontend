@@ -26,6 +26,8 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 			},
 		},
 		animateRows: true,
+		pagination: true,
+		paginationPageSize: 8,
 	};
 
 	const onGridReady = useCallback((params) => {
@@ -35,6 +37,7 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 			fetchUrl === 'http://localhost:8900/schools' &&
 				fetch(`${fetchUrl}`)
 					.then((res) => res.json())
+					.then((res) => res.school_list)
 					.then((res) => {
 						res.forEach((data, i) => {
 							data.number = i + 1;

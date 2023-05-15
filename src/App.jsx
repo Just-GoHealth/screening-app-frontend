@@ -1,4 +1,6 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './views/home/HomePage';
 import { UserHealthSummaryPage } from './views/user-health-summary';
@@ -26,11 +28,11 @@ const App = () => {
 					element={<SchoolHealthRecordsPage />}
 				/>
 				<Route
-					path="/school-health-summary/:id"
+					path="/school-health-summary/:schoolId"
 					element={<SchoolHealthSummaryPage />}
 				/>
 				<Route
-					path="/user-health-summary/:id"
+					path="/user-health-summary/:userId"
 					element={<UserHealthSummaryPage />}
 				/>
 
@@ -38,6 +40,14 @@ const App = () => {
 
 				<Route path="*" element={<PageNotFoundPage />} />
 			</Routes>
+
+			<ToastContainer
+				limit={5}
+				position={'bottom-left'}
+				autoClose={3000}
+				draggable={true}
+				pauseOnFocusLoss={false}
+			/>
 		</>
 	);
 };
