@@ -8,7 +8,7 @@ import { useInAppNavigation } from "../../shared/custom-hooks/useInAppNavigation
 import GetRecommendations from "./recommendations/GetRecommendations";
 
 export const ScreeningPage = () => {
-  const [selectedSection, setSelectedSection] = useState(1);
+  const [selectedSection, setSelectedSection] = useState(data.data[0].id);
   const [selectedSubSection, setSelectedSubSection] = useState(1);
   const { viewHealthRecords } = useInAppNavigation();
   const [formData, setFormData] = useState({});
@@ -16,7 +16,6 @@ export const ScreeningPage = () => {
 
   //function to handle section change
   const handleSelectedSection = (id, subSectionId) => {
-    if(getRecommendations){ setGetRecommendations(false)}
     setSelectedSection(id);
     setSelectedSubSection(subSectionId);
   };
@@ -38,6 +37,7 @@ export const ScreeningPage = () => {
   const startScreening = () => {
     setFormData({});
     handleSelectedSection(data.data[0].id, data.data[0].subSections[0].id);
+    setGetRecommendations(false)
   };
   return (
     <>
@@ -51,7 +51,7 @@ export const ScreeningPage = () => {
             <div className="space-y-5 text-[#F1ADB0] text-lg w-full">
               <h2 className="text-black font-bold text-xl px-3">GUIDE:</h2>
               {data.data.map((item) => (
-                <div key={item.id}>
+                <div key={item.id} className={getRecommendations ? " pointer-events-none opacity-[0.32] ": ""}>
                   <h3
                     className={
                       "cursor-pointer px-3 " +

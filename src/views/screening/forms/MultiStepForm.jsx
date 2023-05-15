@@ -3,7 +3,6 @@ import data from "../../../shared/data/data.json";
 import useMultiStepHook from "../../../shared/custom-hooks/useMultiStepForm";
 import { FormNavigation } from "../../../shared/components/form/screening";
 import renderQuestion from "./helper/renderQuestion";
-import { useNavigate } from "react-router-dom";
 
 const MultiStepForm = ({
   selectedSection,
@@ -36,8 +35,6 @@ const MultiStepForm = ({
     isLastStep,
   } = useMultiStepHook(subSectionsArr);
 
-  const navigate = useNavigate();
-
   //set the step to the first step whenever the selected section changes
   useEffect(() => {
     setCurrentStepIndex(0);
@@ -46,7 +43,6 @@ const MultiStepForm = ({
   //check if all the fields of the current step are filled, and then set the isStepComplete accordingly
   useEffect(() => {
     const currentStep = steps[currentStepIndex]; //get the current step
-
     const isCurrentStepComplete = currentStep.questions.every((question) => {
       const fieldValue = formData[question.name];
       if (typeof fieldValue === "undefined") {
@@ -95,11 +91,8 @@ const MultiStepForm = ({
       return;
     }
     console.log("Form submitted:", formData);
-    console.log("greater");
 
     const index = data.data.indexOf(currentSection); //find the index of the currentSection
-    console.log(index);
-    console.log(data.data.length);
 
     if (index + 1 < data.data.length) {
       //if the index is less than the length of the data i.e if it is not the last index
