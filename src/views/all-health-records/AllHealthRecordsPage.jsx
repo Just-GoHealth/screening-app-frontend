@@ -32,35 +32,37 @@ export const AllHealthRecordsPage = () => {
 				}
 			/>
 
-			<GridComponent
-				searchplaceholder="Search for School"
-				fetchUrl="http://localhost:8900/schools"
-				columnDefs={[
-					{ field: 'number', headerName: '#', flex: 1 },
-					{
-						field: 'school_name',
-						headerName: 'School',
-						cellRenderer: GridSchoolNameRenderer,
-					},
-					{ field: 'studentPopulation', headerName: 'Students' },
-					{
-						field: 'createdAt',
-						headerName: 'Date',
-						valueFormatter: function (params) {
-							const date = new Date(params.value);
-							const month = date.toLocaleString('en-US', { month: 'short' });
-							const day = date.getDate();
-
-							return month + ' ' + day;
+			<div className="h-[465px]">
+				<GridComponent
+					searchplaceholder="Search for School"
+					fetchUrl="http://localhost:8900/schools"
+					columnDefs={[
+						{ field: 'number', headerName: '#', flex: 1 },
+						{
+							field: 'school_name',
+							headerName: 'School',
+							cellRenderer: GridSchoolNameRenderer,
 						},
-					},
-					{
-						field: 'download_school',
-						headerName: 'Download',
-						cellRenderer: GridSchoolDownloadAction,
-					},
-				]}
-			/>
+						{ field: 'studentPopulation', headerName: 'Students' },
+						{
+							field: 'createdAt',
+							headerName: 'Date',
+							valueFormatter: function (params) {
+								const date = new Date(params.value);
+								const month = date.toLocaleString('en-US', { month: 'short' });
+								const day = date.getDate();
+
+								return month + ' ' + day;
+							},
+						},
+						{
+							field: 'download_school',
+							headerName: 'Download',
+							cellRenderer: GridSchoolDownloadAction,
+						},
+					]}
+				/>
+			</div>
 		</div>
 	);
 };

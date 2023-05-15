@@ -42,35 +42,37 @@ export const SchoolHealthRecordsPage = () => {
 				<h4>{numberOfStudents}</h4>
 			</div>
 
-			<GridComponent
-				searchplaceholder="Search for Student"
-				fetchUrl={`http://localhost:8900/schools/${schoolId}`}
-				columnDefs={[
-					{ field: 'number', headerName: '#', flex: 1 },
-					{
-						field: 'name',
-						headerName: 'Name',
-						cellRenderer: GridUserNameRenderer,
-					},
-					{ field: 'recommendation' },
-					{
-						field: 'createdAt',
-						headerName: 'Date',
-						valueFormatter: function (params) {
-							const date = new Date(params.value);
-							const month = date.toLocaleString('en-US', { month: 'short' });
-							const day = date.getDate();
-
-							return month + ' ' + day;
+			<div className="h-[435px]">
+				<GridComponent
+					searchplaceholder="Search for Student"
+					fetchUrl={`http://localhost:8900/schools/${schoolId}`}
+					columnDefs={[
+						{ field: 'number', headerName: '#', flex: 1 },
+						{
+							field: 'name',
+							headerName: 'Name',
+							cellRenderer: GridUserNameRenderer,
 						},
-					},
-					{
-						field: 'download_school',
-						headerName: 'Download',
-						cellRenderer: GridUserDownloadAction,
-					},
-				]}
-			/>
+						{ field: 'recommendation' },
+						{
+							field: 'createdAt',
+							headerName: 'Date',
+							valueFormatter: function (params) {
+								const date = new Date(params.value);
+								const month = date.toLocaleString('en-US', { month: 'short' });
+								const day = date.getDate();
+
+								return month + ' ' + day;
+							},
+						},
+						{
+							field: 'download_school',
+							headerName: 'Download',
+							cellRenderer: GridUserDownloadAction,
+						},
+					]}
+				/>
+			</div>
 		</div>
 	);
 };
