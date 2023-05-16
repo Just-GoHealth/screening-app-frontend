@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import data from "../../../shared/data/data.json";
+// import data from "../../../shared/data/data.json";
 import useMultiStepHook from "../../../shared/custom-hooks/useMultiStepForm";
 import { FormNavigation } from "../../../shared/components/form/screening";
 import renderQuestion from "./helper/renderQuestion";
@@ -11,17 +11,19 @@ const MultiStepForm = ({
   formData,
   setFormData,
   handleGetRecommendations,
+  subSectionsArr,
+  showQuestions,
+  data
 }) => {
   //defining states for component
   const [isStepComplete, setIsStepComplete] = useState(false);
   const [currentSection, setCurrentSection] = useState(
     data.data.find((data) => data.id === selectedSection)
   );
+
   const [canSubmit, setCanSubmit] = useState(false);
 
-  //get the subsections of the current section
-  let subSectionsArr = [];
-  data.data.map((item) => subSectionsArr.push(...item.subSections));
+
 
   //Pass subsections as steps
   const {
@@ -34,6 +36,9 @@ const MultiStepForm = ({
     isFirstStep,
     isLastStep,
   } = useMultiStepHook(subSectionsArr);
+
+
+
 
   //set the step to the first step whenever the selected section changes
   useEffect(() => {
@@ -90,6 +95,11 @@ const MultiStepForm = ({
   const handleFormSubmit = (e) => {
     e.preventDefault();
     if (!isStepComplete) {
+      return;
+    }
+
+    if(!showQuestions){
+      alert("Questions are not yet available for the selected grade. Try again later!")
       return;
     }
     const transformedData = {};
