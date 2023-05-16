@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { AccessAndAdd } from '../../shared/components/access-add/AccessAndAdd';
-import { Box, Button, MenuItem, TextField } from '@mui/material';
+import {
+	Box,
+	Button,
+	MenuItem,
+	TextField,
+	CircularProgress,
+} from '@mui/material';
 import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -38,6 +44,7 @@ export const AddNewSchool = () => {
 			message: '',
 		},
 	});
+	const [isLoading, setIsLoading] = useState(false);
 	const { handleGoBack, navigate } = useInAppNavigation();
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -91,6 +98,7 @@ export const AddNewSchool = () => {
 	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setIsLoading(true);
 
 		const school_name = schoolName;
 		const school_location = schoolLocation;
@@ -119,8 +127,12 @@ export const AddNewSchool = () => {
 					toast.success(res.data.message);
 					navigate('/all-health-records');
 				})
-				.catch((err) => toast.error('Something went wrong. Try Again'));
+				.catch((err) => {
+					setIsLoading(false);
+					toast.error('Something went wrong. Try Again');
+				});
 		} else {
+			setIsLoading(false);
 			toast.error('Make sure you fill all fields.');
 		}
 	};
@@ -254,8 +266,9 @@ export const AddNewSchool = () => {
 								type="submit"
 								variant="contained"
 								sx={{ mt: 3, mb: 2, px: 10, bgcolor: '#993399' }}
+								disabled={isLoading}
 							>
-								Continue
+								{isLoading ? <CircularProgress size={24} /> : 'Continue'}
 							</Button>
 						</div>
 					</Box>
