@@ -54,8 +54,7 @@ const renderQuestion = (
   const isPreviousQuestionUnanswered =
     step.questions.length > 1
       ? index > 0 &&
-        typeof formData[step.questions[index - 1].name] ===
-          "undefined"
+        typeof formData[step.questions[index - 1].name] === "undefined"
       : false;
   const opacityStyle =
     isQuestionUnanswered && isPreviousQuestionUnanswered
@@ -218,19 +217,22 @@ const renderQuestion = (
               >
                 {question.options.map((option, index) => (
                   <ToggleButton
-                    value={option.value}
+                    value={[option.name, option.value]}
                     style={{
                       ...styles.squircleRadioButton,
                       backgroundColor:
-                        formData[question.name] === option.value
+                        formData[question.name] && formData[question.name][0] === option.name &&
+                        formData[question.name] && formData[question.name][1] === option.value
                           ? "#003399"
                           : undefined,
                       borderColor:
-                        formData[question.name] === option.value
+                      formData[question.name] && formData[question.name][0] === option.name &&
+                      formData[question.name] && formData[question.name][1] === option.value
                           ? "#003399"
                           : "#ACAEB0",
                       color:
-                        formData[question.name] === option.value
+                      formData[question.name] && formData[question.name][0] === option.name &&
+                      formData[question.name] && formData[question.name][1] === option.value
                           ? "white"
                           : "#ACAEB0",
                     }}
@@ -252,7 +254,6 @@ const renderQuestion = (
       const followUpQuestion = question.options.find(
         (option) => option.value === selectedOption
       )?.followUp;
-      console.log(followUpQuestion);
       return (
         <>
           <QuestionField
@@ -269,19 +270,22 @@ const renderQuestion = (
                 >
                   {question.options.map((option, index) => (
                     <ToggleButton
-                      value={option.value}
+                      value={[option.name, option.value]}
                       style={{
                         ...styles.squircleRadioButton,
                         backgroundColor:
-                          formData[question.name] === option.value
+                        formData[question.name] && formData[question.name][0] === option.name &&
+                        formData[question.name] && formData[question.name][1] === option.value
                             ? "#003399"
                             : undefined,
                         borderColor:
-                          formData[question.name] === option.value
+                        formData[question.name] && formData[question.name][0] === option.name &&
+                        formData[question.name] && formData[question.name][1] === option.value
                             ? "#003399"
                             : "#ACAEB0",
                         color:
-                          formData[question.name] === option.value
+                        formData[question.name] && formData[question.name][0] === option.name &&
+                        formData[question.name] && formData[question.name][1] === option.value
                             ? "white"
                             : "#ACAEB0",
                       }}
@@ -298,67 +302,8 @@ const renderQuestion = (
             style={opacityStyle}
           />
 
-          {followUpQuestion && (
-            <QuestionField
-              title={followUpQuestion.title}
-              subtitle={followUpQuestion.subTitle}
-              control={
-                <>
-                  {followUpQuestion.type === "input" && (
-                    <TextField
-                      size="small"
-                      fullWidth
-                      value={formData[followUpQuestion.name] || ""}
-                      onChange={(e) =>
-                        handleFormInputChange(
-                          followUpQuestion.name,
-                          e.target.value
-                        )
-                      }
-                    />
-                  )}
-
-                  {followUpQuestion.type === "squircicleRadio" && (
-                    <ToggleButtonGroup
-                      exclusive
-                      value={formData[followUpQuestion.name] || ""}
-                      onChange={(e, value) =>
-                        handleFormInputChange(followUpQuestion.name, value)
-                      }
-                      sx={{ flexWrap: "wrap", gap: ".5rem" }}
-                    >
-                      {followUpQuestion.options.map((option, index) => (
-                        <ToggleButton
-                          value={option.value}
-                          style={{
-                            ...styles.squircleRadioButton,
-                            backgroundColor:
-                              formData[followUpQuestion.name] === option.value
-                                ? "#003399"
-                                : undefined,
-                            borderColor:
-                              formData[question.name] === option.value
-                                ? "#003399"
-                                : "#ACAEB0",
-                            color:
-                              formData[followUpQuestion.name] === option.value
-                                ? "white"
-                                : "#ACAEB0",
-                          }}
-                          key={index}
-                        >
-                          {option.name}
-                        </ToggleButton>
-                      ))}
-                    </ToggleButtonGroup>
-                  )}
-                </>
-              }
-              info={followUpQuestion.info}
-              key={followUpQuestion.id}
-              style={opacityStyle}
-            />
-          )}
+          {followUpQuestion && renderQuestion(followUpQuestion)
+          }
         </>
       );
   }

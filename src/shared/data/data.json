@@ -307,7 +307,7 @@
               "subTitle": " Have you recently withdrawn from social situations or activities that you used to participate in?",
               "name": "socialWithdrawal",
               "type": "squircicleRadio",
-              "info": "",
+              "info": "Not feeling like going out with friends or participating in extracurricular activities, Losing interest in hobbies or things that were once enjoyable, Feeling unmotivated to do anything and wanting to stay in bed all day",
               "options": [
                 {
                   "id": 1,
@@ -373,7 +373,7 @@
               "subTitle": "Do you have difficulties concentrating during classes or while studying?",
               "name": "concentrationIssues",
               "type": "squircicleRadio",
-              "info": "",
+              "info": "Difficulty in keeping up with classwork, Inability to understand or comprehend the subject matter,Difficulty completing assignments or homework,                    Lack of motivation to attend classes or study,Poor grades or academic performance",
               "options": [
                 {
                   "id": 1,
@@ -489,6 +489,7 @@
               "subTitle": "Have you been experiencing any new physical symptoms lately?",
               "name": "newPhysicalSymptoms",
               "type": "yesOrNo",
+              "info": "Watch our medical experts to help decide the routine",
               "options": [
                 {
                   "id": 1,
@@ -515,6 +516,7 @@
               "subTitle": "Have you noticed any changes in your appetite or weight recently?",
               "name": "appetiteChanges",
               "type": "squircicleRadio",
+              "info": "Watch our medical experts to help decide the routine",
               "options": [
                 {
                   "id": 1,
@@ -551,7 +553,7 @@
               "subTitle": " Have you experienced or witnessed any traumatic events, such as physical or sexual abuse, accidents, natural disasters, or violence?",
               "name": "traumaticEvents",
               "type": "yesOrNo",
-              "info": "",
+              "info": "Watch our medical experts to help decide the routine",
               "options": [
                 {
                   "id": 1,
@@ -816,7 +818,7 @@
       "name": "Risk Factors",
       "subSections": [
         {
-          "id":11,
+          "id": 11,
           "name": "Health Problems",
           "questions": [
             {
@@ -871,7 +873,7 @@
               "subTitle": " Do you come from a low-income household?",
               "name": "financialDifficulties",
               "type": "yesOrNo",
-              "info": "",
+              "info": "Watch our medical experts to help decide the routine",
               "options": [
                 {
                   "id": 1,
@@ -911,7 +913,7 @@
               "subTitle": "Have you used any illegal substances in the past year?",
               "name": "substanceUse",
               "type": "yesOrNo",
-              "info": " breakups, conflicts, or betrayal?",
+              "info": "Watch our medical experts to help decide the routine",
               "options": [
                 {
                   "id": 1,
@@ -997,6 +999,7 @@
               "subTitle": "How often do you communicate with your family members about your emotions and feelings?",
               "name": "familyCommunication",
               "type": "squircicleRadio",
+              "info": "Watch our medical experts to help decide the routine",
               "options": [
                 {
                   "id": 1,
