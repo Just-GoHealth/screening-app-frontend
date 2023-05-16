@@ -20,7 +20,7 @@ export const ScreeningPage = () => {
     setSelectedSubSection(subSectionId);
   };
 
-    //function to handle subSection change
+  //function to handle subSection change
   const handleSelectedSubSection = (id) => {
     setSelectedSubSection(id);
   };

@@ -10,7 +10,7 @@ const MultiStepForm = ({
   handleSelectedSection,
   formData,
   setFormData,
-  handleGetRecommendations
+  handleGetRecommendations,
 }) => {
   //defining states for component
   const [isStepComplete, setIsStepComplete] = useState(false);
@@ -59,6 +59,8 @@ const MultiStepForm = ({
       }
     }); // logic to check if the current step is complete
     setIsStepComplete(isCurrentStepComplete);
+
+    
   }, [formData, selectedSection, selectedSubSection, step]);
 
   //change the selectedsubsection or step accordingly once the step changes
@@ -90,7 +92,44 @@ const MultiStepForm = ({
     if (!isStepComplete) {
       return;
     }
-    console.log("Form submitted:", formData);
+    const transformedData = {};
+
+    data.data.forEach((section) => {
+      const sectionName = section.name;
+      transformedData[sectionName] = {};
+
+      section.subSections.forEach((subSection) => {
+        const subSectionName = subSection.name;
+        transformedData[sectionName][subSectionName] = {};
+
+        subSection.questions.forEach((question) => {
+          const questionId = question.id;
+          const questionTitle = question.title;
+          const questionName = question.name;
+          const questionValue = formData[questionName];
+
+          transformedData[sectionName][subSectionName][questionId] = {
+            title: questionTitle,
+            value: questionValue,
+          };
+
+          // Check if follow-up question exists
+          if (question.followUp) {
+            const followUp = question.followUp;
+            const followUpTitle = followUp.title;
+            const followUpName = question.followUp.name;
+            const followUpValue = formData[followUpName];
+
+            transformedData[sectionName][subSectionName][questionId].followUp =
+              {
+                title: followUpTitle,
+                value: followUpValue,
+              };
+          }
+        });
+      });
+    });
+    console.log("Form submitted:", transformedData);
 
     const index = data.data.indexOf(currentSection); //find the index of the currentSection
 
@@ -99,7 +138,7 @@ const MultiStepForm = ({
       const nextSection = data.data[index + 1]; //get the next section i.e the next index
       handleSelectedSection(nextSection.id); //pass the next section's id into the handleselected section function
     } else {
-      handleGetRecommendations()
+      handleGetRecommendations();
     }
   };
 
