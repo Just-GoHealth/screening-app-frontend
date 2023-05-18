@@ -10,12 +10,12 @@ function HeroSection() {
 	return (
 		<>
 			<div className="min-h-screen flex justify-center items-center">
-				<div className="max-w-5xl mx-auto lg:px-8">
+				<div className="max-w-6xl mx-auto lg:px-8">
 					<div className=" overflow-hidden px-4">
 						<img
 							src={Logo}
 							alt="JustGo Logo"
-							className=" w-60 -translate-x-2"
+							className=" w-60 -translate-x-3"
 						/>
 					</div>
 					<h1 className=" lg:hidden text-3xl md:text-5xl text-center font-bold text-[#993399] my-4">
@@ -34,7 +34,7 @@ function HeroSection() {
 								better understanding of your mental health status and take steps
 								to maintain good mental health.
 							</p>
-							<div className="grid grid-cols-2 mt-8">
+							<div className="grid md:grid-cols-2 gap-4 mt-8 px-8 lg:px-4">
 								<button
 									onClick={startScreening}
 									className="py-2 bg-[#993399] rounded-md text-white"
