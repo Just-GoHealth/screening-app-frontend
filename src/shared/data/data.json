@@ -176,8 +176,38 @@
             },
             {
               "id": 3,
+              "title": "Excessive Worry",
+              "subTitle": "How often have you felt inadequate or worthless in the past two weeks?",
+              "type": "squircicleRadio",
+              "name": "excessiveWorry",
+              "info": "Feeling like a failure, feeling guilty, feeling ashamed",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Most of the time",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "id": 4,
               "title": "Low Self Esteem.",
-              "subTitle": "How often have you felt that you have low self-esteem in the past two weeks?                            ",
+              "subTitle": "How often have you felt that you have low self-esteem in the past two weeks?",
               "type": "squircicleRadio",
               "name": "lowSelfEsteem",
               "info": "Feeling worthless, feeling like you are not good enough, and being overly self-critical",

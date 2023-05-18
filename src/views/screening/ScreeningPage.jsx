@@ -6,6 +6,7 @@ import data from "../../shared/data/data.json";
 import MultiStepForm from "./forms/MultiStepForm";
 import { useInAppNavigation } from "../../shared/custom-hooks/useInAppNavigation";
 import GetRecommendations from "./recommendations/GetRecommendations";
+import { useFetchDetials } from "../../shared/custom-hooks";
 
 export const ScreeningPage = () => {
   const [selectedSection, setSelectedSection] = useState(data.data[0].id);
@@ -19,6 +20,11 @@ export const ScreeningPage = () => {
     return initialSubSectionsArr;
   });
   const [showQuestions, setShowQuestions] = useState(true);
+
+  const { data: schools } = useFetchDetials(
+    ["schools"],
+    "http://localhost:8900/schools"
+  );
 
   //function to handle section change
   const handleSelectedSection = (id, subSectionId) => {
@@ -226,6 +232,7 @@ export const ScreeningPage = () => {
               handleGetRecommendations={handleGetRecommendations}
               subSectionsArr={subSectionsArr}
               showQuestions={showQuestions}
+              schools={schools || []}
             />
           )}
         </main>

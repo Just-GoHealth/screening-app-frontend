@@ -43,7 +43,8 @@ const renderQuestion = (
   formData,
   currentStepIndex,
   handleFormInputChange,
-  step
+  step,
+  schools
 ) => {
   if (!question) {
     return null;
@@ -101,9 +102,9 @@ const renderQuestion = (
                 height: 40,
               }}
             >
-              {question.options.map((option, index) => (
-                <MenuItem value={option} key={index}>
-                  {option}
+              {schools.map((school, index) => (
+                <MenuItem value={school.id} key={index}>
+                  {school.name}
                 </MenuItem>
               ))}
             </Select>
@@ -221,18 +222,24 @@ const renderQuestion = (
                     style={{
                       ...styles.squircleRadioButton,
                       backgroundColor:
-                        formData[question.name] && formData[question.name][0] === option.name &&
-                        formData[question.name] && formData[question.name][1] === option.value
+                        formData[question.name] &&
+                        formData[question.name][0] === option.name &&
+                        formData[question.name] &&
+                        formData[question.name][1] === option.value
                           ? "#003399"
                           : undefined,
                       borderColor:
-                      formData[question.name] && formData[question.name][0] === option.name &&
-                      formData[question.name] && formData[question.name][1] === option.value
+                        formData[question.name] &&
+                        formData[question.name][0] === option.name &&
+                        formData[question.name] &&
+                        formData[question.name][1] === option.value
                           ? "#003399"
                           : "#ACAEB0",
                       color:
-                      formData[question.name] && formData[question.name][0] === option.name &&
-                      formData[question.name] && formData[question.name][1] === option.value
+                        formData[question.name] &&
+                        formData[question.name][0] === option.name &&
+                        formData[question.name] &&
+                        formData[question.name][1] === option.value
                           ? "white"
                           : "#ACAEB0",
                     }}
@@ -251,9 +258,14 @@ const renderQuestion = (
       );
     case "yesOrNo":
       const selectedOption = formData[question.name] || "";
-      const followUpQuestion = question.options.find(
-        (option) => option.value === selectedOption
-      )?.followUp;
+      let followUpQuestion = null;
+
+      if (selectedOption) {
+        const selectedValue = formData[question.name][1];
+        const option = question.options.find((o) => o.value === selectedValue);
+        followUpQuestion = option?.followUp;
+      }
+      console.log(followUpQuestion);
       return (
         <>
           <QuestionField
@@ -274,18 +286,24 @@ const renderQuestion = (
                       style={{
                         ...styles.squircleRadioButton,
                         backgroundColor:
-                        formData[question.name] && formData[question.name][0] === option.name &&
-                        formData[question.name] && formData[question.name][1] === option.value
+                          formData[question.name] &&
+                          formData[question.name][0] === option.name &&
+                          formData[question.name] &&
+                          formData[question.name][1] === option.value
                             ? "#003399"
                             : undefined,
                         borderColor:
-                        formData[question.name] && formData[question.name][0] === option.name &&
-                        formData[question.name] && formData[question.name][1] === option.value
+                          formData[question.name] &&
+                          formData[question.name][0] === option.name &&
+                          formData[question.name] &&
+                          formData[question.name][1] === option.value
                             ? "#003399"
                             : "#ACAEB0",
                         color:
-                        formData[question.name] && formData[question.name][0] === option.name &&
-                        formData[question.name] && formData[question.name][1] === option.value
+                          formData[question.name] &&
+                          formData[question.name][0] === option.name &&
+                          formData[question.name] &&
+                          formData[question.name][1] === option.value
                             ? "white"
                             : "#ACAEB0",
                       }}
@@ -302,8 +320,95 @@ const renderQuestion = (
             style={opacityStyle}
           />
 
-          {followUpQuestion && renderQuestion(followUpQuestion)
-          }
+          {followUpQuestion && (
+            <QuestionField
+              title={followUpQuestion.title}
+              subtitle={followUpQuestion.subTitle}
+              control={
+                <>
+                  {followUpQuestion.type === "input" && (
+                    <TextField
+                      size="small"
+                      fullWidth
+                      value={formData[followUpQuestion.name] || ""}
+                      onChange={(e) =>
+                        handleFormInputChange(
+                          followUpQuestion.name,
+                          e.target.value
+                        )
+                      }
+                    />
+                  )}
+
+                  {followUpQuestion.type === "squircicleRadio" && (
+                    <ToggleButtonGroup
+                      exclusive
+                      value={formData[followUpQuestion.name] || ""}
+                      onChange={(e, value) =>
+                        handleFormInputChange(followUpQuestion.name, value)
+                      }
+                      sx={{ flexWrap: "wrap", gap: ".5rem" }}
+                    >
+                      {followUpQuestion.options.map((option, index) => (
+                        <ToggleButton
+                        value={[option.name, option.value]}
+                        style={{
+                          ...styles.squircleRadioButton,
+                          backgroundColor:
+                            formData[followUpQuestion.name] &&
+                            formData[followUpQuestion.name][0] === option.name &&
+                            formData[followUpQuestion.name] &&
+                            formData[followUpQuestion.name][1] === option.value
+                              ? "#003399"
+                              : undefined,
+                          borderColor:
+                            formData[followUpQuestion.name] &&
+                            formData[followUpQuestion.name][0] === option.name &&
+                            formData[followUpQuestion.name] &&
+                            formData[followUpQuestion.name][1] === option.value
+                              ? "#003399"
+                              : "#ACAEB0",
+                          color:
+                            formData[followUpQuestion.name] &&
+                            formData[followUpQuestion.name][0] === option.name &&
+                            formData[followUpQuestion.name] &&
+                            formData[followUpQuestion.name][1] === option.value
+                              ? "white"
+                              : "#ACAEB0",
+                        }}
+                          key={index}
+                        >
+                          {option.name}
+                        </ToggleButton>
+                      ))}
+                    </ToggleButtonGroup>
+                  )}
+                  {followUpQuestion.type === "dropdown" && (
+                    <Select
+                      value={formData[followUpQuestion.name] || ""}
+                      defaultValue={""}
+                      fullWidth
+                      onChange={(e) =>
+                        handleFormInputChange(followUpQuestion.name, e.target.value)
+                      }
+                      sx={{
+                        height: 40,
+                      }}
+                    >
+                      {followUpQuestion.options.map((option, index) => (
+                        <MenuItem value={option} key={index}>
+                          {option}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  )}
+                </>
+              }
+              info={followUpQuestion.info}
+              key={followUpQuestion.id}
+              style={opacityStyle}
+            />
+          )}
         </>
       );
   }

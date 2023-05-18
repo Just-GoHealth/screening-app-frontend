@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import data from "../../../shared/data/data.json";
 import useMultiStepHook from "../../../shared/custom-hooks/useMultiStepForm";
 import { FormNavigation } from "../../../shared/components/form/screening";
 import renderQuestion from "./helper/renderQuestion";
@@ -13,7 +12,8 @@ const MultiStepForm = ({
   handleGetRecommendations,
   subSectionsArr,
   showQuestions,
-  data
+  data,
+  schools
 }) => {
   //defining states for component
   const [isStepComplete, setIsStepComplete] = useState(false);
@@ -91,6 +91,16 @@ const MultiStepForm = ({
     }));
   };
 
+  const handleFormFollowUpInputChange = (mainFieldName, followUpFieldName, value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [mainFieldName]: {
+        ...prevFormData[mainFieldName],
+        [followUpFieldName]: value
+      }
+    }));
+  };
+
   //handle submit of form
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -102,6 +112,8 @@ const MultiStepForm = ({
       alert("Questions are not yet available for the selected grade. Try again later!")
       return;
     }
+
+    console.log('raw form data ', formData)
     const transformedData = {};
 
     data.data.forEach((section) => {
@@ -123,23 +135,31 @@ const MultiStepForm = ({
             value: questionValue,
           };
 
-          // Check if follow-up question exists
-          if (question.followUp) {
-            const followUp = question.followUp;
-            const followUpTitle = followUp.title;
-            const followUpName = question.followUp.name;
-            const followUpValue = formData[followUpName];
 
-            transformedData[sectionName][subSectionName][questionId].followUp =
-              {
-                title: followUpTitle,
-                value: followUpValue,
-              };
+          if(question.options && questionValue && questionValue.length > 1){
+
+            const questionValueOption =  question.options.find((o) => o.value === questionValue[1])
+
+            if (questionValueOption?.followUp) {
+              const followUp = questionValueOption.followUp;
+              const followUpTitle = followUp.title;
+              const followUpName = followUp.name;
+              const followUpValue = formData[followUpName];
+    
+              transformedData[sectionName][subSectionName][questionId].followUp =
+                {
+                  title: followUpTitle,
+                  value: followUpValue,
+                };
+            }
           }
+
+          // Check if follow-up question exists
         });
       });
     });
     console.log("Form submitted:", transformedData);
+    alert(JSON.stringify(transformedData))
 
     const index = data.data.indexOf(currentSection); //find the index of the currentSection
 
@@ -175,7 +195,8 @@ const MultiStepForm = ({
                 formData,
                 currentStepIndex,
                 handleFormInputChange,
-                step
+                step,
+                schools
               )
             )}
           </div>
