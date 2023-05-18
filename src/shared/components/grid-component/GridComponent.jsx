@@ -16,7 +16,6 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 		defaultColDef: {
 			sortable: true,
 			resizable: true,
-			filter: true,
 			flex: 2,
 			cellStyle: {
 				whiteSpace: 'normal',
@@ -27,7 +26,7 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 		},
 		animateRows: true,
 		pagination: true,
-		paginationPageSize: 8,
+		paginationPageSize: 10,
 	};
 
 	const onGridReady = useCallback((params) => {
