@@ -1,7 +1,8 @@
 import React from 'react';
-import { HealthSummary } from '../../shared/components/health-summary';
 import { Navbar } from '../../shared/components/navbar/Navbar';
 import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
+import { UserResults } from '../../shared/components/health-results';
+import { CircularProgress } from '@mui/material';
 
 const screeningReport = [
 	'High Risk mental health concerns',
@@ -13,7 +14,7 @@ export const UserHealthSummaryPage = () => {
 	const { params } = useInAppNavigation();
 	const userId = params.userId;
 
-	const { data: studentData } = useFetchDetials(
+	const { data: studentData, isLoading } = useFetchDetials(
 		['user-details', userId],
 		`http://localhost:8900/student/${userId}`
 	);
@@ -21,21 +22,32 @@ export const UserHealthSummaryPage = () => {
 	// console.log({ studentData });
 
 	return (
-		<div className="bg-[#DFE7F4]">
-			<Navbar showBackButton showLogo />
-
-			<HealthSummary
-				title={'Jacob Davis'}
-				subTitle={'School Name | 15 yrs | Male'}
-				date={'April 1, 2023'}
-				screeningReport={screeningReport}
-				recommendations={
-					'JustGo Health WorkShop. Focused on psychotherapy and mindfulness techniques (GHC 50)'
-				}
-				answers={
-					'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ad impedit dicta, fugit officia odit quisquam itaque dolorum.'
-				}
+		<>
+			<Navbar
+				showBackButton
+				showLogo
+				className="bg-[#DFE7F4] max-w-6xl mx-auto"
 			/>
-		</div>
+			{isLoading ? (
+				<div className="h-[90vh] flex flex-col items-center justify-center">
+					<CircularProgress color="primary" />
+				</div>
+			) : (
+				<>
+					<UserResults
+						title={'Jacob Davis'}
+						subTitle={'School Name | 15 yrs | Male'}
+						date={'April 1, 2023'}
+						screeningReport={screeningReport}
+						recommendations={
+							'JustGo Health WorkShop. Focused on psychotherapy and mindfulness techniques (GHC 50)'
+						}
+						answers={
+							'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ad impedit dicta, fugit officia odit quisquam itaque dolorum.'
+						}
+					/>
+				</>
+			)}
+		</>
 	);
 };

@@ -1,18 +1,23 @@
 import React from 'react';
-import './Navbar.styles.css';
 import { IconButton } from '@mui/material';
 import { AiOutlineLeft } from 'react-icons/ai';
 import { logo } from '../../../assets/images';
 import { useInAppNavigation } from '../../custom-hooks/useInAppNavigation';
+import './Navbar.styles.css';
 
-export const Navbar = ({ showBackButton, showLogo, showRecommendations }) => {
+export const Navbar = ({
+	showBackButton,
+	showLogo,
+	showRecommendations,
+	className,
+}) => {
 	const { handleGoBack, handleGoHome } = useInAppNavigation();
 
 	return (
 		<div
-			className={
+			className={`${
 				showRecommendations ? 'flex gap-x-10 h-[10vh] ' : 'nav-container'
-			}
+			} ${className}`}
 		>
 			<div className={showRecommendations ? 'basis-[20%] pl-20 ' : ''}>
 				{showBackButton && (

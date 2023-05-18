@@ -29,14 +29,7 @@ export const GridUserNameRenderer = ({ data }) => {
 		navigate(`/user-health-summary/${data._id}`);
 	};
 
-	return (
-		<div
-			onClick={handleClick}
-			className="hover:underline hover:text-[#1D509E] cursor-pointer transition-all duration-300 ease-out"
-		>
-			{value}
-		</div>
-	);
+	return <div>{value}</div>;
 };
 
 export const GridSchoolDownloadAction = ({ data }) => {
