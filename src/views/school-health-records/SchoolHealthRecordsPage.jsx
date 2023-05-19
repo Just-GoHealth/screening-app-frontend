@@ -11,7 +11,7 @@ import {
 import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
 
 export const SchoolHealthRecordsPage = () => {
-	const { handleGoBack, params } = useInAppNavigation();
+	const { handleGoBack, params, navigate } = useInAppNavigation();
 	const schoolId = params.schoolId;
 
 	const { data: schoolData } = useFetchDetials(
@@ -24,13 +24,20 @@ export const SchoolHealthRecordsPage = () => {
 		  `${schoolData.students.length > 1 ? ' Students' : ' Student'}`
 		: '0 Students';
 
+	const handleSchoolRecordsDownload = () => {
+		navigate(`/school-health-summary/${schoolId}`);
+	};
+
 	return (
 		<div className="health-records-container">
 			<HealthRecordsNavBar
 				heading={schoolName}
 				onLeftIconClick={handleGoBack}
 				rightIcon={
-					<IconButton style={{ background: '#BCBEC0' }}>
+					<IconButton
+						onClick={handleSchoolRecordsDownload}
+						style={{ background: '#BCBEC0' }}
+					>
 						<BsFillCloudArrowDownFill color="white" />
 					</IconButton>
 				}
