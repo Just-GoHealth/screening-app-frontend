@@ -11,6 +11,7 @@ import { SchoolHealthRecordsPage } from './views/school-health-records';
 import { SchoolHealthSummaryPage } from './views/school-health-summary';
 import { AccessHealthRecords } from './views/access-health-records/AccessHealthRecords';
 import { AddNewSchool } from './views/add-new-school/AddNewSchool';
+import { ProtectedRoute } from './shared/feature/authentication/ProtectedRoute';
 
 const App = () => {
 	return (
@@ -21,19 +22,25 @@ const App = () => {
 					path="/access-health-records"
 					element={<AccessHealthRecords />}
 				/>
-				<Route path="/add-new-school" element={<AddNewSchool />} />
-				<Route path="/all-health-records" element={<AllHealthRecordsPage />} />
+				<Route
+					path="/add-new-school"
+					element={<ProtectedRoute page={<AddNewSchool />} />}
+				/>
+				<Route
+					path="/all-health-records"
+					element={<ProtectedRoute page={<AllHealthRecordsPage />} />}
+				/>
 				<Route
 					path="/school-health-records/:schoolId"
-					element={<SchoolHealthRecordsPage />}
+					element={<ProtectedRoute page={<SchoolHealthRecordsPage />} />}
 				/>
 				<Route
 					path="/school-health-summary/:schoolId"
-					element={<SchoolHealthSummaryPage />}
+					element={<ProtectedRoute page={<SchoolHealthSummaryPage />} />}
 				/>
 				<Route
 					path="/user-health-summary/:userId"
-					element={<UserHealthSummaryPage />}
+					element={<ProtectedRoute page={<UserHealthSummaryPage />} />}
 				/>
 
 				<Route path="/screening" element={<ScreeningPage />} />
