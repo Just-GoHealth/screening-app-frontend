@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../context/auth/AuthContext';
 
 export const ProtectedRoute = ({ page }) => {
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const { isAuthenticated } = useContext(AuthContext);
 
 	return isAuthenticated ? (
 		page
