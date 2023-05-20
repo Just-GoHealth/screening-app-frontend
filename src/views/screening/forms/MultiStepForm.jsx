@@ -35,6 +35,10 @@ const MultiStepForm = ({
     isLastStep,
   } = useMultiStepHook(subSectionsArr);
 
+  useEffect(() => {
+    console.log("schoools ", schools);
+  }, []);
+
   //set the step to the first step whenever the selected section changes
   useEffect(() => {
     setCurrentStepIndex(0);
@@ -121,7 +125,7 @@ const MultiStepForm = ({
         parent_name: formData?.parentName,
         parent_mobile: formData?.parentContact,
         screenedBy: formData?.screenedBy,
-        school_name: "modern2 international school",
+        school_name: formData?.school,
         signs_and_symptoms: {
           emotional_disorder: {
             feeling_sad_or_low: formData?.feelingSadOrLow,
@@ -243,10 +247,7 @@ const MultiStepForm = ({
                 currentStepIndex,
                 handleFormInputChange,
                 step,
-                (schools = [
-                  { id: 1, name: "Achimota School" },
-                  { id: 2, name: "St. Peters" },
-                ])
+                schools
               )
             )}
           </div>

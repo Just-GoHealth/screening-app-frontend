@@ -21,10 +21,14 @@ export const ScreeningPage = () => {
   });
   const [showQuestions, setShowQuestions] = useState(true);
 
-  const { data: schools } = useFetchDetials(
+  const { data: schoolsData } = useFetchDetials(
     ["schools"],
     "http://localhost:8900/schools"
   );
+
+  useEffect(() => {
+    console.log("schoools  yes ", schoolsData);
+  }, []);
 
   //function to handle section change
   const handleSelectedSection = (id, subSectionId) => {
@@ -232,7 +236,7 @@ export const ScreeningPage = () => {
               handleGetRecommendations={handleGetRecommendations}
               subSectionsArr={subSectionsArr}
               showQuestions={showQuestions}
-              schools={schools || []}
+              schools={schoolsData?.school_list}
             />
           )}
         </main>

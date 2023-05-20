@@ -102,9 +102,9 @@ const renderQuestion = (
                 height: 40,
               }}
             >
-              {schools.map((school, index) => (
-                <MenuItem value={school.id} key={index}>
-                  {school.name}
+              {schools?.map((school, index) => (
+                <MenuItem value={school._id} key={index}>
+                  {school.school_name}
                 </MenuItem>
               ))}
             </Select>
