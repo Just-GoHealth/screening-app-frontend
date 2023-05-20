@@ -13,7 +13,7 @@ const MultiStepForm = ({
   subSectionsArr,
   showQuestions,
   data,
-  schools
+  schools,
 }) => {
   //defining states for component
   const [isStepComplete, setIsStepComplete] = useState(false);
@@ -22,8 +22,6 @@ const MultiStepForm = ({
   );
 
   const [canSubmit, setCanSubmit] = useState(false);
-
-
 
   //Pass subsections as steps
   const {
@@ -36,9 +34,6 @@ const MultiStepForm = ({
     isFirstStep,
     isLastStep,
   } = useMultiStepHook(subSectionsArr);
-
-
-
 
   //set the step to the first step whenever the selected section changes
   useEffect(() => {
@@ -64,8 +59,6 @@ const MultiStepForm = ({
       }
     }); // logic to check if the current step is complete
     setIsStepComplete(isCurrentStepComplete);
-
-    
   }, [formData, selectedSection, selectedSubSection, step]);
 
   //change the selectedsubsection or step accordingly once the step changes
@@ -91,13 +84,17 @@ const MultiStepForm = ({
     }));
   };
 
-  const handleFormFollowUpInputChange = (mainFieldName, followUpFieldName, value) => {
+  const handleFormFollowUpInputChange = (
+    mainFieldName,
+    followUpFieldName,
+    value
+  ) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [mainFieldName]: {
         ...prevFormData[mainFieldName],
-        [followUpFieldName]: value
-      }
+        [followUpFieldName]: value,
+      },
     }));
   };
 
@@ -108,58 +105,108 @@ const MultiStepForm = ({
       return;
     }
 
-    if(!showQuestions){
-      alert("Questions are not yet available for the selected grade. Try again later!")
+    if (!showQuestions) {
+      alert(
+        "Questions are not yet available for the selected grade. Try again later!"
+      );
       return;
     }
+    if (formData.grade && formData.grade >= "7") {
+      const transformedData = {
+        full_name: formData?.fullName,
+        age: formData?.age,
+        gender: formData?.gender === "M" ? "Male" : "Female",
+        location: formData?.location,
+        grade: formData?.grade,
+        parent_name: formData?.parentName,
+        parent_mobile: formData?.parentContact,
+        screenedBy: formData?.screenedBy,
+        school_name: "modern2 international school",
+        signs_and_symptoms: {
+          emotional_disorder: {
+            feeling_sad_or_low: formData?.feelingSadOrLow,
+            feeling_inadequate_or_useless: formData?.feelingInadequateOrUseless,
+            excessive_worry: formData?.excessiveWorry,
+            low_self_esteem: formData?.lowSelfEsteem,
+          },
+          behavioral_disorder: {
+            aggressive_behavior: formData?.aggressiveBehavior,
+            suspensions_punishments: formData?.suspensions,
+          },
+          suicidal_actions: {
+            suicidal_thoughts: formData?.suicidalThoughts,
+          },
+          loss_of_interest: {
+            social_withdrawal: formData?.socialWithdrawal,
+            lack_of_motivation: formData?.motivationLoss,
+          },
+          difficulties_in_school: {
+            concentration_issues: formData?.concentrationIssues,
+            decline_in_grades: formData?.declineInGrades,
+          },
+          sleep_disturbance: {
+            sleep_troubles: formData?.sleepTroubles,
+            restful_sleep: formData?.restfulSleep,
+          },
+          unexplained_physical_symptoms: {
+            new_physical_symptoms: formData?.newPhysicalSymptoms,
+            specify_symptoms: formData?.physicalSymptoms,
+            appetite_changes: formData?.appetiteChanges,
+          },
+        },
+        triggers: {
+          exposure_to_trauma: {
+            traumatic_events: formData?.traumaticEvents,
+            traumatic_related_thoughts: formData?.traumaThoughts,
+          },
+          academic_pressure: {
+            academic_stress: formData?.academicStress,
+          },
+          dysfunctional_family: {
+            family_conflict: formData?.familyConflict,
+            family_situation: formData?.familySituation,
+            living_situation_change: formData?.situationChange,
+          },
+          peer_pressure: {
+            bullying: formData?.bullyingAndHarassment,
+          },
+          relationship_problems: {
+            coping_with_heartbreak: formData?.copingWithHeartbreak,
+            feeling_disconnected: formData?.feelingDisconnected,
+          },
+        },
+        risk_factors: {
+          health_problems: {
+            chronic_illness: formData?.chronicIllness,
+          },
+          family_mental_health: {
+            family_member_disorder: formData?.familyMemberDisorder,
+          },
+          socioeconomic_disadvantage: {
+            financial_difficulties: formData?.financialDifficulties,
+            opportunity_limitations: formData?.opportunityLimitations,
+          },
+          substance_abuse: {
+            substance_use: formData?.substanceUse,
+            substance_use_frequency: formData?.substanceUseFrequency,
+            exposure_to_substance_abuse: formData?.substanceAbuseExposure,
+          },
+        },
+        support_systems: {
+          supportive_family_relationship: {
+            family_communication: formData?.familyCommunication,
+          },
+          mental_health_awareness: {
+            mental_health_education: formData?.mentalHealthEducation,
+          },
+          leisure_activities: {
+            enjoyable_activities: formData?.enjoyableActivities,
+          },
+        },
+      };
+    }
 
-    console.log('raw form data ', formData)
-    const transformedData = {};
-
-    data.data.forEach((section) => {
-      const sectionName = section.name;
-      transformedData[sectionName] = {};
-
-      section.subSections.forEach((subSection) => {
-        const subSectionName = subSection.name;
-        transformedData[sectionName][subSectionName] = {};
-
-        subSection.questions.forEach((question) => {
-          const questionId = question.id;
-          const questionTitle = question.title;
-          const questionName = question.name;
-          const questionValue = formData[questionName];
-
-          transformedData[sectionName][subSectionName][questionId] = {
-            title: questionTitle,
-            value: questionValue,
-          };
-
-
-          if(question.options && questionValue && questionValue.length > 1){
-
-            const questionValueOption =  question.options.find((o) => o.value === questionValue[1])
-
-            if (questionValueOption?.followUp) {
-              const followUp = questionValueOption.followUp;
-              const followUpTitle = followUp.title;
-              const followUpName = followUp.name;
-              const followUpValue = formData[followUpName];
-    
-              transformedData[sectionName][subSectionName][questionId].followUp =
-                {
-                  title: followUpTitle,
-                  value: followUpValue,
-                };
-            }
-          }
-
-          // Check if follow-up question exists
-        });
-      });
-    });
     console.log("Form submitted:", transformedData);
-    alert(JSON.stringify(transformedData))
 
     const index = data.data.indexOf(currentSection); //find the index of the currentSection
 
@@ -196,7 +243,10 @@ const MultiStepForm = ({
                 currentStepIndex,
                 handleFormInputChange,
                 step,
-                schools
+                (schools = [
+                  { id: 1, name: "Achimota School" },
+                  { id: 2, name: "St. Peters" },
+                ])
               )
             )}
           </div>

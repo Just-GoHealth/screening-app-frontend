@@ -265,7 +265,6 @@ const renderQuestion = (
         const option = question.options.find((o) => o.value === selectedValue);
         followUpQuestion = option?.followUp;
       }
-      console.log(followUpQuestion);
       return (
         <>
           <QuestionField
@@ -381,6 +380,7 @@ const renderQuestion = (
                           {option.name}
                         </ToggleButton>
                       ))}
+                      
                     </ToggleButtonGroup>
                   )}
                   {followUpQuestion.type === "dropdown" && (
