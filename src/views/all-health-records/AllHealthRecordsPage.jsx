@@ -49,7 +49,9 @@ export const AllHealthRecordsPage = () => {
 							headerName: 'Date',
 							valueFormatter: function (params) {
 								const date = new Date(params.value);
-								const month = date.toLocaleString('en-US', { month: 'short' });
+								const month = date.toLocaleString('en-US', {
+									month: 'short',
+								});
 								const day = date.getDate();
 
 								return month + ' ' + day;

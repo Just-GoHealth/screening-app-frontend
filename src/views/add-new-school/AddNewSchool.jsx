@@ -48,53 +48,60 @@ export const AddNewSchool = () => {
 	const { handleGoBack, navigate } = useInAppNavigation();
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	const handleValidation = (
-		school_name,
-		school_location,
-		school_type,
-		coordinator,
-		mobile,
-		email
-	) => {
-		if (school_name === '') {
+	const mobileRegex = /^\d{10}$/;
+
+	const validateForm = () => {
+		let validated = true;
+
+		if (schoolName === '') {
 			setFormErrors((prev) => ({
 				...prev,
 				schoolName: { status: true, message: 'Required' },
 			}));
-			return false;
-		} else if (school_location === '') {
+			validated = false;
+		}
+
+		if (schoolLocation === '') {
 			setFormErrors((prev) => ({
 				...prev,
 				schoolLocation: { status: true, message: 'Required' },
 			}));
-			return false;
-		} else if (school_type === '') {
+			validated = false;
+		}
+
+		if (schoolLocation === '') {
 			setFormErrors((prev) => ({
 				...prev,
 				schoolType: { status: true, message: 'Required' },
 			}));
-			return false;
-		} else if (coordinator === '') {
+			validated = false;
+		}
+
+		if (coordinator === '') {
 			setFormErrors((prev) => ({
 				...prev,
 				coordinator: { status: true, message: 'Required' },
 			}));
-			return false;
-		} else if (mobile === '') {
-			setFormErrors((prev) => ({
-				...prev,
-				mobile: { status: true, message: 'Required' },
-			}));
-			return false;
-		} else if (email === '' || !emailRegex.test(email)) {
-			setFormErrors((prev) => ({
-				...prev,
-				email: { status: true, message: 'Required. Use valid E-mail format' },
-			}));
-			return false;
-		} else {
-			return true;
+			validated = false;
 		}
+
+		if (mobile === '' || !mobileRegex.test(mobile)) {
+			setFormErrors((prev) => ({
+				...prev,
+				mobile: { status: true, message: 'Required. Use a valid Phone Number' },
+			}));
+			validated = false;
+		}
+
+		if (email === '' || !emailRegex.test(email)) {
+			setFormErrors((prev) => ({
+				...prev,
+				email: { status: true, message: 'Required. Use a valid E-mail format' },
+			}));
+			validated = false;
+		}
+
+		return validated;
 	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -104,16 +111,7 @@ export const AddNewSchool = () => {
 		const school_location = schoolLocation;
 		const school_type = schoolType;
 
-		if (
-			handleValidation(
-				school_name,
-				school_location,
-				school_type,
-				coordinator,
-				mobile,
-				email
-			)
-		) {
+		if (validateForm()) {
 			await axios
 				.post('http://localhost:8900/add-school', {
 					school_name,
@@ -178,7 +176,31 @@ export const AddNewSchool = () => {
 							value={schoolName}
 							onChange={(e) => setSchoolName(e.target.value)}
 							error={formErrors.schoolName.status && !schoolName}
-							helperText={formErrors.schoolName.message}
+							helperText={
+								formErrors.schoolName.status &&
+								!schoolName &&
+								formErrors.schoolName.message
+							}
+						/>
+						<TextField
+							margin="normal"
+							required
+							fullWidth
+							id="email"
+							label="Email"
+							name="email"
+							autoComplete="email"
+							size="small"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							error={
+								formErrors.email.status && (!email || !emailRegex.test(email))
+							}
+							helperText={
+								formErrors.email.status &&
+								(!email || !emailRegex.test(email)) &&
+								formErrors.email.message
+							}
 						/>
 						<TextField
 							margin="normal"
@@ -192,7 +214,11 @@ export const AddNewSchool = () => {
 							value={schoolLocation}
 							onChange={(e) => setSchooLocation(e.target.value)}
 							error={formErrors.schoolLocation.status && !schoolLocation}
-							helperText={formErrors.schoolLocation.message}
+							helperText={
+								formErrors.schoolLocation.status &&
+								!schoolLocation &&
+								formErrors.schoolLocation.message
+							}
 						/>
 						<TextField
 							id="school-select"
@@ -207,7 +233,7 @@ export const AddNewSchool = () => {
 							onChange={(e) => setSchoolType(e.target.value)}
 							error={formErrors.schoolType.status && !schoolType}
 							helperText={
-								formErrors.schoolType.status
+								formErrors.schoolType.status && !schoolType
 									? formErrors.schoolType.message
 									: 'Please select your school'
 							}
@@ -230,7 +256,11 @@ export const AddNewSchool = () => {
 							value={coordinator}
 							onChange={(e) => setCoordinator(e.target.value)}
 							error={formErrors.coordinator.status && !coordinator}
-							helperText={formErrors.coordinator.message}
+							helperText={
+								formErrors.coordinator.status &&
+								!coordinator &&
+								formErrors.coordinator.message
+							}
 						/>
 						<TextField
 							margin="normal"
@@ -243,22 +273,15 @@ export const AddNewSchool = () => {
 							size="small"
 							value={mobile}
 							onChange={(e) => setMobile(e.target.value)}
-							error={formErrors.mobile.status && !mobile}
-							helperText={formErrors.mobile.message}
-						/>
-						<TextField
-							margin="normal"
-							required
-							fullWidth
-							id="email"
-							label="Email"
-							name="email"
-							autoComplete="email"
-							size="small"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							error={formErrors.email.status && !emailRegex.test(email)}
-							helperText={formErrors.email.message}
+							error={
+								formErrors.mobile.status &&
+								(!mobile || !mobileRegex.test(mobile))
+							}
+							helperText={
+								formErrors.mobile.status &&
+								(!mobile || !mobileRegex.test(mobile)) &&
+								formErrors.mobile.message
+							}
 						/>
 
 						<div className="text-center">
