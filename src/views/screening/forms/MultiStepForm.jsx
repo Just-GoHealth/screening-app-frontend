@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import useMultiStepHook from "../../../shared/custom-hooks/useMultiStepForm";
 import { FormNavigation } from "../../../shared/components/form/screening";
 import renderQuestion from "./helper/renderQuestion";
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
+//regex to validate numbers
 const mobileRegex = /^\d{10}$/;
 
 const MultiStepForm = ({
@@ -23,6 +26,7 @@ const MultiStepForm = ({
     data.data.find((data) => data.id === selectedSection)
   );
   const [canSubmit, setCanSubmit] = useState(false);
+  const [isLoading, setIsLoading] = useState(false)
   const [isMobileValid, setIsMobileValid] = useState(true)
 
 
@@ -104,9 +108,29 @@ const MultiStepForm = ({
     }));
   };
 
+  const handleAddStudent = async (data) => {
+    setIsLoading(true)
+    await axios
+				.post('http://localhost:8900/add-student', data, {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        } )
+				.then((res) => {
+          setIsLoading(false)
+					toast.success(res.data.message);
+          handleGetRecommendations()
+				})
+				.catch((err) => {
+					setIsLoading(false);
+          console.log(err)
+					toast.error('Something went wrong. Try Again');
+				});
+  }
 
   //handle submit of form
   const handleFormSubmit = (e) => {
+    console.log('submitting...')
     e.preventDefault();
     if (!showQuestions) {
       alert(
@@ -118,7 +142,7 @@ const MultiStepForm = ({
     if (!canSubmit) {
       return;
     }
-    if (formData.grade && formData.grade >= "7") {
+    if (formData.grade && formData.grade >= 7) {
       const transformedData = {
         full_name: formData?.fullName,
         age: formData?.age,
@@ -211,20 +235,120 @@ const MultiStepForm = ({
           },
         },
       };
+
+      const dataToSubmit = {
+        full_name: formData?.fullName,
+        age: "12",
+        gender: "Male",
+        location: "north thistle",
+        grade: "8",
+        parent_name: "my mom's name",
+        parent_mobile: "0900009999",
+        screenedBy: "my screener",
+        school_name: "modern2 international school",
+        signs_and_symptoms: {
+          emotional_disorder: {
+            feeling_sad_or_low: ["good", 2],
+            feeling_inadequate_or_useless: ["good", 2],
+            excessive_worry: ["good", 2],
+            low_self_esteem: ["good", 2],
+          },
+          behavioral_disorder: {
+            aggressive_behavior: ["good", 2],
+            suspensions_punishments: ["good", 2],
+          },
+          suicidal_actions: {
+            suicidal_thoughts: ["good", 2],
+          },
+          loss_of_interest: {
+            social_withdrawal: ["good", 2],
+            lack_of_motivation: ["good", 2],
+          },
+          difficulties_in_school: {
+            concentration_issues: ["good", 2],
+            decline_in_grades: ["good", 2],
+          },
+          sleep_disturbance: {
+            sleep_troubles: ["good", 2],
+            restful_sleep: ["good", 2],
+          },
+          unexplained_physical_symptoms: {
+            new_physical_symptoms: ["good", 2],
+            specify_symptoms: ["good", 2],
+            appetite_changes: ["good", 2],
+          },
+        },
+        triggers: {
+          exposure_to_trauma: {
+            traumatic_events: ["good", 2],
+            traumatic_related_thoughts: ["good", 2],
+          },
+          academic_pressure: {
+            academic_stress: ["good", 2],
+          },
+          dysfunctional_family: {
+            family_conflict: ["good", 2],
+            family_situation: ["good", 2],
+            living_situation_change: ["good", 2],
+          },
+          peer_pressure: {
+            bullying: ["good", 2],
+          },
+          relationship_problems: {
+            coping_with_heartbreak: ["good", 2],
+            feeling_disconnected: ["good", 2],
+          },
+        },
+        risk_factors: {
+          health_problems: {
+            chronic_illness: ["good", 2],
+          },
+          family_mental_health: {
+            family_member_disorder: ["good", 2],
+          },
+          socioeconomic_disadvantage: {
+            financial_difficulties: ["good", 2],
+            opportunity_limitations: ["good", 2],
+          },
+          substance_abuse: {
+            substance_use: ["good", 2],
+            substance_use_frequency: ["good", 2],
+            exposure_to_substance_abuse: ["good", 2],
+          },
+        },
+        support_systems: {
+          supportive_family_relationship: {
+            family_communication: ["good", 2],
+          },
+          mental_health_awareness: {
+            mental_health_education: ["good", 2],
+          },
+          leisure_activities: {
+            enjoyable_activities: ["good", 2],
+          },
+        },
+      };
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      handleAddStudent(transformedData)
+      
       console.log("Form submitted:", transformedData);
+      console.log("Data to submit ", dataToSubmit)
     }
 
 
-    const index = data.data.indexOf(currentSection); //find the index of the currentSection
 
-    if (index + 1 < data.data.length) {
-      //if the index is less than the length of the data i.e if it is not the last index
-      const nextSection = data.data[index + 1]; //get the next section i.e the next index
-      handleSelectedSection(nextSection.id); //pass the next section's id into the handleselected section function
-    } else {
-      handleGetRecommendations();
-    }
+    
   };
+
+
 
   const handleNextStep = () => {
     if (!isStepComplete) return; //cross check to very the step is complete
@@ -266,6 +390,7 @@ const MultiStepForm = ({
         handleFormSubmit={handleFormSubmit}
         isStepComplete={isStepComplete}
         canSubmit={canSubmit}
+        isLoading={isLoading}
       />
     </div>
   );

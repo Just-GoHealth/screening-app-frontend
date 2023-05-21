@@ -1087,7 +1087,7 @@
               "id": 3,
               "title": "Enjoyable Activities",
               "subTitle": "How often do you engage in recreational or leisure activities that you enjoy?",
-              "name": "enjoyableActivites",
+              "name": "enjoyableActivities",
               "type": "squircicleRadio",
               "info": " Reading books, Playing sports, Watching movies, Playing video games, Listening to music",
               "options": [

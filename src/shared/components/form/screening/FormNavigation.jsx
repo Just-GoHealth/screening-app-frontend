@@ -21,6 +21,7 @@ export const FormNavigation = ({
   isFirstStep,
   isStepComplete,
   canSubmit,
+  isLoading
 }) => {
   return (
     <nav className="flex items-center justify-between mt-5 ">
@@ -61,7 +62,7 @@ export const FormNavigation = ({
             disableElevation
             onClick={isLastStep ? handleFormSubmit : onNextPageClick}
           >
-            Submit {">"}
+            {isLoading ? "Loading..." : "Submit >"}
           </Button>
         )}
       </>

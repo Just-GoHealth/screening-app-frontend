@@ -37,8 +37,6 @@ const styles = {
   },
 };
 
-
-
 const renderQuestion = (
   question,
   index,
@@ -49,12 +47,9 @@ const renderQuestion = (
   step,
   schools
 ) => {
-
-
   if (!question) {
     return null;
   }
-
 
   const isQuestionUnanswered = typeof formData[question.name] === "undefined";
 
@@ -83,7 +78,11 @@ const renderQuestion = (
                 onChange={(e) =>
                   handleFormInputChange(question.name, e.target.value)
                 }
-                error={question.name === 'parentContact' ? !isMobileValid : !isQuestionFilled(question)}
+                error={
+                  question.name === "parentContact"
+                    ? !isMobileValid
+                    : !isQuestionFilled(question)
+                }
               />
             </>
           }
@@ -111,7 +110,7 @@ const renderQuestion = (
               error={!isQuestionFilled(question)}
             >
               {schools?.map((school, index) => (
-                <MenuItem value={school._id} key={index}>
+                <MenuItem value={school.school_name} key={index}>
                   {school.school_name}
                 </MenuItem>
               ))}
@@ -358,37 +357,42 @@ const renderQuestion = (
                     >
                       {followUpQuestion.options.map((option, index) => (
                         <ToggleButton
-                        value={[option.name, option.value]}
-                        style={{
-                          ...styles.squircleRadioButton,
-                          backgroundColor:
-                            formData[followUpQuestion.name] &&
-                            formData[followUpQuestion.name][0] === option.name &&
-                            formData[followUpQuestion.name] &&
-                            formData[followUpQuestion.name][1] === option.value
-                              ? "#003399"
-                              : undefined,
-                          borderColor:
-                            formData[followUpQuestion.name] &&
-                            formData[followUpQuestion.name][0] === option.name &&
-                            formData[followUpQuestion.name] &&
-                            formData[followUpQuestion.name][1] === option.value
-                              ? "#003399"
-                              : "#ACAEB0",
-                          color:
-                            formData[followUpQuestion.name] &&
-                            formData[followUpQuestion.name][0] === option.name &&
-                            formData[followUpQuestion.name] &&
-                            formData[followUpQuestion.name][1] === option.value
-                              ? "white"
-                              : "#ACAEB0",
-                        }}
+                          value={[option.name, option.value]}
+                          style={{
+                            ...styles.squircleRadioButton,
+                            backgroundColor:
+                              formData[followUpQuestion.name] &&
+                              formData[followUpQuestion.name][0] ===
+                                option.name &&
+                              formData[followUpQuestion.name] &&
+                              formData[followUpQuestion.name][1] ===
+                                option.value
+                                ? "#003399"
+                                : undefined,
+                            borderColor:
+                              formData[followUpQuestion.name] &&
+                              formData[followUpQuestion.name][0] ===
+                                option.name &&
+                              formData[followUpQuestion.name] &&
+                              formData[followUpQuestion.name][1] ===
+                                option.value
+                                ? "#003399"
+                                : "#ACAEB0",
+                            color:
+                              formData[followUpQuestion.name] &&
+                              formData[followUpQuestion.name][0] ===
+                                option.name &&
+                              formData[followUpQuestion.name] &&
+                              formData[followUpQuestion.name][1] ===
+                                option.value
+                                ? "white"
+                                : "#ACAEB0",
+                          }}
                           key={index}
                         >
                           {option.name}
                         </ToggleButton>
                       ))}
-                      
                     </ToggleButtonGroup>
                   )}
                   {followUpQuestion.type === "dropdown" && (
@@ -397,7 +401,10 @@ const renderQuestion = (
                       defaultValue={""}
                       fullWidth
                       onChange={(e) =>
-                        handleFormInputChange(followUpQuestion.name, e.target.value)
+                        handleFormInputChange(
+                          followUpQuestion.name,
+                          e.target.value
+                        )
                       }
                       sx={{
                         height: 40,
@@ -417,8 +424,7 @@ const renderQuestion = (
               style={opacityStyle}
             />
           )}
-          </div>
-        
+        </div>
       );
   }
 };
