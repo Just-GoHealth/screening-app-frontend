@@ -47,22 +47,12 @@ const MultiStepForm = ({
   //check if all the fields of the current step are filled, and then set the isStepComplete accordingly
   useEffect(() => {
     const currentStep = steps[currentStepIndex]; //get the current step
-    const isCurrentStepComplete = currentStep.questions.every((question) => {
-      const fieldValue = formData[question.name];
-      if (typeof fieldValue === "undefined") {
-        return false;
-      } else if (typeof fieldValue == "string") {
-        if (fieldValue === "") {
-          return false;
-        }
-        return true;
-      } else if (fieldValue === null) {
-        return false;
-      } else {
-        return true;
-      }
-    }); // logic to check if the current step is complete
+    const isCurrentStepComplete = currentStep.questions.every(isQuestionFilled); // check if the current step questions have their fields filled
     setIsStepComplete(isCurrentStepComplete);
+
+    const areAllStepsComplete = steps.map((step) => step.questions.every(isQuestionFilled)).every(Boolean) // check if all questions have their fields filled
+    setCanSubmit(areAllStepsComplete)
+    
   }, [formData, selectedSection, selectedSubSection, step]);
 
   //change the selectedsubsection or step accordingly once the step changes
@@ -80,6 +70,23 @@ const MultiStepForm = ({
     setCurrentStepIndex(steps.indexOf(currentStep));
   }, [selectedSection, selectedSubSection]);
 
+  //logic to check if a question has it's field filled
+  const isQuestionFilled = (question) => {
+    const fieldValue = formData[question.name];
+      if (typeof fieldValue === "undefined") {
+        return false;
+      } else if (typeof fieldValue == "string") {
+        if (fieldValue === "") {
+          return false;
+        }
+        return true;
+      } else if (fieldValue === null) {
+        return false;
+      } else {
+        return true;
+      }
+  }
+
   //handle input change of form
   const handleFormInputChange = (name, value) => {
     setFormData((prevFormData) => ({
@@ -88,31 +95,18 @@ const MultiStepForm = ({
     }));
   };
 
-  const handleFormFollowUpInputChange = (
-    mainFieldName,
-    followUpFieldName,
-    value
-  ) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [mainFieldName]: {
-        ...prevFormData[mainFieldName],
-        [followUpFieldName]: value,
-      },
-    }));
-  };
 
   //handle submit of form
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (!isStepComplete) {
-      return;
-    }
-
     if (!showQuestions) {
       alert(
         "Questions are not yet available for the selected grade. Try again later!"
       );
+      return;
+    }
+
+    if (!canSubmit) {
       return;
     }
     if (formData.grade && formData.grade >= "7") {
@@ -208,9 +202,9 @@ const MultiStepForm = ({
           },
         },
       };
+      console.log("Form submitted:", transformedData);
     }
 
-    console.log("Form submitted:", transformedData);
 
     const index = data.data.indexOf(currentSection); //find the index of the currentSection
 
@@ -262,6 +256,7 @@ const MultiStepForm = ({
         isLastStep={isLastStep}
         handleFormSubmit={handleFormSubmit}
         isStepComplete={isStepComplete}
+        canSubmit={canSubmit}
       />
     </div>
   );

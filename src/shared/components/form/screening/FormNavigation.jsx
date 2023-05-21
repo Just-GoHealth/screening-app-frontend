@@ -19,7 +19,8 @@ export const FormNavigation = ({
   handleFormSubmit,
   isLastStep,
   isFirstStep,
-  isStepComplete
+  isStepComplete,
+  canSubmit,
 }) => {
   return (
     <nav className="flex items-center justify-between mt-5 ">
@@ -38,13 +39,31 @@ export const FormNavigation = ({
       <h2 className="health-records-nav-heading text-[#F1ADB0]">{user}</h2>
 
       <>
-        <Button
-          sx={{...styles.nextButton, opacity: isStepComplete ? 1: 0.3, pointerEvents: isStepComplete? '': 'none'}}
-          disableElevation
-          onClick={isLastStep ? handleFormSubmit : onNextPageClick}
-        >
-          {isLastStep ? "Submit" : "Next"} {">"}
-        </Button>
+        {!isLastStep ? (
+          <Button
+            sx={{
+              ...styles.nextButton,
+              opacity: isStepComplete ? 1 : 0.3,
+              pointerEvents: isStepComplete ? "" : "none",
+            }}
+            disableElevation
+            onClick={isLastStep ? handleFormSubmit : onNextPageClick}
+          >
+            Next {">"}
+          </Button>
+        ) : (
+          <Button
+            sx={{
+              ...styles.nextButton,
+              opacity: canSubmit ? 1 : 0.3,
+              pointerEvents: canSubmit ? "" : "none",
+            }}
+            disableElevation
+            onClick={isLastStep ? handleFormSubmit : onNextPageClick}
+          >
+            Submit {">"}
+          </Button>
+        )}
       </>
     </nav>
   );
