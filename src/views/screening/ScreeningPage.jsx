@@ -26,10 +26,6 @@ export const ScreeningPage = () => {
     "http://localhost:8900/schools"
   );
 
-  useEffect(() => {
-    console.log("schoools  yes ", schoolsData);
-  }, []);
-
   //function to handle section change
   const handleSelectedSection = (id, subSectionId) => {
     if (id > 1 && typeof formData["grade"] === "undefined") {

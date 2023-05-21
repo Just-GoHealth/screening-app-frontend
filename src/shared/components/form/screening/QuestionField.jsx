@@ -17,7 +17,7 @@ export const QuestionField = ({ title, subtitle, control, style, info }) => {
         <div className="w-3/4 space-y-2">
           <div className="flex space-x-2">
             <h2 className="font-bold text-2xl text-[#231F20]">
-              {title}{" "}
+              {title}{". "}
               <span className="text-lg text-gray-500 font-normal">
                 {subtitle}
               </span>

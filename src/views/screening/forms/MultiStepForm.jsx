@@ -3,6 +3,8 @@ import useMultiStepHook from "../../../shared/custom-hooks/useMultiStepForm";
 import { FormNavigation } from "../../../shared/components/form/screening";
 import renderQuestion from "./helper/renderQuestion";
 
+const mobileRegex = /^\d{10}$/;
+
 const MultiStepForm = ({
   selectedSection,
   selectedSubSection,
@@ -20,8 +22,9 @@ const MultiStepForm = ({
   const [currentSection, setCurrentSection] = useState(
     data.data.find((data) => data.id === selectedSection)
   );
-
   const [canSubmit, setCanSubmit] = useState(false);
+  const [isMobileValid, setIsMobileValid] = useState(true)
+
 
   //Pass subsections as steps
   const {
@@ -35,24 +38,30 @@ const MultiStepForm = ({
     isLastStep,
   } = useMultiStepHook(subSectionsArr);
 
-  useEffect(() => {
-    console.log("schoools ", schools);
-  }, []);
-
   //set the step to the first step whenever the selected section changes
   useEffect(() => {
     setCurrentStepIndex(0);
   }, [selectedSection]);
 
+
   //check if all the fields of the current step are filled, and then set the isStepComplete accordingly
   useEffect(() => {
+    
     const currentStep = steps[currentStepIndex]; //get the current step
     const isCurrentStepComplete = currentStep.questions.every(isQuestionFilled); // check if the current step questions have their fields filled
     setIsStepComplete(isCurrentStepComplete);
-
+    
     const areAllStepsComplete = steps.map((step) => step.questions.every(isQuestionFilled)).every(Boolean) // check if all questions have their fields filled
     setCanSubmit(areAllStepsComplete)
     
+    //validation of contact field
+    const hasContactField = currentStep.questions.some((question) => question.name === 'parentContact')
+    if(hasContactField){
+      setIsMobileValid(mobileRegex.test(formData?.parentContact))
+      if(!mobileRegex.test(formData?.parentContact)){
+        setIsStepComplete(false)
+      }
+    }
   }, [formData, selectedSection, selectedSubSection, step]);
 
   //change the selectedsubsection or step accordingly once the step changes
@@ -236,9 +245,9 @@ const MultiStepForm = ({
               renderQuestion(
                 question,
                 index,
-                steps,
                 formData,
-                currentStepIndex,
+                isMobileValid,
+                isQuestionFilled,
                 handleFormInputChange,
                 step,
                 schools
