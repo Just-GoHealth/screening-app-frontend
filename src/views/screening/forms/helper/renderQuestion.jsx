@@ -6,6 +6,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { QuestionField } from "../../../../shared/components/form/screening";
+import { useState } from "react";
 
 const styles = {
   dropdown: {
@@ -36,19 +37,24 @@ const styles = {
   },
 };
 
+
+
 const renderQuestion = (
   question,
   index,
-  steps,
   formData,
-  currentStepIndex,
+  isMobileValid,
+  isQuestionFilled,
   handleFormInputChange,
   step,
   schools
 ) => {
+
+
   if (!question) {
     return null;
   }
+
 
   const isQuestionUnanswered = typeof formData[question.name] === "undefined";
 
@@ -77,6 +83,7 @@ const renderQuestion = (
                 onChange={(e) =>
                   handleFormInputChange(question.name, e.target.value)
                 }
+                error={question.name === 'parentContact' ? !isMobileValid : !isQuestionFilled(question)}
               />
             </>
           }
@@ -101,6 +108,7 @@ const renderQuestion = (
               sx={{
                 height: 40,
               }}
+              error={!isQuestionFilled(question)}
             >
               {schools?.map((school, index) => (
                 <MenuItem value={school._id} key={index}>
@@ -266,7 +274,7 @@ const renderQuestion = (
         followUpQuestion = option?.followUp;
       }
       return (
-        <>
+        <div key={question.id}>
           <QuestionField
             title={question.title}
             subtitle={question.subTitle}
@@ -409,7 +417,8 @@ const renderQuestion = (
               style={opacityStyle}
             />
           )}
-        </>
+          </div>
+        
       );
   }
 };

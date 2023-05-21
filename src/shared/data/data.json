@@ -62,12 +62,12 @@
           "questions": [
             {
               "id": 1,
-              "title": "School.",
+              "title": "School",
               "subTitle": "What is the name of your school?",
               "name": "school",
               "type": "dropdown",
               "info": "Watch our medical experts to help decide the routine",
-              "options": ["Achimota School", "St. Peters", "Presec"]
+              "options": ["Achimota School", "St Peters", "Presec"]
             },
             {
               "id": 2,
@@ -80,7 +80,7 @@
             },
             {
               "id": 3,
-              "title": "Screened by.",
+              "title": "Screened by",
               "subTitle": "The JustGo Health Worker",
               "name": "screenedBy",
               "type": "input",
@@ -88,7 +88,7 @@
             },
             {
               "id": 4,
-              "title": "Parent.",
+              "title": "Parent",
               "subTitle": "What is the name of your guardian?",
               "name": "parentName",
               "type": "input",
@@ -96,7 +96,7 @@
             },
             {
               "id": 5,
-              "title": "Parent's Contact.",
+              "title": "Parent's Contact",
               "subTitle": "Their Phone Number",
               "name": "parentContact",
               "type": "input",
@@ -116,7 +116,7 @@
           "questions": [
             {
               "id": 1,
-              "title": "Feeling Sad or Low.",
+              "title": "Feeling Sad or Low",
               "subTitle": "How often have you felt sad or low in the past two weeks?",
               "name": "feelingSadOrLow",
               "type": "squircicleRadio",
@@ -146,7 +146,7 @@
             },
             {
               "id": 2,
-              "title": "Feeling Inadequate or Useless.",
+              "title": "Feeling Inadequate or Useless",
               "subTitle": "How often have you felt inadequate or worthless in the past two weeks?",
               "type": "squircicleRadio",
               "name": "feelingInadequateOrUseless",
@@ -206,7 +206,7 @@
             },
             {
               "id": 4,
-              "title": "Low Self Esteem.",
+              "title": "Low Self Esteem",
               "subTitle": "How often have you felt that you have low self-esteem in the past two weeks?",
               "type": "squircicleRadio",
               "name": "lowSelfEsteem",
@@ -246,7 +246,7 @@
               "subTitle": "Do you find yourself being more aggressive or agitated than usual?",
               "name": "aggressiveBehavior",
               "type": "squircicleRadio",
-              "info": "Picking fights with peers or authority figures, being easily angered or irritated, throwing tantrums or objects.",
+              "info": "Picking fights with peers or authority figures, being easily angered or irritated, throwing tantrums or objects",
               "options": [
                 {
                   "id": 1,
@@ -272,11 +272,11 @@
             },
             {
               "id": 2,
-              "title": "Suspensions/Punishments.",
+              "title": "Suspensions/Punishments",
               "subTitle": "Have you had any suspensions or punishments for behavioral issues at school or home?",
               "name": "suspensions",
               "type": "squircicleRadio",
-              "info": " Fighting with others, damaging property, skipping school, substance use.                            ",
+              "info": " Fighting with others, damaging property, skipping school, substance use                            ",
               "options": [
                 {
                   "id": 1,
@@ -399,7 +399,7 @@
           "questions": [
             {
               "id": 1,
-              "title": "Concentration Issues.",
+              "title": "Concentration Issues",
               "subTitle": "Do you have difficulties concentrating during classes or while studying?",
               "name": "concentrationIssues",
               "type": "squircicleRadio",
@@ -515,7 +515,7 @@
           "questions": [
             {
               "id": 1,
-              "title": "New Physical Symptoms.",
+              "title": "New Physical Symptoms",
               "subTitle": "Have you been experiencing any new physical symptoms lately?",
               "name": "newPhysicalSymptoms",
               "type": "yesOrNo",
@@ -542,7 +542,7 @@
             },
             {
               "id": 2,
-              "title": "Appetite Changes.",
+              "title": "Appetite Changes",
               "subTitle": "Have you noticed any changes in your appetite or weight recently?",
               "name": "appetiteChanges",
               "type": "squircicleRadio",
@@ -579,7 +579,7 @@
           "questions": [
             {
               "id": 1,
-              "title": "Traumatic events.",
+              "title": "Traumatic events",
               "subTitle": " Have you experienced or witnessed any traumatic events, such as physical or sexual abuse, accidents, natural disasters, or violence?",
               "name": "traumaticEvents",
               "type": "yesOrNo",
@@ -599,11 +599,11 @@
             },
             {
               "id": 2,
-              "title": "Trauma-related thoughts.",
+              "title": "Trauma-related thoughts",
               "subTitle": " How often do you experience flashbacks, nightmares, or intrusive thoughts related to the traumatic event(s)?",
               "name": "traumaThoughts",
               "type": "squircicleRadio",
-              "info": "car accidents, physical abuse, domestic violence, natural disasters, etc.",
+              "info": "car accidents, physical abuse, domestic violence, natural disasters, etc",
               "options": [
                 {
                   "id": 1,
@@ -633,7 +633,7 @@
               "subTitle": "How often do you feel overwhelmed by academic workload and expectations?",
               "name": "academicStress",
               "type": "squircicleRadio",
-              "info": "excessive homework, high expectations from parents or teachers, pressure to perform well academically, etc.",
+              "info": "excessive homework, high expectations from parents or teachers, pressure to perform well academically, etc",
               "options": [
                 {
                   "id": 1,
@@ -665,11 +665,11 @@
           "questions": [
             {
               "id": 1,
-              "title": "Family Conflict.",
+              "title": "Family Conflict",
               "subTitle": " How often do you experience conflict or tension with family members?",
               "name": "familyConflict",
               "type": "squircicleRadio",
-              "info": "divorce or separation, substance abuse, physical or emotional abuse, neglect, etc.",
+              "info": "divorce or separation, substance abuse, physical or emotional abuse, neglect, etc",
               "options": [
                 {
                   "id": 1,
@@ -695,7 +695,7 @@
             },
             {
               "id": 2,
-              "title": "Family Situation.",
+              "title": "Family Situation",
               "subTitle": " Have you experienced a significant change in your family situation in the past year, such as divorce, separation, or the death of a family member?",
               "name": "familySituation",
               "type": "squircicleRadio",
@@ -725,7 +725,7 @@
             },
             {
               "id": 3,
-              "title": "Living situation change.",
+              "title": "Living situation change",
               "subTitle": "",
               "name": "situationChange",
               "type": "squircicleRadio",
@@ -761,11 +761,11 @@
           "questions": [
             {
               "id": 1,
-              "title": "Bullying and harassment.",
+              "title": "Bullying and harassment",
               "subTitle": " How often have you experienced bullying, harassment, or discrimination from peers in the past month?",
               "name": "bullyingAndHarassment",
               "type": "squircicleRadio",
-              "info": "teasing, body shaming, cyberbullying, discrimination based on race, gender, sexuality, etc.",
+              "info": "teasing, body shaming, cyberbullying, discrimination based on race, gender, sexuality, etc",
               "options": [
                 {
                   "id": 1,
@@ -791,7 +791,7 @@
             },
             {
               "id": 2,
-              "title": "Coping with Heartbreak.",
+              "title": "Coping with Heartbreak",
               "subTitle": " Have you experienced any recent changes or difficulties in your relationships?",
               "name": "copingWithHeartbreak",
               "type": "yesOrNo",
@@ -811,7 +811,7 @@
             },
             {
               "id": 3,
-              "title": "Feeling disconnected.",
+              "title": "Feeling disconnected",
               "subTitle": " How often do you feel lonely or isolated from others? ",
               "name": "feelingDisconnected",
               "type": "squircicleRadio",
@@ -853,7 +853,7 @@
           "questions": [
             {
               "id": 1,
-              "title": "Chronic illness.",
+              "title": "Chronic illness",
               "subTitle": " Have you been diagnosed with a chronic illness or health problem?",
               "name": "chronicIllness",
               "type": "yesOrNo",
@@ -873,7 +873,7 @@
             },
             {
               "id": 2,
-              "title": "Family member's disorder.",
+              "title": "Family member's disorder",
               "subTitle": " Do you have a family member who has been diagnosed with a mental health disorder?",
               "name": "familyMemberDisorder",
               "type": "yesOrNo",
@@ -899,7 +899,7 @@
           "questions": [
             {
               "id": 1,
-              "title": "Financial difficulties.",
+              "title": "Financial difficulties",
               "subTitle": " Do you come from a low-income household?",
               "name": "financialDifficulties",
               "type": "yesOrNo",
@@ -919,11 +919,11 @@
             },
             {
               "id": 2,
-              "title": "Opportunity limitations.",
+              "title": "Opportunity limitations",
               "subTitle": " Do you feel that your socioeconomic status limits your opportunities?",
               "name": "opportunityLimitations",
               "type": "yesOrNo",
-              "info": "poverty, lack of access to education or healthcare, or living in a disadvantaged community.",
+              "info": "poverty, lack of access to education or healthcare, or living in a disadvantaged community",
               "options": [
                 {
                   "id": 1,
@@ -939,7 +939,7 @@
             },
             {
               "id": 3,
-              "title": "Substance Use.",
+              "title": "Substance Use",
               "subTitle": "Have you used any illegal substances in the past year?",
               "name": "substanceUse",
               "type": "yesOrNo",
@@ -950,11 +950,11 @@
                   "name": "Yes",
                   "value": 2,
                   "followUp": {
-                    "title": "Substance use Frequency.",
+                    "title": "Substance use Frequency",
                     "subTitle": "How frequently do you use these substances? ",
                     "name": "substanceUseFrequency",
                     "type": "squircicleRadio",
-                    "info": " being exposed to drugs or alcohol in your environment, or using drugs or alcohol as a coping mechanism for stress or emotional issues.",
+                    "info": " being exposed to drugs or alcohol in your environment, or using drugs or alcohol as a coping mechanism for stress or emotional issues",
                     "options": [
                       {
                         "id": 1,
@@ -988,11 +988,11 @@
             },
             {
               "id": 4,
-              "title": "Exposure to substance abuse.",
+              "title": "Exposure to substance abuse",
               "subTitle": " Have you ever been exposed to substance abuse, such as seeing family members or friends using drugs or alcohol?",
               "name": "substanceAbuseExposure",
               "type": "squircicleRadio",
-              "info": "Seeing family members or friends using drugs or alcohol at home, parties, or social events. Using drugs or alcohol to cope with stress or negative emotions.Trying drugs or alcohol out of curiosity or peer pressure.",
+              "info": "Seeing family members or friends using drugs or alcohol at home, parties, or social events Using drugs or alcohol to cope with stress or negative emotionsTrying drugs or alcohol out of curiosity or peer pressure",
               "options": [
                 {
                   "id": 1,
@@ -1025,7 +1025,7 @@
           "questions": [
             {
               "id": 1,
-              "title": "Family Communication.",
+              "title": "Family Communication",
               "subTitle": "How often do you communicate with your family members about your emotions and feelings?",
               "name": "familyCommunication",
               "type": "squircicleRadio",
@@ -1055,7 +1055,7 @@
             },
             {
               "id": 2,
-              "title": "Mental health Education.",
+              "title": "Mental health Education",
               "subTitle": "Have you received any education or training about mental health issues?",
               "name": "mentalHealthEducation",
               "type": "squircicleRadio",
@@ -1085,7 +1085,7 @@
             },
             {
               "id": 3,
-              "title": "Enjoyable Activities.",
+              "title": "Enjoyable Activities",
               "subTitle": "How often do you engage in recreational or leisure activities that you enjoy?",
               "name": "enjoyableActivites",
               "type": "squircicleRadio",
