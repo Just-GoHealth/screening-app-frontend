@@ -6,7 +6,7 @@
 		bg-[#DFE7F4];
 }
 .health-summary-main-heading {
-	@apply text-2xl sm:text-4xl lg:text-5xl
+	@apply text-2xl sm:text-4xl lg:text-7xl
 		font-bold
 		text-[#965AA4];
 }

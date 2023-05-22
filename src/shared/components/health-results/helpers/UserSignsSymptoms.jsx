@@ -1,26 +1,63 @@
 import React from 'react';
 import { RxDotFilled } from 'react-icons/rx';
 
-export const UserSignsSymptoms = () => {
+export const UserSignsSymptoms = ({ signsAndSymptomsResults }) => {
 	return (
-		<li className="text-[#965AA4]">
-			Emotional Disorder: No Significant Emotional Disorder
-			<table className="table-fixed text-black mt-2">
-				<tbody>
-					<tr>
-						<td className="w-1/2">
-							<RxDotFilled className="inline text-[#965AA4] mb-1" /> Feeling Sad
-							or Low
-						</td>
-						<td className="w-1/12 text-center">-</td>
-						<td className="w-6/12">
-							<p className="bg-[#965AA4] text-white px-5 rounded-full">
-								No, not at all
-							</p>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</li>
+		<>
+			{signsAndSymptomsResults
+				?.slice(0, signsAndSymptomsResults.length - 1)
+				.map((sign, i) => {
+					const [title, results] = sign;
+
+					const finalTitle = title
+						.split('_')
+						.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+						.join(' ');
+
+					const finalResults = Object.entries(results);
+
+					return (
+						<div key={`${title} ${i}`}>
+							<li className="text-[#965AA4] text-xl">{finalTitle}</li>
+							<table className="table-fixed text-black mt-1 ml-4">
+								<tbody>
+									{finalResults.map((result, i) => {
+										const [title, grade] = result;
+
+										const finalTitle = title
+											.split('_')
+											.map(
+												(word) => word.charAt(0).toUpperCase() + word.slice(1)
+											)
+											.join(' ');
+
+										const finalGrade = grade
+											.split('_')
+											.map(
+												(word) => word.charAt(0).toUpperCase() + word.slice(1)
+											)
+											.join(' ');
+
+										return (
+											<tr key={i}>
+												<td className="w-1/2">
+													<RxDotFilled className="inline text-[#965AA4] mb-1" />{' '}
+													{finalTitle}
+												</td>
+												<td className="w-1/12 text-center">-</td>
+												<td className="min-w-6/12 flex items-center justify-center">
+													<p className="bg-[#965AA4] text-white px-5 rounded-full">
+														{finalGrade}
+													</p>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+							</table>
+						</div>
+					);
+				})}
+		</>
 	);
 };
