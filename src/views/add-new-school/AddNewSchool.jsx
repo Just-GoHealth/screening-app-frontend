@@ -107,7 +107,12 @@ export const AddNewSchool = () => {
 		e.preventDefault();
 		setIsLoading(true);
 
-		const school_name = schoolName;
+		// to capitalize school name
+		const school_name = schoolName
+			.split(' ')
+			.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+			.join(' ');
+
 		const school_location = schoolLocation;
 		const school_type = schoolType;
 
@@ -127,7 +132,7 @@ export const AddNewSchool = () => {
 				})
 				.catch((err) => {
 					setIsLoading(false);
-					toast.error('Something went wrong. Try Again');
+					toast.error(err.response.data.message);
 				});
 		} else {
 			setIsLoading(false);
