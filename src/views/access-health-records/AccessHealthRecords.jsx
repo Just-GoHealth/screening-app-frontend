@@ -7,10 +7,13 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { AccessAndAdd } from '../../shared/components/access-add/AccessAndAdd';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
+import { useContext } from 'react';
+import { AuthContext } from '../../shared/context/auth/AuthContext';
 
 export const AccessHealthRecords = () => {
 	const [showPassword, setShowPassword] = React.useState(false);
-	const { handleGoBack } = useInAppNavigation();
+	const { handleGoBack, navigate } = useInAppNavigation();
+	const { setIsAuthenticated } = useContext(AuthContext);
 
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -20,11 +23,13 @@ export const AccessHealthRecords = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const data = new FormData(event.currentTarget);
-		console.log({
-			password: data.get('password'),
-		});
+
+		const password = event.target[0].value;
+
+		setIsAuthenticated(true);
+		navigate('/all-health-records');
 	};
+
 	return (
 		<>
 			<div className="flex justify-center items-center min-h-screen">
