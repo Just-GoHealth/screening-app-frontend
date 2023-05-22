@@ -45,7 +45,7 @@ export const AllHealthRecordsPage = () => {
 						},
 						{ field: 'studentPopulation', headerName: 'Students' },
 						{
-							field: 'createdAt',
+							field: 'updatedAt',
 							headerName: 'Date',
 							valueFormatter: function (params) {
 								const date = new Date(params.value);
