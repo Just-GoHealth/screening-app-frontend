@@ -5,6 +5,7 @@ import { ScreeningList } from './helpers/ScreeningList';
 import { SchoolSignsSymptoms } from './helpers/SchoolSignsSymptoms';
 import { GroupSign } from './helpers/GroupSign';
 import './styles.css';
+import { Notice } from './helpers/Notice';
 
 export const SchoolResults = ({
 	title,
@@ -38,7 +39,11 @@ export const SchoolResults = ({
 					</div>
 				</div>
 
-				<div>
+				<>
+					<Notice />
+				</>
+
+				<div className="mb-10">
 					<SectionHeading
 						heading="Signs & Symptoms"
 						subHeading={
