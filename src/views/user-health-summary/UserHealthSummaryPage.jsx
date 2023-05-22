@@ -14,12 +14,24 @@ export const UserHealthSummaryPage = () => {
 	const { params } = useInAppNavigation();
 	const userId = params.userId;
 
-	const { data: studentData, isLoading } = useFetchDetials(
+	const { data = {}, isLoading } = useFetchDetials(
 		['user-details', userId],
 		`http://localhost:8900/student/${userId}`
 	);
 
-	// console.log({ studentData });
+	const { student } = data;
+
+	const date = new Date(student?.updatedAt);
+	const month = date.toLocaleString('en-US', { month: 'short' });
+	const year = date.getFullYear();
+	const day = date.getDate();
+	const fullDate = month + ' ' + day + ', ' + year;
+
+	const signsAndSymptoms = student?.signs_and_symptoms;
+	const signsRecommendations =
+		signsAndSymptoms?.recommendation_on_signs.join(' ');
+	const signsAndSymptomsResults =
+		signsAndSymptoms && Object.entries(signsAndSymptoms);
 
 	return (
 		<>
@@ -35,16 +47,12 @@ export const UserHealthSummaryPage = () => {
 			) : (
 				<>
 					<UserResults
-						title={'Jacob Davis'}
-						subTitle={'School Name | 15 yrs | Male'}
-						date={'April 1, 2023'}
+						studentName={student.full_name}
+						studentInfo={`${student.schoolId.school_name} | ${student.age} yrs | ${student.gender}`}
+						date={fullDate}
 						screeningReport={screeningReport}
-						recommendations={
-							'JustGo Health WorkShop. Focused on psychotherapy and mindfulness techniques (GHC 50)'
-						}
-						answers={
-							'Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ad impedit dicta, fugit officia odit quisquam itaque dolorum.'
-						}
+						signsAndSymptomsResults={signsAndSymptomsResults}
+						signsRecommendations={signsRecommendations}
 					/>
 				</>
 			)}

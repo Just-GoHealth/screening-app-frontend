@@ -2,26 +2,28 @@ import React from 'react';
 import { IconButton } from '@mui/material';
 import { BsFillCloudArrowDownFill } from 'react-icons/bs';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
-import './SchoolHealthRecords.styles.css';
 import {
 	GridComponent,
 	GridUserDownloadAction,
-	GridUserNameRenderer,
 } from '../../shared/components/grid-component';
 import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
+import './SchoolHealthRecords.styles.css';
 
 export const SchoolHealthRecordsPage = () => {
 	const { handleGoBack, params, navigate } = useInAppNavigation();
 	const schoolId = params.schoolId;
 
-	const { data: schoolData } = useFetchDetials(
+	const { data = {} } = useFetchDetials(
 		['school-details', schoolId],
 		`http://localhost:8900/schools/${schoolId}`
 	);
-	const schoolName = schoolData?.school.school_name;
-	const numberOfStudents = schoolData?.students.length
-		? schoolData.students.length +
-		  `${schoolData.students.length > 1 ? ' Students' : ' Student'}`
+	const { schoolData = {} } = data;
+	const { school, students } = schoolData;
+
+	const schoolName = school?.school_name;
+	const schoolType = school?.school_type;
+	const numberOfStudents = students?.length
+		? students?.length + `${students?.length > 1 ? ' Students' : ' Student'}`
 		: '0 Students';
 
 	const handleSchoolRecordsDownload = () => {
@@ -44,7 +46,7 @@ export const SchoolHealthRecordsPage = () => {
 			/>
 
 			<div className="health-records-sub-heading">
-				<h4>Junior High Schoolxx</h4>
+				<h4>{schoolType}</h4>
 				<div>|</div>
 				<h4>{numberOfStudents}</h4>
 			</div>
@@ -56,13 +58,15 @@ export const SchoolHealthRecordsPage = () => {
 					columnDefs={[
 						{ field: 'number', headerName: '#', flex: 1 },
 						{
-							field: 'name',
+							field: 'full_name',
 							headerName: 'Name',
-							cellRenderer: GridUserNameRenderer,
 						},
-						{ field: 'recommendation' },
 						{
-							field: 'createdAt',
+							field: 'mental_health_recommendation',
+							headerName: 'Recommendation',
+						},
+						{
+							field: 'updatedAt',
 							headerName: 'Date',
 							valueFormatter: function (params) {
 								const date = new Date(params.value);
