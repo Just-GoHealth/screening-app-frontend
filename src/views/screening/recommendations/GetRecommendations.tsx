@@ -1,7 +1,8 @@
 import React from "react";
 
-const GetRecommendations = () => {
+const GetRecommendations = ({student}) => {
   const date = new Date(Date.now()).toLocaleString();
+  const createdAt =  new Date(student.createdAt).toLocaleDateString()
   return (
     <div className="bg-[#DAE7F6] h-full pr-20">
       <div className="px-24 py-10">
@@ -9,14 +10,14 @@ const GetRecommendations = () => {
           <h1
             className={"screening_heading" + " text-primary capitalize mb-2 text-7xl "}
           >
-            Jacob davis
+            {student.full_name}
           </h1>
           <div className="flex justify-center mb-2 ">
             <div className="pr-4 border-r-black border-r-2">School</div>
-            <div className="px-4 border-r-black border-r-2">15 yrs</div>
-            <div className="pl-4">Male</div>
+            <div className="px-4 border-r-black border-r-2">{student.age} yrs</div>
+            <div className="pl-4">{student.gender}</div>
           </div>
-          <p className="">{date}</p>
+          <p className="">{createdAt}</p>
         </div>
         <div className="mt-5">
           <h2 className="font-bold text-2xl text-primaryBlue">

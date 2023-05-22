@@ -119,7 +119,7 @@ const MultiStepForm = ({
 				.then((res) => {
           setIsLoading(false)
 					toast.success(res.data.message);
-          handleGetRecommendations()
+          handleGetRecommendations(res.data.student)
 				})
 				.catch((err) => {
 					setIsLoading(false);
@@ -181,7 +181,7 @@ const MultiStepForm = ({
           },
           unexplained_physical_symptoms: {
             new_physical_symptoms: formData?.newPhysicalSymptoms,
-            specify_symptoms: formData?.physicalSymptoms,
+            specify_symptoms: formData?.physicalSymptoms ?? [],
             appetite_changes: formData?.appetiteChanges,
           },
         },
@@ -219,7 +219,7 @@ const MultiStepForm = ({
           },
           substance_abuse: {
             substance_use: formData?.substanceUse,
-            substance_use_frequency: formData?.substanceUseFrequency,
+            substance_use_frequency: formData?.substanceUseFrequency ?? [],
             exposure_to_substance_abuse: formData?.substanceAbuseExposure,
           },
         },

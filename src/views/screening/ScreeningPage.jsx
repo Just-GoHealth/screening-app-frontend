@@ -20,6 +20,7 @@ export const ScreeningPage = () => {
     return initialSubSectionsArr;
   });
   const [showQuestions, setShowQuestions] = useState(true);
+  const [recommendationsData, setRecommendationsData] = useState({})
 
   const { data: schoolsData } = useFetchDetials(
     ["schools"],
@@ -42,7 +43,8 @@ export const ScreeningPage = () => {
   };
 
   //function to handle recommendations page
-  const handleGetRecommendations = () => {
+  const handleGetRecommendations = (data) => {
+    setRecommendationsData(data)
     setGetRecommendations(true);
     setSelectedSection(0), setSelectedSubSection(0);
     setFormData({});
@@ -219,7 +221,7 @@ export const ScreeningPage = () => {
 
         <main className=" min-h-[90vh] flex-grow-2 basis-[80%] ">
           {getRecommendations ? (
-            <GetRecommendations />
+            <GetRecommendations student={recommendationsData} />
           ) : (
             <MultiStepForm
               data={data}
