@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import useMultiStepHook from "../../../shared/custom-hooks/useMultiStepForm";
 import { FormNavigation } from "../../../shared/components/form/screening";
 import renderQuestion from "./helper/renderQuestion";
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useInAppNavigation } from "../../../shared/custom-hooks/useInAppNavigation"
 
 //regex to validate numbers
 const mobileRegex = /^\d{10}$/;
@@ -26,9 +27,9 @@ const MultiStepForm = ({
     data.data.find((data) => data.id === selectedSection)
   );
   const [canSubmit, setCanSubmit] = useState(false);
-  const [isLoading, setIsLoading] = useState(false)
-  const [isMobileValid, setIsMobileValid] = useState(true)
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [isMobileValid, setIsMobileValid] = useState(true);
+  const {  viewUserHealthSummary } = useInAppNavigation()
 
   //Pass subsections as steps
   const {
@@ -47,23 +48,25 @@ const MultiStepForm = ({
     setCurrentStepIndex(0);
   }, [selectedSection]);
 
-
   //check if all the fields of the current step are filled, and then set the isStepComplete accordingly
   useEffect(() => {
-    
     const currentStep = steps[currentStepIndex]; //get the current step
     const isCurrentStepComplete = currentStep.questions.every(isQuestionFilled); // check if the current step questions have their fields filled
     setIsStepComplete(isCurrentStepComplete);
-    
-    const areAllStepsComplete = steps.map((step) => step.questions.every(isQuestionFilled)).every(Boolean) // check if all questions have their fields filled
-    setCanSubmit(areAllStepsComplete)
-    
+
+    const areAllStepsComplete = steps
+      .map((step) => step.questions.every(isQuestionFilled))
+      .every(Boolean); // check if all questions have their fields filled
+    setCanSubmit(areAllStepsComplete);
+
     //validation of contact field
-    const hasContactField = currentStep.questions.some((question) => question.name === 'parentContact')
-    if(hasContactField){
-      setIsMobileValid(mobileRegex.test(formData?.parentContact))
-      if(!mobileRegex.test(formData?.parentContact)){
-        setIsStepComplete(false)
+    const hasContactField = currentStep.questions.some(
+      (question) => question.name === "parentContact"
+    );
+    if (hasContactField) {
+      setIsMobileValid(mobileRegex.test(formData?.parentContact));
+      if (!mobileRegex.test(formData?.parentContact)) {
+        setIsStepComplete(false);
       }
     }
   }, [formData, selectedSection, selectedSubSection, step]);
@@ -86,19 +89,19 @@ const MultiStepForm = ({
   //logic to check if a question has it's field filled
   const isQuestionFilled = (question) => {
     const fieldValue = formData[question.name];
-      if (typeof fieldValue === "undefined") {
+    if (typeof fieldValue === "undefined") {
+      return false;
+    } else if (typeof fieldValue == "string") {
+      if (fieldValue === "") {
         return false;
-      } else if (typeof fieldValue == "string") {
-        if (fieldValue === "") {
-          return false;
-        }
-        return true;
-      } else if (fieldValue === null) {
-        return false;
-      } else {
-        return true;
       }
-  }
+      return true;
+    } else if (fieldValue === null) {
+      return false;
+    } else {
+      return true;
+    }
+  };
 
   //handle input change of form
   const handleFormInputChange = (name, value) => {
@@ -109,28 +112,28 @@ const MultiStepForm = ({
   };
 
   const handleAddStudent = async (data) => {
-    setIsLoading(true)
+    setIsLoading(true);
     await axios
-				.post('http://localhost:8900/add-student', data, {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        } )
-				.then((res) => {
-          setIsLoading(false)
-					toast.success(res.data.message);
-          handleGetRecommendations(res.data.student)
-				})
-				.catch((err) => {
-					setIsLoading(false);
-          console.log(err)
-					toast.error('Something went wrong. Try Again');
-				});
-  }
+      .post("http://localhost:8900/add-student", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        setIsLoading(false);
+        toast.success(res.data.message);
+        viewUserHealthSummary(res.data.student._id)
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        console.log(err);
+        toast.error("Something went wrong. Try Again");
+      });
+  };
 
   //handle submit of form
   const handleFormSubmit = (e) => {
-    console.log('submitting...')
+    console.log("submitting...");
     e.preventDefault();
     if (!showQuestions) {
       alert(
@@ -236,22 +239,11 @@ const MultiStepForm = ({
         },
       };
 
-    
-      
-      
-      
-      
-      handleAddStudent(transformedData)
-      
+      handleAddStudent(transformedData);
+
       console.log("Form submitted:", transformedData);
     }
-
-
-
-    
   };
-
-
 
   const handleNextStep = () => {
     if (!isStepComplete) return; //cross check to very the step is complete

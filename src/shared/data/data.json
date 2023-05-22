@@ -532,9 +532,10 @@
                   "value": 1,
                   "followUp": {
                     "name": "physicalSymptoms",
-                    "title": "If yes,",
+                    "title": "If yes",
                     "subTitle": "Please specify",
-                    "type": "input",
+                    "type": "dropdown",
+                    "options": ["Headache", "Stomach Ache", "Fatigue", "Nausea", "Dizziness", "Palpitations", "Sweating"],
                     "info": "Headache Stomachaches Fatigue Nausea Dizziness Palpitations Sweating                                "
                   }
                 }
