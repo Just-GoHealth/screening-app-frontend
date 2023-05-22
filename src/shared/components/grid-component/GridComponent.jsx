@@ -1,9 +1,9 @@
 import React, { createContext, useCallback, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
+import { GridSearch } from './GridSearch';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import './grid.styles.css';
-import { GridSearch } from './GridSearch';
 
 export const GridContext = createContext();
 
@@ -53,7 +53,7 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 			fetchUrl !== 'http://localhost:8900/schools' &&
 				fetch(`${fetchUrl}`)
 					.then((res) => res.json())
-					.then((res) => res.students)
+					.then((res) => res.schoolData.students)
 					.then((res) => {
 						res.forEach((data, i) => {
 							data.number = i + 1;
