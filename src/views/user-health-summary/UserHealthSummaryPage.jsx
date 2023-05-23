@@ -4,12 +4,6 @@ import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
 import { UserResults } from '../../shared/components/health-results';
 import { CircularProgress } from '@mui/material';
 
-const screeningReport = [
-	'High Risk mental health concerns',
-	'Low risk symptoms and signs',
-	'Very low risk environmental factors',
-];
-
 export const UserHealthSummaryPage = () => {
 	const { params } = useInAppNavigation();
 	const userId = params.userId;
@@ -18,7 +12,6 @@ export const UserHealthSummaryPage = () => {
 		['user-details', userId],
 		`http://localhost:8900/student/${userId}`
 	);
-
 	const { student } = data;
 
 	const date = new Date(student?.updatedAt);
@@ -26,6 +19,11 @@ export const UserHealthSummaryPage = () => {
 	const year = date.getFullYear();
 	const day = date.getDate();
 	const fullDate = month + ' ' + day + ', ' + year;
+
+	const parentInfo =
+		student?.parent_info.parent_name +
+		' | ' +
+		student?.parent_info.parent_mobile;
 
 	const signsAndSymptoms = student?.signs_and_symptoms;
 	const signsRecommendations =
@@ -49,8 +47,8 @@ export const UserHealthSummaryPage = () => {
 					<UserResults
 						studentName={student.full_name}
 						studentInfo={`${student.schoolId.school_name} | ${student.age} yrs | ${student.gender}`}
+						parentInfo={parentInfo}
 						date={fullDate}
-						screeningReport={screeningReport}
 						signsAndSymptomsResults={signsAndSymptomsResults}
 						signsRecommendations={signsRecommendations}
 					/>

@@ -1,21 +1,15 @@
 import React from 'react';
-import { FcSearch } from 'react-icons/fc';
 
-export const Recommendations = ({ subTitle }) => {
+export const Recommendations = ({ title, subTitle, body, icon }) => {
 	return (
 		<>
 			<div className="relative">
-				<div className="absolute left-[-50px] top-3">
-					<FcSearch className="w-10 h-10" />
-				</div>
+				<div className="absolute left-[-50px] top-3">{icon}</div>
 				<div>
 					<h1 className="text-xl text-[#955AA4]">
-						Workshop {subTitle && <span>{subTitle}</span>}
+						{title} {subTitle && <span>{subTitle}</span>}
 					</h1>
-					<h4>
-						Participate in group talk therapy and learn mindfulness techniques
-						to effectively manage stress.
-					</h4>
+					<h4>{body}</h4>
 				</div>
 			</div>
 		</>
