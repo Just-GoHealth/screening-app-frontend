@@ -4,13 +4,16 @@ import { SectionHeading } from './helpers/SectionHeading';
 import { UserSignsSymptoms } from './helpers/UserSignsSymptoms';
 import { Notice } from './helpers/Notice';
 import './styles.css';
+import {
+	recommendations,
+	screeningReport,
+} from '../../data/user-results/userData';
 
 export const UserResults = ({
 	studentName,
 	studentInfo,
+	parentInfo,
 	date,
-	screeningReport,
-	recommendations,
 	signsRecommendations,
 	signsAndSymptomsResults,
 }) => {
@@ -19,6 +22,7 @@ export const UserResults = ({
 			<div className="health-summary-heading-group">
 				<h4 className="health-summary-main-heading">{studentName}</h4>
 				<h4 className="health-summary-sub-heading">{studentInfo}</h4>
+				<h4 className="health-summary-sub-heading">{parentInfo}</h4>
 				<h4 className="health-summary-sub-heading">{date}</h4>
 			</div>
 
@@ -29,9 +33,11 @@ export const UserResults = ({
 						subHeading="Mild Mental Health Concern"
 					/>
 
-					<ul className="list-disc">
+					<ul>
 						{screeningReport.map((report, i) => (
-							<li key={i}>{report}</li>
+							<li key={i}>
+								{report.bullet} {report.title}
+							</li>
 						))}
 					</ul>
 				</div>
@@ -39,8 +45,16 @@ export const UserResults = ({
 				<div>
 					<SectionHeading heading="Recommendations" subHeading="Workshop" />
 
-					<div className="">
-						<Recommendations />
+					<div className="space-y-5">
+						{recommendations.map((recomendation, i) => (
+							<div key={i}>
+								<Recommendations
+									title={recomendation.title}
+									body={recomendation.body}
+									icon={recomendation.icon}
+								/>
+							</div>
+						))}
 					</div>
 				</div>
 
@@ -48,7 +62,7 @@ export const UserResults = ({
 					<Notice />
 				</>
 
-				<div className="mb-10">
+				<div className="pb-10">
 					<SectionHeading
 						heading="Signs & Symptoms"
 						subHeading={signsRecommendations}
