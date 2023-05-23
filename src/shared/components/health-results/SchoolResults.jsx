@@ -7,13 +7,16 @@ import { GroupSign } from "./helpers/GroupSign";
 import "./styles.css";
 import { Notice } from "./helpers/Notice";
 import data from "../../data/data.json";
+import {
+	recommendations,
+	screeningReport,
+} from '../../data/school-results/schoolData';
 
 export const SchoolResults = ({
   title,
   subTitle,
   date,
-  screeningReport,
-  recommendations,
+
 }) => {
   return (
     <>
@@ -23,22 +26,37 @@ export const SchoolResults = ({
         <h4 className="health-summary-sub-heading">{date}</h4>
       </div>
 
-      <div className="py-10 max-w-[75rem] mx-auto text-lg">
+      <div className="space-y-10 py-10 max-w-[75rem] mx-auto text-lg">
+      <div>
+					<SectionHeading
+						heading="Screening Report"
+						subHeading="Mild Mental Health Concern"
+					/>
+
+					<ul>
+						{screeningReport.map((report, i) => (
+							<li key={i}>
+								{report.bullet} {report.title}
+							</li>
+						))}
+					</ul>
+				</div>
+
         <div>
-          <SectionHeading heading="Screening Report" showSeparator={false} />
+					<SectionHeading heading="Recommendations" subHeading="Workshop" />
 
-          <ul className="list-disc space-y-7">
-            <ScreeningList />
-          </ul>
-        </div>
-
-        <div>
-          <SectionHeading heading="Recommendations" showSeparator={false} />
-
-          <div className="">
-            <Recommendations subTitle={"- 20 (15%)"} />
-          </div>
-        </div>
+					<div className="space-y-5">
+						{recommendations.map((recomendation, i) => (
+							<div key={i}>
+								<Recommendations
+									title={recomendation.title}
+									body={recomendation.body}
+									icon={recomendation.icon}
+								/>
+							</div>
+						))}
+					</div>
+				</div>
 
         <>
           <Notice />
