@@ -44,8 +44,8 @@ export const SchoolResults = ({
           <Notice />
         </>
 
-        {data.data.slice(1).map((section) => (
-          <div className="mb-10">
+        {data.data.slice(1).map((section, index) => (
+          <div className="mb-10" key={section.id}>
             <SectionHeading
               heading={section.name}
               subHeading={
@@ -60,8 +60,10 @@ export const SchoolResults = ({
             />
 
             <ol className="list-decimal space-y-7">
-              {section.subSections.map((subSection) => (
-                <SchoolSubsection sectionName={subSection.name} questions={subSection.questions} />
+              {section.subSections.map((subSection, index) => (
+				<div key={index}>
+					<SchoolSubsection sectionName={subSection.name} questions={subSection.questions} />
+				</div>
               ))}
             </ol>
           </div>
