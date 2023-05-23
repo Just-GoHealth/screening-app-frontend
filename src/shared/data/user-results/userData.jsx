@@ -30,7 +30,7 @@ export const recommendations = [
 		icon: <img src={family} className="w-10 h-10" />,
 	},
 	{
-		title: 'Medical Attenction (Emergency)',
+		title: 'Medical Attention (Emergency)',
 		body: 'Seek immediate medical care to address urgent and critical mental health concerns. Urgently recommended.',
 		icon: <img src={siren} className="w-10 h-10" />,
 	},
