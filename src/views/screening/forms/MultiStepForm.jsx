@@ -15,7 +15,6 @@ const MultiStepForm = ({
   handleSelectedSection,
   formData,
   setFormData,
-  handleGetRecommendations,
   subSectionsArr,
   showQuestions,
   data,
@@ -126,7 +125,6 @@ const MultiStepForm = ({
       })
       .catch((err) => {
         setIsLoading(false);
-        console.log(err);
         toast.error("Something went wrong. Try Again");
       });
   };
@@ -241,7 +239,6 @@ const MultiStepForm = ({
 
       handleAddStudent(transformedData);
 
-      console.log("Form submitted:", transformedData);
     }
   };
 
