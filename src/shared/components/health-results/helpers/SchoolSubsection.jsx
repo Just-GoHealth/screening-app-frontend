@@ -10,9 +10,9 @@ export const SchoolSubsection = ({ sectionName, questions }) => {
       <GroupSign sign="No Significant Emotional Disorder" number={20} />{" "}
       <GroupSign sign="Mild Symptoms" number={40} />
       <table className="table-fixed text-black mt-2">
-        <tbody className="overflow-none">
+        <tbody>
           {questions.map((question) => (
-            <tr className="overflow-none">
+            <tr>
               <td className="w-[17rem]">
                 <RxDotFilled className="inline text-[#965AA4] mb-1" />
                 {question.title}

@@ -23,7 +23,7 @@ export const SchoolResults = ({
         <h4 className="health-summary-sub-heading">{date}</h4>
       </div>
 
-      <div className="space-y-10 max-w-[75rem] mx-auto text-lg">
+      <div className="py-10 max-w-[75rem] mx-auto text-lg">
         <div>
           <SectionHeading heading="Screening Report" showSeparator={false} />
 
