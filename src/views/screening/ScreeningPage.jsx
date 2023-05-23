@@ -5,7 +5,6 @@ import "./Screening.styles.css";
 import data from "../../shared/data/data.json";
 import MultiStepForm from "./forms/MultiStepForm";
 import { useInAppNavigation } from "../../shared/custom-hooks/useInAppNavigation";
-import GetRecommendations from "./recommendations/GetRecommendations";
 import { useFetchDetials } from "../../shared/custom-hooks";
 
 export const ScreeningPage = () => {
@@ -13,7 +12,6 @@ export const ScreeningPage = () => {
   const [selectedSubSection, setSelectedSubSection] = useState(1);
   const { viewHealthRecords } = useInAppNavigation();
   const [formData, setFormData] = useState({});
-  const [getRecommendations, setGetRecommendations] = useState(false);
   const [subSectionsArr, setSubSectionsArr] = useState(() => {
     let initialSubSectionsArr = [];
     data.data.map((item) => initialSubSectionsArr.push(...item.subSections));
@@ -42,17 +40,12 @@ export const ScreeningPage = () => {
   };
 
   //function to handle recommendations page
-  const handleGetRecommendations = () => {
-    setGetRecommendations(true);
-    setSelectedSection(0), setSelectedSubSection(0);
-    setFormData({});
-  };
+
 
   //function to start screening all over again
   const startScreening = () => {
     setFormData({});
     handleSelectedSection(data.data[0].id, data.data[0].subSections[0].id);
-    setGetRecommendations(false);
   };
 
   useEffect(() => setShowQuestions(false), []);
@@ -76,7 +69,7 @@ export const ScreeningPage = () => {
   return (
     <>
       <>
-        <Navbar showLogo showRecommendations={getRecommendations} />
+        <Navbar showLogo  />
       </>
 
       <div className=" flex mx-auto gap-x-10">
@@ -90,11 +83,6 @@ export const ScreeningPage = () => {
                   {data.data.map((item) => (
                     <div
                       key={item.id}
-                      className={
-                        getRecommendations
-                          ? " pointer-events-none opacity-[0.32] "
-                          : ""
-                      }
                     >
                       <h3
                         className={
@@ -172,15 +160,6 @@ export const ScreeningPage = () => {
                   </div>
                 </div>
               )}
-              {getRecommendations && (
-                <h3
-                  className={
-                    "cursor-pointer px-3 py-1 rounded-[25px] bg-primary text-white font-bold"
-                  }
-                >
-                  Recommendations
-                </h3>
-              )}
             </div>
 
             <div className="text-[#99B3DD] space-y-3 w-full flex flex-col items-center px-3 ">
@@ -218,23 +197,17 @@ export const ScreeningPage = () => {
         </nav>
 
         <main className=" min-h-[90vh] flex-grow-2 basis-[80%] ">
-          {getRecommendations ? (
-            <GetRecommendations />
-          ) : (
-            <MultiStepForm
-              data={data}
-              selectedSection={selectedSection}
-              selectedSubSection={selectedSubSection}
-              handleSelectedSection={handleSelectedSection}
-              formData={formData}
-              setFormData={setFormData}
-              setGetRecommendations={setGetRecommendations}
-              handleGetRecommendations={handleGetRecommendations}
-              subSectionsArr={subSectionsArr}
-              showQuestions={showQuestions}
-              schools={schoolsData?.school_list}
-            />
-          )}
+          <MultiStepForm
+            data={data}
+            selectedSection={selectedSection}
+            selectedSubSection={selectedSubSection}
+            handleSelectedSection={handleSelectedSection}
+            formData={formData}
+            setFormData={setFormData}
+            subSectionsArr={subSectionsArr}
+            showQuestions={showQuestions}
+            schools={schoolsData?.school_list}
+          />
         </main>
       </div>
     </>

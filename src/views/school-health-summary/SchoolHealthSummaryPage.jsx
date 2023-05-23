@@ -73,7 +73,7 @@ export const SchoolHealthSummaryPage = () => {
 			<Navbar
 				showBackButton
 				showLogo
-				className="bg-[#DFE7F4] max-w-6xl mx-auto"
+				className="bg-[#DFE7F4] max-w-[75rem] mx-auto"
 			/>
 			{isLoading ? (
 				<div className="h-[90vh] flex flex-col items-center justify-center">
