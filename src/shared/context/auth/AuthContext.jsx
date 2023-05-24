@@ -7,7 +7,7 @@ export const AuthContextProvider = ({ children }) => {
 	const [isAuthenticated, setIsAuthenticated] = useState(
 		Cookies.get('isAuthenticated')
 			? JSON.parse(Cookies.get('isAuthenticated'))
-			: false
+			: true
 	);
 
 	return (
