@@ -1,5 +1,5 @@
-import React from 'react';
-import { IconButton, Button, Box } from '@mui/material';
+import React, { useState } from 'react';
+import { IconButton, Button, Box, CircularProgress } from '@mui/material';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
@@ -9,11 +9,15 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
 import { useContext } from 'react';
 import { AuthContext } from '../../shared/context/auth/AuthContext';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 export const AccessHealthRecords = () => {
 	const [showPassword, setShowPassword] = React.useState(false);
 	const { handleGoBack, navigate } = useInAppNavigation();
 	const { setIsAuthenticated } = useContext(AuthContext);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -23,11 +27,23 @@ export const AccessHealthRecords = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		setIsLoading(true);
 
 		const password = event.target[0].value;
 
-		setIsAuthenticated(true);
-		navigate('/all-health-records');
+		axios
+			.post('http://localhost:8900/schools', { password })
+			.then((res) => {
+				setIsLoading(false);
+				setIsAuthenticated(true);
+				Cookies.set('isAuthenticated', true, { sameSite: 'Strict' });
+				toast.success('Welcome Back!');
+				navigate('/all-health-records');
+			})
+			.catch((err) => {
+				setIsLoading(false);
+				toast.error(err.message);
+			});
 	};
 
 	return (
@@ -76,7 +92,11 @@ export const AccessHealthRecords = () => {
 									variant="contained"
 									sx={{ mt: 3, mb: 2, px: 10, bgcolor: '#993399' }}
 								>
-									Continue
+									{isLoading ? (
+										<CircularProgress sx={{ color: '#f4eaf4' }} size={24} />
+									) : (
+										'Continue'
+									)}
 								</Button>
 							</div>
 						</Box>

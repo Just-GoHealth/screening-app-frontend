@@ -2,12 +2,15 @@ import React from 'react';
 import { IconButton } from '@mui/material';
 import { AiOutlineLeft } from 'react-icons/ai';
 import './HealthRecordsNavBar.styles.css';
+import { useInAppNavigation } from '../../custom-hooks';
 
 export const HealthRecordsNavBar = ({
 	onLeftIconClick,
 	heading,
 	rightIcon,
 }) => {
+	const { handleGoHome } = useInAppNavigation();
+
 	return (
 		<nav className="health-records-nav-container">
 			<>
@@ -20,7 +23,12 @@ export const HealthRecordsNavBar = ({
 				</IconButton>
 			</>
 
-			<h2 className="health-records-nav-heading ">{heading}</h2>
+			<h2
+				className="health-records-nav-heading cursor-pointer"
+				onClick={handleGoHome}
+			>
+				{heading}
+			</h2>
 
 			<>{rightIcon}</>
 		</nav>

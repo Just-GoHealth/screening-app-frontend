@@ -1,9 +1,14 @@
 import React, { createContext, useState } from 'react';
+import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-	const [isAuthenticated, setIsAuthenticated] = useState(true);
+	const [isAuthenticated, setIsAuthenticated] = useState(
+		Cookies.get('isAuthenticated')
+			? JSON.parse(Cookies.get('isAuthenticated'))
+			: false
+	);
 
 	return (
 		<AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
