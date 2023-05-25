@@ -30,7 +30,7 @@
 }
 
 .ag-cell {
-	overflow: visible;
+	/* overflow: visible; */
 	font-size: 1rem;
 }
 
