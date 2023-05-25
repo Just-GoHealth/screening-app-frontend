@@ -75,6 +75,7 @@ export const SchoolHealthRecordsPage = () => {
 
 								return month + ' ' + day;
 							},
+							sort: 'desc',
 						},
 						{
 							field: 'download_school',

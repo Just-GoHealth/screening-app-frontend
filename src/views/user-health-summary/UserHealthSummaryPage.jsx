@@ -14,20 +14,22 @@ export const UserHealthSummaryPage = () => {
 	);
 	const { student } = data;
 
+	// User's Last Screening Date
 	const date = new Date(student?.updatedAt);
 	const month = date.toLocaleString('en-US', { month: 'short' });
 	const year = date.getFullYear();
 	const day = date.getDate();
 	const fullDate = month + ' ' + day + ', ' + year;
 
+	// User Parent Info
 	const parentInfo =
 		student?.parent_info.parent_name +
 		' | ' +
 		student?.parent_info.parent_mobile;
 
+	// User Signs and Symptoms
 	const signsAndSymptoms = student?.signs_and_symptoms;
-	const signsRecommendations =
-		signsAndSymptoms?.recommendation_on_signs.join(' ');
+	const signsRecommendations = signsAndSymptoms?.outcome_on_signs_and_symptoms;
 	const signsAndSymptomsResults =
 		signsAndSymptoms && Object.entries(signsAndSymptoms);
 

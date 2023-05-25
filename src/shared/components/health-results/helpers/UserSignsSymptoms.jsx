@@ -8,7 +8,7 @@ export const UserSignsSymptoms = ({ signsAndSymptomsResults }) => {
 				?.slice(0, signsAndSymptomsResults.length - 1)
 				.map((sign, i) => {
 					const [title, results] = sign;
-					const { score, ...remainingResults } = results;
+					const { outcome, ...remainingResults } = results;
 
 					const finalTitle = title
 						.split('_')
@@ -20,7 +20,7 @@ export const UserSignsSymptoms = ({ signsAndSymptomsResults }) => {
 					return (
 						<div key={`${title} ${i}`}>
 							<li className="text-[#965AA4] text-xl">
-								{finalTitle}: {score}
+								{finalTitle}: {outcome}
 							</li>
 							<table className="table-fixed text-black mt-1 ml-4">
 								<tbody>
