@@ -62,8 +62,9 @@ export const SchoolHealthRecordsPage = () => {
 							headerName: 'Name',
 						},
 						{
-							field: 'mental_health_recommendation',
+							field: 'student_recommendation',
 							headerName: 'Recommendation',
+							cellRenderer: EllipsisRenderer,
 						},
 						{
 							field: 'updatedAt',
@@ -75,6 +76,7 @@ export const SchoolHealthRecordsPage = () => {
 
 								return month + ' ' + day;
 							},
+							sort: 'desc',
 						},
 						{
 							field: 'download_school',
@@ -87,3 +89,19 @@ export const SchoolHealthRecordsPage = () => {
 		</div>
 	);
 };
+
+function EllipsisRenderer({ value }) {
+	const formattedValue = value.length > 0 ? value.join(', ') : 'None';
+
+	return (
+		<div
+			style={{
+				overflow: 'hidden',
+				textOverflow: 'ellipsis',
+				whiteSpace: 'nowrap',
+			}}
+		>
+			{formattedValue}
+		</div>
+	);
+}

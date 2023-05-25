@@ -32,6 +32,7 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 	const onGridReady = useCallback((params) => {
 		setGridApi(params.api);
 		setGridColumnApi(params.columnApi);
+
 		{
 			fetchUrl === 'http://localhost:8900/schools' &&
 				fetch(`${fetchUrl}`)
