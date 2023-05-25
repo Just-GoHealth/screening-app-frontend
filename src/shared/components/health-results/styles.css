@@ -2,7 +2,7 @@
 	@apply flex 
 		flex-col items-center justify-center
 		space-y-1 lg:space-y-2
-		mb-10 py-5 max-w-[75rem] mx-auto
+		mb-5 py-5 max-w-[75rem] mx-auto
 		bg-[#DFE7F4];
 }
 .health-summary-main-heading {
