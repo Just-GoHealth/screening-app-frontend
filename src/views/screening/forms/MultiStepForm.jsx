@@ -4,7 +4,7 @@ import { FormNavigation } from "../../../shared/components/form/screening";
 import renderQuestion from "./helper/renderQuestion";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useInAppNavigation } from "../../../shared/custom-hooks/useInAppNavigation"
+import { useInAppNavigation } from "../../../shared/custom-hooks/useInAppNavigation";
 
 //regex to validate numbers
 const mobileRegex = /^\d{10}$/;
@@ -28,7 +28,7 @@ const MultiStepForm = ({
   const [canSubmit, setCanSubmit] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isMobileValid, setIsMobileValid] = useState(true);
-  const {  viewUserHealthSummary } = useInAppNavigation()
+  const { viewUserHealthSummary } = useInAppNavigation();
 
   //Pass subsections as steps
   const {
@@ -121,7 +121,7 @@ const MultiStepForm = ({
       .then((res) => {
         setIsLoading(false);
         toast.success(res.data.message);
-        viewUserHealthSummary(res.data.student._id)
+        viewUserHealthSummary(res.data.student._id);
       })
       .catch((err) => {
         setIsLoading(false);
@@ -239,6 +239,7 @@ const MultiStepForm = ({
 
       handleAddStudent(transformedData);
 
+      console.log(transformedData);
     }
   };
 
