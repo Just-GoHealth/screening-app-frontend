@@ -64,10 +64,7 @@ export const SchoolHealthRecordsPage = () => {
 						{
 							field: 'student_recommendation',
 							headerName: 'Recommendation',
-							valueFormatter: function (params) {
-								const { value } = params;
-								return value.length > 0 ? value.join(', ') : 'None';
-							},
+							cellRenderer: EllipsisRenderer,
 						},
 						{
 							field: 'updatedAt',
@@ -92,3 +89,19 @@ export const SchoolHealthRecordsPage = () => {
 		</div>
 	);
 };
+
+function EllipsisRenderer({ value }) {
+	const formattedValue = value.length > 0 ? value.join(', ') : 'None';
+
+	return (
+		<div
+			style={{
+				overflow: 'hidden',
+				textOverflow: 'ellipsis',
+				whiteSpace: 'nowrap',
+			}}
+		>
+			{formattedValue}
+		</div>
+	);
+}
