@@ -1,17 +1,5 @@
-import { FcHighPriority, FcSearch } from 'react-icons/fc';
+import { FcSearch } from 'react-icons/fc';
 import { family, meditation, siren } from '../../../assets/images';
-import { Bullet } from '../../components/health-results/helpers/Bullet';
-
-export const screeningReport = [
-	{ title: 'Mild Signs & Symptoms', bullet: <Bullet /> },
-	{ title: 'Moderate Stressors/ Triggers', bullet: <Bullet /> },
-	{ title: 'No Significant Risk Factors', bullet: <Bullet /> },
-	{ title: 'Strong Mental Health Support System', bullet: <Bullet /> },
-	{
-		title: 'Suicidal Thoughts (No Plan)',
-		bullet: <FcHighPriority className="inline mb-1" />,
-	},
-];
 
 export const recommendations = [
 	{
