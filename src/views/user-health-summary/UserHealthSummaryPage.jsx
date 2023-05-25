@@ -3,6 +3,10 @@ import { Navbar } from '../../shared/components/navbar/Navbar';
 import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
 import { UserResults } from '../../shared/components/health-results';
 import { CircularProgress } from '@mui/material';
+import { Bullet } from '../../shared/components/health-results/helpers/Bullet';
+import { FcHighPriority } from 'react-icons/fc';
+import { recommendations } from '../../shared/data/user-results/userData';
+import { findKeysAndValuesStartingWith } from '../../shared/helpers/helperFunctions';
 
 export const UserHealthSummaryPage = () => {
 	const { params } = useInAppNavigation();
@@ -33,6 +37,39 @@ export const UserHealthSummaryPage = () => {
 	const signsAndSymptomsResults =
 		signsAndSymptoms && Object.entries(signsAndSymptoms);
 
+	// User Screening Report
+	const screeningReport = student?.screening_report;
+	const screeningReportHighlight = screeningReport?.join(', ');
+	const allStudentScreeningReport = [];
+	const outcomeOnScreeningData = findKeysAndValuesStartingWith(
+		student,
+		'outcome_on'
+	);
+	outcomeOnScreeningData?.forEach((item) => {
+		allStudentScreeningReport.push({
+			title: item.value,
+			bullet: <Bullet />,
+		});
+	});
+
+	const suicidalThoughts = screeningReport?.find((item) =>
+		item.includes('Suicidal Thoughts')
+	);
+	if (suicidalThoughts) {
+		allStudentScreeningReport.push({
+			title: suicidalThoughts,
+			bullet: <FcHighPriority className="inline mb-1" />,
+		});
+	}
+
+	// Student Recommendations
+	const studentRecommendations = student?.student_recommendation;
+	const recommendationsHighlight = studentRecommendations?.join(', ');
+	const allStudentRecommendations = recommendations.filter((recommendation) => {
+		const { title } = recommendation;
+		return studentRecommendations?.some((word) => title.includes(word));
+	});
+
 	return (
 		<>
 			<Navbar
@@ -51,6 +88,10 @@ export const UserHealthSummaryPage = () => {
 						studentInfo={`${student.schoolId.school_name} | ${student.age} yrs | ${student.gender}`}
 						parentInfo={parentInfo}
 						date={fullDate}
+						screeningReportHighlight={screeningReportHighlight}
+						allStudentScreeningReport={allStudentScreeningReport}
+						recommendationsHighlight={recommendationsHighlight}
+						allStudentRecommendations={allStudentRecommendations}
 						signsAndSymptomsResults={signsAndSymptomsResults}
 						signsRecommendations={signsRecommendations}
 					/>

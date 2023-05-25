@@ -62,8 +62,12 @@ export const SchoolHealthRecordsPage = () => {
 							headerName: 'Name',
 						},
 						{
-							field: 'mental_health_recommendation',
+							field: 'student_recommendation',
 							headerName: 'Recommendation',
+							valueFormatter: function (params) {
+								const { value } = params;
+								return value.length > 0 ? value.join(', ') : 'None';
+							},
 						},
 						{
 							field: 'updatedAt',

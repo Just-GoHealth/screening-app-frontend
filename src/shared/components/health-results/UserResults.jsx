@@ -4,10 +4,6 @@ import { SectionHeading } from './helpers/SectionHeading';
 import { UserSignsSymptoms } from './helpers/UserSignsSymptoms';
 import { Notice } from './helpers/Notice';
 import './styles.css';
-import {
-	recommendations,
-	screeningReport,
-} from '../../data/user-results/userData';
 
 export const UserResults = ({
 	studentName,
@@ -16,6 +12,10 @@ export const UserResults = ({
 	date,
 	signsRecommendations,
 	signsAndSymptomsResults,
+	screeningReportHighlight,
+	allStudentScreeningReport,
+	recommendationsHighlight,
+	allStudentRecommendations,
 }) => {
 	return (
 		<>
@@ -30,11 +30,11 @@ export const UserResults = ({
 				<div>
 					<SectionHeading
 						heading="Screening Report"
-						subHeading="Mild Mental Health Concern"
+						subHeading={screeningReportHighlight}
 					/>
 
 					<ul>
-						{screeningReport.map((report, i) => (
+						{allStudentScreeningReport.map((report, i) => (
 							<li key={i}>
 								{report.bullet} {report.title}
 							</li>
@@ -43,10 +43,13 @@ export const UserResults = ({
 				</div>
 
 				<div>
-					<SectionHeading heading="Recommendations" subHeading="Workshop" />
+					<SectionHeading
+						heading="Recommendations"
+						subHeading={recommendationsHighlight}
+					/>
 
 					<div className="space-y-5">
-						{recommendations.map((recomendation, i) => (
+						{allStudentRecommendations.map((recomendation, i) => (
 							<div key={i}>
 								<Recommendations
 									title={recomendation.title}
