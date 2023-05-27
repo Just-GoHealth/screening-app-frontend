@@ -182,7 +182,7 @@ const MultiStepForm = ({
           },
           unexplained_physical_symptoms: {
             new_physical_symptoms: formData?.newPhysicalSymptoms,
-            specify_symptoms: formData?.physicalSymptoms ?? [],
+            specify_symptoms: formData?.physicalSymptoms ?? ["", 0],
             appetite_changes: formData?.appetiteChanges,
           },
         },
@@ -220,7 +220,7 @@ const MultiStepForm = ({
           },
           substance_abuse: {
             substance_use: formData?.substanceUse,
-            substance_use_frequency: formData?.substanceUseFrequency ?? [],
+            substance_use_frequency: formData?.substanceUseFrequency ?? ["", 0],
             exposure_to_substance_abuse: formData?.substanceAbuseExposure,
           },
         },
