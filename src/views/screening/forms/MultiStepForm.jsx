@@ -118,10 +118,17 @@ const MultiStepForm = ({
           "Content-Type": "application/json",
         },
       })
-      .then((res) => {
+      .then(async (res) => {
         setIsLoading(false);
         toast.success(res.data.message);
         viewUserHealthSummary(res.data.student._id);
+        await axios
+          .get(`http://localhost:8900/${res.data.student._id}`)
+          .then((res) => {console.log(res)})
+          .catch((err) => {
+            console.log(err)
+            toast.error("Something went wrong. Try again")
+          });
       })
       .catch((err) => {
         setIsLoading(false);
@@ -182,7 +189,9 @@ const MultiStepForm = ({
           },
           unexplained_physical_symptoms: {
             new_physical_symptoms: formData?.newPhysicalSymptoms,
-            specify_symptoms: formData?.physicalSymptoms ?? ["", 0],
+            specify_symptoms: formData?.physicalSymptoms
+              ? [formData?.physicalSymptoms, 2]
+              : ["", 0],
             appetite_changes: formData?.appetiteChanges,
           },
         },
@@ -220,7 +229,8 @@ const MultiStepForm = ({
           },
           substance_abuse: {
             substance_use: formData?.substanceUse,
-            substance_use_frequency: formData?.substanceUseFrequency ?? ["", 0],
+            substance_use_frequency: formData?.substanceUseFrequency
+              ?? ["", 0],
             exposure_to_substance_abuse: formData?.substanceAbuseExposure,
           },
         },

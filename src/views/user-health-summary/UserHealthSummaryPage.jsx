@@ -70,6 +70,7 @@ export const UserHealthSummaryPage = () => {
 		return studentRecommendations?.some((word) => title.includes(word));
 	});
 
+
 	return (
 		<>
 			<Navbar

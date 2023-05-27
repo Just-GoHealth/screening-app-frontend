@@ -535,7 +535,8 @@
                     "title": "If yes",
                     "subTitle": "Please specify",
                     "type": "dropdown",
-                    "options": ["Headache", "Stomach Ache", "Fatigue", "Nausea", "Dizziness", "Palpitations", "Sweating"],
+                    "options": [
+                      "Headache", "Stomach Ache", "Fatigue", "Nausea", "Dizziness", "Palpitations", "Sweating"],
                     "info": "Headache Stomachaches Fatigue Nausea Dizziness Palpitations Sweating                                "
                   }
                 }
@@ -556,7 +557,7 @@
                 },
                 {
                   "id": 2,
-                  "name": "Increased appetite or weight gain                          ",
+                  "name": "Increased appetite or weight gain",
                   "value": 1
                 },
                 {
