@@ -28,8 +28,8 @@ export const UserHealthSummaryPage = () => {
 	// User Parent Info
 	const parentInfo =
 		student?.parent_info.parent_name +
-		' | ' +
-		student?.parent_info.parent_mobile;
+		' ( ' +
+		student?.parent_info.parent_mobile + " )";
 
 	// User Signs and Symptoms
 	const signsAndSymptoms = student?.signs_and_symptoms;
