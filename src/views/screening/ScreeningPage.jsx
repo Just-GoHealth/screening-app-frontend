@@ -6,6 +6,8 @@ import data from "../../shared/data/data.json";
 import MultiStepForm from "./forms/MultiStepForm";
 import { useInAppNavigation } from "../../shared/custom-hooks/useInAppNavigation";
 import { useFetchDetials } from "../../shared/custom-hooks";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 export const ScreeningPage = () => {
   const [selectedSection, setSelectedSection] = useState(data.data[0].id);
@@ -18,11 +20,19 @@ export const ScreeningPage = () => {
     return initialSubSectionsArr;
   });
   const [showQuestions, setShowQuestions] = useState(true);
+  const [schoolsData, setSchoolsData] = useState({})
 
-  const { data: schoolsData } = useFetchDetials(
-    ["schools"],
-    "http://localhost:8900/schools"
-  );
+  useEffect(() => {
+    
+    const getSchools = async () => {
+      await axios.get('https://screening-tool-api.onrender.com/schools').then((res) => {
+        setSchoolsData(res.data)
+      }).catch((err) => {
+        toast.error("Something unexpected happened, try again later.")
+      })
+    }
+    getSchools()
+  }, []);
 
   //function to handle section change
   const handleSelectedSection = (id, subSectionId) => {
@@ -40,7 +50,6 @@ export const ScreeningPage = () => {
   };
 
   //function to handle recommendations page
-
 
   //function to start screening all over again
   const startScreening = () => {
@@ -69,7 +78,7 @@ export const ScreeningPage = () => {
   return (
     <>
       <>
-        <Navbar showLogo  />
+        <Navbar showLogo />
       </>
 
       <div className=" flex mx-auto gap-x-10">
@@ -81,9 +90,7 @@ export const ScreeningPage = () => {
               {showQuestions ? (
                 <>
                   {data.data.map((item) => (
-                    <div
-                      key={item.id}
-                    >
+                    <div key={item.id}>
                       <h3
                         className={
                           "cursor-pointer px-3 " +

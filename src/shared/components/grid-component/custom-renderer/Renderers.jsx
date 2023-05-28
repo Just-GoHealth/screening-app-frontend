@@ -39,13 +39,6 @@ export const GridSchoolDownloadAction = ({ data }) => {
 
   const handleClick = async () => {
     navigate(`/school-health-summary/${data._id}`);
-    await axios
-      .get(`http://localhost:8900/${data._id}`)
-      .then((res) => console.log(res))
-      .catch((err) => {
-        console.log(err);
-		toast.error("Something went wrong")
-      });
   };
 
   return (
@@ -62,13 +55,7 @@ export const GridUserDownloadAction = ({ data }) => {
 
   const handleClick = async () => {
     navigate(`/user-health-summary/${data._id}`);
-	await axios
-      .get(`http://localhost:8900/${data._id}`)
-      .then((res) => console.log(res))
-      .catch((err) => {
-        console.log(err);
-		toast.error("Something went wrong")
-      });
+    
   };
 
   return (

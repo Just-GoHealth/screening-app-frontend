@@ -80,8 +80,8 @@ const renderQuestion = (
                 }
                 error={
                   question.name === "parentContact"
-                    ? !isMobileValid
-                    : !isQuestionFilled(question)
+                    ? !isMobileValid && !isPreviousQuestionUnanswered
+                    : !isQuestionFilled(question) && !isPreviousQuestionUnanswered
                 }
               />
             </>

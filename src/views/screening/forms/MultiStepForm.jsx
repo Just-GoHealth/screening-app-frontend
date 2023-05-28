@@ -7,7 +7,8 @@ import { toast } from "react-toastify";
 import { useInAppNavigation } from "../../../shared/custom-hooks/useInAppNavigation";
 
 //regex to validate numbers
-const mobileRegex = /^\d{10}$/;
+const mobileRegex = /\d{10}$/;
+const regexForTwoPhoneNumbers = /\d{10}\/\d{10}/;
 
 const MultiStepForm = ({
   selectedSection,
@@ -63,9 +64,16 @@ const MultiStepForm = ({
       (question) => question.name === "parentContact"
     );
     if (hasContactField) {
-      setIsMobileValid(mobileRegex.test(formData?.parentContact));
-      if (!mobileRegex.test(formData?.parentContact)) {
-        setIsStepComplete(false);
+      if (formData?.parentContact?.length <= 10) {
+        setIsMobileValid(mobileRegex.test(formData?.parentContact));
+        if (!mobileRegex.test(formData?.parentContact)) {
+          setIsStepComplete(false);
+        }
+      } else {
+        setIsMobileValid(regexForTwoPhoneNumbers.test(formData?.parentContact));
+        if (!regexForTwoPhoneNumbers.test(formData?.parentContact)) {
+          setIsStepComplete(false);
+        }
       }
     }
   }, [formData, selectedSection, selectedSubSection, step]);
@@ -113,7 +121,7 @@ const MultiStepForm = ({
   const handleAddStudent = async (data) => {
     setIsLoading(true);
     await axios
-      .post("http://localhost:8900/add-student", data, {
+      .post("https://screening-tool-api.onrender.com/add-student", data, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -122,17 +130,11 @@ const MultiStepForm = ({
         setIsLoading(false);
         toast.success(res.data.message);
         viewUserHealthSummary(res.data.student._id);
-        await axios
-          .get(`http://localhost:8900/${res.data.student._id}`)
-          .then((res) => {console.log(res)})
-          .catch((err) => {
-            console.log(err)
-            toast.error("Something went wrong. Try again")
-          });
       })
       .catch((err) => {
         setIsLoading(false);
         toast.error("Something went wrong. Try Again");
+        console.error(err)
       });
   };
 
@@ -229,8 +231,7 @@ const MultiStepForm = ({
           },
           substance_abuse: {
             substance_use: formData?.substanceUse,
-            substance_use_frequency: formData?.substanceUseFrequency
-              ?? ["", 0],
+            substance_use_frequency: formData?.substanceUseFrequency ?? ["", 0],
             exposure_to_substance_abuse: formData?.substanceAbuseExposure,
           },
         },
