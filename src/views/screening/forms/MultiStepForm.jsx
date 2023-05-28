@@ -134,13 +134,11 @@ const MultiStepForm = ({
       .catch((err) => {
         setIsLoading(false);
         toast.error("Something went wrong. Try Again");
-        console.error(err)
       });
   };
 
   //handle submit of form
   const handleFormSubmit = (e) => {
-    console.log("submitting...");
     e.preventDefault();
     if (!showQuestions) {
       alert(
@@ -250,7 +248,6 @@ const MultiStepForm = ({
 
       handleAddStudent(transformedData);
 
-      console.log(transformedData);
     }
   };
 
