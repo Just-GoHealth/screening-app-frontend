@@ -1,7 +1,7 @@
 import React from "react";
 import { Recommendations } from "./helpers/Recommendations";
 import { SectionHeading } from "./helpers/SectionHeading";
-import { UserSignsSymptoms } from "./helpers/UserSignsSymptoms";
+import { UserSubsectionResults } from "./helpers/UserSubsectionResults";
 import { Notice } from "./helpers/Notice";
 import "./styles.css";
 
@@ -12,6 +12,12 @@ export const UserResults = ({
   date,
   signsRecommendations,
   signsAndSymptomsResults,
+  triggersResults,
+  triggersRecommendations,
+  riskFactorsResults,
+  riskFactorsRecommendations,
+  supportSystemsResults,
+  supportSystemsRecommendations,
   screeningReportHighlight,
   allStudentScreeningReport,
   recommendationsHighlight,
@@ -26,7 +32,7 @@ export const UserResults = ({
         <h4 className="health-summary-sub-heading">{date}</h4>
       </div>
 
-      <div className="space-y-10 max-w-[75rem] mx-auto text-lg">
+      <div className="space-y-10 max-w-[85rem] mx-auto text-lg px-[5rem]">
         <div>
           <SectionHeading
             heading="Screening Report"
@@ -55,7 +61,8 @@ export const UserResults = ({
                   <Recommendations recommendation={recommendation} />
                 </div>
               ))
-            ) : (<div>Workshop is optional</div>
+            ) : (
+              <div>Workshop is optional</div>
             )}
           </div>
         </div>
@@ -71,8 +78,44 @@ export const UserResults = ({
           />
 
           <ol className="list-decimal list-inside space-y-7">
-            <UserSignsSymptoms
-              signsAndSymptomsResults={signsAndSymptomsResults}
+            <UserSubsectionResults
+              results={signsAndSymptomsResults}
+            />
+          </ol>
+        </div>
+        <div className="pb-10">
+          <SectionHeading
+            heading="Stressors/Triggers"
+            subHeading={triggersRecommendations}
+          />
+
+          <ol className="list-decimal list-inside space-y-7">
+            <UserSubsectionResults
+              results={triggersResults}
+            />
+          </ol>
+        </div>
+        <div className="pb-10">
+          <SectionHeading
+            heading="Risk Factors"
+            subHeading={riskFactorsRecommendations}
+          />
+
+          <ol className="list-decimal list-inside space-y-7">
+            <UserSubsectionResults
+              results={riskFactorsResults}
+            />
+          </ol>
+        </div>
+        <div className="pb-10">
+          <SectionHeading
+            heading="Support Systems"
+            subHeading={supportSystemsRecommendations}
+          />
+
+          <ol className="list-decimal list-inside space-y-7">
+            <UserSubsectionResults
+              results={supportSystemsResults}
             />
           </ol>
         </div>

@@ -14,7 +14,7 @@
               "subTitle": "What is your full name?",
               "name": "fullName",
               "type": "input",
-              "info": "Watch our medical experts to help decide the routine"
+              "info": ""
             },
             {
               "id": 2,
@@ -32,10 +32,9 @@
                 "16",
                 "17",
                 "18",
-                "19",
                 "19+"
               ],
-              "info": "Watch our medical experts to help decide the routine"
+              "info": ""
             },
             {
               "id": 3,
@@ -44,7 +43,7 @@
               "name": "gender",
               "type": "squareRadio",
               "options": ["M", "F"],
-              "info": "Watch our medical experts to help decide the routine"
+              "info": ""
             },
             {
               "id": 4,
@@ -52,7 +51,7 @@
               "subTitle": "Where do you stay?",
               "name": "location",
               "type": "input",
-              "info": "Watch our medical experts to help decide the routine"
+              "info": ""
             }
           ]
         },
@@ -66,7 +65,7 @@
               "subTitle": "What is the name of your school?",
               "name": "school",
               "type": "dropdown",
-              "info": "Watch our medical experts to help decide the routine",
+              "info": "",
               "options": ["Achimota School", "St Peters", "Presec"]
             },
             {
@@ -75,8 +74,8 @@
               "subTitle": "What is your grade?",
               "name": "grade",
               "type": "circularRadio",
-              "options": ["4", "5", "6", "7", "8", "9", "10", "11", "12"],
-              "info": "Watch our medical experts to help decide the routine"
+              "options": [ "7", "8", "9", "10", "11", "12"],
+              "info": ""
             },
             {
               "id": 3,
@@ -84,7 +83,7 @@
               "subTitle": "The JustGo Health Worker",
               "name": "screenedBy",
               "type": "input",
-              "info": "Watch our medical experts to help decide the routine"
+              "info": ""
             },
             {
               "id": 4,
@@ -92,7 +91,7 @@
               "subTitle": "What is the name of your guardian?",
               "name": "parentName",
               "type": "input",
-              "info": "Watch our medical experts to help decide the routine"
+              "info": ""
             },
             {
               "id": 5,
@@ -100,7 +99,7 @@
               "subTitle": "Their Phone Number",
               "name": "parentContact",
               "type": "input",
-              "info": "Watch our medical experts to help decide the routine"
+              "info": ""
             }
           ]
         }
@@ -529,7 +528,7 @@
                 {
                   "id": 2,
                   "name": "Yes",
-                  "value": 1,
+                  "value": 2,
                   "followUp": {
                     "name": "physicalSymptoms",
                     "title": "If yes",
@@ -728,10 +727,10 @@
             {
               "id": 3,
               "title": "Living situation change",
-              "subTitle": "",
+              "subTitle": "Have you experienced a major change in your living situation in the past year, such as moving to a new home or school?",
               "name": "situationChange",
               "type": "squircicleRadio",
-              "info": " Have you experienced a major change in your living situation in the past year, such as moving to a new home or school?",
+              "info": "Have you experienced a major change in your living situation in the past year, such as moving to a new home or school?",
               "options": [
                 {
                   "id": 1,
