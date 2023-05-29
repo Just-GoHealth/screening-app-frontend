@@ -1,6 +1,6 @@
 import React from 'react';
 import { SectionHeading } from '../SectionHeading';
-import { UserAnswersResults } from '../UserAnswerResults';
+import { UserSubsectionResults } from '../UserSubsectionResults';
 
 export const UserAnswers = ({ student }) => {
 	// User Signs and Symptoms
@@ -30,7 +30,7 @@ export const UserAnswers = ({ student }) => {
 				<SectionHeading heading="Signs & Symptoms" subHeading={signsOutcome} />
 
 				<ol className="list-decimal list-inside space-y-7">
-					<UserAnswersResults answerResults={signsAndSymptomsResults} />
+					<UserSubsectionResults results={signsAndSymptomsResults} />
 				</ol>
 			</div>
 
@@ -39,7 +39,7 @@ export const UserAnswers = ({ student }) => {
 				<SectionHeading heading="Triggers" subHeading={tirggersOutcome} />
 
 				<ol className="list-decimal list-inside space-y-7">
-					<UserAnswersResults answerResults={triggersResults} />
+					<UserSubsectionResults results={triggersResults} />
 				</ol>
 			</div>
 
@@ -51,7 +51,7 @@ export const UserAnswers = ({ student }) => {
 				/>
 
 				<ol className="list-decimal list-inside space-y-7">
-					<UserAnswersResults answerResults={riskFactorsResults} />
+					<UserSubsectionResults results={riskFactorsResults} />
 				</ol>
 			</div>
 
@@ -63,7 +63,7 @@ export const UserAnswers = ({ student }) => {
 				/>
 
 				<ol className="list-decimal list-inside space-y-7">
-					<UserAnswersResults answerResults={supportSystemsResults} />
+					<UserSubsectionResults results={supportSystemsResults} />
 				</ol>
 			</div>
 		</div>
