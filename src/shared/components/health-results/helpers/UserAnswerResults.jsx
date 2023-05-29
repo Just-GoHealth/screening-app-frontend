@@ -43,7 +43,7 @@ export const UserAnswersResults = ({ answerResults }) => {
 											</td>
 											<td className="w-1/12 text-center">-</td>
 											<td className="min-w-6/12 flex items-center justify-center">
-												<p className="bg-[#965AA4] text-white px-5 rounded-full">
+												<p className="bg-[#003399] text-white px-5 rounded-full">
 													{finalGrade}
 												</p>
 											</td>

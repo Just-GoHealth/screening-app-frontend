@@ -32,29 +32,6 @@ export const UserHealthSummaryPage = () => {
 		student?.parent_info.parent_mobile +
 		' )';
 
-	// User Signs and Symptoms
-	const signsAndSymptoms = student?.signs_and_symptoms;
-	const signsRecommendations = signsAndSymptoms?.outcome_on_signs_and_symptoms;
-	const signsAndSymptomsResults =
-		signsAndSymptoms && Object.entries(signsAndSymptoms);
-
-	// User Triggers
-	const triggers = student?.triggers;
-	const triggersRecommendations = triggers?.outcome_on_triggers;
-	const triggersResults = triggers && Object.entries(triggers);
-
-	// User Risk Factors
-	const riskFactors = student?.risk_factors;
-	const riskFactorsRecommendations = riskFactors?.outcome_on_risk_factors;
-	const riskFactorsResults = riskFactors && Object.entries(riskFactors);
-
-	// User Support Systems
-	const supportSystems = student?.support_systems;
-	const supportSystemsRecommendations =
-		supportSystems?.outcome_on_support_system;
-	const supportSystemsResults =
-		supportSystems && Object.entries(supportSystems);
-
 	// User Screening Report
 	const screeningReport = student?.screening_report;
 	const screeningReportHighlight = screeningReport?.join(', ');
