@@ -22,20 +22,18 @@ export const SchoolResults = ({
 	const mergedScreeningReport = screeningReport.map((report) => {
 		const { apiID } = report;
 
-		const score = school.screening_report.possible_outcomes[apiID];
+		const grade = school.screening_report.grading[apiID].grade;
 
-		return { ...report, score };
+		return { ...report, grade };
 	});
 
 	const mergedRecommendations = recommendations.map((recommendation) => {
 		const { apiID } = recommendation;
-		const scoringData = school.recommendations.scoring[apiID];
-		const recommendationData = school.recommendations[apiID];
+		const scoringData = school.recommendations.scoring[apiID].grade;
 
 		return {
 			...recommendation,
 			scoring: scoringData,
-			value: recommendationData,
 		};
 	});
 
