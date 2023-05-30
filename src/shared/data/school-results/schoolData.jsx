@@ -3,13 +3,31 @@ import { family, meditation, siren } from '../../../assets/images';
 import { Bullet } from '../../components/health-results/helpers/Bullet';
 
 export const screeningReport = [
-	{ title: 'Mild Signs & Symptoms', bullet: <Bullet /> },
-	{ title: 'Moderate Stressors/ Triggers', bullet: <Bullet /> },
-	{ title: 'No Significant Risk Factors', bullet: <Bullet /> },
-	{ title: 'Strong Mental Health Support System', bullet: <Bullet /> },
 	{
-		title: 'Suicidal Thoughts (No Plan)',
+		title: 'Optimal Mental Health',
+		bullet: <Bullet />,
+		apiID: 'optimal_mental_health',
+	},
+	{
+		title: 'Mild Mental Health Concern',
+		bullet: <Bullet />,
+		apiID: 'mild_mental_health_concern',
+	},
+	{
+		title: 'Moderate Mental Health Concern',
+		bullet: <Bullet />,
+		apiID: 'moderate_mental_health_concern',
+	},
+	{
+		title: 'Severe Mental Health Concern',
+		bullet: <Bullet />,
+		apiID: 'severe_mental_health_concern',
+	},
+	{
+		title: 'Suicidal Thoughts',
 		bullet: <FcHighPriority className="inline mb-1" />,
+		apiID: 'suicidal_thoughts',
+		score: 'None',
 	},
 ];
 

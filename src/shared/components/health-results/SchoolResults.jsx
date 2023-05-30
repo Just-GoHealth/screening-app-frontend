@@ -1,5 +1,4 @@
 import React from 'react';
-import { Recommendations } from './helpers/Recommendations';
 import { SectionHeading } from './helpers/SectionHeading';
 import { Notice } from './helpers/Notice';
 import {
@@ -8,6 +7,8 @@ import {
 } from '../../data/school-results/schoolData';
 import { SchoolSignsAndSymptoms } from './helpers/SchoolSignsAndSymptoms';
 import './styles.css';
+import { SchoolRecommendations } from './helpers/SchoolRecommendations';
+import { SchoolScreeningReport } from './helpers/SchoolScreeningReport';
 
 export const SchoolResults = ({
 	title,
@@ -17,6 +18,14 @@ export const SchoolResults = ({
 	schoolData,
 }) => {
 	const { school } = schoolData;
+
+	const mergedScreeningReport = screeningReport.map((report) => {
+		const { apiID } = report;
+
+		const score = school.screening_report.possible_outcomes[apiID];
+
+		return { ...report, score };
+	});
 
 	const mergedRecommendations = recommendations.map((recommendation) => {
 		const { apiID } = recommendation;
@@ -43,13 +52,7 @@ export const SchoolResults = ({
 				<div>
 					<SectionHeading heading="Screening Report" showSeparator={false} />
 
-					<ul>
-						{screeningReport.map((report, i) => (
-							<li key={i}>
-								{report.bullet} {report.title}
-							</li>
-						))}
-					</ul>
+					<SchoolScreeningReport screeningReport={mergedScreeningReport} />
 				</div>
 
 				<div>
@@ -59,7 +62,7 @@ export const SchoolResults = ({
 						{mergedRecommendations.length > 0 ? (
 							mergedRecommendations.map((recommendation, i) => (
 								<div key={i}>
-									<Recommendations recommendation={recommendation} />
+									<SchoolRecommendations recommendation={recommendation} />
 								</div>
 							))
 						) : (
