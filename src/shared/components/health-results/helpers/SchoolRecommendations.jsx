@@ -9,8 +9,8 @@ export const SchoolRecommendations = ({ recommendation }) => {
 				</div>
 				<div>
 					<h1 className="text-xl text-[#955AA4]">
-						{recommendation?.title} - {recommendation?.value} (
-						{recommendation.scoring.percentage}%)
+						{recommendation?.title} - {recommendation?.scoring[0]} (
+						{recommendation.scoring[1]}%)
 					</h1>
 					<h4>{recommendation?.body}</h4>
 				</div>
