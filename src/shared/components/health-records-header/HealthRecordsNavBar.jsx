@@ -20,7 +20,7 @@ export const HealthRecordsNavBar = ({
 				</IconButton>
 			</>
 
-			<h2 className="health-records-nav-heading cursor-pointer">{heading}</h2>
+			<h2 className="health-records-nav-heading">{heading}</h2>
 
 			<>{rightIcon}</>
 		</nav>
