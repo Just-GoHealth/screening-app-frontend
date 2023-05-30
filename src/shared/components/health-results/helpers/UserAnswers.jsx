@@ -1,6 +1,6 @@
 import React from 'react';
-import { SectionHeading } from '../SectionHeading';
-import { UserSubsectionResults } from '../UserSubsectionResults';
+import { SectionHeading } from './SectionHeading';
+import { UserSubsectionResults } from './UserSubsectionResults';
 
 export const UserAnswers = ({ student }) => {
 	// User Signs and Symptoms

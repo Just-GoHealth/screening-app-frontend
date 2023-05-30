@@ -1,8 +1,8 @@
 import React from 'react';
-import { Recommendations } from './helpers/Recommendations';
+import { UserRecommendations } from './helpers/UserRecommendations';
 import { SectionHeading } from './helpers/SectionHeading';
 import { Notice } from './helpers/Notice';
-import { UserAnswers } from './helpers/user-answers/UserAnswers';
+import { UserAnswers } from './helpers/UserAnswers';
 import './styles.css';
 
 export const UserResults = ({
@@ -51,7 +51,7 @@ export const UserResults = ({
 						{allStudentRecommendations.length > 0 ? (
 							allStudentRecommendations.map((recommendation, i) => (
 								<div key={i}>
-									<Recommendations recommendation={recommendation} />
+									<UserRecommendations recommendation={recommendation} />
 								</div>
 							))
 						) : (
