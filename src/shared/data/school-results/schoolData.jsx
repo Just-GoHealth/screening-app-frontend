@@ -46,7 +46,7 @@ export const recommendations = [
 	},
 	{
 		title: 'Family Therapy',
-		body: "Engage in family therapy sessions to address and improve dysfunctional family dynamics that may be impacting the chil's well-being.",
+		body: "Engage in family therapy sessions to address and improve dysfunctional family dynamics that may be impacting the child's well-being.",
 		icon: <img src={family} className="w-10 h-10" />,
 		apiID: 'family_therapy',
 	},
