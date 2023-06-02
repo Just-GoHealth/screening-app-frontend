@@ -24,7 +24,7 @@ export const FormNavigation = ({
   isLoading
 }) => {
   return (
-    <nav className={"flex items-center justify-between mt-5 " + isLoading ? " pointer-events-none opacity-[0.32] ": " "}>
+    <nav className={"flex items-center justify-between mt-5 "}>
       <>
         {!isFirstStep && (
           <IconButton
