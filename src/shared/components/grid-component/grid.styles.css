@@ -18,15 +18,12 @@
 
 .ag-header-cell-text {
 	@apply text-white 
-		uppercase text-center
+		uppercase 
 		text-xl lg:text-2xl;
 }
 
 .ag-header-cell-label {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
+	@apply text-left md:text-center flex justify-center items-center;
 }
 
 .ag-cell {
@@ -50,4 +47,8 @@
 
 .ag-header-cell-resize::after {
 	@apply bg-gray-400;
+}
+
+.ag-paging-panel {
+	@apply bg-inherit;
 }

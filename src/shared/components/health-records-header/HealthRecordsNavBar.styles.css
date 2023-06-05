@@ -1,12 +1,12 @@
 .health-records-nav-container {
 	@apply flex items-center justify-between 
-    min-h-[15vh] 
+    min-h-[15vh] space-x-2
     px-3 sm:px-8 lg:px-10;
 }
 
 .health-records-nav-heading {
 	@apply text-[#1D509E] 
-    w-[10rem] sm:w-fit 
+    w-fit 
     py-4 sm:py-0
     text-center 
     text-2xl sm:text-3xl lg:text-4xl 
