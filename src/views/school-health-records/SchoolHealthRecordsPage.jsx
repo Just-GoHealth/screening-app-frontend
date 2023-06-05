@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton, Skeleton } from '@mui/material';
 import { BsFillCloudArrowDownFill } from 'react-icons/bs';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import {
@@ -46,11 +46,20 @@ export const SchoolHealthRecordsPage = () => {
 				}
 			/>
 
-			{schoolType && (
+			{schoolType ? (
 				<div className="health-records-sub-heading">
 					<h4>{schoolType}</h4>
 					<span> | </span>
 					<h4>{numberOfStudents}</h4>
+				</div>
+			) : (
+				<div className="flex justify-center">
+					<Skeleton
+						variant="rectangular"
+						width={250}
+						height={15}
+						className="rounded-full"
+					/>
 				</div>
 			)}
 
