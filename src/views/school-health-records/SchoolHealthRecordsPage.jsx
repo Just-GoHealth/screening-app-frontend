@@ -5,6 +5,7 @@ import { HealthRecordsNavBar } from '../../shared/components/health-records-head
 import {
 	GridComponent,
 	GridUserDownloadAction,
+	GridUserNameRenderer,
 } from '../../shared/components/grid-component';
 import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
 import './SchoolHealthRecords.styles.css';
@@ -62,6 +63,8 @@ export const SchoolHealthRecordsPage = () => {
 						{
 							field: 'full_name',
 							headerName: 'Name',
+							cellRenderer: GridUserNameRenderer,
+							autoHeight: true,
 						},
 						{
 							field: 'student_recommendation',
@@ -81,7 +84,7 @@ export const SchoolHealthRecordsPage = () => {
 							sort: 'desc',
 						},
 						{
-							field: 'download_school',
+							field: 'download',
 							headerName: 'Download',
 							cellRenderer: GridUserDownloadAction,
 						},
