@@ -19,13 +19,15 @@ export const GridSchoolNameRenderer = ({ data, params }) => {
 
 	return (
 		<>
-			<div
+			<p
 				onClick={handleClick}
-				className="hover:underline hover:text-[#1D509E] cursor-pointer transition-all duration-300 ease-out"
+				className="hover:underline hover:text-[#1D509E] cursor-pointer transition-all duration-300 ease-out text-left md:text-center"
 			>
 				{schoolName}
-			</div>
-			<div className="block md:hidden">Students: {numberOfStudents}</div>
+			</p>
+			<p className="block md:hidden text-left md:text-center text-gray-500">
+				Students: {numberOfStudents}
+			</p>
 		</>
 	);
 };
@@ -47,8 +49,10 @@ export const GridUserNameRenderer = ({ data, params }) => {
 
 	return (
 		<>
-			<div>{studentName}</div>
-			<div className="block md:hidden">{studentRecommendations}</div>
+			<div className="text-left md:text-center">{studentName}</div>
+			<div className="block md:hidden text-left md:text-center text-gray-500">
+				{studentRecommendations}
+			</div>
 		</>
 	);
 };
