@@ -18,7 +18,7 @@ export const GridSchoolNameRenderer = ({ data, params }) => {
 	}, [params]);
 
 	return (
-		<div className="pt-3 pb-2">
+		<div className="my-2">
 			<p
 				style={{
 					overflow: 'hidden',
@@ -26,7 +26,7 @@ export const GridSchoolNameRenderer = ({ data, params }) => {
 					whiteSpace: 'nowrap',
 				}}
 				onClick={handleClick}
-				className="hover:underline hover:text-[#1D509E] cursor-pointer transition-all duration-300 ease-out text-left md:text-center leading-3 md:leading-5"
+				className="hover:underline hover:text-[#1D509E] cursor-pointer transition-all duration-300 ease-out text-left md:text-center leading-5"
 			>
 				{schoolName}
 			</p>
@@ -60,14 +60,14 @@ export const GridUserNameRenderer = ({ data, params }) => {
 	}, [params]);
 
 	return (
-		<div className="pt-3 pb-2">
+		<div className="my-2">
 			<p
 				style={{
 					overflow: 'hidden',
 					textOverflow: 'ellipsis',
 					whiteSpace: 'nowrap',
 				}}
-				className="text-left md:text-center  leading-3 md:leading-5"
+				className="text-left md:text-center leading-5"
 			>
 				{studentName}
 			</p>
