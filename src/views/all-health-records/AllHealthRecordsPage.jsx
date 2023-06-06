@@ -2,23 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
-import './AllHealthRecordsPage.styles.css';
 import {
 	GridComponent,
 	GridSchoolDownloadAction,
 	GridSchoolNameRenderer,
 } from '../../shared/components/grid-component';
 import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
+import './AllHealthRecordsPage.styles.css';
 
 export const AllHealthRecordsPage = () => {
-	const [mobileView, setMobileView] = useState(false);
 	const { handleGoBack, handleAddSchool } = useInAppNavigation();
-
-	useEffect(() => {
-		if (window.innerWidth <= 768) {
-			setMobileView(!mobileView);
-		}
-	}, []);
 
 	return (
 		<div className="health-records-container">
@@ -44,7 +37,7 @@ export const AllHealthRecordsPage = () => {
 					searchplaceholder="Search for School"
 					fetchUrl="https://screening-tool-api.onrender.com/schools"
 					columnDefs={[
-						{ field: 'number', headerName: '#', flex: mobileView ? 0.5 : 1 },
+						{ field: 'number', headerName: '#', flex: 1 },
 						{
 							field: 'school_name',
 							headerName: 'School',
@@ -74,7 +67,6 @@ export const AllHealthRecordsPage = () => {
 							field: 'download',
 							headerName: 'Download',
 							cellRenderer: GridSchoolDownloadAction,
-							flex: mobileView ? 0.5 : 2,
 						},
 					]}
 				/>

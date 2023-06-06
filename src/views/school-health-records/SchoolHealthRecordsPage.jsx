@@ -11,7 +11,6 @@ import { useFetchDetials, useInAppNavigation } from '../../shared/custom-hooks';
 import './SchoolHealthRecords.styles.css';
 
 export const SchoolHealthRecordsPage = () => {
-	const [mobileView, setMobileView] = useState(false);
 	const { handleGoBack, params, navigate } = useInAppNavigation();
 	const schoolId = params.schoolId;
 
@@ -31,12 +30,6 @@ export const SchoolHealthRecordsPage = () => {
 	const handleSchoolRecordsDownload = () => {
 		navigate(`/school-health-summary/${schoolId}`);
 	};
-
-	useEffect(() => {
-		if (window.innerWidth <= 768) {
-			setMobileView(!mobileView);
-		}
-	}, []);
 
 	return (
 		<div className="health-records-container">
@@ -75,7 +68,7 @@ export const SchoolHealthRecordsPage = () => {
 					searchplaceholder="Search for Student"
 					fetchUrl={`https://screening-tool-api.onrender.com/schools/${schoolId}`}
 					columnDefs={[
-						{ field: 'number', headerName: '#', flex: mobileView ? 0.5 : 1 },
+						{ field: 'number', headerName: '#', flex: 1 },
 						{
 							field: 'full_name',
 							headerName: 'Name',
@@ -103,7 +96,6 @@ export const SchoolHealthRecordsPage = () => {
 							field: 'download',
 							headerName: 'Download',
 							cellRenderer: GridUserDownloadAction,
-							flex: mobileView ? 0.5 : 2,
 						},
 					]}
 				/>

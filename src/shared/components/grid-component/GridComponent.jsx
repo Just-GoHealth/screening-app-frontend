@@ -34,6 +34,11 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 		setGridApi(params.api);
 		setGridColumnApi(params.columnApi);
 
+		if (window.innerWidth <= 768) {
+			params.columnApi.getColumn('number').flex = 0.7;
+			params.columnApi.getColumn('download').flex = 0.7;
+		}
+
 		{
 			fetchUrl === 'https://screening-tool-api.onrender.com/schools' &&
 				fetch(`${fetchUrl}`)
@@ -93,7 +98,6 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 			const studentRecommendation = gridColumnApi.getColumn(
 				'student_recommendation'
 			);
-
 			const number = gridColumnApi.getColumn('number');
 			const download = gridColumnApi.getColumn('download');
 
