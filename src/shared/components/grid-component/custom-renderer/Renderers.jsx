@@ -18,17 +18,29 @@ export const GridSchoolNameRenderer = ({ data, params }) => {
 	}, [params]);
 
 	return (
-		<>
+		<div className="pt-3 pb-2">
 			<p
+				style={{
+					overflow: 'hidden',
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+				}}
 				onClick={handleClick}
-				className="hover:underline hover:text-[#1D509E] cursor-pointer transition-all duration-300 ease-out text-left md:text-center"
+				className="hover:underline hover:text-[#1D509E] cursor-pointer transition-all duration-300 ease-out text-left md:text-center leading-3 md:leading-5"
 			>
 				{schoolName}
 			</p>
-			<p className="block md:hidden text-left md:text-center text-gray-500">
+			<p
+				style={{
+					overflow: 'hidden',
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+				}}
+				className="block md:hidden text-left md:text-center text-gray-500 text-sm"
+			>
 				Students: {numberOfStudents}
 			</p>
-		</>
+		</div>
 	);
 };
 
@@ -48,12 +60,28 @@ export const GridUserNameRenderer = ({ data, params }) => {
 	}, [params]);
 
 	return (
-		<>
-			<div className="text-left md:text-center">{studentName}</div>
-			<div className="block md:hidden text-left md:text-center text-gray-500">
+		<div className="pt-3 pb-2">
+			<p
+				style={{
+					overflow: 'hidden',
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+				}}
+				className="text-left md:text-center  leading-3 md:leading-5"
+			>
+				{studentName}
+			</p>
+			<p
+				style={{
+					overflow: 'hidden',
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+				}}
+				className="block md:hidden text-left md:text-center text-gray-500 text-sm"
+			>
 				{studentRecommendations}
-			</div>
-		</>
+			</p>
+		</div>
 	);
 };
 
@@ -85,6 +113,22 @@ export const GridUserDownloadAction = ({ data }) => {
 			<div onClick={handleClick}>
 				<ExpandCircleDownOutlinedIcon className="grid-download-button" />
 			</div>
+		</div>
+	);
+};
+
+export const EllipsisRenderer = ({ value }) => {
+	const formattedValue = value.length > 0 ? value.join(', ') : 'None';
+
+	return (
+		<div
+			style={{
+				overflow: 'hidden',
+				textOverflow: 'ellipsis',
+				whiteSpace: 'nowrap',
+			}}
+		>
+			{formattedValue}
 		</div>
 	);
 };
