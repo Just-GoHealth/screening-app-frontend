@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import { IconButton, Skeleton } from '@mui/material';
 import { BsFillCloudArrowDownFill } from 'react-icons/bs';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import {
+	EllipsisRenderer,
 	GridComponent,
 	GridUserDownloadAction,
 	GridUserNameRenderer,
@@ -103,19 +103,3 @@ export const SchoolHealthRecordsPage = () => {
 		</div>
 	);
 };
-
-function EllipsisRenderer({ value }) {
-	const formattedValue = value.length > 0 ? value.join(', ') : 'None';
-
-	return (
-		<div
-			style={{
-				overflow: 'hidden',
-				textOverflow: 'ellipsis',
-				whiteSpace: 'nowrap',
-			}}
-		>
-			{formattedValue}
-		</div>
-	);
-}

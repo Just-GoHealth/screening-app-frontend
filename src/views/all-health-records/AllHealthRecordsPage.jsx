@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
