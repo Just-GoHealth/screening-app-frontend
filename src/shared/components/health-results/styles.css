@@ -3,7 +3,7 @@
 		flex-col items-center justify-center
 		space-y-1 lg:space-y-2
 		mb-5 py-5 max-w-[75rem] mx-auto
-		bg-[#DFE7F4];
+		bg-[#DFE7F4] px-2 text-center;
 }
 .health-summary-main-heading {
 	@apply text-2xl sm:text-4xl lg:text-6xl
@@ -18,10 +18,16 @@
 	@apply text-[#965AA4] bg-[#EBEBEC]
 	font-bold
 	text-lg lg:text-xl 
-	p-1
+	p-1 w-fit
 	inline-block;
 }
 
 .health-summary-section-sub-heading {
-	@apply bg-white text-[#965AA4] text-xl;
+	@apply bg-white text-[#965AA4] font-medium text-[1.1rem] md:text-xl;
+}
+
+@media (max-width: 768px) {
+	.mobile-results-view {
+		display: flex;
+	}
 }
