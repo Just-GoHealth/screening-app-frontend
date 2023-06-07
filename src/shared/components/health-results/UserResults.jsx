@@ -25,7 +25,7 @@ export const UserResults = ({
 				<h4 className="health-summary-sub-heading">{date}</h4>
 			</div>
 
-			<div className="space-y-10 max-w-[85rem] mx-auto text-lg px-[5rem]">
+			<div className="space-y-10 px-3 md:px-0 max-w-[75rem] mx-auto text-[1rem] md:text-lg">
 				<div>
 					<SectionHeading
 						heading="Screening Report"
@@ -47,7 +47,7 @@ export const UserResults = ({
 						subHeading={recommendationsHighlight}
 					/>
 
-					<div className="space-y-5">
+					<div className="space-y-5 mt-3 md:mt-0">
 						{allStudentRecommendations.length > 0 ? (
 							allStudentRecommendations.map((recommendation, i) => (
 								<div key={i}>

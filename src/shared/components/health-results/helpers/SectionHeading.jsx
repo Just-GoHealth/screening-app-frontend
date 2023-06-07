@@ -6,7 +6,7 @@ export const SectionHeading = ({
 	showSeparator = true,
 }) => {
 	return (
-		<div className="mb-2">
+		<div className="mb-2 flex flex-col md:items-center md:flex-row md:space-x-2">
 			<span className="health-summary-section-heading">
 				{heading}
 				{showSeparator && <>-</>}
