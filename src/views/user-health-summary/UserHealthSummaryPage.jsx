@@ -23,7 +23,7 @@ export const UserHealthSummaryPage = () => {
 	const month = date.toLocaleString('en-US', { month: 'short' });
 	const year = date.getFullYear();
 	const day = date.getDate();
-	const fullDate = month + ' ' + day + ', ' + year;
+	const fullDate = `${month} ${day}, ${year}`;
 
 	// User Parent Info
 	const parentInfo =
