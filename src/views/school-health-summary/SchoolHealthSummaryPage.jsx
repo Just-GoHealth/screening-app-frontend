@@ -31,7 +31,7 @@ export const SchoolHealthSummaryPage = () => {
 	const month = date?.toLocaleString('en-US', { month: 'short' });
 	const day = date?.getDate();
 	const year = date?.getFullYear();
-	const fullDate = month + ' ' + day + ', ' + year;
+	const fullDate = `${month} ${day}, ${year}`;
 
 	// School Contact Info
 	const schooolContact = schoolData?.school.contact.mobile_number;
