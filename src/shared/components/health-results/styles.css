@@ -26,7 +26,7 @@
 	@apply bg-white text-[#965AA4] font-medium text-[1.1rem] md:text-xl;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
 	.mobile-results-view {
 		display: flex;
 	}

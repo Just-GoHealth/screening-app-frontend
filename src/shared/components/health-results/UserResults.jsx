@@ -25,7 +25,7 @@ export const UserResults = ({
 				<h4 className="health-summary-sub-heading">{date}</h4>
 			</div>
 
-			<div className="space-y-10 px-3 md:px-0 max-w-[75rem] mx-auto text-[1rem] md:text-lg">
+			<div className="space-y-10 px-3 xl:px-0 max-w-[75rem] mx-auto text-[1rem] md:text-lg">
 				<div>
 					<SectionHeading
 						heading="Screening Report"
