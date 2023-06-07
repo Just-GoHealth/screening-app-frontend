@@ -4,7 +4,7 @@ export const SchoolRecommendations = ({ recommendation }) => {
 	return (
 		<>
 			<div className="relative text-[1rem] md:text-lg">
-				<div className="lg:absolute lg:left-[-50px] lg:top-3">
+				<div className="xl:absolute xl:left-[-50px] xl:top-3">
 					{recommendation?.icon}
 				</div>
 				<div>
