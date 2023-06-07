@@ -6,9 +6,9 @@ import {
 	screeningReport,
 } from '../../data/school-results/schoolData';
 import { SchoolSignsAndSymptoms } from './helpers/SchoolSignsAndSymptoms';
-import './styles.css';
 import { SchoolRecommendations } from './helpers/SchoolRecommendations';
 import { SchoolScreeningReport } from './helpers/SchoolScreeningReport';
+import './styles.css';
 
 export const SchoolResults = ({
 	title,

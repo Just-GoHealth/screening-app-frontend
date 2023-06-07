@@ -28,9 +28,9 @@ export const UserHealthSummaryPage = () => {
 	// User Parent Info
 	const parentInfo =
 		student?.parent_info.parent_name +
-		' ( ' +
+		' (' +
 		student?.parent_info.parent_mobile +
-		' )';
+		')';
 
 	// User Screening Report
 	const screeningReport = student?.screening_report;
