@@ -20,7 +20,7 @@ export const UserSubsectionResults = ({ results }) => {
 						<li className="text-[#965AA4]">
 							{finalTitle}: {outcome}
 						</li>
-						<table className="table-fixed text-black mt-1 ml-2 md:ml-4">
+						<table className="table-fixed text-black mt-1 ">
 							<tbody>
 								{finalResults.map((result, i) => {
 									const [title, grade] = result;
@@ -36,15 +36,16 @@ export const UserSubsectionResults = ({ results }) => {
 										.join(' ');
 
 									return (
-										<tr key={i} className="md:text-lg mobile-results-view">
-											<td className="w-1/12">
+										<tr
+											key={i}
+											className="md:text-lg grid grid-cols-10 max-w-[22rem] md:max-w-xl"
+										>
+											<td className="text-center">
 												<RxDotFilled className="inline text-[#965AA4] mb-1" />
 											</td>
-											<td className="w-1/2 md:w-3/2 py-1 md:py-0">
-												{finalTitle}
-											</td>
-											<td className="w-1/12 text-center">-</td>
-											<td className="min-w-6/12 flex md:items-center justify-center">
+											<td className="py-1 md:py-0 col-span-4">{finalTitle}</td>
+											<td className="text-center">-</td>
+											<td className="col-span-4 flex md:items-center md:justify-center">
 												<p className="text-[#003399] font-semibold md:font-normal md:bg-[#003399] md:text-white px-5 rounded-full">
 													{finalGrade}
 												</p>
