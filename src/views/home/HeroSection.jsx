@@ -7,6 +7,8 @@ import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation
 function HeroSection() {
 	const { startScreening, viewHealthRecords } = useInAppNavigation();
 
+	localStorage.clear()
+
 	return (
 		<>
 			<div className="min-h-screen flex justify-center items-center">

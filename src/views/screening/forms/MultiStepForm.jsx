@@ -84,6 +84,20 @@ const MultiStepForm = ({
       section.subSections.some((subSection) => subSection.id === step.id)
     );
     handleSelectedSection(newSection.id, step.id);
+
+    const relevantQuestions = step.questions.filter(
+      (question) => question.name === "school" || question.name === "grade"
+    );
+
+    relevantQuestions.forEach((question) => {
+      const localStorageValue = localStorage.getItem(question.name);
+      if (localStorageValue && localStorageValue !== "undefined") {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          [question.name]: localStorageValue,
+        }));
+      }
+    });
   }, [step]);
 
   //change the currentstepindex whenver the selected section and selected subsection changes
@@ -116,6 +130,12 @@ const MultiStepForm = ({
       ...prevFormData,
       [name]: value,
     }));
+
+    console.log(name, value);
+
+    if (name === "school" || name === "grade") {
+      localStorage.setItem(name, value);
+    }
   };
 
   const handleAddStudent = async (data) => {
@@ -247,7 +267,6 @@ const MultiStepForm = ({
       };
 
       handleAddStudent(transformedData);
-
     }
   };
 

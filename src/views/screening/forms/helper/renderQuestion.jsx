@@ -45,16 +45,19 @@ const renderQuestion = (
   isQuestionFilled,
   handleFormInputChange,
   step,
-  schools
+  schools,
+  setFormDat
 ) => {
   if (!question) {
     return null;
   }
 
+
+
   const isQuestionUnanswered = typeof formData[question.name] === "undefined";
 
   const isPreviousQuestionUnanswered =
-    step.questions.length > 1
+    step.questions?.length > 1
       ? index > 0 &&
         typeof formData[step.questions[index - 1].name] === "undefined"
       : false;
