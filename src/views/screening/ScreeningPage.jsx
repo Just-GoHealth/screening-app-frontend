@@ -20,18 +20,20 @@ export const ScreeningPage = () => {
     return initialSubSectionsArr;
   });
   const [showQuestions, setShowQuestions] = useState(true);
-  const [schoolsData, setSchoolsData] = useState({})
+  const [schoolsData, setSchoolsData] = useState({});
 
   useEffect(() => {
-    
     const getSchools = async () => {
-      await axios.get('https://screening-tool-api.onrender.com/schools').then((res) => {
-        setSchoolsData(res.data)
-      }).catch((err) => {
-        toast.error("Something unexpected happened, try again later.")
-      })
-    }
-    getSchools()
+      await axios
+        .get("https://screening-tool-api.onrender.com/schools")
+        .then((res) => {
+          setSchoolsData(res.data);
+        })
+        .catch((err) => {
+          toast.error("Something unexpected happened, try again later.");
+        });
+    };
+    getSchools();
   }, []);
 
   //function to handle section change

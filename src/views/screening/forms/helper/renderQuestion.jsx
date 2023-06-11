@@ -63,6 +63,12 @@ const renderQuestion = (
       ? { opacity: 0.32, pointerEvents: "none" }
       : {};
 
+  const sortedSchools = schools?.sort((a, b) => {
+    return new Date(a.updatedAt) - new Date(b.updatedAt);
+  });
+
+  const reversedSchools = sortedSchools?.reverse();
+
   switch (question.type) {
     case "input":
       return (
@@ -81,7 +87,8 @@ const renderQuestion = (
                 error={
                   question.name === "parentContact"
                     ? !isMobileValid && !isPreviousQuestionUnanswered
-                    : !isQuestionFilled(question) && !isPreviousQuestionUnanswered
+                    : !isQuestionFilled(question) &&
+                      !isPreviousQuestionUnanswered
                 }
               />
             </>
@@ -109,7 +116,7 @@ const renderQuestion = (
               }}
               error={!isQuestionFilled(question)}
             >
-              {schools?.map((school, index) => (
+              {reversedSchools?.map((school, index) => (
                 <MenuItem value={school.school_name} key={index}>
                   {school.school_name}
                 </MenuItem>
