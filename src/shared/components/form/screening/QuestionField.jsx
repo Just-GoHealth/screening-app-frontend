@@ -3,6 +3,19 @@ import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 
 export const QuestionField = ({ title, subtitle, control, style, info }) => {
   const [expandContent, setExpandContent] = useState(false);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      const newWidth = window.innerWidth;
+      setWidth(newWidth);
+    };
+
+    window.addEventListener("resize", updateWindowDimensions);
+
+    return () => window.removeEventListener("resize", updateWindowDimensions) 
+
+  }, []);
 
   const expandContentBox = () => {
     setExpandContent(!expandContent);
@@ -14,7 +27,7 @@ export const QuestionField = ({ title, subtitle, control, style, info }) => {
         className="pb-4 border-b border-[#D9DADC] flex md:space-x-10 mt-3 flex-col md:flex-row md:items-center"
         style={style}
       >
-        <div className="w-3/4 space-y-2">
+        <div className=" w-full md:w-3/4 space-y-2">
           <div className="flex space-x-2">
             <h2 className="font-bold text-2xl text-[#231F20]">
               {title}{". "}
@@ -30,7 +43,7 @@ export const QuestionField = ({ title, subtitle, control, style, info }) => {
         {info && (
           <div
             className={
-              "bg-[#E6E7E8] relative text-[#86888B] p-3 flex max-w-[15rem]  my-3 md:items-center overflow-hidden" +
+              "bg-[#E6E7E8] relative text-[#86888B] p-3 flex w-full md:max-w-[15rem]  my-3 md:items-center overflow-hidden" +
               (expandContent ? " h-auto " : " max-h-[5rem]")
             }
           >
@@ -51,8 +64,8 @@ export const QuestionField = ({ title, subtitle, control, style, info }) => {
               <p className="text-sm break-word py-2">
                 {expandContent
                   ? info
-                  : info.length > 58
-                  ? info?.slice(0, 58) + "..."
+                  : info.length > (width > 768 ? 64: 83 )
+                  ? info?.slice(0, (width > 768 ? 64: 83 )) + "..."
                   : info}
               </p>
             </div>
