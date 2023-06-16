@@ -1,11 +1,11 @@
 import React from "react";
 import { IconButton } from "@mui/material";
-import { AiOutlineLeft } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineLeft } from "react-icons/ai";
 import { logo } from "../../../assets/images";
 import { useInAppNavigation } from "../../custom-hooks/useInAppNavigation";
 import "./Navbar.styles.css";
 
-export const Navbar = ({ showBackButton, showLogo, className }) => {
+export const Navbar = ({ showBackButton, showLogo, showMenu, handleToggleMenu, className }) => {
   const { handleGoBack, handleGoHome } = useInAppNavigation();
 
   return (
@@ -19,6 +19,17 @@ export const Navbar = ({ showBackButton, showLogo, className }) => {
           >
             <AiOutlineLeft color="white" />
           </IconButton>
+        )}
+        {showMenu && (
+          <div className="sm-block md:hidden ">
+            
+          <IconButton
+            onClick={handleToggleMenu}
+            size="medium"
+          >
+            <AiOutlineMenu color="black" />
+          </IconButton>
+          </div>
         )}
       </div>
 

@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { Navbar } from "../../shared/components/navbar/Navbar";
 import "./Screening.styles.css";
@@ -8,6 +8,7 @@ import { useInAppNavigation } from "../../shared/custom-hooks/useInAppNavigation
 import { useFetchDetials } from "../../shared/custom-hooks";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 export const ScreeningPage = () => {
   const [selectedSection, setSelectedSection] = useState(data.data[0].id);
@@ -21,6 +22,8 @@ export const ScreeningPage = () => {
   });
   const [showQuestions, setShowQuestions] = useState(true);
   const [schoolsData, setSchoolsData] = useState({});
+  const [showGuideOverlay, setShowGuideOverlay] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false)
 
   useEffect(() => {
     const getSchools = async () => {
@@ -42,21 +45,30 @@ export const ScreeningPage = () => {
       alert("Select your grade before proceeding");
       return;
     } // cannot navigate to other sections if your grade has not been selected
+
     setSelectedSection(id);
     setSelectedSubSection(subSectionId);
+    if(isNavOpen){
+      setIsNavOpen(false)
+    }
   };
 
   //function to handle subSection change
   const handleSelectedSubSection = (id) => {
     setSelectedSubSection(id);
+    if(isNavOpen){
+      setIsNavOpen(false)
+    }
   };
-
-  //function to handle recommendations page
 
   //function to start screening all over again
   const startScreening = () => {
     setFormData({});
     handleSelectedSection(data.data[0].id, data.data[0].subSections[0].id);
+  };
+
+  const handleToggleMenu = () => {
+    setIsNavOpen(!isNavOpen)
   };
 
   useEffect(() => setShowQuestions(false), []);
@@ -80,12 +92,24 @@ export const ScreeningPage = () => {
   return (
     <>
       <>
-        <Navbar showLogo />
+        <Navbar showLogo showMenu handleToggleMenu={handleToggleMenu} />
       </>
 
-      <div className=" flex mx-auto gap-x-10">
-        <nav className="flex justify-center lg:py-10 h-[90vh] basis-[20%] flex-grow-0 overflow-auto pl-20 ">
-          <div className="flex flex-col justify-between items-center w-[200px] px-2">
+      <div className=" mx-auto gap-x-10 md:flex ">
+        <nav
+          className={
+            "justify-center lg:py-10 h-[90vh] basis-[20%] flex-grow-0 overflow-auto pl-20 md:flex top-nav " +
+            (isNavOpen
+              ? " py-4 px-5 pl-0 flyout-open "
+              : " ")
+          }
+        >
+          <div className="block md:hidden float-right">
+            <IconButton onClick={handleToggleMenu} size="small">
+              <AiOutlineClose color="black" />
+            </IconButton>
+          </div>
+          <div className={"flex flex-col justify-between items-center w-[300px] md:w-[200px] px-2 pl-5 pt-16 md:pt-0 md:pl-0 " }>
             <div className="space-y-5 text-[#F1ADB0] text-lg w-full">
               <h2 className="text-black font-bold text-xl px-3">GUIDE:</h2>
               {/* Logic for handling the disability of nav items */}
@@ -205,7 +229,7 @@ export const ScreeningPage = () => {
           </div>
         </nav>
 
-        <main className=" min-h-[90vh] flex-grow-2 basis-[80%] ">
+        <main className=" min-h-[90vh] flex-grow-2 basis-[80%]">
           <MultiStepForm
             data={data}
             selectedSection={selectedSection}

@@ -52,8 +52,6 @@ const renderQuestion = (
     return null;
   }
 
-
-
   const isQuestionUnanswered = typeof formData[question.name] === "undefined";
 
   const isPreviousQuestionUnanswered =
@@ -140,28 +138,33 @@ const renderQuestion = (
             <>
               <ToggleButtonGroup
                 exclusive
-                aria-label="age"
+                aria-label={question.name}
                 value={formData[question.name] || ""}
                 onChange={(e, value) =>
                   handleFormInputChange(question.name, value)
                 }
+                sx={{ flexWrap: 'wrap'}}
               >
-                {question.options.map((age, index) => (
+                {question.options.map((value, index) => (
                   <ToggleButton
-                    value={age}
+                    value={value}
                     style={{
                       ...styles.circularRadioButton,
                       marginRight: "0.5rem",
                       backgroundColor:
-                        formData[question.name] === age ? "#003399" : undefined,
+                        formData[question.name] === value
+                          ? "#003399"
+                          : undefined,
                       borderColor:
-                        formData[question.name] === age ? "#003399" : "#ACAEB0",
+                        formData[question.name] === value
+                          ? "#003399"
+                          : "#ACAEB0",
                       color:
-                        formData[question.name] === age ? "white" : "#ACAEB0",
+                        formData[question.name] === value ? "white" : "#ACAEB0",
                     }}
                     key={index}
                   >
-                    {age}
+                    {value}
                   </ToggleButton>
                 ))}
               </ToggleButtonGroup>
@@ -190,6 +193,7 @@ const renderQuestion = (
                 {question.options.map((option, index) => (
                   <ToggleButton
                     value={option}
+                    className={"w-full"}
                     style={{
                       ...styles.squareRadioButton,
                       backgroundColor:

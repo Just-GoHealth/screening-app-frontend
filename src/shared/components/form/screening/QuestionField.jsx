@@ -11,7 +11,7 @@ export const QuestionField = ({ title, subtitle, control, style, info }) => {
   return (
     <>
       <div
-        className="pb-4 border-b border-[#D9DADC] flex space-x-10 mt-3 items-center"
+        className="pb-4 border-b border-[#D9DADC] flex md:space-x-10 mt-3 flex-col md:flex-row md:items-center"
         style={style}
       >
         <div className="w-3/4 space-y-2">
@@ -30,7 +30,7 @@ export const QuestionField = ({ title, subtitle, control, style, info }) => {
         {info && (
           <div
             className={
-              "bg-[#E6E7E8] relative text-[#86888B] p-3 flex items-center max-w-[15rem]  my-3  " +
+              "bg-[#E6E7E8] relative text-[#86888B] p-3 flex max-w-[15rem]  my-3 md:items-center overflow-hidden" +
               (expandContent ? " h-auto " : " max-h-[5rem]")
             }
           >
@@ -51,8 +51,8 @@ export const QuestionField = ({ title, subtitle, control, style, info }) => {
               <p className="text-sm break-word py-2">
                 {expandContent
                   ? info
-                  : info.length > 65
-                  ? info?.slice(0, 65) + "..."
+                  : info.length > 58
+                  ? info?.slice(0, 58) + "..."
                   : info}
               </p>
             </div>

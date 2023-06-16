@@ -276,7 +276,7 @@ const MultiStepForm = ({
   };
 
   return (
-    <div className="px-5 pb-5 h-full pr-20">
+    <div className="px-5 pb-5 h-full sm:pr-0 md:pr-20">
       <h1 className="screening_heading">{currentSection.name}</h1>
 
       <form className="space-y-7 h-[500px] overflow-auto px-5">
