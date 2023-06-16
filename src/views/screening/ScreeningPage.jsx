@@ -23,7 +23,7 @@ export const ScreeningPage = () => {
   const [showQuestions, setShowQuestions] = useState(true);
   const [schoolsData, setSchoolsData] = useState({});
   const [showGuideOverlay, setShowGuideOverlay] = useState(false);
-  const [isNavOpen, setIsNavOpen] = useState(false)
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
     const getSchools = async () => {
@@ -48,16 +48,16 @@ export const ScreeningPage = () => {
 
     setSelectedSection(id);
     setSelectedSubSection(subSectionId);
-    if(isNavOpen){
-      setIsNavOpen(false)
+    if (isNavOpen) {
+      setIsNavOpen(false);
     }
   };
 
   //function to handle subSection change
   const handleSelectedSubSection = (id) => {
     setSelectedSubSection(id);
-    if(isNavOpen){
-      setIsNavOpen(false)
+    if (isNavOpen) {
+      setIsNavOpen(false);
     }
   };
 
@@ -68,7 +68,7 @@ export const ScreeningPage = () => {
   };
 
   const handleToggleMenu = () => {
-    setIsNavOpen(!isNavOpen)
+    setIsNavOpen(!isNavOpen);
   };
 
   useEffect(() => setShowQuestions(false), []);
@@ -98,10 +98,8 @@ export const ScreeningPage = () => {
       <div className=" mx-auto gap-x-10 md:flex ">
         <nav
           className={
-            "justify-center lg:py-10 h-[90vh] basis-[20%] flex-grow-0 overflow-auto pl-20 md:flex top-nav " +
-            (isNavOpen
-              ? " py-4 px-5 pl-0 flyout-open "
-              : " ")
+            "justify-center lg:py-10 h-[90vh] basis-[20%] flex-grow-0 overflow-auto md:pl-20 md:flex top-nav " +
+            (isNavOpen ? " py-4 px-5 pl-0 flyout-open " : " ")
           }
         >
           <div className="block md:hidden float-right">
@@ -109,7 +107,11 @@ export const ScreeningPage = () => {
               <AiOutlineClose color="black" />
             </IconButton>
           </div>
-          <div className={"flex flex-col justify-between items-center w-[300px] md:w-[200px] px-2 pl-5 pt-16 md:pt-0 md:pl-0 " }>
+          <div
+            className={
+              "flex flex-col justify-between items-center w-[300px] md:w-[200px] px-2 pl-5 pt-16 md:pt-0 md:pl-0 "
+            }
+          >
             <div className="space-y-5 text-[#F1ADB0] text-lg w-full">
               <h2 className="text-black font-bold text-xl px-3">GUIDE:</h2>
               {/* Logic for handling the disability of nav items */}
@@ -229,7 +231,7 @@ export const ScreeningPage = () => {
           </div>
         </nav>
 
-        <main className=" min-h-[90vh] flex-grow-2 basis-[80%]">
+        <main className="min-h-[90vh] flex-grow-2 basis-[80%]">
           <MultiStepForm
             data={data}
             selectedSection={selectedSection}
