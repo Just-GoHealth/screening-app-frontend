@@ -13,16 +13,16 @@ function HeroSection() {
 
 	return (
 		<>
-			<div>
-				<div className="max-w-6xl mx-auto lg:px-8 mt-8 lg:mt-16">
-					<div className=" overflow-hidden px-4">
+			<div className="min-h-screen flex flex-col justify-between pt-5">
+				<div className="max-w-6xl mx-auto lg:px-8">
+					<div className="overflow-hidden px-4">
 						<img
 							src={Logo}
 							alt="JustGo Logo"
 							className=" w-60 -translate-x-3"
 						/>
 					</div>
-					<h1 className=" lg:hidden text-3xl md:text-5xl text-center font-bold text-[#993399] my-4">
+					<h1 className="lg:hidden text-3xl md:text-5xl text-center font-bold text-[#993399] my-4">
 						Every Mind Matters Tool
 					</h1>
 					<div className=" grid lg:grid-cols-2">
@@ -72,44 +72,39 @@ function HeroSection() {
 					</div>
 				</div>
 
-				<div className="mt-8 lg:mt-16 p-7 sm:px-16 pb-10 bg-[#F7E67E] flex flex-col lg:flex-row items-start justify-between w-full space-y-3 lg:space-y-0 lg:space-x-5">
-					<div className="flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:items-start lg:space-x-10">
-						<h1 className="bg-black text-white p-1 rounded w-fit text-sm lg:text-base font-bold">
-							References:
-						</h1>
+				<div className="mt-8 lg:mt-16 p-5 sm:px-16 pb-10 bg-[#F7E67E] flex flex-col lg:flex-row lg:items-start lg:space-x-5 space-y-5 lg:space-y-0">
+					<h1 className="bg-black text-white p-1 rounded w-fit text-sm lg:text-base font-bold">
+						References:
+					</h1>
 
-						<div className="space-y-3 lg:space-y-5">
-							<h4 className="ref-group">
-								<div className="ref-number">1</div>{' '}
-								<span>Youth Self Report</span>
-							</h4>
-
-							<h4 className="ref-group">
-								<div className="ref-number">2</div>{' '}
-								<span>Strength and Difficulties Questionnaire</span>
-							</h4>
-						</div>
-					</div>
-
-					<div className="space-y-3 lg:space-y-5">
+					<div className="grid lg:grid-cols-4 gap-3 lg:gap-5">
 						<h4 className="ref-group">
+							<div className="ref-number">1</div> <span>Youth Self Report</span>
+						</h4>
+
+						<h4 className="ref-group xl:ml-10">
 							<div className="ref-number">3</div>{' '}
 							<span>Pediatric Symptom Checklist</span>
 						</h4>
-						<h4 className="ref-group">
-							<div className="ref-number">4</div>{' '}
-							<span>John Hopkins University</span>
-						</h4>
-					</div>
 
-					<div className="space-y-3 lg:space-y-5">
-						<h4 className="ref-group">
+						<h4 className="ref-group lg:col-span-2 lg:ml-3">
 							<div className="ref-number">5</div>{' '}
 							<span>
 								The ICD-11 Classification of Mental and Behavioural Disorders
 							</span>
 						</h4>
+
 						<h4 className="ref-group">
+							<div className="ref-number">2</div>{' '}
+							<span>Strength and Difficulties Questionnaire</span>
+						</h4>
+
+						<h4 className="ref-group xl:ml-10">
+							<div className="ref-number">4</div>{' '}
+							<span>John Hopkins University</span>
+						</h4>
+
+						<h4 className="ref-group lg:col-span-2 lg:ml-3">
 							<div className="ref-number">6</div>{' '}
 							<span>
 								Diagnostic and Statistical Manual of Mental Disorder-5

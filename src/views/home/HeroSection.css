@@ -1,9 +1,9 @@
 .ref-number {
 	@apply w-4 h-4 text-xs rounded-full 
   flex items-center justify-center
-  border border-black;
+  border border-black mt-1;
 }
 
 .ref-group {
-	@apply flex items-center space-x-1;
+	@apply flex items-start space-x-1;
 }
