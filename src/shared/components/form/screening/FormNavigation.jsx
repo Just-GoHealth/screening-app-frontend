@@ -21,10 +21,10 @@ export const FormNavigation = ({
   isFirstStep,
   isStepComplete,
   canSubmit,
-  isLoading
+  isLoading,
 }) => {
   return (
-    <nav className={"flex items-center justify-between mt-5 "}>
+    <nav className={"flex items-center justify-between mt-3  "}>
       <>
         {!isFirstStep && (
           <IconButton

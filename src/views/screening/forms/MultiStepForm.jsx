@@ -279,7 +279,7 @@ const MultiStepForm = ({
     <div className="px-5 pb-5 h-full sm:pr-0 md:pr-20">
       <h1 className="screening_heading">{currentSection.name}</h1>
 
-      <form className="space-y-7 h-[60vh] md:h-[500px] overflow-auto px-5">
+      <form className="space-y-7 h-[60vh] md:h-[60vh] overflow-auto px-5">
         {steps.map((step, index) => (
           <div
             key={index}

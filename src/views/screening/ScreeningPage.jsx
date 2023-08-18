@@ -24,6 +24,8 @@ export const ScreeningPage = () => {
   const [schoolsData, setSchoolsData] = useState({});
   const [showGuideOverlay, setShowGuideOverlay] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [width, setWidth] = useState(0);
+
 
   useEffect(() => {
     const getSchools = async () => {
@@ -73,9 +75,23 @@ export const ScreeningPage = () => {
 
   useEffect(() => setShowQuestions(false), []);
 
+
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      const newWidth = window.innerWidth;
+      setWidth(newWidth);
+    };
+
+    window.addEventListener("resize", updateWindowDimensions);
+
+    return () => window.removeEventListener("resize", updateWindowDimensions) 
+
+  }, []);
+
+
   useEffect(() => {
     // Update subSectionsArr based on formData.grade
-    if (formData.grade < 7) {
+    if (formData.grade < 4) {
       setSubSectionsArr([
         data.data[0].subSections.find((subSection) => subSection.id === 1),
         data.data[0].subSections.find((subSection) => subSection.id === 2),
