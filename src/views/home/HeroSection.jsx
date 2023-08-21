@@ -14,7 +14,7 @@ function HeroSection() {
 	return (
 		<>
 			<div className="min-h-screen flex flex-col justify-between pt-5">
-				<div className="max-w-6xl mx-auto lg:px-8">
+				<div className="max-w-5xl mx-auto lg:px-8">
 					<div className="overflow-hidden px-4">
 						<img
 							src={Logo}
@@ -62,7 +62,8 @@ function HeroSection() {
 								<span>It takes 7 minutes to complete</span>
 							</h6>
 						</div>
-						<div className=" h-80 w-80 md:w-96 lg:ml-auto lg:mr-0 mx-auto lg:h-[28rem] rounded-2xl overflow-hidden -order-1 lg:order-2">
+
+						<div className=" h-80 w-80 md:w-96 mx-auto lg:h-[28rem] rounded-2xl overflow-hidden -order-1 lg:order-2">
 							<img
 								src={HeroImage}
 								alt=""
