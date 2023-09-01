@@ -2,14 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	font-family: 'BR Hendrix', sans-serif;
+@layer base {
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html, body {
+		font-family: 'BR Hendrix', sans-serif;
+	}
 }
 
-.hover-transition {
-	@apply cursor-pointer transition-all duration-500 ease-out;
-}
+@layer components {
+	.form-input {
+		@apply w-full px-5 py-2 font-semibold rounded-xl text-gray-500 bg-gray-100 border border-4 border-gray-400 outline-0
+	}
+	.hover-transition {
+		@apply cursor-pointer transition-all duration-500 ease-out;
+	}
 
-.grid-download-button {
-	@apply hover-transition text-gray-400 hover:text-[#1D509E];
+	.grid-download-button {
+		@apply hover-transition text-gray-400 hover:text-[#1D509E];
+	}
+
+	.auth-button {
+		@apply border border-4 rounded-full px-6 py-1 uppercase font-bold;
+	}
 }

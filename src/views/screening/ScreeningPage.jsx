@@ -26,7 +26,6 @@ export const ScreeningPage = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [width, setWidth] = useState(0);
 
-
   useEffect(() => {
     const getSchools = async () => {
       await axios
@@ -84,7 +83,7 @@ export const ScreeningPage = () => {
 
     window.addEventListener("resize", updateWindowDimensions);
 
-    return () => window.removeEventListener("resize", updateWindowDimensions) 
+    return () => window.removeEventListener("resize", updateWindowDimensions)
 
   }, []);
 

@@ -8,8 +8,13 @@ export default {
     extend: {
       colors: {
         primary: "#993399",
-        primaryBlue: "#003399"
-      }
+        primaryLight: "#c19dc9",
+        primaryBlue: "#003399",
+        bgLightBlue: "#93aedb"
+      },
+      borderWidth: {
+        "6": "6px"
+      },
     },
     screens: {
       'sm': '640px',
