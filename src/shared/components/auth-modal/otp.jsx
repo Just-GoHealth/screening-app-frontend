@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import Heading from "../heading/heading.jsx";
 import { useAuthContext } from "../../context/auth/AuthContext.jsx";
 
-const Otp = () => {
-  const { setRegisterStep } = useAuthContext();
+const Otp = ({ setLoginState }) => {
+  const { authState, setRegisterStep } = useAuthContext();
   const [otpArray, setOtpArray] = useState([]);
   const otpLength = 6;
   const otpContainer = useRef();
@@ -42,7 +42,8 @@ const Otp = () => {
         otpArray.length === otpLength
       ) {
         console.log("complete");
-        setRegisterStep("activation");
+        if(authState === "signup") setRegisterStep("activation");
+          setLoginState('set-password')
         // validate function here
       }
     }

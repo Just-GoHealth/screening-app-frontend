@@ -12,18 +12,18 @@ const LogIn = () => {
       case 'login':
         return <LoginForm setLoginState={setLoginState}/>
       case 'verify':
-        return <Otp/>
+        return <Otp setLoginState={setLoginState}/>
       case 'recovery':
-        return <FindAccount/>
+        return <FindAccount setLoginState={setLoginState}/>
       case 'set-password':
-        return <SetPassword/>
+        return <SetPassword setLoginState={setLoginState}/>
       default:
-        return <LoginForm/>
+        return <LoginForm setLoginState={setLoginState}/>
     }
   }
 
   return (
-      <div className="">
+      <div>
         {checkLoginState()}
       </div>
   )
