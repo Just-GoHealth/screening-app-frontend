@@ -4,44 +4,57 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Heading from "../../heading/heading";
 import { useAuthContext } from "../../../context/auth/AuthContext";
+import { useMutation } from "react-query";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import useValidate from "../../../custom-hooks/useValidate.jsx";
 
 const SignUpForm = () => {
   const [viewPassword, setViewPassword] = useState(false);
   const [maxLength, setMaxLength] = useState(10);
-  const { setRegisterStep } = useAuthContext();
+  const { setRegisterStep, signup } = useAuthContext();
+
+  const signUpMutation = useMutation(signup, {
+    onError: (error) => {
+      console.log(error)
+    },
+    onSuccess: () => {
+      setRegisterStep('verify')
+    },
+  })
 
   const initialValues = {
-    fullName: "",
+    full_name: "",
     email: "",
     password: "",
-    phone: "",
+    phone_number: "",
     terms: false,
   };
 
   const signUpValidation = Yup.object().shape({
-    fullName: Yup.string().required("Please enter your full name"),
-    // email: Yup.string()
-    //   .email("Please enter a valid email address")
-    //   .required("Please enter your email address"),
-    // password: Yup.string()
-    //   .test(
-    //     "Password must have 8 or more characters, upper and lowercase letters, & at least one number",
-    //     (value) => (value ? /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)/ : false)
-    //   )
-    //   .min(8, "Password must have 8 or more characters")
-    //   .required("Please enter your password"),
-    // phone: Yup.number().required("Please enter your phone number"),
-    // terms: Yup.bool().oneOf([true], "Please accept terms and conditions"),
+    full_name: Yup.string().required("Please enter your full name"),
+    email: Yup.string()
+      .email("Please enter a valid email address")
+      .required("Please enter your email address"),
+    password: Yup.string()
+      .matches(
+        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)/,
+        "Password must have 8 or more characters, upper and lowercase letters, & at least one number",
+      )
+      .min(8, "Password must have 8 or more characters")
+      .required("Please enter your password"),
+    phone_number: Yup.number().required("Please enter your phone number").min(10, 'Please enter a valid phone number'),
+    terms: Yup.bool().oneOf([true], "Please accept terms and conditions"),
   });
 
   const handleSubmit = (data) => {
-    console.log(data);
-    setRegisterStep('verify')
+    const modifiedData = { ...data }
+    delete modifiedData.terms
+    signUpMutation.mutate(modifiedData)
   };
 
   return (
     <>
-      <Heading title="JustGo Health Account" />
+      <Heading title="JustGo Health Account"/>
       <p className="text-center text-gray-500 mb-3">
         Get started screening to understand your wellbeing.
       </p>
@@ -50,22 +63,24 @@ const SignUpForm = () => {
         initialValues={initialValues}
         onSubmit={handleSubmit}
       >
-        {({ values, errors }) => {
+        {({ errors, setFieldValue }) => {
           return (
             <Form className="space-y-3 text-gray-400">
               <div className="w-6/12 mx-auto space-y-3">
                 {/* Full name */}
                 <Field
-                  name="fullName"
+                  name="full_name"
                   className="form-input"
                   placeholder="Full Name"
                 />
+                {useValidate(errors.full_name)}
                 {/* Email */}
                 <Field
                   name="email"
                   className="form-input"
                   placeholder="Email"
                 />
+                {useValidate(errors.email)}
                 {/*Password*/}
                 <div className="relative">
                   <Field
@@ -74,36 +89,39 @@ const SignUpForm = () => {
                     placeholder="Password"
                     type={viewPassword ? "text" : "password"}
                   />
-                  <p className="mx-4 pt-1 text-xs">
-                    Password must have 8 or more characters, upper and lowercase
-                    letters, & at least one number.
-                  </p>
+                  <span onClick={() => setViewPassword(!viewPassword)} className="absolute text-lg top-4 right-3 cursor-pointer">
+                    {viewPassword ? (
+                      <AiOutlineEyeInvisible/>
+                    ) : (
+                    <AiOutlineEye/>
+                    )}
+                  </span>
+                  {useValidate(errors.password, 'Password must have 8 or more characters, upper and lowercase letters, & at least one number')}
                 </div>
                 {/* Phone number */}
                 <div className="relative">
-                  <Field name="phone">
+                  <Field name="phone_number">
                     {({ field }) => (
                       <input
                         {...field}
-                        // onChange={(e) => {
-                        //   setMaxLength(
-                        //     (value) => value - e.target.value.length
-                        //   );
-                        //   setFieldValue("phone", e.target.value);
-                        // }}
+                        onChange={(e) => {
+                          setMaxLength(10 - e.target.value.length);
+                          setFieldValue("phone_number", e.target.value);
+                        }}
                         className="form-input"
                         placeholder="Phone number"
-                        maxLength={maxLength}
+                        maxLength={10}
                       />
                     )}
                   </Field>
+                  {useValidate(errors.phone_number)}
                   <p className="absolute font-semibold top-4 right-5">
                     {maxLength}
                   </p>
                 </div>
 
                 <label className="ml-5 flex space-x-3 items-center">
-                  <Field name="terms" type="checkbox" as="input" />
+                  <Field name="terms" type="checkbox" as="input"/>
                   <p>
                     Agree to{" "}
                     <Link to="" className="font-bold text-gray-500">
@@ -111,10 +129,11 @@ const SignUpForm = () => {
                     </Link>
                   </p>
                 </label>
+                {useValidate(errors.terms)}
               </div>
               <div className="flex w-full justify-between items-center border-t-2 border-gray-300 py-5 px-8">
                 <div></div>
-                <p>Tracker</p>
+                <p></p>
                 <button
                   type="submit"
                   className="auth-button bg-primaryLight text-white border-primary"

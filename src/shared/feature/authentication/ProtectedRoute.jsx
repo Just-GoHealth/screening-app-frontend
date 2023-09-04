@@ -3,9 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth/AuthContext';
 
 export const ProtectedRoute = ({ page }) => {
-	const { isAuthenticated } = useContext(AuthContext);
+	const { userData } = useContext(AuthContext);
 
-	return isAuthenticated ? (
+	return userData ? (
 		page
 	) : (
 		<Navigate to="/access-health-records" replace />

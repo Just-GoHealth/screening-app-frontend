@@ -1,12 +1,19 @@
 import { useRef, useState } from "react";
 import Heading from "../heading/heading.jsx";
 import { useAuthContext } from "../../context/auth/AuthContext.jsx";
+import { useMutation } from "react-query";
 
 const Otp = ({ setLoginState }) => {
-  const { authState, setRegisterStep } = useAuthContext();
+  const { authState, setRegisterStep, verifyAccount } = useAuthContext();
   const [otpArray, setOtpArray] = useState([]);
   const otpLength = 6;
   const otpContainer = useRef();
+
+  const verifyAccountMutation = useMutation(verifyAccount, {
+    onSuccess: () => {
+      setLoginState('set-password')
+    }
+  })
 
   function handleValue(e, inputIndex) {
     // get list of otp inputs
@@ -41,9 +48,10 @@ const Otp = ({ setLoginState }) => {
         !otpArray.some((value) => value === null || value === "") &&
         otpArray.length === otpLength
       ) {
-        console.log("complete");
         if(authState === "signup") setRegisterStep("activation");
           setLoginState('set-password')
+          const otc = otpArray.join('')
+        verifyAccountMutation.mutate({ otc })
         // validate function here
       }
     }

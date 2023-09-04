@@ -1,8 +1,17 @@
 import { Field, Form, Formik } from "formik";
 import * as Yup from 'yup'
 import Heading from "../../heading/heading.jsx";
+import { useMutation } from "react-query";
+import { useAuthContext } from "../../../context/auth/AuthContext.jsx";
+import { useState } from "react";
 
 const LoginForm = ({ setLoginState }) => {
+  const { login } = useAuthContext()
+  const [viewPassword, setViewPassword] = useState(false)
+
+  const loginMutation = useMutation(data => {
+    return login(data)
+  })
 
   const initialValues = {
     email: '',
@@ -15,7 +24,7 @@ const LoginForm = ({ setLoginState }) => {
   })
 
   const handleSubmit = (data) => {
-    console.log(data)
+    loginMutation.mutate(data)
   }
 
   return (
@@ -26,8 +35,7 @@ const LoginForm = ({ setLoginState }) => {
         validationSchema={loginSchema}
         initialValues={initialValues}
         onSubmit={handleSubmit}>
-        {({ values }) => {
-          console.log(values)
+        {() => {
           return (
             <Form className="text-gray-400 p-8">
               {/* Email */}
@@ -52,7 +60,7 @@ const LoginForm = ({ setLoginState }) => {
                 </p>
               </div>
               <div className="flex justify-end">
-                <button className="auth-button border-primary bg-primaryLight text-white mt-5">Submit</button>
+                <button disabled={loginMutation.isLoading} className="auth-button border-primary bg-primaryLight text-white mt-5">Submit</button>
               </div>
             </Form>
           )
