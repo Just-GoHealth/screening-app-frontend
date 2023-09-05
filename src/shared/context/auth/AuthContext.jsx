@@ -21,10 +21,8 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = (data) => {
     return axiosInstance.post(ENDPOINTS.login, data).then((response) => {
-      console.log(response)
-      if (!!response && response.data.status === 200) {
-        console.log(response)
-        setCookie("user", response.data.data, {
+      if (!!response && response.data.user && response.data.userToken) {
+        setCookie("user", { ...response.data.user, userToken: response.data.userToken }, {
           path: "/",
         });
       }
@@ -32,32 +30,24 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const signup = (data) => {
-    return axiosInstance.post(ENDPOINTS.signup, data).then((response) => {
-      if(!!response && response.data.status === 200) {
-        console.log(response)
-      }
-    })
+    return axiosInstance.post(ENDPOINTS.signup, data)
   }
 
   const verifyAccount = (data) => {
     return axiosInstance.post(ENDPOINTS.verifyAccount, data).then((response) => {
-      if(!!response && response.status === 200) {
+      if (!!response && response.status === 200) {
         console.log(response)
       }
     })
   }
 
   const forgotPassword = (data) => {
-    return axiosInstance.post(ENDPOINTS.forgotPassword, data).then((response) => {
-      if(!!response && response.status === 200) {
-        console.log(response)
-      }
-    })
+    return axiosInstance.post(ENDPOINTS.forgotPassword, data)
   }
 
   const resetPassword = (data) => {
     return axiosInstance.post(ENDPOINTS.resetPassword, data).then((response) => {
-      if(!!response && response.status === 200) {
+      if (!!response && response.status === 200) {
         console.log(response)
       }
     })
@@ -78,7 +68,7 @@ export const AuthContextProvider = ({ children }) => {
         signup,
         verifyAccount,
         forgotPassword,
-        resetPassword
+        resetPassword,
       }}
     >
       {children}

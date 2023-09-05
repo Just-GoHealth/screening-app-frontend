@@ -7,10 +7,11 @@ import { useState } from "react";
 
 const LoginForm = ({ setLoginState }) => {
   const { login } = useAuthContext()
-  const [viewPassword, setViewPassword] = useState(false)
 
-  const loginMutation = useMutation(data => {
-    return login(data)
+  const loginMutation = useMutation(login, {
+    onSuccess: () => {
+      setLoginState('verify')
+    }
   })
 
   const initialValues = {
@@ -37,9 +38,9 @@ const LoginForm = ({ setLoginState }) => {
         onSubmit={handleSubmit}>
         {() => {
           return (
-            <Form className="text-gray-400 p-8">
+            <Form className="text-gray-400">
               {/* Email */}
-              <div className="w-6/12 space-y-3 mx-auto">
+              <div className="w-10/12 md:w-8/12 lg:w-6/12 space-y-3 mx-auto">
                 <Field
                   name="email"
                   className="form-input"
@@ -59,7 +60,7 @@ const LoginForm = ({ setLoginState }) => {
                 </span>
                 </p>
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end pr-5 pb-5">
                 <button disabled={loginMutation.isLoading} className="auth-button border-primary bg-primaryLight text-white mt-5">Submit</button>
               </div>
             </Form>

@@ -22,11 +22,7 @@ const LogIn = () => {
     }
   }
 
-  return (
-      <div>
-        {checkLoginState()}
-      </div>
-  )
+  return checkLoginState();
 }
 
 LogIn.displayname = 'Login'

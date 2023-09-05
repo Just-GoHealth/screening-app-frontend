@@ -8,8 +8,9 @@ import useValidate from "../../../custom-hooks/useValidate.jsx";
 const FindAccount = ({ setLoginState }) => {
   const { forgotPassword } = useAuthContext()
   const forgotPasswordMutation = useMutation(forgotPassword, {
-    onSuccess: () => {
-      setLoginState('verify')
+    onSuccess: (success) => {
+      console.log(success)
+      // setLoginState('verify')
     },
   })
 
@@ -22,13 +23,13 @@ const FindAccount = ({ setLoginState }) => {
   });
 
   const handleSubmit = (data) => {
-    console.log(data);
+    forgotPasswordMutation.mutate(data)
   };
 
   return (
-    <>
+    <div>
       <Heading title="Find Your Account"/>
-      <p className="text-center text-gray-500">
+      <p className="text-center text-gray-500 text-sm">
         Enter your email address you used to register
       </p>
       <Formik
@@ -40,7 +41,7 @@ const FindAccount = ({ setLoginState }) => {
           return (
             <Form className="text-gray-400">
               {/* Email */}
-              <div className="w-6/12 space-y-3 mx-auto mb-20">
+              <div className="w-10/12 md:w-8/12 lg:w-6/12 space-y-3 mx-auto mb-10 lg:mb-20">
                 <Field
                   name="email"
                   className="form-input"
@@ -56,7 +57,7 @@ const FindAccount = ({ setLoginState }) => {
                 >
                   Back
                 </button>
-                <p>Tracker</p>
+                <p></p>
                 <button
                   disabled={forgotPasswordMutation.isLoading}
                   type="submit"
@@ -69,7 +70,7 @@ const FindAccount = ({ setLoginState }) => {
           );
         }}
       </Formik>
-    </>
+    </div>
   );
 };
 

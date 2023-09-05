@@ -5,18 +5,18 @@ import Activation from './activation';
 import { useAuthContext } from '../../../context/auth/AuthContext';
 
 const SignUp = () => {
-  const {registerStep} = useAuthContext()
+  const { registerStep } = useAuthContext()
   const registrationStep = () => {
     switch (registerStep) {
       case "register":
-        return <SignUpForm />;
+        return <SignUpForm/>;
       case "verify":
-        return <Otp />;
+        return <Otp/>;
       case "activation":
-        return <Activation />;
+        return <Activation/>;
     }
   };
-  return <>{registrationStep()}</>;
+  return registrationStep()
 };
 
 export default SignUp;

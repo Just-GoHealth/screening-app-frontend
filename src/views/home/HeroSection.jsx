@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./HeroSection.css";
 import HeroImage from "../../assets/images/hero-img.jpg";
-import { AuthContext, useAuthContext } from "../../shared/context/auth/AuthContext.jsx";
+import { useAuthContext } from "../../shared/context/auth/AuthContext.jsx";
 import { BiChevronRight } from "react-icons/bi";
 import { HiOutlineCheckCircle } from "react-icons/hi";
 import { useInAppNavigation } from "../../shared/custom-hooks/useInAppNavigation";
@@ -13,7 +13,7 @@ import LogIn from "../../shared/components/auth-modal/login/login.jsx";
 
 function HeroSection() {
   const {
-    isAuthenticated,
+    userData,
     authState,
     showAuthModal,
     setShowAuthModal
@@ -72,7 +72,7 @@ function HeroSection() {
                 </button>
                 <button
                   onClick={() =>
-                    isAuthenticated ? viewHealthRecords() : setShowAuthModal(true)
+                    userData ? viewHealthRecords() : setShowAuthModal(true)
                   }
                   className=" text-[#003399] font-semibold"
                 >

@@ -1,11 +1,10 @@
-import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import { AuthContext } from '../../context/auth/AuthContext';
+import { useAuthContext } from '../../context/auth/AuthContext';
 
 export const ProtectedRoute = ({ page }) => {
-	const { userData } = useContext(AuthContext);
+	const { user } = useAuthContext();
 
-	return userData ? (
+	return user.userToken ? (
 		page
 	) : (
 		<Navigate to="/access-health-records" replace />

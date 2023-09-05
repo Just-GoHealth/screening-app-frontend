@@ -21,7 +21,7 @@ const SetPassword = ({ setLoginState }) => {
     },
     onSuccess: () => {
       setLoginState("verify");
-    }
+    },
   })
 
   const setPasswordSchema = Yup.object().shape({
@@ -34,7 +34,7 @@ const SetPassword = ({ setLoginState }) => {
       .required("Please enter your password"),
     confirmPassword: Yup.string().oneOf(
       [Yup.ref("password"), null],
-      "Passwords do not match"
+      "Passwords do not match",
     ),
   });
 
@@ -87,8 +87,9 @@ const SetPassword = ({ setLoginState }) => {
                     type={viewPassword ? 'text' : 'password'}
                   />
                   {useValidate(errors.confirmPassword)}
-                  <span onClick={() => setViewPassword(!viewPassword)}
-                        className="absolute text-lg top-4 right-3 cursor-pointer">
+                  <span
+                    onClick={() => setViewPassword(!viewPassword)}
+                    className="absolute text-lg top-4 right-3 cursor-pointer">
                     {viewPassword ? (
                       <AiOutlineEyeInvisible/>
                     ) : (

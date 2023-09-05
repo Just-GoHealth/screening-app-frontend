@@ -49,7 +49,6 @@ const Otp = ({ setLoginState }) => {
         otpArray.length === otpLength
       ) {
         if(authState === "signup") setRegisterStep("activation");
-          setLoginState('set-password')
           const otc = otpArray.join('')
         verifyAccountMutation.mutate({ otc })
         // validate function here
@@ -59,7 +58,7 @@ const Otp = ({ setLoginState }) => {
 
   return (
     <>
-      <div className="w-6/12 mx-auto mb-16">
+      <div className="w-11/12 md:w-8/12 lg:w-6/12 mx-auto mb-16">
         <Heading title="Enter Verification Code" />
         <p className="text-center text-lg text-gray-500">
           A 6-digit verification code was just sent to email@x.com
@@ -79,7 +78,7 @@ const Otp = ({ setLoginState }) => {
                 });
               }}
               onKeyUp={(e) => handleValue(e, index)}
-              className="form-input h-20 text-primaryBlue p-2 text-center lg:text-[30px] border-6 focus:border-primaryBlue horizontal-cursor"
+              className="form-input h-16 md:h-20 text-primaryBlue p-2 text-center text-3xl border-6 focus:border-primaryBlue horizontal-cursor"
               style={{
                 caret: "gray underscore",
               }}
@@ -87,14 +86,13 @@ const Otp = ({ setLoginState }) => {
           ))}
         </div>
       </div>
-      <div className="flex w-full justify-between items-center border-t-2 border-gray-300 py-5 px-8">
+      <div className="w-full border-t-2 border-gray-300 py-5 px-8">
       <button
-          onClick={() => setRegisterStep('register')}
+          onClick={() => setLoginState ? setLoginState('login') : setRegisterStep('register')}
           className="auth-button text-primary border-primary"
         >
           Back
         </button>
-        <p>Tracker</p>
         <div></div>
       </div>
     </>

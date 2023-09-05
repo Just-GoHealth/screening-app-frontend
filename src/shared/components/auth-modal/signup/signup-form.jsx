@@ -55,7 +55,7 @@ const SignUpForm = () => {
   return (
     <>
       <Heading title="JustGo Health Account"/>
-      <p className="text-center text-gray-500 mb-3">
+      <p className="text-center text-gray-500 mb-3 text-sm">
         Get started screening to understand your wellbeing.
       </p>
       <Formik
@@ -66,7 +66,7 @@ const SignUpForm = () => {
         {({ errors, setFieldValue }) => {
           return (
             <Form className="space-y-3 text-gray-400">
-              <div className="w-6/12 mx-auto space-y-3">
+              <div className="w-10/12 md:w-8/12 lg:w-6/12 mx-auto space-y-3">
                 {/* Full name */}
                 <Field
                   name="full_name"
