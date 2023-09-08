@@ -15,4 +15,6 @@ export const ENDPOINTS = {
 
   // Users
   getAllUsers: '/users',
+  activateUser: '/activate-user', // append user id
+  suspendUser: '/suspend-user', // append user id
 }
