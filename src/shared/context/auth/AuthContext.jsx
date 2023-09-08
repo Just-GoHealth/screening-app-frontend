@@ -2,17 +2,20 @@ import React, { createContext, useContext, useState } from "react";
 import { axiosInstance } from "../axiosInstance.js";
 import { useCookies } from "react-cookie";
 import { ENDPOINTS } from "../../endpoints/endpoints.js";
-// import Cookies from 'js-cookie';
 
 export const AuthContext = createContext(undefined);
-
 export const AuthContextProvider = ({ children }) => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authState, setAuthState] = useState("signup");
   const [registerStep, setRegisterStep] = useState("register");
+  const [routeAfterLogin, setRouteAfterLogin] = useState('/all-health-records')
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   // Access the cookies as needed
   const user = cookies.user;
+
+  const isAlpha = () => {
+    return user.role === "Admin"
+  }
 
   const logout = () => {
     removeCookie("user", { path: "/" });
@@ -25,6 +28,7 @@ export const AuthContextProvider = ({ children }) => {
         setCookie("user", { ...response.data.user, userToken: response.data.userToken }, {
           path: "/",
         });
+        return response.data
       }
     });
   }
@@ -42,7 +46,11 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   const forgotPassword = (data) => {
-    return axiosInstance.post(ENDPOINTS.forgotPassword, data)
+    return axiosInstance.post(ENDPOINTS.forgotPassword, data).then((response) => {
+      if (!!response && response.status === 200) {
+        console.log(response)
+      }
+    })
   }
 
   const resetPassword = (data) => {
@@ -63,6 +71,9 @@ export const AuthContextProvider = ({ children }) => {
         setAuthState,
         showAuthModal,
         setShowAuthModal,
+        routeAfterLogin,
+        setRouteAfterLogin,
+        isAlpha,
         login,
         logout,
         signup,

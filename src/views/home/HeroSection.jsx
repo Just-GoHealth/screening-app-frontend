@@ -13,12 +13,13 @@ import LogIn from "../../shared/components/auth-modal/login/login.jsx";
 
 function HeroSection() {
   const {
-    userData,
+    userr,
     authState,
     showAuthModal,
-    setShowAuthModal
+    setShowAuthModal,
   } = useAuthContext();
   const { startScreening, viewHealthRecords } = useInAppNavigation();
+  const { setRouteAfterLogin } = useAuthContext()
 
   localStorage.clear();
 
@@ -65,15 +66,21 @@ function HeroSection() {
               </p>
               <div className="grid md:grid-cols-2 gap-4 mt-8 px-8 lg:px-4">
                 <button
-                  onClick={startScreening}
+                  onClick={userr ? startScreening() : () => {
+                    // save route and redirect after successful login
+                    setRouteAfterLogin('/screening')
+                    setShowAuthModal(true)
+                  }}
                   className="py-2 bg-[#993399] rounded-md text-white"
                 >
                   Start Screening
                 </button>
                 <button
-                  onClick={() =>
-                    userData ? viewHealthRecords() : setShowAuthModal(true)
-                  }
+                  onClick={userr ? viewHealthRecords() : () => {
+                    // save route and redirect after successful login
+                    setRouteAfterLogin('/all-health-records')
+                    setShowAuthModal(true)
+                  }}
                   className=" text-[#003399] font-semibold"
                 >
                   View Health Records{" "}

@@ -6,10 +6,12 @@ import { useState } from "react";
 import { useAuthContext } from "../../../context/auth/AuthContext.jsx";
 import useValidate from "../../../custom-hooks/useValidate.jsx";
 import { useMutation } from "react-query";
+import { errorToast } from "../../toastify/toastify.js";
 
 const SetPassword = ({ setLoginState }) => {
   const { resetPassword } = useAuthContext()
   const [viewPassword, setViewPassword] = useState(false)
+  const [viewConfirmPassword, setViewConfirmPassword] = useState(false)
   const initialValues = {
     password: "",
     confirmPassword: "",
@@ -17,7 +19,7 @@ const SetPassword = ({ setLoginState }) => {
 
   const resetPasswordMutation = useMutation(resetPassword, {
     onError: (error) => {
-      console.log(error)
+      errorToast(error.response.data.msg)
     },
     onSuccess: () => {
       setLoginState("verify");
@@ -35,7 +37,7 @@ const SetPassword = ({ setLoginState }) => {
     confirmPassword: Yup.string().oneOf(
       [Yup.ref("password"), null],
       "Passwords do not match",
-    ),
+    ).required("Please confirm your password"),
   });
 
   const handleSubmit = (data) => {
@@ -55,10 +57,10 @@ const SetPassword = ({ setLoginState }) => {
               <div className="w-6/12 space-y-3 mx-auto mb-20">
                 <div>
                   <Heading title="Create Password"/>
-                  <p className="text-gray-500">
-                    Password must have 8 or more characters, upper and lowercase
-                    letters, and at least one number.
-                  </p>
+                  {/*<p className="text-gray-500">*/}
+                  {/*  Password must have 8 or more characters, upper and lowercase*/}
+                  {/*  letters, and at least one number.*/}
+                  {/*</p>*/}
                 </div>
 
                 {/* Email */}
@@ -84,13 +86,13 @@ const SetPassword = ({ setLoginState }) => {
                     name="confirmPassword"
                     className="form-input"
                     placeholder="Repeat Password"
-                    type={viewPassword ? 'text' : 'password'}
+                    type={viewConfirmPassword ? 'text' : 'password'}
                   />
                   {useValidate(errors.confirmPassword)}
                   <span
-                    onClick={() => setViewPassword(!viewPassword)}
+                    onClick={() => setViewConfirmPassword(!viewConfirmPassword)}
                     className="absolute text-lg top-4 right-3 cursor-pointer">
-                    {viewPassword ? (
+                    {viewConfirmPassword ? (
                       <AiOutlineEyeInvisible/>
                     ) : (
                       <AiOutlineEye/>
@@ -98,9 +100,7 @@ const SetPassword = ({ setLoginState }) => {
                   </span>
                 </div>
               </div>
-              <div className="flex w-full justify-around items-center border-t-2 border-gray-300 py-5 px-16">
-                <div></div>
-                <p></p>
+              <div className="flex w-full justify-end items-center border-t-2 border-gray-300 py-5 px-16">
                 <button
                   type="submit"
                   className="auth-button bg-primaryLight text-white border-primary"

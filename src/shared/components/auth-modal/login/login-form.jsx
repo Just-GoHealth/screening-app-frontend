@@ -3,15 +3,18 @@ import * as Yup from 'yup'
 import Heading from "../../heading/heading.jsx";
 import { useMutation } from "react-query";
 import { useAuthContext } from "../../../context/auth/AuthContext.jsx";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = ({ setLoginState }) => {
-  const { login } = useAuthContext()
+  const { login, routeAfterLogin, setShowAuthModal } = useAuthContext()
+  const navigate = useNavigate()
 
   const loginMutation = useMutation(login, {
-    onSuccess: () => {
-      setLoginState('verify')
-    }
+    onSuccess: (success) => {
+      console.log(success)
+      // setShowAuthModal(false)
+      // navigate(routeAfterLogin)
+    },
   })
 
   const initialValues = {
@@ -51,6 +54,7 @@ const LoginForm = ({ setLoginState }) => {
                   name="password"
                   className="form-input"
                   placeholder="Password"
+                  type="password"
                 />
 
                 <p className="text-center font-bold text-lg">Don't remember password?
@@ -61,7 +65,11 @@ const LoginForm = ({ setLoginState }) => {
                 </p>
               </div>
               <div className="flex justify-end pr-5 pb-5">
-                <button disabled={loginMutation.isLoading} className="auth-button border-primary bg-primaryLight text-white mt-5">Submit</button>
+                <button
+                  type="submit"
+                  disabled={loginMutation.isLoading}
+                  className="auth-button border-primary bg-primaryLight text-white mt-5">Submit
+                </button>
               </div>
             </Form>
           )
@@ -71,6 +79,6 @@ const LoginForm = ({ setLoginState }) => {
   );
 }
 
-  LoginForm.displayName = 'Login Form'
+LoginForm.displayName = 'Login Form'
 
-  export default LoginForm
+export default LoginForm

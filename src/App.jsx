@@ -12,6 +12,7 @@ import { SchoolHealthSummaryPage } from './views/school-health-summary';
 import { AccessHealthRecords } from './views/access-health-records/AccessHealthRecords';
 import { AddNewSchool } from './views/add-new-school/AddNewSchool';
 import { ProtectedRoute } from './shared/feature/authentication/ProtectedRoute';
+import ManageAccountPage from "./views/manage-account/ManageAccountPage.jsx";
 
 const App = () => {
 	return (
@@ -41,6 +42,10 @@ const App = () => {
 				<Route
 					path="/user-health-summary/:userId"
 					element={<ProtectedRoute page={<UserHealthSummaryPage />} />}
+				/>
+				<Route
+					path="/manage-account"
+					element={<ManageAccountPage />}
 				/>
 
 				<Route path="/screening" element={<ScreeningPage />} />

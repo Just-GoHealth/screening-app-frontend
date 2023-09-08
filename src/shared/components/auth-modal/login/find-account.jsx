@@ -4,13 +4,17 @@ import Heading from "../../heading/heading.jsx";
 import { useAuthContext } from "../../../context/auth/AuthContext.jsx";
 import { useMutation } from "react-query";
 import useValidate from "../../../custom-hooks/useValidate.jsx";
+import { errorToast } from "../../toastify/toastify.js";
 
 const FindAccount = ({ setLoginState }) => {
   const { forgotPassword } = useAuthContext()
   const forgotPasswordMutation = useMutation(forgotPassword, {
+    onError: (error) => {
+      errorToast(error.response.data.msg)
+    },
     onSuccess: (success) => {
-      console.log(success)
-      // setLoginState('verify')
+      if(success.status === 200)
+        setLoginState('verify')
     },
   })
 
