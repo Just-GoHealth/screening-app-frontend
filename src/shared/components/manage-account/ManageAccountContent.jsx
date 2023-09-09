@@ -14,7 +14,7 @@ import useConfirmationModal from "../confirmation-modal/useConfirmationModal.jsx
 const ManageAccountContent = ({ setShowModal }) => {
   const { user, isAlpha, logout } = useAuthContext();
   const { getSchools, filterSchools } = useSchoolContext();
-  const { getAllUsers } = useUserContext();
+  const { getAllUsers, activateUser, suspendUser } = useUserContext();
   const { handleAddSchool } = useInAppNavigation();
   const {
     openModal: openConfirmationModal,
