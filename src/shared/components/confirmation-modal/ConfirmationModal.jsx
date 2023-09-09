@@ -7,11 +7,11 @@ const ConfirmationModal = ({ text, onClose }) => {
 
   return (
     <>
-      <div className="fixed inset-0 bg-red-500 bg-opacity-25 z-40" />
+      <div className="fixed inset-0 bg-black bg-opacity-25 z-40" />
 
       <div className="fixed inset-0 overflow-y-auto z-50">
         <div className="flex min-h-full items-center justify-center p-4 text-center">
-          <div className="flex flex-col gap-3 w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+          <div className="flex flex-col gap-3 w-full max-w-md transform overflow-hidden rounded-2xl bg-white border-8 border-primary py-6 text-left align-middle shadow-xl transition-all">
             <h3 className="text-lg font-medium leading-6 text-gray-900 text-center">
               Confirmation
             </h3>
