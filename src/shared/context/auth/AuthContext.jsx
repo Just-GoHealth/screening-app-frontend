@@ -8,58 +8,68 @@ export const AuthContextProvider = ({ children }) => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authState, setAuthState] = useState("signup");
   const [registerStep, setRegisterStep] = useState("register");
-  const [routeAfterLogin, setRouteAfterLogin] = useState('/all-health-records')
+  const [routeAfterLogin, setRouteAfterLogin] = useState("/all-health-records");
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   // Access the cookies as needed
   const user = cookies.user;
 
   const isAlpha = () => {
-    return user.role === "Admin"
-  }
+    return user.role === "Admin";
+  };
 
   const logout = () => {
     removeCookie("user", { path: "/" });
     window.location.assign("/");
-  }
+  };
 
-  const login = (data) => {
+  const login = async (data) => {
     return axiosInstance.post(ENDPOINTS.login, data).then((response) => {
       if (!!response && response.data.user && response.data.userToken) {
-        setCookie("user", { ...response.data.user, userToken: response.data.userToken }, {
-          path: "/",
-        });
-        return response.data
+        setCookie(
+          "user",
+          { ...response.data.user, userToken: response.data.userToken },
+          {
+            path: "/",
+          }
+        );
+        return response.data;
       }
     });
-  }
+  };
 
   const signup = (data) => {
-    return axiosInstance.post(ENDPOINTS.signup, data)
-  }
+    return axiosInstance.post(ENDPOINTS.signup, data);
+  };
 
   const verifyAccount = (data) => {
-    return axiosInstance.post(ENDPOINTS.verifyAccount, data).then((response) => {
-      if (!!response && response.status === 200) {
-        console.log(response)
-      }
-    })
-  }
+    return axiosInstance
+      .post(ENDPOINTS.verifyAccount, data)
+      .then((response) => {
+        if (!!response && response.status === 200) {
+          console.log(response);
+        }
+      });
+  };
 
   const forgotPassword = (data) => {
-    return axiosInstance.post(ENDPOINTS.forgotPassword, data).then((response) => {
-      if (!!response && response.status === 200) {
-        console.log(response)
-      }
-    })
-  }
+    return axiosInstance
+      .post(ENDPOINTS.forgotPassword, data)
+      .then((response) => {
+        if (!!response && response.status === 200) {
+          console.log(response);
+        }
+      });
+  };
 
   const resetPassword = (data) => {
-    return axiosInstance.post(ENDPOINTS.resetPassword, data).then((response) => {
-      if (!!response && response.status === 200) {
-        console.log(response)
-      }
-    })
-  }
+    return axiosInstance
+      .post(ENDPOINTS.resetPassword, data)
+      .then((response) => {
+        if (!!response && response.status === 200) {
+          console.log(response);
+        }
+      });
+  };
 
   return (
     <AuthContext.Provider

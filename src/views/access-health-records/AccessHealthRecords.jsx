@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../shared/context/auth/AuthContext";
 import axios from "axios";
 import { toast } from "react-toastify";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 
 export const AccessHealthRecords = () => {
   const [showPassword, setShowPassword] = React.useState(false);
