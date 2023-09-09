@@ -16,8 +16,11 @@ const ManageAccountContent = ({ setShowModal }) => {
   const { getSchools, filterSchools } = useSchoolContext();
   const { getAllUsers } = useUserContext();
   const { handleAddSchool } = useInAppNavigation();
+  const {
+    openModal: openConfirmationModal,
+    ModalComponent: ConfirmationModal,
+  } = useConfirmationModal();
   const [toggleEnabled, setToggleEnabled] = useState(false);
-  const { openModal, ModalComponent } = useConfirmationModal();
 
   const { data: schools } = useQuery({
     queryKey: ["schools"],
@@ -47,13 +50,23 @@ const ManageAccountContent = ({ setShowModal }) => {
     },
   ];
 
-  const handleConfirmation = async () => {
-    openModal("Are you sure you want to proceed?", () => console.log("done"));
+  const handleToggle = (state) => {
+    if (state) {
+      openConfirmationModal(
+        "Are you sure you want to activate this account?",
+        () => setToggleEnabled(true)
+      );
+    } else {
+      openConfirmationModal(
+        "Are you sure you want to suspend this account?",
+        () => setToggleEnabled(false)
+      );
+    }
   };
 
   return (
     <>
-      {ModalComponent}
+      {ConfirmationModal}
 
       <div className="p-8 space-y-10">
         <div className="flex justify-between items-center">
@@ -91,10 +104,7 @@ const ManageAccountContent = ({ setShowModal }) => {
                   </span>
                 ) : (
                   <div>
-                    <Toggle
-                      enabled={user.is_active}
-                      setEnabled={setToggleEnabled}
-                    />
+                    <Toggle enabled={toggleEnabled} setEnabled={handleToggle} />
                   </div>
                 )}
               </div>
