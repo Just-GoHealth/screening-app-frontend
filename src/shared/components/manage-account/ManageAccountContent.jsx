@@ -4,7 +4,7 @@ import { AiOutlineLeft, AiOutlinePlusCircle } from "react-icons/ai";
 import { useAuthContext } from "../../context/auth/AuthContext.jsx";
 import { useInAppNavigation } from "../../custom-hooks/index.js";
 import Heading from "../heading/heading.jsx";
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { useSchoolContext } from "../../context/SchoolContext.jsx";
 import { useUserContext } from "../../context/UserContext.jsx";
 import { BsPersonFill } from "react-icons/bs";
@@ -31,6 +31,18 @@ const ManageAccountContent = ({ setShowModal }) => {
     queryFn: () => getAllUsers(),
   });
 
+  const activateUserMutation = useMutation(activateUser, {
+    onSuccess: (success) => {
+      console.log(success);
+    },
+  });
+
+  const suspendUserMutation = useMutation(suspendUser, {
+    onSuccess: (success) => {
+      console.log(success);
+    },
+  });
+
   const userDetails = [
     {
       name: "Name",
@@ -51,17 +63,15 @@ const ManageAccountContent = ({ setShowModal }) => {
   ];
 
   const handleToggle = (state) => {
-    if (state) {
-      openConfirmationModal(
-        "Are you sure you want to activate this account?",
-        () => setToggleEnabled(true)
-      );
-    } else {
-      openConfirmationModal(
-        "Are you sure you want to suspend this account?",
-        () => setToggleEnabled(false)
-      );
-    }
+    openConfirmationModal(
+      `Are you sure you want to ${
+        user?.is_active ? "suspend" : "activate"
+      } this account?`,
+      () =>
+        user?.is_active
+          ? suspendUserMutation.mutate(user?._id)
+          : activateUserMutation.mutate(user?._id)
+    );
   };
 
   return (
@@ -104,7 +114,10 @@ const ManageAccountContent = ({ setShowModal }) => {
                   </span>
                 ) : (
                   <div>
-                    <Toggle enabled={toggleEnabled} setEnabled={handleToggle} />
+                    <Toggle
+                      enabled={user?.is_active}
+                      setEnabled={handleToggle}
+                    />
                   </div>
                 )}
               </div>
