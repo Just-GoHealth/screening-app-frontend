@@ -10,17 +10,19 @@ import { useUserContext } from "../../context/UserContext.jsx";
 import { BsPersonFill } from "react-icons/bs";
 import Toggle from "../toggle/Toggle.jsx";
 import useConfirmationModal from "../confirmation-modal/useConfirmationModal.jsx";
+import AddProgramModal from "../program-modal/AddProgramModal.jsx";
 
 const ManageAccountContent = ({ setShowModal }) => {
   const { user, isAlpha, logout } = useAuthContext();
   const { getSchools, filterSchools } = useSchoolContext();
   const { getAllUsers, activateUser, suspendUser } = useUserContext();
-  const { handleAddSchool } = useInAppNavigation();
+  const {} = useInAppNavigation();
   const {
     openModal: openConfirmationModal,
     ModalComponent: ConfirmationModal,
   } = useConfirmationModal();
   const [toggleEnabled, setToggleEnabled] = useState(false);
+  const [programModalOpen, setProgramModalOpen] = useState(false);
 
   const { data: schools } = useQuery({
     queryKey: ["schools"],
@@ -74,9 +76,17 @@ const ManageAccountContent = ({ setShowModal }) => {
     );
   };
 
+  const handleAddProgram = () => {
+    setProgramModalOpen(true);
+  };
+
   return (
     <>
       {ConfirmationModal}
+
+      {programModalOpen ? (
+        <AddProgramModal setIsOpen={setProgramModalOpen} />
+      ) : null}
 
       <div className="p-8 space-y-10">
         <div className="flex justify-between items-center">
@@ -163,9 +173,9 @@ const ManageAccountContent = ({ setShowModal }) => {
                   {schools?.school_list?.length}
                 </span>
               </h2>
-              {isAlpha() ? (
+              {true ? (
                 <AiOutlinePlusCircle
-                  onClick={() => handleAddSchool()}
+                  onClick={() => handleAddProgram()}
                   className="font-bold text-primary text-3xl cursor-pointer"
                 />
               ) : null}
