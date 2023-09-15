@@ -4,6 +4,8 @@ import { AiOutlineLeft } from "react-icons/ai";
 import JustGoLogo from "../justgo-logo/justgo-logo";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import { useSchoolContext } from "../../context/SchoolContext";
+import { useMutation } from "react-query";
 
 const programLevels = [
   {
@@ -26,6 +28,8 @@ const programLevels = [
 ];
 
 const AddProgramModal = ({ isOpen, setIsOpen }) => {
+  const { addProgram } = useSchoolContext();
+
   const initialValues = {
     school_name: "",
     school_location: "",
@@ -40,8 +44,17 @@ const AddProgramModal = ({ isOpen, setIsOpen }) => {
     school_location: "",
     school_type: "",
     coordinator: "",
-    mobile: "",
+    mobile: Yup.number()
+      .required("Please enter your phone number")
+      .min(10, "Please enter a valid phone number"),
     email: Yup.string().required("Please enter your email"),
+  });
+
+  const addProgramMutation = useMutation(addProgram, {
+    onSuccess: (success) => {
+      console.log(success);
+      setIsOpen(false);
+    },
   });
 
   return (
@@ -70,7 +83,7 @@ const AddProgramModal = ({ isOpen, setIsOpen }) => {
             <Formik
               validationSchema={programSchema}
               initialValues={initialValues}
-              onSubmit={(data) => console.log(data)}
+              onSubmit={(data) => addProgramMutation.mutate(data)}
             >
               {() => {
                 return (
