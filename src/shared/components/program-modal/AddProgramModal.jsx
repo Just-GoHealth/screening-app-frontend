@@ -27,7 +27,7 @@ const programLevels = [
   },
 ];
 
-const AddProgramModal = ({ isOpen, setIsOpen }) => {
+const AddProgramModal = ({ setIsOpen }) => {
   const { addProgram } = useSchoolContext();
 
   const initialValues = {

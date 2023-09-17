@@ -11,6 +11,7 @@ import { BsPersonFill } from "react-icons/bs";
 import Toggle from "../toggle/Toggle.jsx";
 import useConfirmationModal from "../confirmation-modal/useConfirmationModal.jsx";
 import AddProgramModal from "../program-modal/AddProgramModal.jsx";
+import { formatToDateOnly } from "../../helpers/helperFunctions.js";
 
 const ManageAccountContent = ({ setShowModal }) => {
   const { user, isAlpha, logout } = useAuthContext();
@@ -64,7 +65,7 @@ const ManageAccountContent = ({ setShowModal }) => {
     },
   ];
 
-  const handleToggle = (state) => {
+  const handleToggle = () => {
     openConfirmationModal(
       `Are you sure you want to ${
         user?.is_active ? "suspend" : "activate"
@@ -72,7 +73,7 @@ const ManageAccountContent = ({ setShowModal }) => {
       () =>
         user?.is_active
           ? suspendUserMutation.mutate(user?._id)
-          : activateUserMutation.mutate(user?._id)
+          : activateUserMutation.mutate(user?._id),
     );
   };
 
@@ -85,7 +86,7 @@ const ManageAccountContent = ({ setShowModal }) => {
       {ConfirmationModal}
 
       {programModalOpen ? (
-        <AddProgramModal setIsOpen={setProgramModalOpen} />
+        <AddProgramModal setIsOpen={setProgramModalOpen}/>
       ) : null}
 
       <div className="p-8 space-y-10">
@@ -95,7 +96,7 @@ const ManageAccountContent = ({ setShowModal }) => {
             size="small"
             style={{ background: "#BCBEC0" }}
           >
-            <AiOutlineLeft color="white" />
+            <AiOutlineLeft color="white"/>
           </IconButton>
           <Heading
             center={true}
@@ -114,7 +115,7 @@ const ManageAccountContent = ({ setShowModal }) => {
           <div>
             <div className="bg-black rounded-t-xl text-white py-2 px-4">
               <div className="w-full flex space-x-3 justify-between items-center">
-                {!isAlpha() ? <BsPersonFill className="text-4xl" /> : null}
+                {!isAlpha() ? <BsPersonFill className="text-4xl"/> : null}
                 <h3 className="flex text-2xl">
                   {isAlpha() ? "Accounts" : "Your page"}
                 </h3>
@@ -148,16 +149,16 @@ const ManageAccountContent = ({ setShowModal }) => {
                 <div className="space-y-2">
                   <table>
                     <tbody>
-                      {userDetails.map((detail, index) => {
-                        return (
-                          <tr key={index}>
-                            <td>{detail.name}</td>
-                            <td className="pl-5 text-gray-400">
-                              {user[detail?.value]}
-                            </td>
-                          </tr>
-                        );
-                      })}
+                    {userDetails.map((detail, index) => {
+                      return (
+                        <tr key={index}>
+                          <td>{detail.name}</td>
+                          <td className="pl-5 text-gray-400">
+                            {detail.name === "Joined" ? formatToDateOnly(user[detail?.value] ? user[detail?.value] : "") : user[detail?.value]}
+                          </td>
+                        </tr>
+                      );
+                    })}
                     </tbody>
                   </table>
                 </div>
@@ -173,20 +174,19 @@ const ManageAccountContent = ({ setShowModal }) => {
                   {schools?.school_list?.length}
                 </span>
               </h2>
-              {true ? (
-                <AiOutlinePlusCircle
-                  onClick={() => handleAddProgram()}
-                  className="font-bold text-primary text-3xl cursor-pointer"
-                />
-              ) : null}
+              <AiOutlinePlusCircle
+                onClick={() => handleAddProgram()}
+                className="font-bold text-primary text-3xl cursor-pointer"
+              />
             </div>
-            <hr className="border-b-[1px] border-gray-400 mb-4" />
+            <hr className="border-b-[1px] border-gray-400 mb-4"/>
             {/* List of Schools*/}
             <div className="space-y-1">
               {Array.isArray(schools?.school_list) ? (
                 filterSchools(schools?.school_list).map((school, i) => (
                   <div key={i} className="flex items-center space-x-3">
-                    <div className="w-[270px] flex justify-between items-center border-2 border-primary rounded-lg px-2">
+                    <div
+                      className="w-[270px] flex justify-between items-center border-2 border-primary rounded-lg px-2">
                       <p className="text-lg">{school.school_name}</p>
                       <p className="text-xs">200</p>
                     </div>
