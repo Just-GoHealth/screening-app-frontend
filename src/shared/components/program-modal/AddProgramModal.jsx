@@ -63,7 +63,7 @@ const AddProgramModal = ({ isOpen, setIsOpen }) => {
 
       <div className="fixed inset-0 overflow-y-auto z-50">
         <div className="flex min-h-full items-center justify-center p-4 text-center">
-          <div className="flex flex-col gap-3 p-6 max-w-7xl overflow-hidden rounded-2xl bg-white border-8 border-primary text-left align-middle shadow-xl transition-all">
+          <div className="flex flex-col gap-3 p-6 w-full max-w-7xl overflow-hidden rounded-2xl bg-white border-8 border-primary text-left align-middle shadow-xl transition-all">
             <div className="flex justify-between items-center">
               <IconButton
                 onClick={() => setIsOpen(false)}
@@ -98,13 +98,13 @@ const AddProgramModal = ({ isOpen, setIsOpen }) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center mt-2 mb-3">
                           <Field
                             name="school_name"
-                            className="form-input max-w-xs"
+                            className="form-input"
                             placeholder="Program Name"
                           />
 
                           <Field
                             name="email"
-                            className="form-input max-w-xs"
+                            className="form-input"
                             placeholder="Email"
                           />
                         </div>
@@ -120,14 +120,14 @@ const AddProgramModal = ({ isOpen, setIsOpen }) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center mt-2 mb-3">
                           <Field
                             name="school_location"
-                            className="form-input max-w-xs"
+                            className="form-input"
                             placeholder="Location"
                           />
 
                           <Field
                             as="select"
                             name="school_type"
-                            className="form-input max-w-xs"
+                            className="form-input"
                             placeholder="Program Level"
                           >
                             {programLevels?.map((level) => (
@@ -155,13 +155,13 @@ const AddProgramModal = ({ isOpen, setIsOpen }) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center mt-2 mb-3">
                           <Field
                             name="coordinator"
-                            className="form-input max-w-xs"
+                            className="form-input"
                             placeholder="Full Name"
                           />
 
                           <Field
                             name="mobile"
-                            className="form-input max-w-xs"
+                            className="form-input"
                             placeholder="Phone Number"
                           />
                         </div>
