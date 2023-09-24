@@ -151,7 +151,6 @@ const AddProgramModal = ({ setIsOpen }) => {
                           Add the <b>full name</b> and <b>contact</b> of the
                           coordinator
                         </div>
-
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center mt-2 mb-3">
                           <Field
                             name="coordinator"

@@ -6,14 +6,17 @@ import { useAuthContext } from "../../../context/auth/AuthContext.jsx";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = ({ setLoginState }) => {
-  const { login, routeAfterLogin, setShowAuthModal } = useAuthContext();
+  const { login, routeAfterLogin, setRegisterStep, setAuthState } = useAuthContext();
   const navigate = useNavigate();
 
   const loginMutation = useMutation(login, {
     onSuccess: (success) => {
-      console.log(success);
-      setShowAuthModal(false);
-      navigate(routeAfterLogin);
+      if (success?.user?.is_active) {
+        navigate(routeAfterLogin);
+      } else {
+        setRegisterStep('activation')
+        setAuthState('signup')
+      }
     },
   });
 
@@ -33,7 +36,7 @@ const LoginForm = ({ setLoginState }) => {
 
   return (
     <>
-      <Heading title="Welcome Back!" />
+      <Heading title="Welcome Back!"/>
       <p className="text-center text-gray-500">
         Sign into your account and start screening
       </p>

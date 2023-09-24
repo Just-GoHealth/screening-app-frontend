@@ -13,7 +13,7 @@ import LogIn from "../../shared/components/auth-modal/login/login.jsx";
 
 function HeroSection() {
   const {
-    userr,
+    user,
     authState,
     showAuthModal,
     setShowAuthModal,
@@ -66,7 +66,7 @@ function HeroSection() {
               </p>
               <div className="grid md:grid-cols-2 gap-4 mt-8 px-8 lg:px-4">
                 <button
-                  onClick={userr ? startScreening() : () => {
+                  onClick={user ? () => startScreening() : () => {
                     // save route and redirect after successful login
                     setRouteAfterLogin('/screening')
                     setShowAuthModal(true)
@@ -76,7 +76,7 @@ function HeroSection() {
                   Start Screening
                 </button>
                 <button
-                  onClick={userr ? viewHealthRecords() : () => {
+                  onClick={user ? () => viewHealthRecords() : () => {
                     // save route and redirect after successful login
                     setRouteAfterLogin('/all-health-records')
                     setShowAuthModal(true)

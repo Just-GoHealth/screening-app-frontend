@@ -25,6 +25,10 @@ export const useInAppNavigation = () => {
     navigate("/all-health-records");
   };
 
+  const manageAccount = () => {
+    navigate("/manage-account");
+  };
+
   const viewUserHealthSummary = (userId) => {
     navigate(`/user-health-summary/${userId}`);
   };
@@ -37,6 +41,7 @@ export const useInAppNavigation = () => {
     startScreening,
     viewHealthRecords,
     viewUserHealthSummary,
+    manageAccount,
     params,
   };
 };

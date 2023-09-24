@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IconButton } from "@mui/material";
 import { AiOutlineLeft, AiOutlinePlusCircle } from "react-icons/ai";
 import { useAuthContext } from "../../context/auth/AuthContext.jsx";
-import { useInAppNavigation } from "../../custom-hooks/index.js";
 import Heading from "../heading/heading.jsx";
 import { useMutation, useQuery } from "react-query";
 import { useSchoolContext } from "../../context/SchoolContext.jsx";
@@ -17,13 +16,12 @@ const ManageAccountContent = ({ setShowModal }) => {
   const { user, isAlpha, logout } = useAuthContext();
   const { getSchools, filterSchools } = useSchoolContext();
   const { getAllUsers, activateUser, suspendUser } = useUserContext();
-  const {} = useInAppNavigation();
   const {
     openModal: openConfirmationModal,
     ModalComponent: ConfirmationModal,
   } = useConfirmationModal();
-  const [toggleEnabled, setToggleEnabled] = useState(false);
   const [programModalOpen, setProgramModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const { data: schools } = useQuery({
     queryKey: ["schools"],
@@ -154,7 +152,7 @@ const ManageAccountContent = ({ setShowModal }) => {
                         <tr key={index}>
                           <td>{detail.name}</td>
                           <td className="pl-5 text-gray-400">
-                            {detail.name === "Joined" ? formatToDateOnly(user[detail?.value] ? user[detail?.value] : "") : user[detail?.value]}
+                            {detail.name === "Joined" ? formatToDateOnly(user[detail?.value]) : user[detail?.value]}
                           </td>
                         </tr>
                       );
@@ -192,7 +190,7 @@ const ManageAccountContent = ({ setShowModal }) => {
                     </div>
                     {isAlpha() ? (
                       <AiOutlinePlusCircle
-                        onClick={() => handleAddSchool()}
+                        onClick={() => assignSchool.mutate()}
                         className="font-bold text-gray-400 text-lg cursor-pointer"
                       />
                     ) : null}

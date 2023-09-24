@@ -17,8 +17,6 @@ const SchoolProvider = ({ children }) => {
     });
   };
 
-  console.log(user);
-
   const filterSchools = (schools) => {
     return schools.filter((school) => {
       if (!isAlpha) return user.school_id.includes(school.id);

@@ -1,12 +1,14 @@
 import { Switch } from "@headlessui/react";
 import React from "react";
+import { useAuthContext } from "../../context/auth/AuthContext.jsx";
 
 const Toggle = ({ enabled, setEnabled }) => {
+  const { isAlpha } = useAuthContext()
   return (
-    <div className="">
+    <div>
       <Switch
         checked={enabled}
-        onChange={setEnabled}
+        onChange={() => isAlpha() ? setEnabled() : null}
         className={`${enabled ? "bg-white/80" : "bg-white"}
           relative inline-flex h-[28px] w-[64px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out`}
       >

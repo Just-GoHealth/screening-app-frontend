@@ -1,5 +1,4 @@
 import { Button } from '@mui/material';
-import { AiOutlinePlus } from 'react-icons/ai';
 import { HealthRecordsNavBar } from '../../shared/components/health-records-header';
 import {
 	GridComponent,
@@ -10,7 +9,7 @@ import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation
 import './AllHealthRecordsPage.styles.css';
 
 export const AllHealthRecordsPage = () => {
-	const { handleGoBack, handleAddSchool } = useInAppNavigation();
+	const { handleGoBack, manageAccount } = useInAppNavigation();
 
 	return (
 		<div className="health-records-container">
@@ -22,11 +21,10 @@ export const AllHealthRecordsPage = () => {
 						variant="contained"
 						disableElevation
 						color="secondary"
-						startIcon={<AiOutlinePlus />}
 						size="small"
-						onClick={handleAddSchool}
+						onClick={manageAccount}
 					>
-						<p className="health-records-header-left-button">New School</p>
+						<p className="health-records-header-left-button">Manage Account</p>
 					</Button>
 				}
 			/>

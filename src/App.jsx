@@ -15,53 +15,53 @@ import { ProtectedRoute } from './shared/feature/authentication/ProtectedRoute';
 import ManageAccountPage from "./views/manage-account/ManageAccountPage.jsx";
 
 const App = () => {
-	return (
-		<>
-			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route
-					path="/access-health-records"
-					element={<AccessHealthRecords />}
-				/>
-				<Route
-					path="/add-new-school"
-					element={<ProtectedRoute page={<AddNewSchool />} />}
-				/>
-				<Route
-					path="/all-health-records"
-					element={<ProtectedRoute page={<AllHealthRecordsPage />} />}
-				/>
-				<Route
-					path="/school-health-records/:schoolId"
-					element={<ProtectedRoute page={<SchoolHealthRecordsPage />} />}
-				/>
-				<Route
-					path="/school-health-summary/:schoolId"
-					element={<ProtectedRoute page={<SchoolHealthSummaryPage />} />}
-				/>
-				<Route
-					path="/user-health-summary/:userId"
-					element={<ProtectedRoute page={<UserHealthSummaryPage />} />}
-				/>
-				<Route
-					path="/manage-account"
-					element={<ManageAccountPage />}
-				/>
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage/>}/>
+        <Route
+          path="/access-health-records"
+          element={<AccessHealthRecords/>}
+        />
+        <Route
+          path="/add-new-school"
+          element={<ProtectedRoute page={<AddNewSchool/>}/>}
+        />
+        <Route
+          path="/all-health-records"
+          element={<ProtectedRoute page={<AllHealthRecordsPage/>}/>}
+        />
+        <Route
+          path="/school-health-records/:schoolId"
+          element={<ProtectedRoute page={<SchoolHealthRecordsPage/>}/>}
+        />
+        <Route
+          path="/school-health-summary/:schoolId"
+          element={<ProtectedRoute page={<SchoolHealthSummaryPage/>}/>}
+        />
+        <Route
+          path="/user-health-summary/:userId"
+          element={<ProtectedRoute page={<UserHealthSummaryPage/>}/>}
+        />
+        <Route
+          path="/manage-account"
+          element={<ProtectedRoute page={<ManageAccountPage/>}/>}
+        />
 
-				<Route path="/screening" element={<ScreeningPage />} />
+        <Route path="/screening" element={<ScreeningPage/>}/>
 
-				<Route path="*" element={<PageNotFoundPage />} />
-			</Routes>
+        <Route path="*" element={<PageNotFoundPage/>}/>
+      </Routes>
 
-			<ToastContainer
-				limit={5}
-				position={'bottom-left'}
-				autoClose={3000}
-				draggable={true}
-				pauseOnFocusLoss={false}
-			/>
-		</>
-	);
+      <ToastContainer
+        limit={5}
+        position={'bottom-left'}
+        autoClose={3000}
+        draggable={true}
+        pauseOnFocusLoss={false}
+      />
+    </>
+  );
 };
 
 export default App;
