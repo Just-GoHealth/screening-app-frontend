@@ -24,7 +24,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const login = async (data) => {
     return axiosInstance.post(ENDPOINTS.login, data).then((response) => {
-      if (!!response && response.data.user && response.data.userToken) {
+      if (!!response && response.data.user && response.data.userToken && response.data.user.is_active) {
         setCookie(
           "user",
           { ...response.data.user, userToken: response.data.userToken },

@@ -3,12 +3,12 @@ import { useAuthContext } from "../../context/auth/AuthContext.jsx";
 import Modal from "../modal/modal.jsx";
 
 const AuthModal = ({ children }) => {
-  const { authState, setAuthState, setRegisterStep } = useAuthContext();
+  const { authState, setAuthState, registerStep, setRegisterStep } = useAuthContext();
   return (
     <Modal>
       <div className="flex flex-col md:flex-row justify-between items-center p-8">
         <JustGoLogo/>
-        <button
+        {registerStep !== "activation" ? <button
           onClick={() => {
             setRegisterStep("register");
             setAuthState(prev => prev === "login" ? "signup" : "login");
@@ -16,7 +16,7 @@ const AuthModal = ({ children }) => {
           className="bg-bgLightBlue py-1 px-3 rounded"
         >
           {authState === "login" ? "Get Started" : "Sign in instead"}
-        </button>
+        </button> : null}
       </div>
       {children}
     </Modal>
