@@ -1,7 +1,7 @@
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Heading from "../../heading/heading";
 import { useAuthContext } from "../../../context/auth/AuthContext";
 import { useMutation } from "react-query";
@@ -11,6 +11,8 @@ import useValidate from "../../../custom-hooks/useValidate.jsx";
 const SignUpForm = () => {
   const [viewPassword, setViewPassword] = useState(false);
   const [maxLength, setMaxLength] = useState(10);
+  const [email, setEmail] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
   const { setRegisterStep, signup } = useAuthContext();
 
   const signUpMutation = useMutation(signup, {
@@ -18,6 +20,7 @@ const SignUpForm = () => {
       console.log(error)
     },
     onSuccess: () => {
+      setSearchParams({ email });
       setRegisterStep('verify')
     },
   })
@@ -47,6 +50,7 @@ const SignUpForm = () => {
   });
 
   const handleSubmit = (data) => {
+    setEmail(data.email)
     const modifiedData = { ...data }
     delete modifiedData.terms
     signUpMutation.mutate(modifiedData)

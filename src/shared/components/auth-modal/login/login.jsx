@@ -3,6 +3,7 @@ import LoginForm from "./login-form.jsx";
 import FindAccount from "./find-account.jsx";
 import Otp from "../../auth-modal/otp.jsx";
 import SetPassword from "./set-password.jsx";
+import { useSearchParams } from "react-router-dom";
 
 const LogIn = () => {
   const [loginState, setLoginState] = useState('login')

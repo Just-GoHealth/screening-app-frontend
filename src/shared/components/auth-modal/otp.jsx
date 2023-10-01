@@ -2,16 +2,19 @@ import { useRef, useState } from "react";
 import Heading from "../heading/heading.jsx";
 import { useAuthContext } from "../../context/auth/AuthContext.jsx";
 import { useMutation } from "react-query";
+import { useSearchParams } from "react-router-dom";
 
 const Otp = ({ setLoginState }) => {
   const { authState, setRegisterStep, verifyAccount } = useAuthContext();
   const [otpArray, setOtpArray] = useState([]);
   const otpLength = 6;
   const otpContainer = useRef();
+  const [searchParams] = useSearchParams();
+  const email = searchParams.get('email')
 
   const verifyAccountMutation = useMutation(verifyAccount, {
     onSuccess: () => {
-      setLoginState('set-password')
+      setLoginState && setLoginState('set-password')
     }
   })
 
@@ -61,7 +64,7 @@ const Otp = ({ setLoginState }) => {
       <div className="w-11/12 md:w-8/12 lg:w-6/12 mx-auto mb-16">
         <Heading title="Enter Verification Code" />
         <p className="text-center text-lg text-gray-500">
-          A 6-digit verification code was just sent to email@x.com
+          A 6-digit verification code was just sent to {email}
         </p>
         <div
           ref={otpContainer}
