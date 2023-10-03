@@ -137,6 +137,7 @@ const MultiStepForm = ({
       localStorage.setItem(name, value);
     }
   };
+  console.log(formData);
 
   const handleAddStudent = async (data) => {
     setIsLoading(true);
@@ -179,7 +180,6 @@ const MultiStepForm = ({
         grade: formData?.grade,
         parent_name: formData?.parentName,
         parent_mobile: formData?.parentContact,
-        screenedBy: formData?.screenedBy,
         school_name: formData?.school,
         signs_and_symptoms: {
           emotional_disorder: {

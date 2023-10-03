@@ -81,14 +81,6 @@
               "info": ""
             },
             {
-              "id": 3,
-              "title": "Screened by",
-              "subTitle": "The JustGo Health Worker",
-              "name": "screenedBy",
-              "type": "input",
-              "info": ""
-            },
-            {
               "id": 4,
               "title": "Parent",
               "subTitle": "What is the name of your guardian?",
@@ -851,6 +843,366 @@
               ]
             }
           ]
+        },
+        {
+          "id": 11,
+          "name": "Exposure to Violence",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Violence Forms",
+              "subTitle": "Have you seen or experienced any violence at school or at home in the past year? Choose all the forms you witnessed or experienced:",
+              "name": "violenceForms",
+              "type": "multiple",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "None",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": " Physical abuse",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Sexual Abuse",
+                  "value": 1
+                },
+                {
+                  "id": 4,
+                  "name": "Trauma",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Violence Effects",
+              "subTitle": "How often are you disturbed about the violence you have experienced or seen?",
+              "name": "violenceEffects",
+              "type": "squircicleRadio",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Almost all the time",
+                  "value": 3
+                },
+
+                {
+                  "id": 5,
+                  "name": "Other form",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Academic Pressure",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Academic Pressure",
+              "subTitle": "How often do you feel stressed by academic workload and expectations? ",
+              "name": "academicPressure",
+              "type": "squircicleRadio",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Almost all the time",
+                  "value": 3
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "name": "Family Conflict",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Family Change",
+              "subTitle": "Have you experienced a big change in your family situation in the past year? Choose all the forms of significant changes you have experienced",
+              "name": "familyChange",
+              "type": "multiple",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "None",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": " Divorce",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Separation",
+                  "value": 1
+                },
+                {
+                  "id": 4,
+                  "name": "Family Conflict",
+                  "value": 1
+                },
+                {
+                  "id": 5,
+                  "name": "Death of a loved one",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "name": "Living Environment (Roommates/ Family)",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Fights, Arguments, Conflicts",
+              "subTitle": "How often do you experience fights, arguments or conflicts with your roommates or family members?",
+              "name": "fightsConflicts",
+              "type": "squircicleRadio",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Almost all the time",
+                  "value": 3
+                },
+
+                {
+                  "id": 5,
+                  "name": "Other form",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Major Changes",
+              "subTitle": "Have you experienced a major change in your living situation this past month, such as moving to a new school or home or room?",
+              "name": "majorChanges",
+              "type": "yesOrNo",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "name": "Bullying",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Bullying Forms",
+              "subTitle": " Have you been bullied at home or in school in the past year? Choose ALL the forms you were bullied",
+              "name": "bullyingForms",
+              "type": "multiple",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "None",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Physically hurting-",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Body shaming",
+                  "value": 1
+                },
+                {
+                  "id": 4,
+                  "name": "Name calling",
+                  "value": 1
+                },
+                {
+                  "id": 5,
+                  "name": "Discrimination ",
+                  "value": 1
+                },
+                {
+                  "id": 6,
+                  "name": "Threatening",
+                  "value": 1
+                },
+                {
+                  "id": 7,
+                  "name": "Other form",
+                  "value": 1
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Bullying Effects",
+              "subTitle": "How many times have you missed school or couldn’t do your daily activities because you felt unsafe or bullied in the past year? ",
+              "name": "bullyingEffects",
+              "type": "squircicleRadio",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Almost all the time",
+                  "value": 3
+                },
+
+                {
+                  "id": 5,
+                  "name": "Other form",
+                  "value": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Relationship problems ",
+          "questions": [
+            {
+              "id": 1,
+              "title": "Relationship Difficulties",
+              "subTitle": " Have you experienced any changes or difficulties in your relationships, such as breakups, fights, or arguments? ",
+              "name": "relationshipDifficulties",
+              "type": "yesOrNo",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "Yes",
+                  "value": 2
+                },
+                {
+                  "id": 2,
+                  "name": "No",
+                  "value": 0
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "title": "Isolation",
+              "subTitle": "How often do you feel lonely or isolated from your friends and family? ",
+              "name": "isolation",
+              "type": "squircicleRadio",
+              "info": "",
+              "options": [
+                {
+                  "id": 1,
+                  "name": "No, not at all",
+                  "value": 0
+                },
+                {
+                  "id": 2,
+                  "name": "Sometimes",
+                  "value": 1
+                },
+                {
+                  "id": 3,
+                  "name": "Frequently",
+                  "value": 2
+                },
+                {
+                  "id": 4,
+                  "name": "Almost all the time",
+                  "value": 3
+                },
+
+                {
+                  "id": 5,
+                  "name": "Other form",
+                  "value": 1
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -859,7 +1211,7 @@
       "name": "Risk Factors",
       "subSections": [
         {
-          "id": 11,
+          "id": 17,
           "name": "Health Problems",
           "questions": [
             {
@@ -905,7 +1257,7 @@
           ]
         },
         {
-          "id": 12,
+          "id": 18,
           "name": "Socioeconomic disadvantage",
           "questions": [
             {
@@ -1031,7 +1383,7 @@
       "name": "Support System",
       "subSections": [
         {
-          "id": 13,
+          "id": 19,
           "name": "Support Family Relationship",
           "questions": [
             {
