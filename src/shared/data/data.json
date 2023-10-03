@@ -857,11 +857,6 @@
               "info": "",
               "options": [
                 {
-                  "id": 1,
-                  "name": "None",
-                  "value": 0
-                },
-                {
                   "id": 2,
                   "name": " Physical abuse",
                   "value": 1
@@ -964,11 +959,6 @@
               "info": "",
               "options": [
                 {
-                  "id": 1,
-                  "name": "None",
-                  "value": 0
-                },
-                {
                   "id": 2,
                   "name": " Divorce",
                   "value": 1
@@ -1060,11 +1050,6 @@
               "type": "multiple",
               "info": "",
               "options": [
-                {
-                  "id": 1,
-                  "name": "None",
-                  "value": 0
-                },
                 {
                   "id": 2,
                   "name": "Physically hurting-",

@@ -136,9 +136,9 @@ const renderQuestion = (
           subtitle={question.subTitle}
           control={
             <Select
-              value={formData[question.name] || ""}
-              defaultValue={"Select your school"}
+              value={formData[question.name] || []}
               fullWidth
+              multiple
               onChange={(e) =>
                 handleFormInputChange(question.name, e.target.value)
               }
