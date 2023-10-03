@@ -875,6 +875,11 @@
                   "id": 4,
                   "name": "Trauma",
                   "value": 1
+                },
+                {
+                  "id": 5,
+                  "name": "Other form",
+                  "value": 1
                 }
               ]
             },
@@ -905,12 +910,6 @@
                   "id": 4,
                   "name": "Almost all the time",
                   "value": 3
-                },
-
-                {
-                  "id": 5,
-                  "name": "Other form",
-                  "value": 1
                 }
               ]
             }
@@ -1024,12 +1023,6 @@
                   "id": 4,
                   "name": "Almost all the time",
                   "value": 3
-                },
-
-                {
-                  "id": 5,
-                  "name": "Other form",
-                  "value": 1
                 }
               ]
             },
@@ -1131,12 +1124,6 @@
                   "id": 4,
                   "name": "Almost all the time",
                   "value": 3
-                },
-
-                {
-                  "id": 5,
-                  "name": "Other form",
-                  "value": 1
                 }
               ]
             }
@@ -1193,12 +1180,6 @@
                   "id": 4,
                   "name": "Almost all the time",
                   "value": 3
-                },
-
-                {
-                  "id": 5,
-                  "name": "Other form",
-                  "value": 1
                 }
               ]
             }

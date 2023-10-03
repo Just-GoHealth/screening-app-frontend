@@ -129,6 +129,37 @@ const renderQuestion = (
           info={question.info}
         />
       );
+    case "multiple":
+      return (
+        <QuestionField
+          title={question.title}
+          subtitle={question.subTitle}
+          control={
+            <Select
+              value={formData[question.name] || ""}
+              defaultValue={"Select your school"}
+              fullWidth
+              onChange={(e) =>
+                handleFormInputChange(question.name, e.target.value)
+              }
+              sx={{
+                height: 40,
+              }}
+              error={!isQuestionFilled(question)}
+            >
+              {question.options?.map((option, index) => (
+                <MenuItem value={option.name} key={option.id}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </Select>
+          }
+          key={question.id}
+          style={opacityStyle}
+          info={question.info}
+        />
+      );
+
     case "circularRadio":
       return (
         <QuestionField
@@ -143,7 +174,7 @@ const renderQuestion = (
                 onChange={(e, value) =>
                   handleFormInputChange(question.name, value)
                 }
-                sx={{ flexWrap: 'wrap'}}
+                sx={{ flexWrap: "wrap" }}
               >
                 {question.options.map((value, index) => (
                   <ToggleButton
