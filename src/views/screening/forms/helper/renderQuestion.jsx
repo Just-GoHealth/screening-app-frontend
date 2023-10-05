@@ -35,6 +35,15 @@ const styles = {
     height: "2.5rem",
     marginRight: "0.5rem",
   },
+  multipleButton: {
+    border: "2px solid #ACAEB0",
+    color: "#ACAEB0",
+    borderRadius: "4px",
+    minWidth: "3rem",
+    height: "2.5rem",
+    marginRight: "0.5rem",
+    marginBottom: "8px",
+  },
 };
 
 const renderQuestion = (
@@ -129,7 +138,7 @@ const renderQuestion = (
           info={question.info}
         />
       );
-    case "multiple":
+    case "multipleDropdown":
       return (
         <QuestionField
           title={question.title}
@@ -157,6 +166,67 @@ const renderQuestion = (
           key={question.id}
           style={opacityStyle}
           info={question.info}
+        />
+      );
+
+    case "multiple":
+      return (
+        <QuestionField
+          title={question.title}
+          subtitle={question.subTitle}
+          control={
+            <>
+              <ToggleButtonGroup
+                orientation="vertical"
+                value={formData[question.name] || []}
+                onChange={(e, values) => {
+                  handleFormInputChange(
+                    question.name,
+                    values.some((value) => value === "None") ? [] : values
+                  );
+                }}
+              >
+                {question.options.map((option, index) => (
+                  <ToggleButton
+                    value={option.name}
+                    className=""
+                    style={{
+                      borderColor: "transparent",
+                      padding: 0,
+                      marginBottom: "0.5rem",
+                      justifyContent: "flex-start",
+                    }}
+                    key={option.id}
+                  >
+                    <div
+                      className={`rounded min-w-[3rem] py-3 px-2 mr-2 border-2 ${
+                        formData[question.name]?.some(
+                          (value) => value === option.name
+                        )
+                          ? "bg-primaryBlue border-primaryBlue text-white"
+                          : option.name !== "None"
+                          ? "border-primaryGray text-primaryGray"
+                          : null
+                      } ${
+                        formData[question.name]?.length === 0 &&
+                        option.name === "None"
+                          ? "bg-primaryBlue border-primaryBlue text-white"
+                          : option.name === "None"
+                          ? "border-primaryGray text-primaryGray"
+                          : null
+                      }`}
+                    >
+                      {option.name}
+                    </div>
+                    <div className="normal-case text-sm">{option.info}</div>
+                  </ToggleButton>
+                ))}
+              </ToggleButtonGroup>
+            </>
+          }
+          info={question.info}
+          key={question.id}
+          style={opacityStyle}
         />
       );
 

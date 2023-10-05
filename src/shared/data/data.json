@@ -857,24 +857,34 @@
               "info": "",
               "options": [
                 {
+                  "id": 1,
+                  "name": "None",
+                  "value": 0,
+                  "info": ""
+                },
+                {
                   "id": 2,
                   "name": " Physical abuse",
-                  "value": 1
+                  "value": 1,
+                  "info": "Someone pushing, slapping, punching, or kicking you"
                 },
                 {
                   "id": 3,
                   "name": "Sexual Abuse",
-                  "value": 1
+                  "value": 1,
+                  "info": "Unwanted touching, kissing or trying to have sex with you"
                 },
                 {
                   "id": 4,
                   "name": "Trauma",
-                  "value": 1
+                  "value": 1,
+                  "info": "Getting an accident, seeing a natural disaster or seeing someone dying"
                 },
                 {
                   "id": 5,
                   "name": "Other form",
-                  "value": 1
+                  "value": 1,
+                  "info": ""
                 }
               ]
             },
@@ -959,24 +969,34 @@
               "info": "",
               "options": [
                 {
+                  "id": 1,
+                  "name": "None",
+                  "value": 0,
+                  "info": ""
+                },
+                {
                   "id": 2,
                   "name": " Divorce",
-                  "value": 1
+                  "value": 1,
+                  "info": "Parents are not married again"
                 },
                 {
                   "id": 3,
                   "name": "Separation",
-                  "value": 1
+                  "value": 1,
+                  "info": "Mom and dad not living together"
                 },
                 {
                   "id": 4,
                   "name": "Family Conflict",
-                  "value": 1
+                  "value": 1,
+                  "info": "Fighting, arguing or violence between your family members"
                 },
                 {
                   "id": 5,
                   "name": "Death of a loved one",
-                  "value": 1
+                  "value": 1,
+                  "info": "Someone you love dies"
                 }
               ]
             }
@@ -1051,34 +1071,46 @@
               "info": "",
               "options": [
                 {
+                  "id": 1,
+                  "name": "None",
+                  "value": 0,
+                  "info": ""
+                },
+                {
                   "id": 2,
-                  "name": "Physically hurting-",
-                  "value": 1
+                  "name": "Physically hurting",
+                  "value": 1,
+                  "info": "Someone pushing, slapping, punching, or kicking you"
                 },
                 {
                   "id": 3,
                   "name": "Body shaming",
-                  "value": 1
+                  "value": 1,
+                  "info": "Making funny comments about your weight, height, or appearance"
                 },
                 {
                   "id": 4,
                   "name": "Name calling",
-                  "value": 1
+                  "value": 1,
+                  "info": "Calling you names like stupid, ugly, or loser"
                 },
                 {
                   "id": 5,
-                  "name": "Discrimination ",
-                  "value": 1
+                  "name": "Discrimination",
+                  "value": 1,
+                  "info": "They might not let you play with them because of their race or religion"
                 },
                 {
                   "id": 6,
                   "name": "Threatening",
-                  "value": 1
+                  "value": 1,
+                  "info": "Telling you they will hurt you or to spread rumors about you"
                 },
                 {
                   "id": 7,
                   "name": "Other form",
-                  "value": 1
+                  "value": 1,
+                  "info": ""
                 }
               ]
             },
