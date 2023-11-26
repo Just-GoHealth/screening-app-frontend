@@ -18,8 +18,8 @@ export const SchoolHealthRecordsPage = () => {
 		['school-details', schoolId],
 		`https://screening-tool-api.onrender.com/schools/${schoolId}`
 	);
-	const { schoolData = {} } = data;
-	const { school, students } = schoolData;
+	const { school_data = {}} = data;
+	const { school, students } = school_data;
 
 	const schoolName = school?.school_name;
 	const schoolType = school?.school_type;

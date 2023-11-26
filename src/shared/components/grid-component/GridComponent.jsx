@@ -60,7 +60,7 @@ export const GridComponent = ({ columnDefs, fetchUrl, searchplaceholder }) => {
 			fetchUrl !== 'https://screening-tool-api.onrender.com/schools' &&
 				fetch(`${fetchUrl}`)
 					.then((res) => res.json())
-					.then((res) => res.schoolData.students)
+					.then((res) => res.school_data.students)
 					.then((res) => {
 						res.forEach((data, i) => {
 							data.number = i + 1;
