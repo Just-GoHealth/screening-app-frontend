@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from '../../assets/images/logo.png';
-import HeroImage from '../../assets/images/hero-img.jpg';
+import HeroImage from '../../assets/images/new-hero.jpeg';
 import { BiChevronRight } from 'react-icons/bi';
 import { HiOutlineCheckCircle } from 'react-icons/hi';
 import { useInAppNavigation } from '../../shared/custom-hooks/useInAppNavigation';
